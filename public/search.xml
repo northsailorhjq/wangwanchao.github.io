@@ -1448,81 +1448,6 @@
     
     
     <entry>
-      <title>深入理解计算机系统--存储</title>
-      <link href="/2018/09/28/csapp-memory/"/>
-      <url>/2018/09/28/csapp-memory/</url>
-      
-        <content type="html"><![CDATA[<ol><li><p>静态RAM</p></li><li><p>动态RAM</p></li><li><p>传统的DRAM</p></li><li><p>内存模块</p></li><li><p>增强的DRAM</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
-      
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>架构基础</title>
-      <link href="/2018/09/28/architecture-base/"/>
-      <url>/2018/09/28/architecture-base/</url>
-      
-        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Architect </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Architect </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java多线程</title>
       <link href="/2018/09/28/java-multithread/"/>
       <url>/2018/09/28/java-multithread/</url>
@@ -1540,6 +1465,31 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--存储</title>
+      <link href="/2018/09/28/csapp-memory/"/>
+      <url>/2018/09/28/csapp-memory/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>静态RAM</p></li><li><p>动态RAM</p></li><li><p>传统的DRAM</p></li><li><p>内存模块</p></li><li><p>增强的DRAM</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -1573,23 +1523,23 @@
     
     
     <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
+      <title>架构基础</title>
+      <link href="/2018/09/28/architecture-base/"/>
+      <url>/2018/09/28/architecture-base/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> Architect </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> Architect </tag>
             
         </tags>
       
@@ -1615,6 +1565,56 @@
         <tags>
             
             <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
+      
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -3206,7 +3206,7 @@
       <link href="/2018/03/02/hello-world/"/>
       <url>/2018/03/02/hello-world/</url>
       
-        <content type="html"><![CDATA[<p>“间歇性踌躇满志，持续性混吃等死”，在这条路上见过了太多太多的大佬，默默的做一个小码农，当然能够有点产出是最好的:)<br>博客间歇式更新</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=444267928&auto=1&height=66"></iframe><h2 id="计划："><a href="#计划：" class="headerlink" title="计划："></a>计划：</h2><p>2019主线目标：造轮子</p><a id="more"></a><h2 id="Hexo搭建博客"><a href="#Hexo搭建博客" class="headerlink" title="Hexo搭建博客"></a>Hexo搭建博客</h2><p><a href="https://github.com/theme-next/hexo-theme-next.git" target="_blank" rel="noopener">Hexo GitHub仓库</a></p><p>1、新建博客</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">new</span> <span class="string">"My New Post"</span>/hexo <span class="built_in">new</span> <span class="built_in">post</span> hello-world</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><p>2、生成草稿</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">draft</span> hello-world</span><br></pre></td></tr></table></figure><p>3、发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [post] hello-world</span><br></pre></td></tr></table></figure><p>4、生成静态文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate/hexo g</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><p>5、运行服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo </span><br><span class="line">$ hexo server/hexo s</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><p>6、发布博客到github</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy/hexo d</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h2 id="优化博客"><a href="#优化博客" class="headerlink" title="优化博客"></a>优化博客</h2><p>1、修改主题</p><p>采用Next</p><p>2、添加RSS，添加Search本地搜索</p><p>3、添加博客访问量PV/UV</p><p>4、添加博客字数、阅读时长</p><p>5、修改博文底部标签样式; 添加<code>Read more</code></p><p>修改模板 <code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将’#’换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p><p>6、增加博文置顶功能<br>两种方案：<br>一、hexo-generator-index</p><p>二、hexo-generator-index-pin-top</p><p>/blog/themes/next/layout/_macro 目录下的post.swig文件，定位到<div class="post-meta">标签下，插入代码：</div></p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> post.top %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-thumb-tack"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">7D26CD</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure><p>7、添加评论功能</p><p>8、修改域名</p><p>9、网站备案</p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>操作都在博客根目录下进行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HEXO_BLOG</span></span><br></pre></td></tr></table></figure><p>1、安装依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>2、卸载依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>3、查看安装的模块</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">ls</span> <span class="params">--depth</span> 0</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>“间歇性踌躇满志，持续性混吃等死”，在这条路上见过了太多太多的大佬，默默的做一个小码农，当然能够有点产出是最好的:)<br>博客间歇式更新</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=444267928&auto=1&height=66"></iframe><h2 id="计划："><a href="#计划：" class="headerlink" title="计划："></a>计划：</h2><p>2019主线目标：造轮子</p><a id="more"></a><h2 id="Hexo搭建博客"><a href="#Hexo搭建博客" class="headerlink" title="Hexo搭建博客"></a>Hexo搭建博客</h2><p><a href="https://github.com/theme-next/hexo-theme-next.git" target="_blank" rel="noopener">Hexo GitHub仓库</a></p><p>1、新建博客</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">new</span> <span class="string">"My New Post"</span>/hexo <span class="built_in">new</span> <span class="built_in">post</span> hello-world</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><p>2、生成草稿</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">draft</span> hello-world</span><br></pre></td></tr></table></figure><p>3、发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [post] hello-world</span><br></pre></td></tr></table></figure><p>4、生成静态文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate/hexo g</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><p>5、运行服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo </span><br><span class="line">$ hexo server/hexo s</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><p>6、发布博客到github</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy/hexo d</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h2 id="优化博客"><a href="#优化博客" class="headerlink" title="优化博客"></a>优化博客</h2><p>1、修改主题</p><p>采用Next</p><p>2、添加RSS，RSS迁移; 添加Search本地搜索</p><p>3、添加博客访问量PV/UV</p><p>4、添加博客字数、阅读时长; 修改博客国际化</p><p>5、修改博文底部标签样式; 添加<code>Read more</code></p><p>修改模板 <code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将’#’换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p><p>6、增加博文置顶功能<br>两种方案：<br>一、hexo-generator-index</p><p>二、hexo-generator-index-pin-top</p><p>找到<code>/blog/themes/next/layout/_macro/post.swig</code>文件，定位到<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签下，插入代码：</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> post.top %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-thumb-tack"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">7D26CD</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure><p>7、添加评论功能</p><p>8、修改域名</p><p>9、网站备案</p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>操作都在博客根目录下进行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HEXO_BLOG</span></span><br></pre></td></tr></table></figure><p>1、安装依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>2、卸载依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>3、查看安装的模块</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">ls</span> <span class="params">--depth</span> 0</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
