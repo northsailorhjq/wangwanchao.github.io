@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[talk-in-wangxiaobo]]></title>
+    <url>%2F2019%2F05%2F31%2Ftalk-in-wangxiaobo%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[csapp-lab]]></title>
+    <url>%2F2019%2F05%2F31%2Fcsapp-lab%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[csapp-instructions]]></title>
+    <url>%2F2019%2F05%2F31%2Fcsapp-instructions%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于失去]]></title>
+    <url>%2F2019%2F05%2F30%2Fthinking-in-lost%2F</url>
+    <content type="text"><![CDATA[关于失去，说是老了也好，说是闲的也好，总之，这一刻，因为一些人，一些事儿。总想说点什么。 自从开始写代码这个行业，大多的时间忙于各种新技术的更新换代，怕自己被淘汰，就陷于无尽的焦虑当中。很少有时间享受读一本书，出去骑行的慢时光。即便这样，仍然面临被很多人拍死在沙滩上的处境。最近得闲，因为某种原因，李志的专辑被全平台下线，网上遍寻，有幸发现一个网站《麦田音乐网》，这是一个运营了十多年的网站，而且是个人运营，很是惊讶，竟然还有这种佛系的地方。大致浏览了一下，猜测站长应该是个很厉害、又有点文艺的人，我看大家称呼他鬼哥。网站中除了歌单，最精彩的地方是，还有个麦游记，然后就有很多人会写下自己的故事，感觉类似于那个很有创意的淘宝卖家《CY故事 • 一家卖故事的淘宝店》(有点忘了，可以去查了一下)，这些故事总能触动内心深处的某些东西。 网站有个很醒目的flag：”我没法像个农民那样善良，只是麦子还在对着太阳愤怒生长”，第一印象就是《麦田里的守望者》，然后一层一层的“扒光”，在留言本的地方，站长的： 欢迎来到“麦田音乐网”，如果您有什么想说的话，请在这里留言！麦田音乐网建于2006年，是一个简单纯粹的音乐、文字分享网站。在浮躁、喧嚣的互联网中，希望你能在这里静下来。网站取名于《麦田里的守望者》、《小王子》、海子的诗、梵高与麦田。站长QQ:40589302 微信:linfox微信公众号“麦音乐”：maiyinyue不换友情链接。 留言本下有些留言真的是别有意味，这种感觉恐怕就是旧友久别重逢而不曾遗忘的感觉吧。 猪诺 2019-01-29 11:42 上午初中时开始听，现在我研三即将毕业。一晃这么多年。QQ上还加着你，但是QQ已经不用了。走了好久，发现麦田还在，真好。 在留言本后还有个淘宝店铺，也是十多年的老店，打开店铺，果然做生意也是很佛系的，我比较喜欢的是里面的文化衫，”grunge is dead”，”we are young”。真是一个很有趣的人。 总之，这是一个很有内容的网站，作为一个技术人，接触了太多的网站，这算是网站中的一股清流了。意犹未尽之余，去查了一下”伍尔芙”，著名的一句话–你不能通过逃避生活以寻找安宁，有机会读一下《海浪》；“科特柯本”，摇滚乐、朋克，这些东西没有系统的了解过，瞬间感觉自己的孤陋寡闻，不禁反思“我究竟是个有趣的人吗？”，因为最近也在读王小波，颇多感慨，也许自己还是太晚熟了，失去了太多宝贵的时间；“麦田里的守望者”，这本书其实很早有了解，但是一直没读过，去豆瓣了解了一下，中间刘瑜老师在2009年的一条评论还是令人深思的，的确，生活有美好，也有颓废，但是不能只看到颓废。然后打开刘瑜老师的个人博客，域名早已变成一个机械公司的网站… 生活，究竟是什么？可能我们每个人都问过自己，也在不断的寻找答案，尤其是这个快速迭代的时代，很多的东西终会被新的事物掩盖，但是她的美好，或者对她的依恋，却仍然在散发着光辉。 就好像这个网站，有一天会不会突然不能用了？我不知道，但我会尽力维护下去，当成一种信仰。我想要看清这个世界！]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[深入理解计算机系统--并发和并行]]></title>
+    <url>%2F2019%2F05%2F29%2Fcsapp-concurrent%2F</url>
+    <content type="text"><![CDATA[看了一遍，感觉并没有解释的很深刻，也许是自己理解的问题。 并发现代操作系统构建并发程序的方式： 进程 接收到请求后，fork一个子进程，由子进程来处理任务。因为每个进程的虚拟内存空间是独立的，所以进程间通信需要显式进行。常见的有： 优点：共享文件表，不共享用户地址空间 缺点：通信困难 I/O多路复用模型 由select来监听接收请求，没有数据时CPU挂起，只有发生I/O事件时，才会处理。状态机模型，流之间的通信通过状态实现。例如：jdk的NIO模型、Netty的I/O模型 改进：基于多路复用的事件驱动模型 状态机模型： 状态：等待描述符 $d_i$ 准备好可读，是否可读就是一种true/false的状态 输入事件：描述符 $d_i$ 准备好可读，其实就是一个触发事件 转移：从描述符 $d_i$ 读取数据，即状态转移， 优点：处于同一进程内，所有的流可以共享该进程的全部地址空间 缺点：编码复杂度上升 线程 多个线程在单一进程中，由内核统一调度，像进程一样，但是共享进程的虚拟内存空间。 每个线程有自己的执行上下文，线程代码和局部数据被封装在一个线程例程中。每个独立的线程中的线程栈通常不能被其它线程访问，除非线程得到指向其他线程的访问指针。除此之外，线程中的全局变量、静态变量只存在进程的虚拟内存中，可以被其它线程访问 Posix线程：在C程序中处理线程的一个标准接口 可结合线程：线程能够被其它线程收回和杀死，内存也可以被其它线程回收。 可分离线程：线程不能够被其它线程收回和杀死，内存由系统管理 信号量共享变量存在线程安全的问题，可以使用一种进度图模型分析指令执行顺序问题。然后引入了信号量机制 进度图进度图：n个并发线程的执行模型。进度图模型存在局限性，多处理器并发执行，不能使用进度图解释临界区： 互斥 不安全区 安全轨迹不安全轨迹 信号量主要包含2个操作P(s)、V(s)，P(s): 对s减1。如果s非0，则执行P线程s减1，否则P挂起，等待V唤醒V(s): 对s加1。V可以重启P线程]]></content>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CSAPP概览]]></title>
+    <url>%2F2019%2F05%2F29%2Fcsapp-base%2F</url>
+    <content type="text"><![CDATA[2014年就接触CSAPP，一直拖一直拖，直到今天才决定完完整整深耕，并产生输出。无论什么原因吧，种一棵树的最好时机就是十年前，还有就是今天。 7. 操作系统操作系统操作系统：处于应用程序和底层硬件之间，对应用程序提供API接口。例如Windows、Linux、MacOS等。 主要的作用： 防止硬件被应用程序随意调用提供统一的接口。因为底层硬件商不同，内部实现也不一样，操作系统对所有的硬件提供一个统一的实现标准 标准： Unix：贝尔实验室开发的一套系统 Posix标准：IEEE为了规范Unix的开发，制定了一些标准。系统调用的C语言接口、shell程序、工具、线程、网络编程 标准Unix规范：”标准Unix规范”工作组和Posix一起创建的Unix系统标准 文件文件：对I/O设备的抽象 虚拟内存虚拟内存：对主存、磁盘等I/O设备的抽象，和文件的描述存在交集，很难说谁包含谁 虚拟内存分为内核虚拟内存：存储操作系统的代码和数据，对所有进程不可见进程虚拟内存：存放所有进程信息 进程进程：对处理器、主存、磁盘I/O的抽象 进程是对操作系统中正在运行的程序的一种抽象。计算机CPU分单核、多核，即使一个CPU，看起来好像并发执行多个进程，实际上内部是通过进程间切换实现的，即’上下文切换’ 上下文：进程在运行状态下，操作系统会维护进程所有的信息(主存内容、寄存器文件的当前值)。进程各自的这些信息就是上下文。 上下文切换：每个CPU每个时刻只能有一个进程运行，把CPU的控制权交给别的进行，换取CPU的进程可以继续上次的执行，进程间运行的切换就是上下文切换 线程：一个进程可以由多个线程组成，每个线程运行在进程的上下文中，共享同样的代码和全局变量。 并发、并行并发运行： 并行运行：]]></content>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于今天某思面试的思考]]></title>
+    <url>%2F2019%2F05%2F29%2Fthinking-in-20190529%2F</url>
+    <content type="text"><![CDATA[今天下午参加了某思的面试，天挺热的，某思去了两次，第一次面到总监，莫名其妙的杳无音讯。这次是第二次。面试过程前HR提前说明了面试官喜欢问算法，也没怎么准备，只是为了白板，简单看了一下基础的算法。 面试中因为面试官看到我不是科班出身，就问了我两道题，一道关于系统中进程和线程，我答的不是很好，面试官说再考考你的基础，就出了一道算法题，大约五分钟后， 面试官问我有思路吗，其实这个并不难，我就把思路大致讲了一下，然后面试官就要结束，习惯性的说，你还有什么要问我的吗我说，我表现很差吗？接着，他说不问上层应用层的东西，比较注重基础 blablabla…我接着问，这道算法题是有什么模式吗？您是怎么做的？其实这个，blabla…讲了一堆我说，我这个用Map有问题吗？你这个主要是太占空间(这时候，我其实很无奈，就是一个优化的问题，但是我也没办法)然后，我说前辈有什么要指导的吗？你既然是非科班出身，就应该在一年内把计算机系统、编译原理、数据结构、网络这些都学习一下(此时，我知道面试官只是对我的出身比较有看法吧，所谓的这几道题无非是不显得那么明显) 面试出来，我知道这个行业门槛越来越高，而我们这些非科班出身的人，未来的路将越来越难走，我觉得自己在这个级别上，表现并没有那么差，但是依然会有人用自己的偏见去看待这一切。 虽然有点不甘，但是给自己加油吧！希望未来的自己越来越强大！ 拆分目标，把每年的计划拆分到每个月，每一周，然后不断的复盘，总结，看看自己能不能突破当前的桎梏 6月计划： 一、读完《CSAPP》，并整理出博客 二、读完《HTTP/IP详解卷1》，并整理出博客]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网络中的网桥、交换机、集线器]]></title>
+    <url>%2F2019%2F05%2F29%2Fnet-hub-bridge-switch%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>net</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[深入理解计算机系统--I/O]]></title>
+    <url>%2F2019%2F05%2F29%2Fcsapp-io%2F</url>
+    <content type="text"><![CDATA[看了CSAPP中关于I/O部分，感觉找不到重点，又浏览了一下《Linux内核设计与实现》，总感觉缺点意思，下一步希望能够结合《计算机组成与设计》分析一下]]></content>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[go-iris-websocket]]></title>
+    <url>%2F2019%2F05%2F27%2Fgo-iris-websocket%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Dart和Flutter的那些事儿]]></title>
+    <url>%2F2019%2F05%2F27%2Fflutter-base%2F</url>
+    <content type="text"><![CDATA[Flutter是一门]]></content>
+      <tags>
+        <tag>flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[对一些事情的思考]]></title>
+    <url>%2F2019%2F05%2F04%2Fthinking-in-youthday%2F</url>
+    <content type="text"><![CDATA[从2019-04-22开始第一次面试，到现在半个月的时间。个中经历不用言语，最大的感受就是发现自己越来越菜，需要学习的东西越来越多。 从五一开始也一直在整理收藏的技术博客，面试中很多东西说不明白，终究还是没有真正明白。每次面对面试官无法回答问题，都感觉好尴尬，默默地骂自己一句：“辣鸡”。 针对面试的弱点主要以下几点： 1、缺乏深入 很多知识点，只能说个大概，底层的概念很模糊。 将来要循序渐进的对弱点进行源码分析，分析源码可以更好的成长。 2、对新技术缺乏认识。 分布式、高并发、JVM调优，这些虽然很少接触，还是要抽时间模拟实践一下。 要能实现基本的Demo，才算对新技术的简单了解 3、坚持算法 算法和实际工作关系不大，但是刷算法能保证不断的思考，加深问题的分析能力 每天坚持算法 今年的目标就是把知识点串成面，写出精品，而不是每天制造垃圾。]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zk-zab]]></title>
+    <url>%2F2019%2F04%2F12%2Fzk-zab%2F</url>
+    <content type="text"><![CDATA[Paxos协议Chubby技术架构 ZAB协议Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议]]></content>
+      <tags>
+        <tag>ZooKeeper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java特殊类Unsafe]]></title>
+    <url>%2F2019%2F03%2F23%2Fjava-unsafe%2F</url>
+    <content type="text"><![CDATA[Unsafe类，回头整理 特性 虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：http://en.wikipedia.org/wiki/Compare-and-swap。 主机虚拟机（译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。 你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！ 使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。 arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[架构中的网关]]></title>
+    <url>%2F2019%2F03%2F23%2Farchitecture-gateway%2F</url>
+    <content type="text"><![CDATA[网关在微服务中的应用 特性： 认证、鉴权、缓存、服务编排、监控告警 权限分级、流量管控、超时熔断 场景： 组件对比Nginx原理：异步非阻塞 Zuul特性身份认证与安全：识别每个资源的验证要求，并拒绝那些与要求不符的请求。 审查与监控：与边缘位置追踪有意义的数据和统计结果，从而带来精确的生产视图。 动态路由：动态地将请求路由到不同的后端集群。 压力测试：逐渐增加指向集群的流量，以了解性能。 负载分配：为每一种负载类型分配对应容量，并弃用超出限定值的请求。 静态响应处理：在边缘位置直接建立部分响应，从而避免其转发到内部集群。 多区域弹性：跨越 AWS Region 进行请求路由，旨在实现 ELB（Elastic Load Balancing，弹性负载均衡）使用的多样化，以及让系统的边缘更贴近系统的使用者。 zuul1 原理：阻塞+多线程的过滤器，线程激增 zuul2 异步非阻塞，事件+回调 高可用方案： zuul集群 + eureka serverNginx/HAproxy/F5 + zuul LinkerdEnvoyUndertowSpring Cloud Gateway]]></content>
+      <tags>
+        <tag>Architecture</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于写作]]></title>
+    <url>%2F2019%2F03%2F23%2Fthinking-in-writing%2F</url>
+    <content type="text"><![CDATA[关于我，对于感兴趣的事情，会尽力克服拖延症，带着乐趣去做一些事情。但是往往有时候因为忙或者其他原因，一直拖延，直到欠下的债太多，才会强迫自己重新开始。 写作其实是一件很费力的事情，尤其是写技术博客，更是需要很多精力，关于写的一些东西，有时间会结合一些方法论补充一下。强化一下自己的写作意识:(待续…]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spark基础]]></title>
+    <url>%2F2019%2F03%2F16%2Fspark-scala-loader%2F</url>
+    <content type="text"><![CDATA[依赖包provided assembly打包 RDD转化操作 – 惰性求值]]></content>
+      <tags>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搬瓦工搭建Shadowsocks服务器完整教程]]></title>
+    <url>%2F2019%2F03%2F07%2Fss-bwh%2F</url>
+    <content type="text"><![CDATA[利用国外服务器搭建翻墙服务。 1、搜索搬瓦工，注册账号，购买服务器 先借用赛风搜索搬瓦工网站，由于国内对搬瓦工的封锁，无法确定一个固定的域名，比如我原来使用https://bwh8.net，后来突然就不能访问了，搜索后，发现bwh1.net可以访问 2、安装Shadowsocks server，配置服务器信息 3、下载Shadowsocks client，配置代理信息]]></content>
+      <tags>
+        <tag>SS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[computer]]></title>
+    <url>%2F2019%2F02%2F13%2Fcomputer%2F</url>
+    <content type="text"><![CDATA[大型机特点： RAS 小型机RISC、MIPS指令 x86架构服务器CISC指令 ARM架构服务器RISC指令 power、sparc、安腾、xeon]]></content>
+      <tags>
+        <tag>Computer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Servlet Web容器对比]]></title>
+    <url>%2F2019%2F02%2F12%2Ftomcat-jetty-undertow%2F</url>
+    <content type="text"><![CDATA[tomcatjettyundertow]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[线上错误排查]]></title>
+    <url>%2F2019%2F02%2F12%2Fjava-btrace-arthas%2F</url>
+    <content type="text"><![CDATA[线上排查问题一般通过查看日志的方式，这篇博客目的在于整理一些线上排查的工具 Btracebtrace Arthasarthas tt命令watch命令greys-anatomygreys-anatomy]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[服务治理]]></title>
+    <url>%2F2019%2F02%2F12%2Fspring-service-manage%2F</url>
+    <content type="text"><![CDATA[简单了解服务治理 OCTO框架]]></content>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[写在2019上班的第二天]]></title>
+    <url>%2F2019%2F02%2F12%2Fthinking-in-2019%2F</url>
+    <content type="text"><![CDATA[从2019年元旦开始，就在筹划写一篇总结，一直拖到今天。 写博客其实是一件很费时的事情，也只有在冷静的时候，才会静下心来思考这件事情，这可能也是迟迟未写的原因之一吧。 2018回顾2018这一年，经历了很多的事情，主题是工作，也关乎风月。 经历工作上，3月1号出门面试，第一家面的x德，3月2号去面的x东。刚开始不太喜欢加班，就接了x德的offer，是一个全新的团队，也为后来埋了很多坑，具体的就不再吐槽了，主要说说自己的问题。这半年里，了解了一下区块链，没多久，国内外接连出台了很多对区块链比特币的整顿政策，一下子凉凉。在工作中开始使用SpringBoot、SpringCloud的一整套架构。半年后接受不了团队混乱的管理，打算出来。甚至怀疑所谓的技术理想。 4月初清明节上午加班，下午赶飞机飞到重庆。对重庆的好感来自于《从你的全世界路过》，就这样一个人在重庆呆了三天，这是一座很有特色的城市，但是景点过于商业化，未来有机会和另一个人一起过来。 5月初独自骑车子从沙河一直骑到十三陵，这是在北京的第一次骑行，而且是一个人，路上车轱辘散架、大卡车、回来的路上遇到下雨，晚上直到十一点多才回到家里，又累又困，可以说真的是一次记忆深刻的骑行了。 从x德出来后，困惑了一段时间，想起自己一直想去未去的西藏，果断买了票过去。去到一个完全陌生而又向往的地方，一开始充满了期待。布达拉宫、大昭寺、巴松错、羊湖、日喀则、珠峰，一切都是新的。在林芝的时间，去见了朋友。而在西藏的这段时间里，让我有了更多的独处时间去思考，想起这半年来的各种事情，突然就感到豁然开朗。就这样待到11月份，后来的几天有点审美疲劳了吧，就天天坐在布达拉宫广场晒太阳。有拍婚纱照的，有朝圣的。后来甚至有点期待返京的日子。这可能就是“旅行就是从自己厌倦的地方去到一个别人厌倦的地方吧”。如果说旅行的意义是什么，我想，就是让自己进入慢节奏的生活，去思考，把自己的生活捋顺吧。意外的是收获了一首好歌–《狗屁青春》，朴树唱的，在路上听的时候还别有一番滋味。 从西藏回来后，心态好了很多，一些事情想通后也没有必要再去在乎或者纠结。只把心思放在工作上，希望能有更多的产出， 阅读看过的电影：华尔街之子 大空头 互联网之子 驴得水 狗十三 人生果实 看过的书：回来 人类简史 商业的本质 引爆点 黑客与画家 独居的一年 小王子 我们都是孤独的行路人 只是为了好玩儿 2019展望 考驾照，一直拖到现在还未完成的计划今年必须完成 学习吉他，虽然五音不全，年少不再，还是要学习一门乐器 坚持健身(跑步)，这个年龄总该意识到这个问题 工作上有一些突破 买一辆更好的山地车去骑行 读30本书，那些一年读100本书的人真的很厉害了 人生需要不断的前行、试错、复盘。前面走了太多的弯路，未来要跑起来鸭！以后会尽量把经历记录下来，也不免是人生的一些回忆。]]></content>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-cloud-eureka]]></title>
+    <url>%2F2019%2F01%2F23%2Fspring-cloud-eureka%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[断路器]]></title>
+    <url>%2F2019%2F01%2F17%2Fspring-cloud-hystrix%2F</url>
+    <content type="text"><![CDATA[Hystrix特性： 应用场景： 隔离（线程隔离、信号量隔离）：主要是限制调用分布式服务的资源，避免个别服务出现问题时对其他服务产生影响 熔断（容错）：当失败率达到一定阈值时，熔断器触发快速失败 降级（超时降级、熔断降级）：触发降级时可以使用回调方法返回托底数据 缓存：请求缓存、请求合并 实时监控、报警 Sentinel特性： 轻量级、高性能： sentinel-core不到200KB，单机超过25W QPS才会有影响 流量控制：以不同的运行指标为基准， 直接拒绝模式慢启动预热模式匀速度模式 系统负载保护 应用场景： 和Dubbo整合，通过限流实现服务的高可用 和RocketMQ整合，通过匀速请求和冷启动保障服务的稳定性 Hystrix和Sentinel的对比]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[SpringBoot的启动类]]></title>
+    <url>%2F2019%2F01%2F17%2Fspring-boot-runner%2F</url>
+    <content type="text"><![CDATA[项目启动之前，可以有一些初始化动作：读取配置文件、数据库连接。SpringBoot提供了两个接口：’CommandLineRunner’和’ApplicationRunner’，通过‘@Order’注解定义启动顺序 CommandLineRunner12345678910111213@Component@Order(10)@Slf4jpublic class ApplicationStartup implements CommandLineRunner &#123; @Autowired private DataService dataService; @Override public void run(String... args) throws Exception &#123; return; &#125;&#125; ApplicationRunner该接口的run方法参数是一个ApplicationArguments类 12345678910111213141516@Component@Order(10)@Slf4jpublic class AppApplicationStartup implements ApplicationRunner &#123; @Autowired private AppPushService appPushService; @Override public void run(ApplicationArguments args) throws Exception &#123; /** * 定时推送消息 */ appPushService.pushSimplePayload(); &#125;&#125;]]></content>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-cloud-components]]></title>
+    <url>%2F2019%2F01%2F14%2Fspring-cloud-components%2F</url>
+    <content type="text"><![CDATA[Feignspring-cloud-starter-feign(已废弃) spring-cloud-starter-openfeign Eurekaspring-cloud-starter-eureka(已废弃) spring-cloud-starter-eureka-server(已废弃) spring-cloud-starter-netflix-eureka-client spring-cloud-starter-netflix-eureka-server]]></content>
+      <tags>
+        <tag>SpringCloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cat-architecture]]></title>
+    <url>%2F2019%2F01%2F07%2Fcat-architecture%2F</url>
+    <content type="text"><![CDATA[应用场景 一段代码的执行时间，一段代码可以是URL执行耗时，也可以是SQL的执行耗时。 一段代码的执行次数，比如Java抛出异常记录次数，或者一段逻辑的执行次数。 定期执行某段代码，比如定期上报一些核心指标：JVM内存、GC等指标。 关键的业务监控指标，比如监控订单数、交易额、支付成功率等。 埋点 HTTP/REST、RPC/SOA、MQ、Job、Cache、DAL; 搜索/查询引擎、业务应用、外包系统、遗留系统; 第三方网关/银行, 合作伙伴/供应商之间； 各类业务指标，如用户登录、订单数、支付状态、销售额。 模块cat-client cat-consumer cat-home 组件Transaction Event Heartbeat Metric]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[html5-doctype]]></title>
+    <url>%2F2019%2F01%2F07%2Fhtml5-doctype%2F</url>
+    <content type="text"><![CDATA[HTML5基本声明： &lt;!DOCTYPE html&gt; 使用外部svg时， &lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;]]></content>
+      <tags>
+        <tag>HTML5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tomcat]]></title>
+    <url>%2F2019%2F01%2F03%2Ftomcat-base%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-boot-starter]]></title>
+    <url>%2F2018%2F12%2F31%2Fspring-boot-starter%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[java中范型]]></title>
+    <url>%2F2018%2F12%2F26%2Fjava-enum%2F</url>
+    <content type="text"><![CDATA[范型是一种语法糖， 范型擦除范型标识 E - Element (在集合中使用，因为集合中存放的是元素)，E是对各方法中的泛型类型进行限制，以保证同一个对象调用不同的方法时，操作的类型必定是相同的。E可以用其它任意字母代替 T - Type（Java 类），T代表在调用时的指定类型。会进行类型推断 K - Key（键） V - Value（值） N - Number（数值类型） ？ - 表示不确定的java类型，是类型通配符，代表所有类型。？不会进行类型推断 通配符&lt;?&gt; &lt;? extends T&gt; &lt;? super T&gt; 范型数组]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[BeanUtils工具类]]></title>
+    <url>%2F2018%2F12%2F25%2Fjava-beanutils%2F</url>
+    <content type="text"><![CDATA[BeanUtils和PropertyUtils 1org.springframework.beans.BeanUtils.copyProperties(src, dest); 1org.apache.commons.beanutils.BeanUtils.copyProperties(src, dest); 1org.apache.commons.beanutils.BeanUtilsBean.getInstance().copyProperties(src, dest); 1org.apache.commons.beanutils.PropertyUtils.copyProperties(src, dest); BeanUtils和PropertyUtils的区别 beanutils支持name相同、类型兼容的属性转换；propertyutils仅支持name相同、类型相同的属性转换 beanutils对部分属性不支持null的转换；propertyutils支持null的转换 对于Long和Date类型的转换，BeanUtils转换正常；PropertyUtils报错 自定义的对象属性类型，都是浅拷贝 BeanUtils支持自定义Converter接口，PropertyUtils没有]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java序列化Serializable]]></title>
+    <url>%2F2018%2F12%2F25%2Fjava-serializable%2F</url>
+    <content type="text"><![CDATA[类要实例化必须实现Serializable接口，类的序列化/反序列化通过serialVersionUID唯一确认，当没有显式设置时，系统会默认生成一个，同一个类每次实例生成不同的serialVersionUID。 Serializable和Externalizable序列化类型是String、Array、Enum、Serializable时，则序列化，否则抛出不允许序列化的异常’NotSerializableException’。 123456public interface Externalizable extends java.io.Serializable &#123; void writeExternal(ObjectOutput out) throws IOException; void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;&#125; 使用Externalizable接口来进行序列化与反序列化的时候需要开发人员重写 writeExternal()与readExternal()方法。否则所有变量的值都会变成默认值。 transienttransient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后， transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。 自定义序列化策略在序列化过程中，如果被序列化的类中定义了writeObject 和 readObject 方法，虚拟机会试图调用对象类里的 writeObject 和 readObject 方法，进行用户自定义的序列化和反序列化。 如果没有这样的方法，则默认调用是 ObjectOutputStream 的 defaultWriteObject 方法以及 ObjectInputStream 的 defaultReadObject 方法。 serialVersionUID注意 在做兼容性升级时，不要修改serialVersionUID的值。]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis-sql]]></title>
+    <url>%2F2018%2F12%2F25%2Fmybatis-sql%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[制作maven插件]]></title>
+    <url>%2F2018%2F12%2F25%2Fmaven-plugin%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java中paralelStream方法的坑]]></title>
+    <url>%2F2018%2F12%2F24%2Fjava-parallelstream%2F</url>
+    <content type="text"><![CDATA[今天在项目开发中使用parallelStream遍历ArrayList，发现数据有时候多有时候少，有时候出现’null’的对象，在本地甚至出现’Exception in thread “main” java.lang.ArrayIndexOutOfBoundsException: 6246‘]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[js-contenttype]]></title>
+    <url>%2F2018%2F12%2F24%2Fjs-contenttype%2F</url>
+    <content type="text"><![CDATA[noneform-datax-www.form-urlencodedraw]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-autowired-resource-service]]></title>
+    <url>%2F2018%2F12%2F21%2Fspring-autowired-resource-service%2F</url>
+    <content type="text"><![CDATA[@AutowiredbyType注入， @Resource默认byName注入，有两个属性：name、type，可以自由定义 注解 @Resource 的装配顺序： 如果同时指定了 name 和 type，则从 Spring 上下文中找到唯一匹配的 bean 进行装配，找不到则抛出异常； 如果指定了 name，则从上下文中查找名称（id）匹配的 bean 进行装配，找不到则抛出异常； 如果指定了 type，则从上下文中找到类型匹配的唯一 bean 进行装配，找不到或者找到多个，都会抛出异常； 如果既没有指定 name，又没有指定 type，则自动按照 byName 方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配成功，则进行自动装配。 约定@Service，用于标注业务层组件（通常定义的 Service 层就用这个注解）；@Controller，用于标注控制层组件（如 Struts 中的 action）；@Repository，用于标注数据访问组件，即 DAO 层组件；@Component，泛指组件，当组件不好归类的时候，咱们就可以用这个注解进行标注。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[java-monitor]]></title>
+    <url>%2F2018%2F12%2F21%2Fjava-monitor%2F</url>
+    <content type="text"><![CDATA[Btracejpdagreys]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[session-cookie-token]]></title>
+    <url>%2F2018%2F12%2F19%2Fsession-cookie-token%2F</url>
+    <content type="text"><![CDATA[Session原理：存储在服务器上，服务器使用session把用户信息存储在服务器上(内存存放)，用户离开网站后，一般是30分钟后失效。 结构： 弊端：不适合分布式，如果有负载均衡，如果登录后，操作请求到另外的服务器，session不起作用 Cookiecookie是保存在浏览器本地的kv数据，由服务器生成，返给客户端(浏览器)， 结构： 名称 值 有效域 路径 失效时间 安全标志 Token原理： 结构： 用户唯一身份标识time 当前时间时间戳sign 签名，hash(token前几位+salt)，可以防止第三方拼接不变参数 session和cookiesession和token token是无状态的，存储在客户端；session有状态，状态存储在服务器端。REST是无状态的，app不需要像浏览器那样存储cookie token安全性比较好，可以防止监听、重防攻击；session保证安全需要靠链路层实现 token是唯一的，提供认证 + 鉴权；session是把用户信息存在服务器，只要有sessionid，即认为有全部权利。如果接口给第三方调用，使用token，否则两者都可]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql-date]]></title>
+    <url>%2F2018%2F12%2F19%2Fmysql-date%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql-int]]></title>
+    <url>%2F2018%2F12%2F19%2Fmysql-int%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[hystrix-sentinel-rs4j]]></title>
+    <url>%2F2018%2F12%2F19%2Fhystrix-sentinel-rs4j%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[js跨域问题]]></title>
+    <url>%2F2018%2F12%2F16%2Fjs-cors%2F</url>
+    <content type="text"><![CDATA[跨域其实很早就用，当时也没有整理。 CORS: CORS的目的不是为了解决CSRF，无法防止CSRF发生 CSRF: (Cross-site request forgery，跨站请求伪造)，CSRF攻击的发起方式有很多种，src资源标签、form表单、js代码 跨域:阮老师的博客 同源策略同源： 协议相同 域名相同 端口相同 受限制的策略： Ajax请求 无法获取DOM元素并操作 无法读取Cookie、LocalStorage、IndexDB 不受限制的策略： WebSocket、Script、img、iframe、video、audio的src属性 跨域场景调用API接口 前后端分离 解决方案 代理模式。分为正向代理、反向代理，自己伪造一个后端服务(例如Nodejs)接收并转发 CORS标准。服务端设置’Access-Control-Allow-Origin’ + ‘Access-Control-Allow-Credentials’，客户端设置withCredentials 注意：CORS默认不发送Cookie和HTTP认证信息，Credentials用来指定发送Cookie信息。如果要发送Cookie，’Access-Control-Allow-Origin’不能设置为’*’，而必须指定明确的、与请求网页一致的域名。 JSONP方式。通过script标签发起请求，服务端把数据放在js脚本里返回给客户端，但是只支持GET请求。CDN就是典型的应用。jQuery封装的JSONP]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis缓存过期策略]]></title>
+    <url>%2F2018%2F12%2F16%2Fredis-cache-policy%2F</url>
+    <content type="text"><![CDATA[简单记录，回头需要深入再做整理 定时过期：每个设置过期时间的key分配定时器，到过期时间自动清除；占用CPU资源 惰性过期：当访问key时，才判断是否过期，过期则清除；如果大量key没有被访问，则不会被清除 定期过期：每隔一段固定时间，去扫描一定数量的数据库中expires字典表的key， Redis中同时使用了惰性过期和定期过期策略]]></content>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis内存淘汰策略]]></title>
+    <url>%2F2018%2F12%2F16%2Fredis-mem-policy%2F</url>
+    <content type="text"><![CDATA[Redis用于缓存的内存不足时，如何处理新写入需要申请额外空间的数据。 32bit系统最大不能超过3G，64bit系统设置为0表示不限制 设置淘汰策略： config get maxmemory config get maxmemory-policy 6种淘汰策略 volatile-lru:从已设置过期时间的内存数据集中挑选最近最少使用的数据 淘汰； volatile-ttl: 从已设置过期时间的内存数据集中挑选即将过期的数据 淘汰； volatile-random:从已设置过期时间的内存数据集中任意挑选数据 淘汰； allkeys-lru:从内存数据集中挑选最近最少使用的数据 淘汰； allkeys-random:从数据集中任意挑选数据 淘汰； no-enviction(驱逐)：禁止驱逐数据。（默认淘汰策略。当redis内存数据达到maxmemory，在该策略下，直接返回OOM错误）；]]></content>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL基础]]></title>
+    <url>%2F2018%2F12%2F15%2Fmysql-base%2F</url>
+    <content type="text"><![CDATA[MySQL有三种版本， MySQLPerconaXtraDB引擎 MariaDB]]></content>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaWeb开发中的字段验证]]></title>
+    <url>%2F2018%2F12%2F15%2Fjava-web-validate%2F</url>
+    <content type="text"><![CDATA[Web开发中传参需要验证，JSR303定义了校验模型，不同的实现方式： javax validation hibernate validation spring validation 自定义校验 JSR303空检查 @Null 验证对象是否为null @NotNull 验证对象是否不为null, 无法查检长度为0的字符串 @NotBlank 检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格. @NotEmpty 检查约束元素是否为NULL或者是EMPTY. Booelan检查 @AssertTrue 验证 Boolean 对象是否为 true @AssertFalse 验证 Boolean 对象是否为 false 长度检查 @Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内 @Length(min=, max=) Validates that the annotated string is between min and max included. 日期检查 @Past 验证 Date 和 Calendar 对象是否在当前时间之前 @Future 验证 Date 和 Calendar 对象是否在当前时间之后 @Pattern 验证 String 对象是否符合正则表达式的规则 数值检查，建议使用在Stirng,Integer类型，不建议使用在int类型上，因为表单值为“”时无法转换为int，但可以转换为Stirng为&quot;&quot;,Integer为null @Min 验证 Number 和 String 对象是否大等于指定的值 @Max 验证 Number 和 String 对象是否小等于指定的值 @DecimalMax 被标注的值必须不大于约束中指定的最大值. 这个约束的参数是一个通过BigDecimal定义的最大值的字符串表示.小数存在精度 @DecimalMin 被标注的值必须不小于约束中指定的最小值. 这个约束的参数是一个通过BigDecimal定义的最小值的字符串表示.小数存在精度 @Digits 验证 Number 和 String 的构成是否合法 @Digits(integer=,fraction=) 验证字符串是否是符合指定格式的数字，interger指定整数精度，fraction指定小数精度。 @Range(min=, max=) Checks whether the annotated value lies between (inclusive) the specified minimum and maximum. @Range(min=10000,max=50000,message=&quot;range.bean.wage&quot;) private BigDecimal wage; @Valid 递归的对关联对象进行校验, 如果关联对象是个集合或者数组,那么对其中的元素进行递归校验,如果是一个map,则对其中的值部分进行校验.(是否进行递归验证) @CreditCardNumber信用卡验证 @Email 验证是否是邮件地址，如果为null,不进行验证，算通过验证。 @ScriptAssert(lang= ,script=, alias=) @URL(protocol=,host=, port=,regexp=, flags=) javax validation@Valid 分组校验 @NotEmpty(groups={Person.class} hibernate validationHibernate validation有两种验证模式： 普通模式 快速失败模式 ValidatorFactory validatorFactory = Validation.byProvider( HibernateValidator.class ).configure().failFast( true ).buildValidatorFactory(); Validator validator = validatorFactory.getValidator(); spring validation注意：注解需要和BindingResult相邻，校验结果放在BindingResult对象中，例如： (@Validated Foo foo, BindingResult fooBindingResult ，@Validated Bar bar, BindingResult barBindingResult) 注解类型@Validated @Valid和@Validated的区别： @Valid不提供分组类型 @Validated({Person.class}) 应用场景可以进行：数据库校验、组合校验(前后密码一致) @NotNull、@NotEmpty和@NotBlank的区别注意： 可以在controller内参数上直接加注解，但是必须在controller上@Validated 对象级联校验(即对象内部嵌套对象)时，嵌套对象上必须加注解@Valid 验证有时候可能被filter、swagger拦截，需要注意]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[跨域请求]]></title>
+    <url>%2F2018%2F12%2F13%2Fhttp-cors%2F</url>
+    <content type="text"><![CDATA[Spring跨域文档 跨域原理前端方案后端方案1. 局部跨域 添加在Cotroller上 添加在Method上 同时添加在Controller + Method上 注意： 如果使用到Spring Security框架，确保在Spring Security层次上配置，同时允许使用Spring MVC层面的配置 @EnableWebSecurity public class WebSecurityConfig extends WebSecurityConfigurerAdapter { @Override protected void configure(HttpSecurity http) throws Exception { http.cors().and()... } } 2. 全局跨域1. 基于JavaConfig方式使用全局方式 @Configuration @EnableWebMvc public class WebConfig extends WebMvcConfigurerAdapter { @Override public void addCorsMappings(CorsRegistry registry) { registry.addMapping(&quot;/**&quot;); } } 如果使用Spring Boot，推荐： @Configuration public class MyConfiguration { @Bean public WebMvcConfigurer corsConfigurer() { return new WebMvcConfigurerAdapter() { @Override public void addCorsMappings(CorsRegistry registry) { registry.addMapping(&quot;/**&quot;); } }; } } CORS跨域的规则可以自由定制： @Override public void addCorsMappings(CorsRegistry registry) { registry.addMapping(&quot;/api/**&quot;) .allowedOrigins(&quot;http://domain2.com&quot;) .allowedMethods(&quot;PUT&quot;, &quot;DELETE&quot;) .allowedHeaders(&quot;header1&quot;, &quot;header2&quot;, &quot;header3&quot;) .exposedHeaders(&quot;header1&quot;, &quot;header2&quot;) .allowCredentials(false).maxAge(3600); } 注意：如果使用Spring Security，配置方式和局部跨域中相同 基于XML方式 mvc:cors &lt;mvc:mapping path=&quot;/api/**&quot; allowed-origins=&quot;http://domain1.com, http://domain2.com&quot; allowed-methods=&quot;GET, PUT&quot; allowed-headers=&quot;header1, header2, header3&quot; exposed-headers=&quot;header1, header2&quot; allow-credentials=&quot;false&quot; max-age=&quot;123&quot; /&gt; &lt;mvc:mapping path=&quot;/resources/**&quot; allowed-origins=&quot;http://domain1.com&quot; /&gt; &lt;/mvc:cors&gt; 注意：使用Spring Security &lt;http&gt; &lt;!-- Default to Spring MVC&apos;s CORS configuration --&gt; &lt;cors /&gt; ... &lt;/http&gt; 基于Filter方式 @Configuration public class MyConfiguration { @Bean public FilterRegistrationBean corsFilter() { UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(); CorsConfiguration config = new CorsConfiguration(); config.setAllowCredentials(true); config.addAllowedOrigin(&quot;http://domain1.com&quot;); config.addAllowedHeader(&quot;*&quot;); config.addAllowedMethod(&quot;*&quot;); source.registerCorsConfiguration(&quot;/**&quot;, config); FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source)); bean.setOrder(0); return bean; } } 参考1 参考2 注意：使用Spring Security @EnableWebSecurity public class WebSecurityConfig extends WebSecurityConfigurerAdapter { @Override protected void configure(HttpSecurity http) throws Exception { http // by default uses a Bean by the name of corsConfigurationSource .cors().and() ... } @Bean CorsConfigurationSource corsConfigurationSource() { CorsConfiguration configuration = new CorsConfiguration(); configuration.setAllowedOrigins(Arrays.asList(&quot;https://example.com&quot;)); configuration.setAllowedMethods(Arrays.asList(&quot;GET&quot;,&quot;POST&quot;)); UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(); source.registerCorsConfiguration(&quot;/**&quot;, configuration); return source; } }]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Web中身份验证和授权]]></title>
+    <url>%2F2018%2F12%2F06%2Fjava-web-auth%2F</url>
+    <content type="text"><![CDATA[OpenAPI2.0OpenAPI3.01234567891011121314151617181920212223242526272829components: securitySchemes: BasicAuth: type: http scheme: basic BearerAuth: type: http scheme: bearer ApiKeyAuth: type: apikey in: header name: X-API-Key OAuth2: type: oauth2 flows: authorizationCode: authorizationUrl: https:// tokenUrl: https:// scopes: read: Grants read access write: Grants write access admin: Grants access to admin operations OpenID: type: openIdConnect openIdConnectUrl: http://xxx HTTP认证方案标头中的API密钥用于API密钥和cookie认证， OAuth2.0 授权码模式 简化模式 密码模式 客户端模式 OpenID Connect实现ShiroJWT基本思路： 用户首次访问提供用户名 + 密码到认证服务器 服务器验证用户提交信息的合法性，如果验证成功，生成一个token到客户端 客户端每次访问携带token token包含信息： header： typ声明类型 alg生成签名的算法 { &quot;alg&quot; :&quot;AES256&quot;, &quot;typ&quot; :&quot;JWT&quot;} claims sub name admin { &quot;sub&quot;:&quot;1234567890&quot;, &quot;name&quot;:&quot;John Doe&quot;, &quot;admin&quot;:true} signature JWT和OAuth2.0、ShiroShiro:]]></content>
+      <tags>
+        <tag>Auth</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Eureka和Zookeeper的对比]]></title>
+    <url>%2F2018%2F12%2F04%2Fdistribute-eureka-zk%2F</url>
+    <content type="text"><![CDATA[服务注册中心的组件主要有：Eureka、Zookeeper、Consule、Etcd。都是围绕CAP理论，P是必须保证的，而C和A不能同时满足。zk保证的是CP，Eureka保证的是AP。它们的原理都是维护一张注册列表，客户端在服务列表中查询服务端信息，进行通信 ZookeeperEurekazk保证CP的原理zk集群需要维护一个leader，当master选举过程中，整个集群不可用，无法注册服务，无法保证A可用性 Eureka保证AP的原理Eureka集群没有leader的概念，所有节点都是平等的，当某一个节点不可用时，会自动切换到其它可用的节点上。这样无法保证C一致性 Eureka还有一种自我保护机制，当在15min之内超过85%的节点没有正常的心跳，eureka会认为出现网络故障： 长时间没有心跳时，eureka不会从注册列表移除服务 eureka节点仍然能接受新服务的注册、查询，不会被同步到其它节点 网络恢复时，同步注册信息到其它节点 当所有Eureka节点/ZK节点挂掉后，RPC是否可以进行正常通信？]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java-jvm-cms-g1]]></title>
+    <url>%2F2018%2F12%2F04%2Fjava-jvm-cms-g1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac中配置ZSH]]></title>
+    <url>%2F2018%2F11%2F28%2Fmac-zsh%2F</url>
+    <content type="text"><![CDATA[明明在’～/.bash_profile’中配置了maven，执行mvn -v报错：zsh: command not found: mvn 需要在’~/.zshrc’中重新配置一下maven环境，重启shell即可]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jenkins]]></title>
+    <url>%2F2018%2F11%2F27%2Fjenkins-base%2F</url>
+    <content type="text"><![CDATA[yum安装1234sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.reposudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.keyyum install jenkins 修改配置1234567vim /etc/sysconfig/jenkins修改端口JENKINS_PORT="8082"修改启动用户JENKINS_USER="jenkins" 上面rpm、yum安装后已经自动创建了jenkins用户，可以根据具体情况调整启动用户 启动/开机启动1service jenkins start]]></content>
+      <categories>
+        <category>Jenkins</category>
+      </categories>
+      <tags>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Centos7系统安装]]></title>
+    <url>%2F2018%2F11%2F27%2Flinux-centos7-base%2F</url>
+    <content type="text"><![CDATA[自从几年前折腾过win7+ubuntu14双系统后(大致还记得什么EasyBCD修改引导什么的)，一般都是在VMware搭建虚拟机，这次主机从win10切换到Centos7，中间踩到的坑记录一下。 重启引导问题因为原来安装了win10，导致U盘重装无法进入引导界面，总是很快进入win10，后来看到说明使用’F12’进入Menu启动配置页面，有个BOOT、UFEI，在BOOT中选择USB那个，进入安装界面 分区问题win10分盘都是按照NTFS格式分的，导致手动分区时’点这里自动创建分区’报错，’磁盘占满’，可以选择右侧的’更新设置’对NTFS格式的分区改为ext4格式。 不同分区配置方案： 一般新手建议使用默认分区， 方案1 ‘/‘：BISO BOOT格式建议大小在5GB以上。 ‘swap’：即交换分区，建议大小是物理内存的1~2倍。 方案2 ‘/boot’：BISO BOOT格式用来存放与Linux系统启动有关的程序，比如启动引导装载程序等，建议大小为100MB。 ‘/‘：ext4Linux系统的根目录，所有的目录都挂在这个目录下面，建议大小为5GB以上。 ‘swap’：swap实现虚拟内存，建议大小是物理内存的1~2倍。 ‘/home’：ext4存放普通用户的数据，是普通用户的宿主目录，建议大小为剩下的空间。 方案3 /boot：BISO BOOT格式用来存放与Linux系统启动有关的程序，比如启动引导装载程序等，建议大小为100MB。 /usr ：用来存放Linux系统中的应用程序，其相关数据较多，建议大于3GB以上。 /var ：用来存放Linux系统中经常变化的数据以及日志文件，建议大于1GB以上。 swap：实现虚拟内存，建议大小是物理内存的1~2倍。 / ：Linux系统的根目录，所有的目录都挂在这个目录下面，建议大小为5GB以上。 /tmp：将临时盘在独立的分区，可避免在文件系统被塞满时影响到系统的稳定性。建议大小为500MB以上。 /home：存放普通用户的数据，是普通用户的宿主目录，建议大小为剩下的空间。 网络设置IP、网关]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac使用U盘制作启动盘]]></title>
+    <url>%2F2018%2F11%2F27%2Fmac-u-boot%2F</url>
+    <content type="text"><![CDATA[以前都是使用Windows系统制作启动盘UltraISO、老毛桃、大白菜，今天第一次使用Mac制作Centos7系统盘，一时有点懵逼，记录一下。 制作步骤查看挂载点1234567891011121314151617181920212223242526272829$ diskutil list/dev/disk0 (internal): #: TYPE NAME SIZE IDENTIFIER 0: GUID_partition_scheme 500.3 GB disk0 1: EFI EFI 314.6 MB disk0s1 2: Apple_APFS Container disk1 500.0 GB disk0s2/dev/disk1 (synthesized): #: TYPE NAME SIZE IDENTIFIER 0: APFS Container Scheme - +500.0 GB disk1 Physical Store disk0s2 1: APFS Volume Macintosh HD 82.9 GB disk1s1 2: APFS Volume Preboot 22.3 MB disk1s2 3: APFS Volume Recovery 515.0 MB disk1s3 4: APFS Volume VM 5.4 GB disk1s4/dev/disk2 (disk image): #: TYPE NAME SIZE IDENTIFIER 0: GUID_partition_scheme +91.9 MB disk2 1: Apple_HFS MailMaster 91.8 MB disk2s1/dev/disk3 (disk image): #: TYPE NAME SIZE IDENTIFIER 0: MySQL Workbench com... +314.6 MB disk3/dev/disk4 (external, physical): #: TYPE NAME SIZE IDENTIFIER 0: FDisk_partition_scheme *15.6 GB disk4 1: Windows_FAT_32 18810998015 15.6 GB disk4s4 看到internal、external即可知道这是内置磁盘、U盘 卸载挂载点12$ diskutil unmountDisk /dev/disk4 Unmount of all volumes on disk4 was successful 使用dd命令写入1234sudo dd if=/Users/wanchaowang/Downloads/CentOS-7-x86_64-Minimal-1804.iso of=/dev/disk4 bs=1m906+0 records in906+0 records out950009856 bytes transferred in 666.618035 secs (1425119 bytes/sec) 显示in、out即为dd完成 注意：中间耗时较长，而且过程中没有任何提示信息，第一次我以为没有拷贝，中断，导致U盘不可读 bs=1M和bs=1m会有坑，如果出错‘dd: invalid number: ‘1m’’可以尝试不同的 U盘不可读时MacOS会有明确的提示，抹除重新dd即可]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-cloud-base]]></title>
+    <url>%2F2018%2F11%2F26%2Fspring-cloud-base%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-security-shiro]]></title>
+    <url>%2F2018%2F11%2F26%2Fspring-security-shiro%2F</url>
+    <content type="text"><![CDATA[OAuth2.0在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。 第一阶段使用account + secret登录中间层，获得token 第二阶段开始使用token进行权限验证 OpenIDJWTShiroSpring Security]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[OSI网络协议]]></title>
+    <url>%2F2018%2F11%2F25%2Fnet-base%2F</url>
+    <content type="text"><![CDATA[计算机网络模型 OSI参考模型应用层HTTP、FTP、SMTP 表示层处理两个系统间交换信息的语法与语义。实际中不存在 功能：数据表示转化 加密/解密 压缩/解压缩 会话层实际中不存在 功能：对话控制 同步 传输层数据段，负责源-目的(端到端)(进程间)完整报文传输 功能：分段与重组 SAP寻址 连接控制：逻辑连接 流量控制： 差错控制： 网络层数据报，复制源主机到目的主机数据分组交付 功能：逻辑寻址 路由 分组转发 数据链路层数据帧，负责节点-节点之间的数据传输 功能：物理寻址 流量控制 差错控制 访问(接入)控制 物理层解决单一比特传输的问题 TCP/IP参考模型应用层 运输层 网际层(网络层) 网络接口层(链路层) 综合OSI和TCP/IP的五层应用层： 传输层： TCP、UDP 网络层： IP 数据链路层： 以太网(Ethernet)、802.11(WiFi)、PPP 物理层： 主机：五层 交换机：链路层、物理层 路由器：网络层、链路层、物理层]]></content>
+      <tags>
+        <tag>NetWork</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Markdown Pad实现数学公式的编写]]></title>
+    <url>%2F2018%2F11%2F24%2Fmarkdown-latex%2F</url>
+    <content type="text"><![CDATA[最近写博客需要用到LaTex描述数学公式，以前配置过，但是具体忘了，结果这次又浪费了一段时间，特别记录一下 Markdown Pad2右侧栏不能预览数学公式(也许是我没找到合适的解决方法) 可以通过“F6”实现浏览器页面预览，最好不要使用IE，IE浏览器需要打开激活ActiveX，否则不能正常显示公式 LaTex有一套自己的语法，使用时要注意 配置插件1、 在Tools–&gt;Options–&gt;Advanced–&gt;HTML Head Editor插入脚本 使用CDN脚本&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt; &lt;/script&gt; 使用本地脚本 2、根据LaTex的语法编写 在线手册 简单编写测试： When \( a \ne 0 \), there are two solutions to \(ax^2 + bx + c = 0\) and they are:$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTTP协议]]></title>
+    <url>%2F2018%2F11%2F21%2Fnet-http%2F</url>
+    <content type="text"><![CDATA[HTTP协议一直在演进，最近出了HTTP3，基于UDP协议的QUIC协议 HTTP1.0HTTP1.1http1.0和http1.1的比较 http1.0需要keep-alive参数告知服务器建立一个长连接，http1.1默认支持keep-alive http1.0没有host域的，http1.1才支持这个参数 http1.1支持只发送header信息 HTTP2.0http2.0基于SPDY协议 http2.0采用二进制格式，而非文本格式 http2.0是完全多路复用的，而非有序阻塞的(只需一个连接即可实现并行); http1.x线端阻塞问题，http1.1流水线技术 http2.0使用报头压缩，降低了开销 http2.0可以将响应主动推送到客户端缓存 SPDY协议：Google开发的下一代网络协议，并不是用来替代HTTP协议，而是对HTTP协议的增强。目前支持的有Netty和Nginx 多路复用请求：在单个SPDY连接能并发的发起请求，并不限制请求数； 请求优先级：客户端能请求某个资源被优先传输。这避免了高优先级请求被非关键资源堵塞网络通道的问题； 头部压缩：客户端现在发送了大量冗余的HTTP头部信息。因为一个页面可能有50到100个子请求，这些数据是巨大的； 服务端推送流：服务端能向客户端推送数据不需要客户端发起一个请求 缺点：需要客户端和服务器同时支持SPDY 协议解析复杂 SPDY与http1.1的比较 一个SPDY连接允许建立多条stram，并发多个HTTP请求；http1.1一个连接只能处理一个请求 spdy请求可以具有优先级，客户端可以要求服务器优先发送重要资源；http1.1一个非关键请求可以阻塞服务器对后面请求的处理 spdy允许压缩头部，减少HTTP头部大小，减少带宽占用；http1.1头部冗余，User-Agent、Host重复发送 spdy服务器可以主动给客户端推送数据；http1.1只要客户端可以发送请求 HTTP3]]></content>
+      <categories>
+        <category>NetWork</category>
+      </categories>
+      <tags>
+        <tag>NetWork</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spark单机环境搭建]]></title>
+    <url>%2F2018%2F10%2F25%2Fspark-base%2F</url>
+    <content type="text"><![CDATA[启动Spark cd $SPARK_HOME bin/spark-shell val textFile = spark.read.textFile(&quot;README.md&quot;) textFile.count() textFile.first() 报错： Caused by: org.apache.derby.iapi.error.StandardException: Failed to create database &apos;metastore_db&apos;, see the next exception for details. at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source) ... 154 more Caused by: org.apache.derby.iapi.error.StandardException: Directory /usr/local/spark/metastore_db cannot be created. at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) at org.apache.derby.impl.services.monitor.StorageFactoryService$10.run(Unknown Source) at java.security.AccessController.doPrivileged(Native Method) at org.apache.derby.impl.services.monitor.StorageFactoryService.createServiceRoot(Unknown Source) at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source) at org.apache.derby.impl.services.monitor.BaseMonitor.createPersistentService(Unknown Source) at org.apache.derby.impl.services.monitor.FileMonitor.createPersistentService(Unknown Source) at org.apache.derby.iapi.services.monitor.Monitor.createPersistentService(Unknown Source) at org.apache.derby.impl.jdbc.EmbedConnection$5.run(Unknown Source) at java.security.AccessController.doPrivileged(Native Method) at org.apache.derby.impl.jdbc.EmbedConnection.createPersistentService(Unknown Source) ... 151 more]]></content>
+      <categories>
+        <category>Spark</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Flink框架基础]]></title>
+    <url>%2F2018%2F10%2F25%2Fflink-base%2F</url>
+    <content type="text"><![CDATA[根据官网示例，跑一下 Centos7安装flink 启动flink cd $FLINK_HOME/libexec bin/start-cluster.sh flink自带WebUI，可以通过浏览器访问：localhost:8081 IDEA根据flink-quickstart-scala框架创建demo项目 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485package com.wangimport org.apache.flink.api.java.utils.ParameterToolimport org.apache.flink.streaming.api.scala._import org.apache.flink.streaming.api.windowing.time.Time/** * Skeleton for a Flink Streaming Job. * * For a tutorial how to write a Flink streaming application, check the * tutorials and examples on the &lt;a href="http://flink.apache.org/docs/stable/"&gt;Flink Website&lt;/a&gt;. * * To package your application into a JAR file for execution, run * 'mvn clean package' on the command line. * * If you change the name of the main class (with the public static void main(String[] args)) * method, change the respective entry in the POM.xml file (simply search for 'mainClass'). */object StreamingJob &#123; // raw原生// def main(args: Array[String]) &#123;// // set up the streaming execution environment// val env = StreamExecutionEnvironment.getExecutionEnvironment//// /*// * Here, you can start creating your execution plan for Flink.// *// * Start with getting some data from the environment, like// * env.readTextFile(textPath);// *// * then, transform the resulting DataStream[String] using operations// * like// * .filter()// * .flatMap()// * .join()// * .group()// *// * and many more.// * Have a look at the programming guide:// *// * http://flink.apache.org/docs/latest/apis/streaming/index.html// *// *///// // execute program// env.execute("Flink Streaming Scala API Skeleton")// &#125; def main(args: Array[String]) : Unit = &#123; // the port to connect to val port: Int = try &#123; ParameterTool.fromArgs(args).getInt("port") &#125; catch &#123; case e: Exception =&gt; &#123; System.err.println("No port specified. Please run 'SocketWindowWordCount --port &lt;port&gt;'") return &#125; &#125; // get the execution environment val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment // get input data by connecting to the socket val text = env.socketTextStream("localhost", port, '\n') // parse the data, group it, window it, and aggregate the counts val windowCounts = text .flatMap &#123; w =&gt; w.split("\\s") &#125; .map &#123; w =&gt; WordWithCount(w, 1) &#125; .keyBy("word") .timeWindow(Time.seconds(5), Time.seconds(1)) .sum("count") // print the results with a single thread, rather than in parallel windowCounts.print().setParallelism(1) env.execute("Socket Window WordCount") &#125; // Data type for words with count case class WordWithCount(word: String, count: Long)&#125; mvn编译项目 mvn package/install编译过程报错 error: could not find implicit value for evidence parameter of type org.apache.flink.api.common.typeinfo.TypeInformation[String] [ERROR] .flatMap { w =&gt; w.split(&quot;\\s&quot;) } 说这是因为程序需要一个隐形参数导致的，引用包改为’ import org.apache.flink.streaming.api.scala._‘重新编译，解决问题 终端启动一个窗口 nc -l 9000 执行程序 flink run SocketWindowWordCount.jar --port 9000 运行报错： 123456789101112131415161718192021 org.apache.flink.client.program.ProgramInvocationException: The program's entry point class 'com.wang.StreamingJob' was not found in the jar file.at org.apache.flink.client.program.PackagedProgram.loadMainClass(PackagedProgram.java:617)at org.apache.flink.client.program.PackagedProgram.&lt;init&gt;(PackagedProgram.java:199)at org.apache.flink.client.program.PackagedProgram.&lt;init&gt;(PackagedProgram.java:128)at org.apache.flink.client.cli.CliFrontend.buildProgram(CliFrontend.java:856)at org.apache.flink.client.cli.CliFrontend.run(CliFrontend.java:206)at org.apache.flink.client.cli.CliFrontend.parseParameters(CliFrontend.java:1044)at org.apache.flink.client.cli.CliFrontend.lambda$main$11(CliFrontend.java:1120)at java.security.AccessController.doPrivileged(Native Method)at javax.security.auth.Subject.doAs(Subject.java:422)at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1754)at org.apache.flink.runtime.security.HadoopSecurityContext.runSecured(HadoopSecurityContext.java:41)at org.apache.flink.client.cli.CliFrontend.main(CliFrontend.java:1120)Caused by: java.lang.ClassNotFoundException: com.wang.StreamingJobat java.net.URLClassLoader.findClass(URLClassLoader.java:381)at java.lang.ClassLoader.loadClass(ClassLoader.java:424)at java.lang.ClassLoader.loadClass(ClassLoader.java:357)at java.lang.Class.forName0(Native Method)at java.lang.Class.forName(Class.java:348)at org.apache.flink.client.program.PackagedProgram.loadMainClass(PackagedProgram.java:614)... 11 more 在执行中默认StreamingJob类为主类，如果自定义类，需要指定主类名称。 查看日志 cd $FLINK_HOME/libexec/log tail -f flink-*-taskexecutor-*.out 停止flink cd $FLINK_HOME/libexec bin/stop-cluster.sh Mac安装mac安装flink brew install apache-flink brew info apache-flink cd $FLINK_HOME ./libexec/bin/start-cluster.sh WebUI访问： ./libexec/bin/stop-cluster.sh]]></content>
+      <categories>
+        <category>BigData</category>
+      </categories>
+      <tags>
+        <tag>Flink</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mac系统搭建多版本的jdk]]></title>
+    <url>%2F2018%2F10%2F23%2Fmac-multi-jdk%2F</url>
+    <content type="text"><![CDATA[dmg按照步骤安装jdk，我目前感兴趣的主要是jdk8、jdk11，所以这里只有两个版本 查看jdk版本、安装目录 java -version which java ll /usr/bin/java cd /System/Library/Frameworks/JavaVM.framework/Versions 查看可用的jdk版本 ls ll 查看已经安装的jdk /usr/libexec/java_home -V 配置环境变量 vi ~/.bash_profile 123456789101112131415161718# 设置自带的 jdk1.6#export JAVA_6_HOME=`/usr/libexec/java_home -v 1.6`# 设置 jdk1.7#export JAVA_7_HOME=`/usr/libexec/java_home -v 1.7`# 设置 jdk1.8export JAVA_8_HOME=`/usr/libexec/java_home -v 1.8`# 设置 jdk11export JAVA_11_HOME=`/usr/libexec/java_home -v 11`# 默认 jdk 使用1.6版本export JAVA_HOME=$JAVA_8_HOME# alias 命令动态切换 jdk 版本# alias jdk6="export JAVA_HOME=$JAVA_6_HOME"# alias jdk7="export JAVA_HOME=$JAVA_7_HOME"alias jdk8="export JAVA_HOME=$JAVA_8_HOME"alias jdk11="export JAVA_HOME=$JAVA_11_HOME" 命令切换jdk版本 jdk8 java -version 遇到的问题： 在Versions目录查看jdk版本时没有列出所有的可用版本]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Cat实现监控埋点]]></title>
+    <url>%2F2018%2F10%2F19%2Fcat-base%2F</url>
+    <content type="text"><![CDATA[项目中打算使用Cat做一些监控，在搭建的过程中，踩了一些坑。浪费了很多时间，现在回顾一下为什么浪费了那么多时间。 首先我不知道为什么官方文档要那么写，写的乱七八糟，初学者很不利于理解。而且把单机和集群模式放在一起讲，里面很多的东西也不是很懂，就导致浪费很多时间。 Cat源码 文档 原理其实所有的监控无非就是分为服务端、客户端。服务端作为监控数据的消费者，暴露一些端口给客户端，客户端发送日志数据到服务端。 单机部署服务端Cat部署 创建数据库，存储监控数据就需要数据库cat，script/CatApplication.sql创建数据表 配置数据源，cat的数据源统一从’/data/appdatas/cat/‘中读取，所以要创建文件’datasources.xml’，授权 vi datasources.xml chown -R 777 /data/ 1234567891011121314151617&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;data-sources&gt; &lt;data-source id="cat"&gt; &lt;maximum-pool-size&gt;3&lt;/maximum-pool-size&gt; &lt;connection-timeout&gt;1s&lt;/connection-timeout&gt; &lt;idle-timeout&gt;10m&lt;/idle-timeout&gt; &lt;statement-cache-size&gt;1000&lt;/statement-cache-size&gt; &lt;properties&gt; &lt;driver&gt;com.mysql.jdbc.Driver&lt;/driver&gt; &lt;url&gt;&lt;![CDATA[jdbc:mysql://127.0.0.1:3306/cat]]&gt;&lt;/url&gt; &lt;!-- 请替换为真实数据库URL及Port --&gt; &lt;user&gt;root&lt;/user&gt; &lt;!-- 请替换为真实数据库用户名 --&gt; &lt;password&gt;root&lt;/password&gt; &lt;!-- 请替换为真实数据库密码 --&gt; &lt;connectionProperties&gt;&lt;![CDATA[useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;socketTimeout=120000]]&gt;&lt;/connectionProperties&gt; &lt;/properties&gt; &lt;/data-source&gt;&lt;/data-sources&gt; 注意：cat不支持mysql8.0，我在这里踩了大坑 配置服务器信息，创建’server.xml’，授权 vi server.xml chown -R 777 /data/ 1 配置tomcat，启动cat.war cat.war cat需要在tomcat/webapps下启动。 查看日志，检查是否启动成功，可以用来排查异常 cat /data/applogs/cat/cat_20181129.log 浏览器WebUI， 默认是 http://localhost:8080/cat 账号密码 admin/admin 客户端cat-client整合SpringBoot客户端一般用在web项目中，处理一些埋点信息。 引用cat-client依赖包，这些包网上不好找，但是在服务端部署中，war包里包含最新的各种依赖包，可以从解压后的目录下复制 1234567891011&lt;dependency&gt; &lt;groupId&gt;com.dianping.cat&lt;/groupId&gt; &lt;artifactId&gt;cat-client&lt;/artifactId&gt; &lt;version&gt;3.0.0&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;com.dianping.cat&lt;/groupId&gt; &lt;artifactId&gt;cat-core&lt;/artifactId&gt; &lt;version&gt;3.0.0&lt;/version&gt; &lt;/dependency&gt; 配置过滤器， 123456789101112131415@Configurationpublic class CatConfiguration &#123; @Bean public FilterRegistrationBean catFilter() &#123; FilterRegistrationBean registration = new FilterRegistrationBean(); CatFilter filter = new CatFilter(); registration.setFilter(filter); registration.addUrlPatterns("/*"); // registration.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"); registration.setName("cat-filter"); registration.setOrder(2); return registration; &#125;&#125; 配置项目名称，一定是在src/main/resources/META-INF中配置app.properties app.name=cat-test 注意：这一步配置错误，会导致日志报错，或者即使cat可以监控到，request请求也无法正常监控 配置’client.xml’，授权，同样是在’/data/appdatas/cat/‘目录下。 vi client.xml chmod -R 777 /data/ 12345678910111213&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;config mode="client" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="config.xsd"&gt; &lt;servers&gt; &lt;!-- ip:cat指服务器的地址，如果在不同的主机，可以配置远程IP --&gt; &lt;server ip="127.0.0.1" port="2280" http-port="8080" /&gt; &lt;!-- If under production environment, put actual server address as list. --&gt; &lt;!-- &lt;server ip="192.168.7.71" port="2280" /&gt; &lt;server ip="192.168.7.72" port="2280" /&gt; --&gt; &lt;/servers&gt;&lt;/config&gt; 查看日志，检查是否成功 客户端的日志同样生成在’/data/applogs/cat/‘下， cat cat_client_20181129.log postman模拟请求，即可在cat服务器上看到 开始显示’全部’’常用’，点击’常用’即可看到app.name命名的监控]]></content>
+      <categories>
+        <category>Cat</category>
+      </categories>
+      <tags>
+        <tag>Cat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[jdk版本特性概览]]></title>
+    <url>%2F2018%2F10%2F17%2Fjdk-overview%2F</url>
+    <content type="text"><![CDATA[目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性： jdk8OracleJDk8文档 1. Lambda表达式和Functional接口 接口的默认与静态方法 方法引用： 方法引用 对象::实例方法名 类::静态方法名 类::实例方法名 构造器引用 类::new 数组引用 Type[]::new 重复注解 更好的类型推测机制 扩展注解： ElementType.TYPE_USE、 ElementType.TYPE_PARAMETER；可以为任何代码添加注解(接口、异常) 2. 编译器新特性通过&apos;-parameters&apos;参数可以将方法参数名添加到字节码 3. 类库的新特性 Optional：解决空指针异常 123456789Consumer&lt;T&gt;Supplier&lt;T&gt;Function&lt;T, R&gt;Predicate&lt;T&gt;Comparator&lt;T&gt; Stream： filter过滤 sort排序 map映射 match匹配 reduce规约 Date/Time API Instant Clock时钟 Timezones时区 LocalTime/LocalDate/LocalDateTime本地时间 注意：和java.text.SimpleDateFormat不同的是，DateTimeFormatter是不可变的，所以它是线程安全的。 Base64：Base64编码成为类库标准 并行：parallelSort()、 并发：java.util.concurrent包 ConcurrentHashMap增加新方法支持聚集ForkJoinPool增加新方法支持共有资源池locks.StampedLock，用来替换locks.ReadWriteLockatomic包下增加DoubleAccumulator、DoubleAdder、LongAccumulator、LongAdder 集合 HashMap 链表 + 红黑树 ConcurrentHashMap 采用了CAS算法 4. Java工具 Norshorn引擎 jjs 类依赖分析器 jdeps：可以用来分析’.class’、目录、jar 5. JVM新特性 PermGen空间被Metaspace取代， -XX:PermSize -XX:MetaSpaceSize -XX:MaxPermSize -XX:MaxMetaspaceSize 6. 安全性7. IO/NIO改进 改进java.nio.charset.Charset的实现，精简了 jre/lib/charsets.jar 包；优化了 String(byte[],*) 构造方法和 String.getBytes() 方法的性能 新增API BufferedReader.line(): 返回文本行的流 Stream&lt;String&gt; File.lines(Path, Charset):返回文本行的流 Stream&lt;String&gt; File.list(Path): 遍历当前目录下的文件和目录 File.walk(Path, int, FileVisitOption): 遍历某一个目录下的所有文件和指定深度的子目录 File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件 jdk9OpenJDK9 “Java SE 9 has reached end of support. Users of Java SE 9 should switch to Java SE 10.” 官网明确表明，jdk9已经不被支持，用户可以切到jdk10 模块化 Linking JShell JSON API 金钱和货币API 锁争用机制 代码分段缓存 编译工具 sjavac 接口私有方法 HTTP/2 用于替换’HttpURLConnection’ 多版本兼容jar Stream API 增加4个新的方法: dropWhile、takeWhile、ofNullable、iterate jdk10OpenJDK10 OracleJDK下载 主要新特性 286: Local-Variable Type Inference 296: Consolidate the JDK Forest into a Single Repository 304: Garbage-Collector Interface 307: Parallel Full GC for G1 310: Application Class-Data Sharing 312: Thread-Local Handshakes 313: Remove the Native-Header Generation Tool (javah) 314: Additional Unicode Language-Tag Extensions 316: Heap Allocation on Alternative Memory Devices 317: Experimental Java-Based JIT Compiler 319: Root Certificates 322: Time-Based Release Versioning 1. 类库API 73项2. JVM规范改动3. Java语言规范4. 乱七八糟jdk11继jdk8后的大版本LTS OpenJDK11下载 OpenJDK11文档 OracleJDK下载 Oracle文档 既然都到了JDK11，那就跟着英文文档来一波吧！ 主要新特性 181: Nest-Based Access Control 309: Dynamic Class-File Constants 315: Improve Aarch64 Intrinsics 318: Epsilon: A No-Op Garbage Collector 320: Remove the Java EE and CORBA Modules 321: HTTP Client (Standard) 323: Local-Variable Syntax for Lambda Parameters 324: Key Agreement with Curve25519 and Curve448 327: Unicode 10 328: Flight Recorder 329: ChaCha20 and Poly1305 Cryptographic Algorithms 330: Launch Single-File Source-Code Programs 331: Low-Overhead Heap Profiling 332: Transport Layer Security (TLS) 1.3 333: ZGC: A Scalable Low-Latency Garbage Collector(Experimental) 335: Deprecate the Nashorn JavaScript Engine 336: Deprecate the Pack200 Tools and API jdk12jdk12发布了，jdk20还会远吗 OpenJDK下载 OpenJDk12文档 OracleJDK下载 Oracle文档 新特性 189: Shenandoah: A Low-Pause-Time Garbage Collector (Experimental) 230: Microbenchmark Suite 325: Switch Expressions (Preview) 334: JVM Constants API 340: One AArch64 Port, Not Two 341: Default CDS Archives 344: Abortable Mixed Collections for G1 346: Promptly Return Unused Committed Memory from G1]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java-manifest]]></title>
+    <url>%2F2018%2F10%2F14%2Fjava-manifest%2F</url>
+    <content type="text"><![CDATA[最近在javaassist项目中，要使用到MANIFEST.MF文件。MANIFEST.MF默认生成，如果需要自定义，在打包的时候需要明确指定： 看官方文档是最爽的，jdk &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt; &lt;configuration&gt; &lt;archive&gt; &lt;manifestFile&gt;src/main/resources/META-INF/MANIFEST.MF&lt;/manifestFile&gt; &lt;/archive&gt; &lt;/configuration&gt; &lt;/plugin&gt; MANIFEST.MF放在META-INF目录下，从META-INF目录详细分析一下，META-INF支持4种类型，会被自动加载、解析，通常用于配置应用、扩展、类加载器、服务： MENIFEST.MF INDEX.LIST xxx.SF xxx.DSA services/ maven/ MANIFEST.MF格式规则 基本格式 属性名称：(空格)属性值; 每行最多72个字符，换行继续必须以空格开头 ;文件最后一定是空行 ; Class-Path 当前路径是jar包所在目录，如果要引用当前目录下一个子目录中的jar包，使用以下格式 子目录/jar包名称 子目录/jar名称,注意多个jar包之间用空格分隔, 在任何平台上路径分割符都是 /; 标签属性1、一般属性 Manifest-Version 用来定义manifest文件的版本，例如：Manifest-Version: 1.0 Archiver-Version: Plexus Archiver Built-By: GGGGe Created-By 声明该文件的生成者，一般该属性是由jar命令行工具生成的，例如：Created-By: Apache Maven 3.5.0 Build-Jdk: 1.8.0_161 Signature-Version 定义jar文件的签名版本 Class-Path 应用程序或者类装载器使用该值来构建内部的类搜索路径 2、应用程序相关属性Main-Class 定义jar文件的入口类，该类必须是一个可执行的类，一旦定义了该属性即可通过 java -jar xxx.jar来运行该jar文件。 3、包扩展属性4、小程序(Applet)属性5、扩展标识属性6、签名属性7、自定义属性]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java热部署技术]]></title>
+    <url>%2F2018%2F10%2F14%2Fjava-hotswap%2F</url>
+    <content type="text"><![CDATA[热部署的应用SpringLoaded Maven添加依赖的方式启动 org.springframework.boot spring-boot-maven-plugin org.springframework springloaded 1.2.6.RELEASE 运行: mvn spring-boot:run 或者点击IDEA右侧栏相应命令 下载springloaded jar包，通过指定VM options参数运行 -javaagent:C:\Users\tengj\.m2\repository\org\springframework\springloaded\1.2.6.RELEASE\springloaded-1.2.6.RELEASE.jar -noverify 注意： 在Spring Boot中，模板引擎页面默认开启缓存，修改页可能无法热加载，需要通过设置模板引擎的缓存。 spring.freemarker.cache=false spring.thymeleaf.cache=false spring.velocity.cache=false 热部署失效的情景： 对一些注解的修改application.properties的修改log4j的配置文件的修改。 为什么会失效，留下一个疑问？ spring-boot-devtools&lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt; &lt;optional&gt;true&lt;/optional&gt; &lt;/dependency&gt; &lt;/dependencies&gt; devtools的特性： 默认关闭模板引擎缓存 灵活的自动重启机制 排除静态资源文件关闭自动重启指定修改固定文件后触发重启自定义自启动类加载器 详细可以查看官方文档]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql踩坑经历]]></title>
+    <url>%2F2018%2F10%2F12%2Fmysql-bugs%2F</url>
+    <content type="text"><![CDATA[mysql使用中还是会有各种各样的坑，在实际使用中就遇到几个小问题， tinyint(1)的问题 tinyint(1)字段中数值大于1时，都返回true 原因： MySQL没有bool的概念，tinyint(1)隐式作为bool类型，0为false，非0为true。 解决方案： 在URL连接路径中添加 ‘Treat Tiny As Boolean=false’在sql语句中 tinyint字段*1使用tinyint(4)或者int类型 时间大于2037年的问题 mysql时间不支持大于2037年的后时间，查询返回0. 北京时间’1970-01-01 08:00:00’的问题 当字段为’1970-01-01 08:00:00’的时候报错 com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: ‘1970-01-01 08:00:00’ for column 原因： mysql时间的支持范围是’1970-01-01 08:00:01’， 而传入的字段时区是GMT+8，转为’1970-01-01 08:00:00’，不在支持范围内，所以抛异常]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[logback配置文件]]></title>
+    <url>%2F2018%2F10%2F12%2Flogback-base%2F</url>
+    <content type="text"><![CDATA[以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。 1、刚开始常用的是：其实这是最正规的写法 logger.debug(&quot;massage:{}, code:{}&quot;, msg, code) 遇到过：这种写法会先拼接字符串，再判断debug级别 logger.debug(&quot;massage:{}&quot; + msg + &quot;code:{}&quot; + code) 还遇到过，包括一些开源项目源码中也存在：这种写法多了一层判断 if(logger.isDebugEnabled()) { logger.debug(&quot;massage:{}&quot; + msg + &quot;code:{}&quot; + code) } 2、开始使用 private final Logger logger = LoggerFactory.getLogger(xxx.class); 使用Lombok和注解@Slf4j可以省略原始代码 Logback的体系结构logback标签 root 所有logger的祖先 logger 所有logger之间根据name命名构成父子关系 appender 日志可以打印到console、file、mysql、logstash，additivity标签用于控制日志打印 ContextName ContextListener 变量 可以指定默认值 ${fileName:-logback.log} 在配置文件中可以使用多种变量： property scope12&gt; &gt; 运行时定义变量 ```&lt;define clas=&quot;&quot;&gt; &lt;/define&gt; 从JNDI获取变量 env-entry-name17. include 一个配置文件中可以包含另一个配置文件 ```&lt;include file=&quot;&quot;/&gt; &lt;include resource=&quot;&quot;/&gt; &lt;include url=&quot;&quot;/&gt; 配置全局信息 debug12345678910111213141516 &gt; debug指定打印正常启动日志信息 &gt; &gt; scan、scanPeriod指定配置文件自动热加载 &gt; &gt; packagingData指定打印异常堆栈时打印jar包信息 单位milliseconds、seconds、minutes、### logback配置文件生命周期## Logback的应用Logback整合Spring boot，有两种配置方式：### xml配置 &lt;?xml version=”1.0” encoding=”UTF-8”?&gt; ${CONSOLE_LOG_PATTERN} 123456789101112131415### yml配置``` logging: file: # 日志文件,绝对路径或相对路径 #path: # 保存日志文件目录路径 file和path两者二选一 config: # 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml、logback-spring.xml level: # 日志级别 root: info org.springframework.web: DEBUG # 配置spring web日志级别，类似于logger标签 com.xxx.mapper: DEBUG pattern: console: %d&#123;yyyy/MM/dd-HH:mm:ss&#125; [%thread] %-5level %logger- %msg%n file: %d&#123;yyyy/MM/dd-HH:mm&#125; [%thread] %-5level %logger- %msg%n]]></content>
+      <categories>
+        <category>logback</category>
+      </categories>
+      <tags>
+        <tag>logback</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java-jndi]]></title>
+    <url>%2F2018%2F10%2F11%2Fjava-jndi%2F</url>
+    <content type="text"><![CDATA[业务代码写多了，偶尔看看源码还是蛮有意思的，尤其是源码背后的设计思想，真的是让人佩服啊。 JNDIJNDI API是用于访问不同命名和目录服务的接口。 JNDI编程模型可以在rt.jar中javax.naming目录下查看所有源码 上下文 Context/DirContext 架构：第一层： 访问JNDI的代码 第二层： JNDI API，统一的命名和目录服务接口 第三层： JNDI管理器 NamingManager 第四层： JNDI SPI，用于构建JNDI实现的框架，动态插入命名和目录服务提供商的产品 第五层： 命名和目录服务商提供的产品。例如： DNS、LDAP、NIS、NDS LDAP(Lightweight Directory Access Protocol): 轻量目录访问协议，也可以说是一种特殊的数据库(hierarchal数据库) NIS(Network Information Service): 网络信息服务 原理：JNDI的应用 EJB项目中，用于查找其它程序组件 数据库连接池中，用于连接数据库]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java消息服务JMS]]></title>
+    <url>%2F2018%2F10%2F10%2Fjava-jms%2F</url>
+    <content type="text"><![CDATA[开发中多多少少接触过一些消息队列，但是对原生的JMS(Java Message Service: Java消息服务)了解较少。 JMSJMS API是一个消息服务的标准/规范。 P2P模式特点: 每条消息只有一个消费者(即消息一旦被消费，消息就不在消息队列中) 生产者和消费者在时间上没有依赖性() 消费者在接收消息后需要向队列应答消费成功 Pub/Sub模式特点: 每条消息可以有多个消费者 生产者和消费者之间有时间上的依赖(即针对某个主题，必须创建一个消费者之后，才能消费消息) 为了消费消息，订阅者必须保持运行 JMS编程模型加入依赖包jms-api，类似于servlet-api &lt;dependency&gt; &lt;groupId&gt;javax.jms&lt;/groupId&gt; &lt;artifactId&gt;javax.jms-api&lt;/artifactId&gt; &lt;version&gt;2.0.1&lt;/version&gt; &lt;/dependency&gt; 管理对象 连接对象 Connection 会话 Session 消息生产者 MessageProducer 消息消费者 MessageConsumer 消息监听者 MessageLister JMS用到JNDI机制，用于查找、访问发送目标/消息来源 JMS协议结构JMS的应用场景 ActiveMQ完全支持JMS1.1和J2EE1.4规范。 ActiveMQ特性： 应用协议： OpenWire,Stomp REST,WS Notification,XMPP,AMQP JBoss HornetQ Joram MantaRay OpenJMS]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[技术框架选型]]></title>
+    <url>%2F2018%2F10%2F09%2Farchitecture-framework%2F</url>
+    <content type="text"><![CDATA[流程框架workflow： camel：基于规则、路由、处理的流程引擎。无缝集成Spring]]></content>
+      <categories>
+        <category>Architecture</category>
+      </categories>
+      <tags>
+        <tag>architecture</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mybatis核心代码分析]]></title>
+    <url>%2F2018%2F09%2F30%2Fmybatis-core%2F</url>
+    <content type="text"><![CDATA[MapperScannerConfigurer]]></content>
+      <categories>
+        <category>mybatis</category>
+      </categories>
+      <tags>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MyBatis配置文件解析]]></title>
+    <url>%2F2018%2F09%2F30%2Fmybatis-config%2F</url>
+    <content type="text"><![CDATA[springboot整合mybatis有不同的方式： mybatis – spring-boot-starter通过properties/yml配置 123456mybatis.config：mybatis-config.xml配置文件的路径mybatis.typeHandlersPackage：扫描typeHandlers的包mybatis.checkConfigLocation：检查配置文件是否存在mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLEmybatis.mapper-locations=classpath:/mybatis/*Mapper.xml //2mybatis.type-aliases-package=tk.mapper.model mybatis – spring创建@Configuration MyBatisConfig配置类， 属性 configLocation 指定mybatis-config核心配置文件的路径 objectFactory DefaultObjectFactory objectWrapperFactory DefaultObjectWrapperFactory vfs 用来读取服务器相关资源，并加载相关的类 typeAliasesPackage 给整个包起一个别名， typeAliases 设置别名， Plugins 插件，用于sql执行过程中对方法对拦截调用。常见的几种插件： · Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed) · ParameterHandler (getParameterObject, setParameters) · ResultSetHandler (handleResultSets, handleOutputParameters) · StatementHandler (prepare, parameterize, batch, update, query) typeHandlersPackage、typeHandlers 类型转换器，用于Javabean和数据库类型之间的转换 databaseIdProvider 用于多数据源切换 Cache 扩展MyBatis Cache接口，自定义缓存 xmlConfigBuilder transactionFactory 没有自定义事务时，默认使用Spring的事务 mapperLocations Mapper.xml文件的扫描路径]]></content>
+      <categories>
+        <category>mybatis</category>
+      </categories>
+      <tags>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[架构基础]]></title>
+    <url>%2F2018%2F09%2F28%2Farchitecture-base%2F</url>
+    <content type="text"><![CDATA[经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。 核心组件1、网关Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。 Zuul2: Spring Cloud Gateway: Nginx: Kong: 2、服务发现Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign Zookeeper: Etcd: Consul: 2、配置中心Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用 携程的Apollo: 百度的Disconf: 阿里的Diamond: 4、认证授权Spring Security OAuth2: 监控组件数据总线Kafka 5、日志监控其实日志监控有很多种组合，ELK是比较常用的组合 ELK 6、链路监控大众点评CAT: Zipkin: 不够成熟，不能算一款企业级产品 Naver Pinpoint: Spring Cloud Seleuth: Hydra: eagleye: Jaeger: Skywalking: OpenTracing:规范 7、度量监控 Metrics依赖于时序数据库 Prometheus: InfluxDB: KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示 OpenTSDB: 8、健康检查、告警Zmon: Zabbix: 9、限流、熔断Hystrix: 可以结合Turbine实现监控数据流的聚合]]></content>
+      <categories>
+        <category>Architect</category>
+      </categories>
+      <tags>
+        <tag>Architect</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java多线程]]></title>
+    <url>%2F2018%2F09%2F28%2Fjava-multithread%2F</url>
+    <content type="text"><![CDATA[物理内存模型缓存一致性： 处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol 指令重排序： JVM的内存模型：主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。 工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。 volatilevolatile的2种特性： 1、保证此变量对所有线程的可见性 2、禁止指令重排序优化。 volatile在单例模式中的应用： 原子性、可见性、有序性 原子性： 可见性： volatile： synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。 final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。 有序性 先行发生原则用于判断数据是否存在竞争、线程是否安全 原则： 程序次序原则 管程锁定原则 volatile变量原则 线程启动原则 线程终止原则 线程中断原则 对象终结原则 传递性 如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。 并发与并行并发不一定要依赖多线程，PHP中很常见的多进程并发。 实现线程有3种方式： 使用内核线程实现 使用用户线程实现 使用用户线程 + 轻量级进程混合实现 Java线程的实现： jdk1.2之前，基于用户线程实现 jdk1.2中，基于操作系统原生线程模型实现 Java线程调度线程调度的2种方式： 协同式调度：线程的执行时间是由线程本身控制的 抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度 Java线程的状态 新建 运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间 无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒 限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。 阻塞：线程被阻塞，等待其它排他锁 结束： Java线程安全的实现： 互斥同步(阻塞同步)：synchronized、ReentrantLock 非阻塞同步：基于冲突检测的乐观并发策略， CAS：比较并交换。CAS存在ABA问题 无同步方案 可重入代码(纯代码)： 线程本地存储： 锁优化 自旋锁、自适应自旋锁 锁消除： 锁粗化： 轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗 偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java虚拟机]]></title>
+    <url>%2F2018%2F09%2F28%2Fjava-jvm%2F</url>
+    <content type="text"><![CDATA[Java内存区域程序计数器可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。 每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。 Java虚拟机栈线程私有，生命周期和线程相同。 描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧： 存储局部变量表、 操作数栈、 动态链接、 方法出口。 本地方法栈和Java虚拟机栈类似， Java堆被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。 逃逸分析技术： 栈上分配 标量替换 方法区所有线程共享的内存区。用于存储： 被虚拟机加载的类信息： 常量 静态变量 即时编译器编译后的代码 运行时常量池属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。 例如String.intern()方法。 直接内存虚拟机对象对象的创建注意: 仅限于普通Java对象，不包括数组、Class对象。 当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。 为新生对象分配内存 指针碰撞分配 空闲列表分配 内存分配的并发问题： CAS + 失败重试 本地线程分配缓冲(TLAB) 对象进行必要的设置 执行方法 对象的内存布局对象在内存中存储包括3块区域: 对象头： 1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳 2、类型指针：该对象指向它的类元数据的指针 实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。 对齐填充：非必须，起占位符的作用 对象的定位访问1、句柄访问 优点： 在对象被移动时，只会改变句柄中的实例数据指针 2、直接指针访问 优点： 访问速度快，节省了一次指针定位的时间开销]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[深入理解计算机系统--存储]]></title>
+    <url>%2F2018%2F09%2F28%2Fcsapp-memory%2F</url>
+    <content type="text"><![CDATA[静态RAM 动态RAM 传统的DRAM 内存模块 增强的DRAM]]></content>
+      <categories>
+        <category>CSAPP</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[快排]]></title>
+    <url>%2F2018%2F09%2F28%2Falgorithms-quicksort%2F</url>
+    <content type="text"><![CDATA[java语言实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849public static void main(String[] args)&#123; // main live template int[] arr = &#123;3, 7, 5, 1, 8, 6&#125;; quickSort(arr, 0, arr.length-1); Arrays.stream(arr).forEach( value -&gt; &#123; System.out.println(value); &#125;); &#125; public static void quickSort(int[] a, int low, int high) &#123; int i = low; int j = high; int base = a[low]; while (i &lt; j)&#123; while(a[j] &gt; base &amp;&amp; i &lt; j)&#123; j--; &#125; if ( i &lt; j ) &#123; int temp = a[j]; a[j] = a[i]; a[i] = temp; i++; while(a[i] &lt; base &amp;&amp; i &lt; j) &#123; i++; &#125; if( i &lt; j ) &#123; int temp2 = a[i]; a[i] = a[j]; a[j] = temp2; j--; &#125; &#125; &#125; a[i] = base; if (low &lt; i-1) &#123; quickSort(a, low, i-1); &#125; if (j+1 &lt; high) &#123; quickSort(a, j+1, high); &#125; &#125; go语言实现main12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455import ( &quot;fmt&quot;)func main() &#123; // fmt.Println(&quot;Hello Mac go&quot;) arr := []int&#123;3, 7, 5, 1, 8, 6&#125; quick_sort(arr, 0, len(arr)-1) for v := range arr &#123; fmt.Println(arr[v]) &#125;&#125;func quick_sort(a []int, low int, high int) &#123; i := low j := high base := a[low] for ; i &lt; j; &#123; for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123; j-- &#125; if i &lt; j &#123; temp := a[j] a[j] = a[i] a[i] = temp i++ for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123; i++ &#125; if i &lt; j &#123; temp2 := a[i] a[i] = a[j] a[j] = temp2 j-- &#125; &#125; &#125; a[i] = base if low &lt; i-1 &#123; quick_sort(a, low, i-1) &#125; if j+1 &lt; high &#123; quick_sort(a, j+1, high) &#125;&#125;]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Algorithms</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java加载器]]></title>
+    <url>%2F2018%2F09%2F28%2Fjava-classloader%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL索引]]></title>
+    <url>%2F2018%2F09%2F28%2Fmysql-index%2F</url>
+    <content type="text"><![CDATA[索引类型 B-Tree索引 InnoDB引擎使用的是B+Tree B-Tree的限制： 如果不是按照索引的最左列开始查找，则无法使用索引 不能跳过索引中的列 如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找 哈希索引 空间数据索引(R-Tree) 全文索引 MyISAM和InnoDB的不同：MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。 MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。 高性能索引策略聚簇索引 非聚簇索引 主从复制基于语句的复制 基于行的复制]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[深入理解计算机系统--内存]]></title>
+    <url>%2F2018%2F09%2F28%2Fcsapp-vm%2F</url>
+    <content type="text"><![CDATA[内存管理 虚拟内存： 物理地址 虚拟地址 地址翻译 内存管理单元 线性地址空间 物理地址空间 虚拟地址空间 虚拟页 物理页 SRAM DRAM 页命中、缺页、 局部性 活动页面 工作集(常驻集合) 抖动]]></content>
+      <categories>
+        <category>CSAPP</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven-version]]></title>
+    <url>%2F2018%2F09%2F27%2Fmaven-version%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[maven配置文件]]></title>
+    <url>%2F2018%2F09%2F27%2Fmaven-base%2F</url>
+    <content type="text"><![CDATA[一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错： [ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.5.2:install (default-cli) on project StarTeamCollisionUtil: The packaging for this project did not assign a file to the build artifact -&gt; [Help 1] 后来使用Lifecycle–install，编译成功；使用maven clean install也会成功。最后查看StackOverflow 大致意思：install:install命令是插件maven-install-plugin中的命令，不同于Lifecycle中的install命令。 mvn clean install在每个周期中会运行所有的命令，包括：compile、package、test等等。 mvn clean install:install则只会install一个命令，甚至不包括compile、package 仓库本地仓库 远程仓库 中央仓库 先从本地仓库查找，再从私服查找，最后再到远处、中央仓库查找。 setting.xml镜像用于配置速度更快的的仓库镜像，mirrorOf可以配置’central,*’不同仓库12345678&lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;maven-net-cn&lt;/id&gt; &lt;name&gt;Maven China Mirror&lt;/name&gt; &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; pom.xmlpackaging类型&lt;packaging&gt;&lt;/packaging&gt; parent标签dependencies标签 compile：默认编译依赖范围。对于编译，测试，运行三种classpath都有效。如log4j test：测试依赖范围。只对于测试classpath有效。如junit provided：已提供依赖范围。对于编译，测试的classpath都有效，但对运行无效。servlet-api runtime：运行时提供。例如：jdbc驱动。最主要要区分compile和provided。 依赖传递原则：近路优先，声明优先 当第二依赖的范围是compile的时候，传递性依赖的范围与第一直接依赖的范围一致。 当第二直接依赖的范围是test的时候，依赖不会得以传递。 当第二依赖的范围是provided的时候，只传递第一直接依赖范围也为provided的依赖，且传递性依赖的范围同样为 provided； 当第二直接依赖的范围是runtime的时候，传递性依赖的范围与第一直接依赖的范围一致，但compile例外，此时传递的依赖范围为runtime； 依赖冲突在maven中存在两种冲突方式：一种是跨pom文件的冲突，一种是同一个pom文件的冲突 如果直接与间接依赖中包含有同一个坐标不同版本的资源依赖，以直接依赖的版本为准（就近原则） 同一个pom文件中的冲突。pom文件从上到下加载，那么下面的jar包会覆盖上面的jar包。这也体现了就近原则。 可选依赖&lt;optional&gt;true/false&lt;/optional&gt; true，则表示该依赖不会传递下去false，则会传递下去。 排除依赖&lt;exclusions&gt; &lt;exclusion&gt; &lt;groupId&gt;xxx&lt;/groupId&gt; &lt;artifactId&gt;xxx&lt;/artifactId&gt; &lt;/exclusion&gt; &lt;/exclusions&gt; Lifecycle生命周期clean pre-clean 执行一些需要在clean之前完成的工作； clean 移除所有上一次构建生成的文件 ； post-clean 执行一些需要在clean之后立刻完成的工作 。 mvn clean命令，等同于 mvn pre-clean clean。只要执行后面的命令，那么前面的命令都会执行，不需要再重新去输入命令。有Clean生命周期，在生命周期又有clean阶段。 defaultsite pre-site 执行一些需要在生成站点文档之前完成的工作 ； site 生成项目的站点文档 ； post-site 执行一些需要在生成站点文档之后完成的工作，并且为部署做准备 ； site-deploy 将生成的站点文档部署到特定的服务器上 。 pluginspluginManagement标签dependencyManagement标签distributionManagement标签分发构件至远程仓库]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git-merge]]></title>
+    <url>%2F2018%2F09%2F27%2Fgit-merge%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[git-base]]></title>
+    <url>%2F2018%2F09%2F27%2Fgit-base%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[大数据]]></title>
+    <url>%2F2018%2F09%2F25%2Fbigdata-base%2F</url>
+    <content type="text"><![CDATA[大数据的应用场景越来越多，数据采集、数据计算、数据服务、数据应用 大数据框架流处理和批处理所提供的SLA(服务等级协议)完全不同 实现批处理：批处理需要支持高吞吐、高效处理 MapReduce Spark 实现流处理：流处理需要支持低延迟、Exactly-once保证 Storm Spark的Streaming其实是一种微批处理 HadoopStormSparkFlink]]></content>
+      <categories>
+        <category>BigData</category>
+      </categories>
+      <tags>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Nexus私服]]></title>
+    <url>%2F2018%2F09%2F23%2Fnexus-base%2F</url>
+    <content type="text"><![CDATA[私服的搭建一般是运维的工作，作为有追求的程序猿。。。 环境搭建依赖于jdk yum安装tar.gz安装12345678910111213141516171819202122cd /usr/localtar -xzvf nexus-3.14.0-unix.tar.gzmv nexus-3.14.0 nexuscd nexus/binln -s nexus nexusvi nexus.rc创建nexus用户useradd nexus修改启动用户run_as_user="nexus"修改启动端口 开机自启动vi /etc/systemd/system/nexus.service 12345678910111213[Unit]Description=nexus serviceAfter=network.target [Service]Type=forkingExecStart=/usr/local/nexus/bin/nexus startExecStop=/usr/local/nexus/bin/nexus stopUser=nexusRestart=on-abort [Install]WantedBy=multi-user.target systemctl daemon-reload systemctl enable nexus systemctl start nexus 防火墙规则浏览器访问http://ip:8081/nexus 默认用户 admin/admin123 nexus模块仓库类型maven nuget jar版本snapshot release Type类型：proxy: 当私有nexus找不到依赖包时，就会通过代理查找 hosted: 私有的依赖包存储在这里 group: 包含proxy和hosted类型，是一个聚合体。 FormatStorageBlob store Maven 2version policy: Release、Snapshot、Mixed]]></content>
+      <tags>
+        <tag>Nexus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-exception]]></title>
+    <url>%2F2018%2F09%2F21%2Fspring-exception%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java中的错误与异常]]></title>
+    <url>%2F2018%2F09%2F21%2Fjava-exception-error%2F</url>
+    <content type="text"><![CDATA[Web项目中的异常处理，什么时候该处理异常，什么抛出异常，总感觉没有形成一套理论的形式，不同的团队遇到不同的处理，但是大致流程一致。 错误分类Error:理论上也属于非检查异常。例如：系统崩溃、虚拟机错误、内存溢出、方法调用栈溢出。这样的错误一般无法恢复和预防，只能通过重启应用解决 异常分类java中分两类： 检查异常：必须进行处理 继续抛出 try-catch捕获 非检查异常(RuntimeException 运行时异常)：可以不处理编译通过，一般是由于程序的错误导致的，例如：ArithmeticException、错误的类型转换、数组越界、空指针 捕获 继续抛出 不处理 业务开发中的异常分类： 系统异常 自定义的、可预知的异常。例如：用户密码错误、参数错误 一般只需要记录错误的描述信息，例如定义 业务异常 系统运行时异常。例如：数据库连接异常、IO失败、空指针 一般需要生成完整的调用栈追踪信息 throws当不知道如何处理异常时，可以通过throws抛给调用者或者JVM。 throw使用throw抛出异常时，抛出的不是一个类，而是一个对象。 如果抛出的异常是一个Checked异常，则使用try-catch捕获、或者放在一个throws方法内。如果抛出的是RuntimeException，则可以使用try-catch捕获、或者不做任何处理 自定义异常异常类继承关系图： 可以看到自定义异常一定是Throwable的子类， 若是检查异常就要继承Exception类 若是运行时异常，就继承RuntimeException 异常链：捕获一个异常，然后接着抛出另一个异常，并把原始信息保存下来的链式处理。 应用场景： try-catch-finally-returnfinally代码块一定会在try/catch代码块return之前执行，如果finally有return，则提前执行return，try/catch中的return不再执行。 异常处理 不用过度使用异常：可预测的错误应该通过代码逻辑处理，不确定的、运行时异常才抛出异常 不用使用try包含太多的代码逻辑， 避免使用Catch All语句：Catch All即catch(Throwable t)，扩大异常的范围不利于排查错误 不要忽略已捕获的异常：对于捕获的异常应该进行处理提高代码的健壮性，而不是只打印跟踪栈信息。 不要使用异常控制流程，异常越早抛出越好 尽量不要捕获/抛出类似Exception这样笼统的异常，应该具体化]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring-cloud-disconf]]></title>
+    <url>%2F2018%2F09%2F21%2Fspring-cloud-disconf%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Web项目中关于参数的问题]]></title>
+    <url>%2F2018%2F09%2F20%2Fspring-mvc-arguments%2F</url>
+    <content type="text"><![CDATA[mysql中数值的存储五大类： 整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT 浮点数类型：FLOAT、DOUBLE、DECIMAL、Numeric 字符串类型：CHAR、VARCHAR、TINY TEXT、TEXT、MEDIUM TEXT、LONGTEXT、TINY BLOB、BLOB、MEDIUM BLOB、LONG BLOB 日期类型：Date、DateTime、TimeStamp、Time、Year 其他数据类型：BINARY、VARBINARY、ENUM、SET、Geometry、Point、MultiPoint、LineString、MultiLineString、Polygon、GeometryCollection等 |类型|有符号数|无符号数| |-|:-:|-| mysql数据类型和Java数据类型的对应关系 BigDecimal在入库的时候，对应mysql中的decimal(decimal(a,b))，同时mysql在设置默认值时，一定要写成’0.00’，而不要使用默认值NULL，否则在加、减、排序容易出错 Java中常见的问题 js解析超大数值精度丢失问题 Float和Double不能精确计算价格，建议采用BigDecimal BigDecimal比较0和‘0’的问题 注解@RequestParam、@RequestBody和@RequestPart x-www-form-urlencoded 参数存储在query中 用@RequestParam接收 form-data 参数存储在body中，用@RequestBody接收，文件类型用@RequestParam/@RequestPart接收 raw(josn,xml) 参数存储在body中 用@RequetBody接收 @RequestMapping、@GetMapping@PostMapping和@PathVariable consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html; produces: 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回； params： 指定request中必须包含某些参数值时，才让该方法处理。 指定request中必须包含某些指定的header值，才能让该方法处理请求。]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OLTP和OLAP技术]]></title>
+    <url>%2F2018%2F09%2F18%2Foltp-olap%2F</url>
+    <content type="text"><![CDATA[OLTPOLAP技术分区技术 并行技术 MV技术 位图索引 实现 ROLAP 基于关系型数据库 MOLAP 基于多维数据 立方块Cube(旋转Pivot、切块Dice、切片Slice、钻取Drill-down/Roll-up) HOLAP 基于混合数据：如底层是关系型，高层是多维矩阵 唯一ID主键 自增主键 Twitter snowflake算法 Flickr GUID/UUID]]></content>
+      <categories>
+        <category>Bigdata</category>
+      </categories>
+      <tags>
+        <tag>Bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SpringMVC时间传值问题]]></title>
+    <url>%2F2018%2F09%2F18%2Fspring-mvc-date%2F</url>
+    <content type="text"><![CDATA[最近新入职公司，接手一个老项目，代码是多个人开发的，风格各异，中间就遇到时间传值问题，在VO层，有的传值Date，有的传值String 前台–&gt;后台传值 通过set转换不同格式 在VO上使用注解，@DateTimeFormat(pattern = “yyyy-MM-dd HH:mm:ss”);@JsonFormat(pattern=”yyyy-MM-dd HH:mm”);@Temporal(TemporalType.TIMESTAMP) 创建BaseController类，所有的controller继承BaseController，BaseController中实现initBinder方法 重写DateConverter类实现Converter&lt;String, Date&gt;接口，重写convert方法 后台–&gt;前台传值 在yml/xml中配置spring.jackson.date-format、spring.jackson.time-zone 在VO上使用注解，@DateTimeFormat(pattern = “yyyy-MM-dd HH:mm:ss”);@JsonFormat(pattern=”yyyy-MM-dd HH:mm”);@Temporal(TemporalType.TIMESTAMP)]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql分库分表技术]]></title>
+    <url>%2F2018%2F09%2F17%2Fmysql-sharding%2F</url>
+    <content type="text"><![CDATA[分库分表主要针对大流量用户网站，但是作为有追求的程序员，还是要熟悉理论，用的时候方便快速上手解决业务问题，毕竟生活主要还是Crud Boy 分区：将存放数据的文件拆分成很多块儿， 分片：将数据分散存储在不同的服务器上 垂直拆分垂直分表在同一个数据库中，将表数据存储在表名不同、结构相同的表中 垂直分库问题 跨库join问题 拆库后数据可能分布在不同的实例、物理主机，基于安全，一般禁止跨库join、group by、order等操作。 解决方案： 1)、全局表：即字典表，所有可能关联表。将这些表在每个数据库保存一份， 2)、字段冗余：不同的表保存一些关联表的字段，可能导致‘数据一致性’问题，因为要在不同的表维护相同的字段 3)、 数据同步： 4)、系统层组装：即通过代码组装处理数据，for循环可能导致循环RPC问题，循环查询数据库，连接费时。建议一次查询返回所有结果。 跨库事务问题(分布式事务) 水平拆分水平分表/横向分表将表结构进行拆分，通过更细粒度的控制，将表分散在不同的服务器上，减少单表的压力 水平分库分表 查询切分 将ID和库映射关系放在单独的主库中 范围切分 按照时间区间/ID区间切分 Hash切分 取模切分 读写分离中间件开源： MyCAT: 基于Cobar Sharding-JDBC(sharding-shpere): 当当基于JDBC Cobar: 阿里巴巴，一年不维护 DBPRoxy: 美团，基于360的Atlas，两年不维护 Oceanus: 50同城团队 Atlas: 360团队，不推荐 TDDL: 依赖Dimond，已死 MaxScale: MariaDB作者官方，不支持分库分表 MySQL Route: MySQL官方 商业： OneProxy：平民软件 DRDS: 阿里巴巴，基于Cobar、MySQL-Proxy]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java-countdownlatch-semaphore]]></title>
+    <url>%2F2018%2F09%2F17%2Fjava-countdownlatch-semaphore%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql优化]]></title>
+    <url>%2F2018%2F09%2F14%2Fmysql-optimize%2F</url>
+    <content type="text"><![CDATA[MySQL优化，把项目中常用的总结出来，形成方法论的东西。 库表结构设计优化索引优化查询优化1、LIKESELECT column FROM table WHERE field LIKE &apos;%keyword%&apos;; 两边都有‘%’不走索引 SELECT column FROM table WHERE field LIKE &apos;keyword%&apos;; 左边没有‘%’，才会走索引 可以通过explain执行计划查看， 优化替代方案： LOCATE(‘substr’, field, pos) POSITION(‘substr’ IN field) INSTR(field, ‘substr’) FIND_IN_SET(‘substr’, field) 2、IN、NOT IN3、int/datetime/timstamp时间存储对于MyISAM引擎，不建立索引的情况下（推荐），效率从高到低： int &gt; UNIX_TIMESTAMP(timestamp) &gt; datetime（直接和时间比较）&gt;timestamp（直接和时间比较）&gt;UNIX_TIMESTAMP(datetime) 。 对于MyISAM引擎，建立索引的情况下，效率从高到低： UNIX_TIMESTAMP(timestamp) &gt; int &gt; datetime（直接和时间比较）&gt;timestamp（直接和时间比较）&gt;UNIX_TIMESTAMP(datetime) 。 对于InnoDB引擎，没有索引的情况下(不建议)，效率从高到低： int &gt; UNIX_TIMESTAMP(timestamp) &gt; datetime（直接和时间比较） &gt; timestamp（直接和时间比较）&gt; UNIX_TIMESTAMP(datetime)。 对于InnoDB引擎，建立索引的情况下，效率从高到低： int &gt; datetime（直接和时间比较） &gt; timestamp（直接和时间比较）&gt; UNIX_TIMESTAMP(timestamp) &gt; UNIX_TIMESTAMP(datetime)。 4、固定长度的表更快避免VARCHAR、TEXT、BLOB字段]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[dubbo序列化Kryo、FST、Hessian]]></title>
+    <url>%2F2018%2F09%2F13%2Fdubbo-serialize%2F</url>
+    <content type="text"><![CDATA[dubbo是一个非常优秀的框架，可以说研究dubbo可以学到很多东西。写博客，很多时候是首为己用，后及后人。 目前所接触到的序列化框架： java：Java原生序列化、Kryo、FST 跨语言： Protostuff、ProtoBuf、Thrift、Avro、MsgPack、Hessian Kryo序列化FST序列化Hessian序列化]]></content>
+      <categories>
+        <category>Dubbo</category>
+      </categories>
+      <tags>
+        <tag>Dubbo</tag>
+      </tags>
+  </entry>
+</search>
