@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="java.util.COllection是一个集合接口，而java.util.Collections作为集合的工具类。 CollectionList、Queue、Set接口都继承了Collection接口，Map接口没有实现Collection接口。">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java集合类Collection和Collections的区别">
+<meta property="og:url" content="http://wangwanchao.wang/2018/09/10/java-collection/index.html">
+<meta property="og:site_name" content="Wangsir&#39;s Blog">
+<meta property="og:description" content="java.util.COllection是一个集合接口，而java.util.Collections作为集合的工具类。 CollectionList、Queue、Set接口都继承了Collection接口，Map接口没有实现Collection接口。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-27T08:27:59.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java集合类Collection和Collections的区别">
+<meta name="twitter:description" content="java.util.COllection是一个集合接口，而java.util.Collections作为集合的工具类。 CollectionList、Queue、Set接口都继承了Collection接口，Map接口没有实现Collection接口。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wangsir's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://wangwanchao.wang/2018/09/10/java-collection/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>java集合类Collection和Collections的区别 | Wangsir's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wangsir's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/09/10/java-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanchao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wangsir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java集合类Collection和Collections的区别
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-10 20:47:04" itemprop="dateCreated datePublished" datetime="2018-09-10T20:47:04+08:00">2018-09-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article"></span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time"></span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>java.util.COllection是一个集合接口，而java.util.Collections作为集合的工具类。</p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>List、Queue、Set接口都继承了Collection接口，Map接口没有实现Collection接口。</p>
+<a id="more"></a>
+<pre><code>public interface Collection&lt;E&gt; extends Iterable&lt;E&gt; {
+// Query Operations
+
+int size();
+
+boolean isEmpty();
+
+/**
+ * Returns &lt;tt&gt;true&lt;/tt&gt; if this collection contains the specified element.
+ * More formally, returns &lt;tt&gt;true&lt;/tt&gt; if and only if this collection
+ * contains at least one element &lt;tt&gt;e&lt;/tt&gt; such that
+ * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;e==null&amp;nbsp;:&amp;nbsp;o.equals(e))&lt;/tt&gt;.
+ *
+ * @param o element whose presence in this collection is to be tested
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection contains the specified
+ *         element
+ * @throws ClassCastException if the type of the specified element
+ *         is incompatible with this collection
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws NullPointerException if the specified element is null and this
+ *         collection does not permit null elements
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ */
+boolean contains(Object o);
+
+/**
+ * Returns an iterator over the elements in this collection.  There are no
+ * guarantees concerning the order in which the elements are returned
+ * (unless this collection is an instance of some class that provides a
+ * guarantee).
+ *
+ * @return an &lt;tt&gt;Iterator&lt;/tt&gt; over the elements in this collection
+ */
+Iterator&lt;E&gt; iterator();
+
+/**
+ * Returns an array containing all of the elements in this collection.
+ * If this collection makes any guarantees as to what order its elements
+ * are returned by its iterator, this method must return the elements in
+ * the same order.
+ *
+ * &lt;p&gt;The returned array will be &quot;safe&quot; in that no references to it are
+ * maintained by this collection.  (In other words, this method must
+ * allocate a new array even if this collection is backed by an array).
+ * The caller is thus free to modify the returned array.
+ *
+ * &lt;p&gt;This method acts as bridge between array-based and collection-based
+ * APIs.
+ *
+ * @return an array containing all of the elements in this collection
+ */
+Object[] toArray();
+
+/**
+ * Returns an array containing all of the elements in this collection;
+ * the runtime type of the returned array is that of the specified array.
+ * If the collection fits in the specified array, it is returned therein.
+ * Otherwise, a new array is allocated with the runtime type of the
+ * specified array and the size of this collection.
+ *
+ * &lt;p&gt;If this collection fits in the specified array with room to spare
+ * (i.e., the array has more elements than this collection), the element
+ * in the array immediately following the end of the collection is set to
+ * &lt;tt&gt;null&lt;/tt&gt;.  (This is useful in determining the length of this
+ * collection &lt;i&gt;only&lt;/i&gt; if the caller knows that this collection does
+ * not contain any &lt;tt&gt;null&lt;/tt&gt; elements.)
+ *
+ * &lt;p&gt;If this collection makes any guarantees as to what order its elements
+ * are returned by its iterator, this method must return the elements in
+ * the same order.
+ *
+ * &lt;p&gt;Like the {@link #toArray()} method, this method acts as bridge between
+ * array-based and collection-based APIs.  Further, this method allows
+ * precise control over the runtime type of the output array, and may,
+ * under certain circumstances, be used to save allocation costs.
+ *
+ * &lt;p&gt;Suppose &lt;tt&gt;x&lt;/tt&gt; is a collection known to contain only strings.
+ * The following code can be used to dump the collection into a newly
+ * allocated array of &lt;tt&gt;String&lt;/tt&gt;:
+ *
+ * &lt;pre&gt;
+ *     String[] y = x.toArray(new String[0]);&lt;/pre&gt;
+ *
+ * Note that &lt;tt&gt;toArray(new Object[0])&lt;/tt&gt; is identical in function to
+ * &lt;tt&gt;toArray()&lt;/tt&gt;.
+ *
+ * @param a the array into which the elements of this collection are to be
+ *        stored, if it is big enough; otherwise, a new array of the same
+ *        runtime type is allocated for this purpose.
+ * @return an array containing all of the elements in this collection
+ * @throws ArrayStoreException if the runtime type of the specified array
+ *         is not a supertype of the runtime type of every element in
+ *         this collection
+ * @throws NullPointerException if the specified array is null
+ */
+&lt;T&gt; T[] toArray(T[] a);
+
+// Modification Operations
+
+/**
+ * Ensures that this collection contains the specified element (optional
+ * operation).  Returns &lt;tt&gt;true&lt;/tt&gt; if this collection changed as a
+ * result of the call.  (Returns &lt;tt&gt;false&lt;/tt&gt; if this collection does
+ * not permit duplicates and already contains the specified element.)&lt;p&gt;
+ *
+ * Collections that support this operation may place limitations on what
+ * elements may be added to this collection.  In particular, some
+ * collections will refuse to add &lt;tt&gt;null&lt;/tt&gt; elements, and others will
+ * impose restrictions on the type of elements that may be added.
+ * Collection classes should clearly specify in their documentation any
+ * restrictions on what elements may be added.&lt;p&gt;
+ *
+ * If a collection refuses to add a particular element for any reason
+ * other than that it already contains the element, it &lt;i&gt;must&lt;/i&gt; throw
+ * an exception (rather than returning &lt;tt&gt;false&lt;/tt&gt;).  This preserves
+ * the invariant that a collection always contains the specified element
+ * after this call returns.
+ *
+ * @param e element whose presence in this collection is to be ensured
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection changed as a result of the
+ *         call
+ * @throws UnsupportedOperationException if the &lt;tt&gt;add&lt;/tt&gt; operation
+ *         is not supported by this collection
+ * @throws ClassCastException if the class of the specified element
+ *         prevents it from being added to this collection
+ * @throws NullPointerException if the specified element is null and this
+ *         collection does not permit null elements
+ * @throws IllegalArgumentException if some property of the element
+ *         prevents it from being added to this collection
+ * @throws IllegalStateException if the element cannot be added at this
+ *         time due to insertion restrictions
+ */
+boolean add(E e);
+
+/**
+ * Removes a single instance of the specified element from this
+ * collection, if it is present (optional operation).  More formally,
+ * removes an element &lt;tt&gt;e&lt;/tt&gt; such that
+ * &lt;tt&gt;(o==null&amp;nbsp;?&amp;nbsp;e==null&amp;nbsp;:&amp;nbsp;o.equals(e))&lt;/tt&gt;, if
+ * this collection contains one or more such elements.  Returns
+ * &lt;tt&gt;true&lt;/tt&gt; if this collection contained the specified element (or
+ * equivalently, if this collection changed as a result of the call).
+ *
+ * @param o element to be removed from this collection, if present
+ * @return &lt;tt&gt;true&lt;/tt&gt; if an element was removed as a result of this call
+ * @throws ClassCastException if the type of the specified element
+ *         is incompatible with this collection
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws NullPointerException if the specified element is null and this
+ *         collection does not permit null elements
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws UnsupportedOperationException if the &lt;tt&gt;remove&lt;/tt&gt; operation
+ *         is not supported by this collection
+ */
+boolean remove(Object o);
+
+
+// Bulk Operations
+
+/**
+ * Returns &lt;tt&gt;true&lt;/tt&gt; if this collection contains all of the elements
+ * in the specified collection.
+ *
+ * @param  c collection to be checked for containment in this collection
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection contains all of the elements
+ *         in the specified collection
+ * @throws ClassCastException if the types of one or more elements
+ *         in the specified collection are incompatible with this
+ *         collection
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws NullPointerException if the specified collection contains one
+ *         or more null elements and this collection does not permit null
+ *         elements
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;),
+ *         or if the specified collection is null.
+ * @see    #contains(Object)
+ */
+boolean containsAll(Collection&lt;?&gt; c);
+
+/**
+ * Adds all of the elements in the specified collection to this collection
+ * (optional operation).  The behavior of this operation is undefined if
+ * the specified collection is modified while the operation is in progress.
+ * (This implies that the behavior of this call is undefined if the
+ * specified collection is this collection, and this collection is
+ * nonempty.)
+ *
+ * @param c collection containing elements to be added to this collection
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection changed as a result of the call
+ * @throws UnsupportedOperationException if the &lt;tt&gt;addAll&lt;/tt&gt; operation
+ *         is not supported by this collection
+ * @throws ClassCastException if the class of an element of the specified
+ *         collection prevents it from being added to this collection
+ * @throws NullPointerException if the specified collection contains a
+ *         null element and this collection does not permit null elements,
+ *         or if the specified collection is null
+ * @throws IllegalArgumentException if some property of an element of the
+ *         specified collection prevents it from being added to this
+ *         collection
+ * @throws IllegalStateException if not all the elements can be added at
+ *         this time due to insertion restrictions
+ * @see #add(Object)
+ */
+boolean addAll(Collection&lt;? extends E&gt; c);
+
+/**
+ * Removes all of this collection&apos;s elements that are also contained in the
+ * specified collection (optional operation).  After this call returns,
+ * this collection will contain no elements in common with the specified
+ * collection.
+ *
+ * @param c collection containing elements to be removed from this collection
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection changed as a result of the
+ *         call
+ * @throws UnsupportedOperationException if the &lt;tt&gt;removeAll&lt;/tt&gt; method
+ *         is not supported by this collection
+ * @throws ClassCastException if the types of one or more elements
+ *         in this collection are incompatible with the specified
+ *         collection
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws NullPointerException if this collection contains one or more
+ *         null elements and the specified collection does not support
+ *         null elements
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;),
+ *         or if the specified collection is null
+ * @see #remove(Object)
+ * @see #contains(Object)
+ */
+boolean removeAll(Collection&lt;?&gt; c);
+
+/**
+ * Retains only the elements in this collection that are contained in the
+ * specified collection (optional operation).  In other words, removes from
+ * this collection all of its elements that are not contained in the
+ * specified collection.
+ *
+ * @param c collection containing elements to be retained in this collection
+ * @return &lt;tt&gt;true&lt;/tt&gt; if this collection changed as a result of the call
+ * @throws UnsupportedOperationException if the &lt;tt&gt;retainAll&lt;/tt&gt; operation
+ *         is not supported by this collection
+ * @throws ClassCastException if the types of one or more elements
+ *         in this collection are incompatible with the specified
+ *         collection
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;)
+ * @throws NullPointerException if this collection contains one or more
+ *         null elements and the specified collection does not permit null
+ *         elements
+ *         (&lt;a href=&quot;#optional-restrictions&quot;&gt;optional&lt;/a&gt;),
+ *         or if the specified collection is null
+ * @see #remove(Object)
+ * @see #contains(Object)
+ */
+boolean retainAll(Collection&lt;?&gt; c);
+
+/**
+ * Removes all of the elements from this collection (optional operation).
+ * The collection will be empty after this method returns.
+ *
+ * @throws UnsupportedOperationException if the &lt;tt&gt;clear&lt;/tt&gt; operation
+ *         is not supported by this collection
+ */
+void clear();
+
+
+// Comparison and hashing
+
+/**
+ * Compares the specified object with this collection for equality. &lt;p&gt;
+ *
+ * While the &lt;tt&gt;Collection&lt;/tt&gt; interface adds no stipulations to the
+ * general contract for the &lt;tt&gt;Object.equals&lt;/tt&gt;, programmers who
+ * implement the &lt;tt&gt;Collection&lt;/tt&gt; interface &quot;directly&quot; (in other words,
+ * create a class that is a &lt;tt&gt;Collection&lt;/tt&gt; but is not a &lt;tt&gt;Set&lt;/tt&gt;
+ * or a &lt;tt&gt;List&lt;/tt&gt;) must exercise care if they choose to override the
+ * &lt;tt&gt;Object.equals&lt;/tt&gt;.  It is not necessary to do so, and the simplest
+ * course of action is to rely on &lt;tt&gt;Object&lt;/tt&gt;&apos;s implementation, but
+ * the implementor may wish to implement a &quot;value comparison&quot; in place of
+ * the default &quot;reference comparison.&quot;  (The &lt;tt&gt;List&lt;/tt&gt; and
+ * &lt;tt&gt;Set&lt;/tt&gt; interfaces mandate such value comparisons.)&lt;p&gt;
+ *
+ * The general contract for the &lt;tt&gt;Object.equals&lt;/tt&gt; method states that
+ * equals must be symmetric (in other words, &lt;tt&gt;a.equals(b)&lt;/tt&gt; if and
+ * only if &lt;tt&gt;b.equals(a)&lt;/tt&gt;).  The contracts for &lt;tt&gt;List.equals&lt;/tt&gt;
+ * and &lt;tt&gt;Set.equals&lt;/tt&gt; state that lists are only equal to other lists,
+ * and sets to other sets.  Thus, a custom &lt;tt&gt;equals&lt;/tt&gt; method for a
+ * collection class that implements neither the &lt;tt&gt;List&lt;/tt&gt; nor
+ * &lt;tt&gt;Set&lt;/tt&gt; interface must return &lt;tt&gt;false&lt;/tt&gt; when this collection
+ * is compared to any list or set.  (By the same logic, it is not possible
+ * to write a class that correctly implements both the &lt;tt&gt;Set&lt;/tt&gt; and
+ * &lt;tt&gt;List&lt;/tt&gt; interfaces.)
+ *
+ * @param o object to be compared for equality with this collection
+ * @return &lt;tt&gt;true&lt;/tt&gt; if the specified object is equal to this
+ * collection
+ *
+ * @see Object#equals(Object)
+ * @see Set#equals(Object)
+ * @see List#equals(Object)
+ */
+boolean equals(Object o);
+
+/**
+ * Returns the hash code value for this collection.  While the
+ * &lt;tt&gt;Collection&lt;/tt&gt; interface adds no stipulations to the general
+ * contract for the &lt;tt&gt;Object.hashCode&lt;/tt&gt; method, programmers should
+ * take note that any class that overrides the &lt;tt&gt;Object.equals&lt;/tt&gt;
+ * method must also override the &lt;tt&gt;Object.hashCode&lt;/tt&gt; method in order
+ * to satisfy the general contract for the &lt;tt&gt;Object.hashCode&lt;/tt&gt; method.
+ * In particular, &lt;tt&gt;c1.equals(c2)&lt;/tt&gt; implies that
+ * &lt;tt&gt;c1.hashCode()==c2.hashCode()&lt;/tt&gt;.
+ *
+ * @return the hash code value for this collection
+ *
+ * @see Object#hashCode()
+ * @see Object#equals(Object)
+ */
+int hashCode();
+</code></pre><p>}</p>
+<p>可以看到，Collection接口定义了一些基本操作的通用方法。</p>
+<h2 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h2><p>Collections作为工具类，定义了很多静态方法，</p>
+<pre><code>sort()                        // 排序
+binarySearch()                // 二分查找
+reverse()                    // 反转
+unmodifiableCollection()    // 不可修改
+synchronizedCollection()    // 同步
+singleton()                    // 单例
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/distribute-transaction/" rel="next" title="java分布式事务">
+                <i class="fa fa-chevron-left"></i> java分布式事务
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/10/java-comparator/" rel="prev" title="java集合Comparator和Comparable">
+                java集合Comparator和Comparable <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wanchao</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">151</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collections"><span class="nav-number">2.</span> <span class="nav-text">Collections</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanchao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total: </span>
+    
+    <span title="Symbols count total"></span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    
+    <span title="Reading time total"></span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
