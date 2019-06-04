@@ -38,6 +38,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 
@@ -75,7 +79,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -106,7 +110,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png">
 <meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config2.png">
-<meta property="og:updated_time" content="2019-06-04T16:25:53.243Z">
+<meta property="og:updated_time" content="2019-06-04T16:38:05.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis配置文件解析(二)">
 <meta name="twitter:description" content="MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置">
@@ -436,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-05 00:25:53" itemprop="dateModified" datetime="2019-06-05T00:25:53+08:00">2019-06-05</time>
+                <time title="Modified: 2019-06-05 00:38:05" itemprop="dateModified" datetime="2019-06-05T00:38:05+08:00">2019-06-05</time>
               
             
           </span>
@@ -529,44 +533,21 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mybatis.config：mybatis-config.xml配置文件的路径</span><br><span class="line">mybatis.typeHandlersPackage：扫描typeHandlers的包</span><br><span class="line">mybatis.checkConfigLocation：检查配置文件是否存在</span><br><span class="line">mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE</span><br><span class="line">mybatis.mapper-locations=<span class="keyword">classpath</span>:<span class="regexp">/mybatis/</span>*Mapper.xml <span class="comment">//2</span></span><br><span class="line">mybatis.type-aliases-<span class="keyword">package</span>=tk.mapper.model</span><br></pre></td></tr></table></figure>
 <h2 id="mybatis-–-spring"><a href="#mybatis-–-spring" class="headerlink" title="mybatis – spring"></a>mybatis – spring</h2><p>创建@Configuration MyBatisConfig配置类，</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ol>
-<li><p>configLocation</p>
-<p> 指定mybatis-config核心配置文件的路径</p>
-</li>
+<li>configLocation<br> 指定mybatis-config核心配置文件的路径</li>
 <li>objectFactory  DefaultObjectFactory</li>
 <li>objectWrapperFactory DefaultObjectWrapperFactory</li>
-<li><p>vfs</p>
-<p> 用来读取服务器相关资源，并加载相关的类</p>
+<li>vfs<br> 用来读取服务器相关资源，并加载相关的类</li>
+<li>typeAliasesPackage<br> 给整个包起一个别名，</li>
+<li>typeAliases<br> 设置别名，</li>
+<li>Plugins<br> 插件，用于sql执行过程中对方法对拦截调用。常见的几种插件：<br> · Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)<br> · ParameterHandler (getParameterObject, setParameters)<br> · ResultSetHandler (handleResultSets, handleOutputParameters)<br> · StatementHandler (prepare, parameterize, batch, update, query)</li>
+<li>typeHandlersPackage、typeHandlers<br> 类型转换器，用于Javabean和数据库类型之间的转换</li>
+<li>databaseIdProvider<br> 用于多数据源切换</li>
+<li>Cache<br>扩展MyBatis Cache接口，自定义缓存</li>
+<li><p>xmlConfigBuilder</p>
 </li>
-<li><p>typeAliasesPackage </p>
-<p> 给整个包起一个别名，</p>
+<li><p>transactionFactory<br>没有自定义事务时，默认使用Spring的事务</p>
 </li>
-<li><p>typeAliases</p>
-<p> 设置别名，</p>
-</li>
-<li><p>Plugins</p>
-<p> 插件，用于sql执行过程中对方法对拦截调用。常见的几种插件：<br> · Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</p>
-<p> · ParameterHandler (getParameterObject, setParameters)</p>
-<p> · ResultSetHandler (handleResultSets, handleOutputParameters)</p>
-<p> · StatementHandler (prepare, parameterize, batch, update, query)</p>
-</li>
-<li><p>typeHandlersPackage、typeHandlers</p>
-<p> 类型转换器，用于Javabean和数据库类型之间的转换</p>
-</li>
-<li><p>databaseIdProvider</p>
-<p> 用于多数据源切换</p>
-</li>
-<li><p>Cache</p>
-<p>扩展MyBatis Cache接口，自定义缓存</p>
-</li>
-<li>xmlConfigBuilder</li>
-</ol>
-<ol start="12">
-<li><p>transactionFactory</p>
-<p>没有自定义事务时，默认使用Spring的事务</p>
-</li>
-<li><p>mapperLocations</p>
-<p>Mapper.xml文件的扫描路径</p>
-</li>
+<li>mapperLocations<br>Mapper.xml文件的扫描路径</li>
 </ol>
 <h2 id="Mapper配置过程源码分析"><a href="#Mapper配置过程源码分析" class="headerlink" title="Mapper配置过程源码分析"></a>Mapper配置过程源码分析</h2><p>mapper.xml的初始化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png" alt="图1"></p>
 <p>mapper实例化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config2.png" alt="图2"></p>
@@ -606,8 +587,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/java-jvm/" rel="next" title="Java虚拟机">
-                <i class="fa fa-chevron-left"></i> Java虚拟机
+              <a href="/2018/09/28/algorithms-quicksort/" rel="next" title="快排">
+                <i class="fa fa-chevron-left"></i> 快排
               </a>
             
           </div>
@@ -1126,6 +1107,8 @@
 
 
 
+  
+
 
 
 
@@ -1148,6 +1131,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   

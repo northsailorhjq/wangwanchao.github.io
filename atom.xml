@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-04T16:14:17.812Z</updated>
+  <updated>2019-06-04T16:42:43.138Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://wangwanchao.wang/2019/06/04/mybatis-base/"/>
     <id>http://wangwanchao.wang/2019/06/04/mybatis-base/</id>
     <published>2019-06-04T12:30:05.000Z</published>
-    <updated>2019-06-04T16:14:17.812Z</updated>
+    <updated>2019-06-04T16:42:43.138Z</updated>
     
-    <content type="html"><![CDATA[<p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p><a id="more"></a><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png" alt="图1"></p><p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p><h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png" alt="图2"></p>]]></content>
+    <content type="html"><![CDATA[<p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p><a id="more"></a><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p><p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png"></p><p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p><h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p><p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png"></p>]]></content>
     
     <summary type="html">
     

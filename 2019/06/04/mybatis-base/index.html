@@ -38,6 +38,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 
@@ -75,7 +79,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -106,7 +110,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png">
 <meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png">
-<meta property="og:updated_time" content="2019-06-04T16:14:17.812Z">
+<meta property="og:updated_time" content="2019-06-04T16:42:43.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis概览(一)">
 <meta name="twitter:description" content="终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。">
@@ -436,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-05 00:14:17" itemprop="dateModified" datetime="2019-06-05T00:14:17+08:00">2019-06-05</time>
+                <time title="Modified: 2019-06-05 00:42:43" itemprop="dateModified" datetime="2019-06-05T00:42:43+08:00">2019-06-05</time>
               
             
           </span>
@@ -508,10 +512,10 @@
         <p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p>
 <a id="more"></a>
 <h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p>
-<p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png" alt="图1"></p>
+<p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png"></p>
 <p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p>
 <h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p>
-<p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png" alt="图2"></p>
+<p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png"></p>
 
       
     </div>
@@ -1064,6 +1068,8 @@
 
 
 
+  
+
 
 
 
@@ -1086,6 +1092,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   

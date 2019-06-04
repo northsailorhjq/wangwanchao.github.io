@@ -38,6 +38,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 
@@ -75,7 +79,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -368,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/09/28/algorithms-quicksort/">
+    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/09/28/architecture-base/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanchao">
@@ -388,7 +392,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/09/28/algorithms-quicksort/" class="post-title-link" itemprop="url">快排</a>
+                <a href="/2018/09/28/architecture-base/" class="post-title-link" itemprop="url">架构基础</a>
               
             
           </h1>
@@ -448,7 +452,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Architect/" itemprop="url" rel="index"><span itemprop="name">Architect</span></a></span>
 
                 
                 
@@ -477,7 +481,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.9k</span>
+                <span title="Symbols count in article">715</span>
               
 
               
@@ -491,7 +495,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -512,11 +516,16 @@
 
       
         
+          <p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p>
+          <!--noindex-->
           
-            <h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">	arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">	quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">	for v := range arr &#123;</span><br><span class="line">		fmt.Println(arr[v])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">	i := low</span><br><span class="line">	j := high</span><br><span class="line">	base := a[low]</span><br><span class="line"></span><br><span class="line">	for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">		for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">			j--</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if i &lt; j &#123;</span><br><span class="line">			temp := a[j]</span><br><span class="line">			a[j] = a[i]</span><br><span class="line">			a[i] = temp</span><br><span class="line">			i++</span><br><span class="line"></span><br><span class="line">			for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">				i++</span><br><span class="line">			&#125;</span><br><span class="line">			if i &lt; j &#123;</span><br><span class="line">				temp2 := a[i]</span><br><span class="line">				a[i] = a[j]</span><br><span class="line">				a[j] = temp2</span><br><span class="line">				j--</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	a[i] = base</span><br><span class="line"></span><br><span class="line">	if low &lt; i-1 &#123;</span><br><span class="line">		quick_sort(a, low, i-1)</span><br><span class="line">	&#125;</span><br><span class="line">	if j+1 &lt; high &#123;</span><br><span class="line">		quick_sort(a, j+1, high)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/28/architecture-base/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -571,7 +580,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/09/28/mysql-index/">
+    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/09/28/csapp-vm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanchao">
@@ -591,7 +600,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/09/28/mysql-index/" class="post-title-link" itemprop="url">MySQL索引</a>
+                <a href="/2018/09/28/csapp-vm/" class="post-title-link" itemprop="url">深入理解计算机系统--内存</a>
               
             
           </h1>
@@ -634,7 +643,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-26 17:39:18" itemprop="dateModified" datetime="2018-11-26T17:39:18+08:00">2018-11-26</time>
+                <time title="Modified: 2019-05-29 23:32:10" itemprop="dateModified" datetime="2019-05-29T23:32:10+08:00">2019-05-29</time>
               
             
           </span>
@@ -651,7 +660,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSAPP/" itemprop="url" rel="index"><span itemprop="name">CSAPP</span></a></span>
 
                 
                 
@@ -680,7 +689,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">283</span>
+                <span title="Symbols count in article">103</span>
               
 
               
@@ -715,24 +724,11 @@
 
       
         
-          <h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol>
-<li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p>
-<p> B-Tree的限制：</p>
-<blockquote>
-<p>如果不是按照索引的最左列开始查找，则无法使用索引</p>
-<p>不能跳过索引中的列</p>
-<p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p>
-</blockquote>
-</li>
-<li><p>哈希索引</p>
-</li>
-<li>空间数据索引(R-Tree)</li>
-<li>全文索引</li>
-</ol>
+          <p>内存管理</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2018/09/28/mysql-index/#more" rel="contents">
+              <a class="btn" href="/2018/09/28/csapp-vm/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2762,6 +2758,8 @@
 
 
 
+  
+
 
 
 
@@ -2784,6 +2782,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   
