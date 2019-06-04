@@ -96,18 +96,21 @@
 
 
 
-  <meta name="description" content="springboot整合mybatis有不同的方式： mybatis – spring-boot-starter通过properties/yml配置 123456mybatis.config：mybatis-config.xml配置文件的路径mybatis.typeHandlersPackage：扫描typeHandlers的包mybatis.checkConfigLocation：检查配置文件是">
-<meta name="keywords" content="mybatis">
+  <meta name="description" content="MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置">
+<meta name="keywords" content="MyBatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis配置文件解析">
+<meta property="og:title" content="MyBatis配置文件解析(二)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/30/mybatis-config/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="springboot整合mybatis有不同的方式： mybatis – spring-boot-starter通过properties/yml配置 123456mybatis.config：mybatis-config.xml配置文件的路径mybatis.typeHandlersPackage：扫描typeHandlers的包mybatis.checkConfigLocation：检查配置文件是">
+<meta property="og:description" content="MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-30T13:54:57.754Z">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config2.png">
+<meta property="og:updated_time" content="2019-06-04T16:25:53.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis配置文件解析">
-<meta name="twitter:description" content="springboot整合mybatis有不同的方式： mybatis – spring-boot-starter通过properties/yml配置 123456mybatis.config：mybatis-config.xml配置文件的路径mybatis.typeHandlersPackage：扫描typeHandlers的包mybatis.checkConfigLocation：检查配置文件是">
+<meta name="twitter:title" content="MyBatis配置文件解析(二)">
+<meta name="twitter:description" content="MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置">
+<meta name="twitter:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png">
 
 
 
@@ -127,7 +130,7 @@
   };
 </script>
 
-  <title>MyBatis配置文件解析 | Wangsir's Blog</title>
+  <title>MyBatis配置文件解析(二) | Wangsir's Blog</title>
   
 
 
@@ -389,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis配置文件解析
+          <h1 class="post-title" itemprop="name headline">MyBatis配置文件解析(二)
 
               
             
@@ -416,12 +419,24 @@
                 
               
 
-              <time title="Created: 2018-09-30 18:54:41 / Modified: 21:54:57" itemprop="dateCreated datePublished" datetime="2018-09-30T18:54:41+08:00">2018-09-30</time>
+              <time title="Created: 2018-09-30 18:54:41" itemprop="dateCreated datePublished" datetime="2018-09-30T18:54:41+08:00">2018-09-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-05 00:25:53" itemprop="dateModified" datetime="2019-06-05T00:25:53+08:00">2019-06-05</time>
               
             
           </span>
@@ -438,7 +453,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a></span>
 
                 
                 
@@ -508,8 +523,9 @@
       
 
       
-        <p>springboot整合mybatis有不同的方式：</p>
-<h2 id="mybatis-–-spring-boot-starter"><a href="#mybatis-–-spring-boot-starter" class="headerlink" title="mybatis – spring-boot-starter"></a>mybatis – spring-boot-starter</h2><p>通过properties/yml配置</p>
+        <p>MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置</p>
+<a id="more"></a>
+<h2 id="mybatis-–-spring-boot-starter"><a href="#mybatis-–-spring-boot-starter" class="headerlink" title="mybatis – spring-boot-starter"></a>mybatis – spring-boot-starter</h2><p>1、通过properties/yml配置</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mybatis.config：mybatis-config.xml配置文件的路径</span><br><span class="line">mybatis.typeHandlersPackage：扫描typeHandlers的包</span><br><span class="line">mybatis.checkConfigLocation：检查配置文件是否存在</span><br><span class="line">mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE</span><br><span class="line">mybatis.mapper-locations=<span class="keyword">classpath</span>:<span class="regexp">/mybatis/</span>*Mapper.xml <span class="comment">//2</span></span><br><span class="line">mybatis.type-aliases-<span class="keyword">package</span>=tk.mapper.model</span><br></pre></td></tr></table></figure>
 <h2 id="mybatis-–-spring"><a href="#mybatis-–-spring" class="headerlink" title="mybatis – spring"></a>mybatis – spring</h2><p>创建@Configuration MyBatisConfig配置类，</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ol>
@@ -552,6 +568,8 @@
 <p>Mapper.xml文件的扫描路径</p>
 </li>
 </ol>
+<h2 id="Mapper配置过程源码分析"><a href="#Mapper配置过程源码分析" class="headerlink" title="Mapper配置过程源码分析"></a>Mapper配置过程源码分析</h2><p>mapper.xml的初始化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png" alt="图1"></p>
+<p>mapper实例化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config2.png" alt="图2"></p>
 
       
     </div>
@@ -575,7 +593,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mybatis/" rel="tag"><i class="fa fa-tag"></i> mybatis</a>
+            <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
           
         </div>
       
@@ -588,8 +606,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/csapp-vm/" rel="next" title="深入理解计算机系统--内存">
-                <i class="fa fa-chevron-left"></i> 深入理解计算机系统--内存
+              <a href="/2018/09/28/java-jvm/" rel="next" title="Java虚拟机">
+                <i class="fa fa-chevron-left"></i> Java虚拟机
               </a>
             
           </div>
@@ -598,8 +616,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/30/mybatis-core/" rel="prev" title="mybatis核心代码分析">
-                mybatis核心代码分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/09/architecture-framework/" rel="prev" title="技术框架选型">
+                技术框架选型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -669,7 +687,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">151</span>
+                    <span class="site-state-item-count">158</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -972,7 +990,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-–-spring-boot-starter"><span class="nav-number">1.</span> <span class="nav-text">mybatis – spring-boot-starter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-–-spring"><span class="nav-number">2.</span> <span class="nav-text">mybatis – spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.1.</span> <span class="nav-text">属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-–-spring-boot-starter"><span class="nav-number">1.</span> <span class="nav-text">mybatis – spring-boot-starter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-–-spring"><span class="nav-number">2.</span> <span class="nav-text">mybatis – spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.1.</span> <span class="nav-text">属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapper配置过程源码分析"><span class="nav-number">3.</span> <span class="nav-text">Mapper配置过程源码分析</span></a></li></ol></div>
             
 
           </div>
@@ -1007,7 +1025,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">179k</span>
   
 
   
@@ -1018,7 +1036,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">2:43</span>
   
 </div>
 

@@ -4,6 +4,146 @@
   
     
     <entry>
+      <title>MyBatis概览(一)</title>
+      <link href="/2019/06/04/mybatis-base/"/>
+      <url>/2019/06/04/mybatis-base/</url>
+      
+        <content type="html"><![CDATA[<p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p><a id="more"></a><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png" alt="图1"></p><p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p><h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png" alt="图2"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MyBatis缓存(三)</title>
+      <link href="/2019/06/04/mybatis-cache/"/>
+      <url>/2019/06/04/mybatis-cache/</url>
+      
+        <content type="html"><![CDATA[<p>mybatis分为一级缓存、二级缓存</p><a id="more"></a>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MyBatis中的事务管理(五)</title>
+      <link href="/2019/06/04/mybatis-transaction/"/>
+      <url>/2019/06/04/mybatis-transaction/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务--服务编排</title>
+      <link href="/2019/06/03/servicemesh-serverless/"/>
+      <url>/2019/06/03/servicemesh-serverless/</url>
+      
+        <content type="html"><![CDATA[<p>服务编排</p><a id="more"></a><h2 id="Dubbo-SpringCloud"><a href="#Dubbo-SpringCloud" class="headerlink" title="Dubbo/SpringCloud"></a>Dubbo/SpringCloud</h2><h2 id="ServiceMesh"><a href="#ServiceMesh" class="headerlink" title="ServiceMesh"></a>ServiceMesh</h2><p>服务网格</p><p>Linkerd/Envoy</p><p>Istio</p><h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><p>无服务器架构</p><p>Knative</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Maven依赖冲突问题</title>
+      <link href="/2019/06/03/maven-conflict/"/>
+      <url>/2019/06/03/maven-conflict/</url>
+      
+        <content type="html"><![CDATA[<p>maven依赖冲突</p><a id="more"></a><h3 id="冲突分类："><a href="#冲突分类：" class="headerlink" title="冲突分类："></a>冲突分类：</h3><p>第一类Jar包问题：依赖的同一个Jar出现不同的版本。<br>第二类Jar包问题：同样的类Class出现在多个不同的Jar包中。</p><h3 id="冲突原因："><a href="#冲突原因：" class="headerlink" title="冲突原因："></a>冲突原因：</h3><p>maven的依赖机制：<br>优先按照依赖管理<dependencymanagement>元素中指定的版本声明进行仲裁，此时下面的两个原则都无效了<br>若无版本声明，则按照“短路径优先”的原则（Maven2.0）进行仲裁，即选择依赖树中路径最短的版本<br>若路径长度一致，则按照“第一声明优先”的原则进行仲裁，即选择POM中最先声明的版本</dependencymanagement></p><h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><h4 id="1、依赖管理"><a href="#1、依赖管理" class="headerlink" title="1、依赖管理"></a>1、依赖管理</h4><p>针对第一类冲突<br>方法1）通过<excludes>排除传递依赖<br>方法2）使用<dependencymanagement>对依赖包统一版本管理</dependencymanagement></excludes></p><h3 id="2、冲突检测插件"><a href="#2、冲突检测插件" class="headerlink" title="2、冲突检测插件"></a>2、冲突检测插件</h3><p>针对第二类冲突<br>maven-enforcer-plugin插件 + extra-enforcer-rules工具，注意：应用在子模块上，</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>断路器hystrix</title>
+      <link href="/2019/06/03/architecture-hystrix/"/>
+      <url>/2019/06/03/architecture-hystrix/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--异常控制流</title>
+      <link href="/2019/06/01/csapp-exception/"/>
+      <url>/2019/06/01/csapp-exception/</url>
+      
+        <content type="html"><![CDATA[<p>异常</p><a id="more"></a><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>异常控制流：现代系统通过使控制流发生突变来对这些情况做出反应，这些突变称为异常控制流。</p><p>异常：控制流中的突变。一部分由硬件实现，一部分由操作系统实现。</p><p>异常号：系统中可能的每种类型的异常都分配了一个唯一的非负整数，称为异常号。</p><blockquote><p>其中一些异常号由CPU设计中分配。例如：被零除、缺页、内存访问违例、断点、算术运算溢出<br>其它号码由操作系统内核的设计者分配。例如：系统调用、来自外部I/O设备的信号</p></blockquote><p>异常表：系统启动时，分配和初始化一张跳转表，称为异常表。表中维护了异常号-异常处理程序地址的关系。异常表的起始地址放在一个‘异常表基址寄存器’的特殊CPU寄存器内。</p><h3 id="异常种类"><a href="#异常种类" class="headerlink" title="异常种类"></a>异常种类</h3><table><thead><tr><th>类别</th><th style="text-align:center">原因</th><th style="text-align:center">异步/同步</th><th style="text-align:center">返回行为</th></tr></thead><tbody><tr><td>中断</td><td style="text-align:center">来自I/O设备的信号</td><td style="text-align:center">异步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>陷阱</td><td style="text-align:center">有意的异常。</td><td style="text-align:center">同步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>故障</td><td style="text-align:center">潜在的可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">可能返回到当前指令</td></tr><tr><td>终止</td><td style="text-align:center">不可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">不会返回</td></tr></tbody></table><h4 id="故障指令"><a href="#故障指令" class="headerlink" title="故障指令"></a>故障指令</h4><p>陷阱(系统调用)：普通程序运行在<code>用户模式</code>，系统调用运行在<code></code>内核模式<code>，系统为用户提供了特殊的</code>syscall n`指令，用户进行系统调用时进入陷阱模式。</p><p>故障：故障是由错误引起的，如果错误可以被修复，则将控制返回到引起故障的指令；如果不可修复，则返回到内核中的abort例程，abort例程会终止引起故障的应用程序。</p><p>终止：由不可恢复的致命错误引起，通常是一些硬件错误。</p><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="逻辑控制流"><a href="#逻辑控制流" class="headerlink" title="逻辑控制流"></a>逻辑控制流</h3><p>并发流：并发流的思想与流运行的CPU核数、计算机数无关。</p><p>并行流：</p><h3 id="私有地址空间"><a href="#私有地址空间" class="headerlink" title="私有地址空间"></a>私有地址空间</h3><p>进程间内存空间私有</p><h3 id="用户模式和内核模式"><a href="#用户模式和内核模式" class="headerlink" title="用户模式和内核模式"></a>用户模式和内核模式</h3><p>模式位：CPU通过设置某个寄存器的模式位，指定进程处于内核模式。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--CPU</title>
+      <link href="/2019/06/01/csapp-cpu/"/>
+      <url>/2019/06/01/csapp-cpu/</url>
+      
+        <content type="html"><![CDATA[<p>决定计算机性能的3个关键因素：</p><blockquote><p>指令数目 (编译器和指令集决定)<br>时钟周期长度 (CPU决定)<br>每条指令所需要的时钟周期数 (CPU决定)</p></blockquote><a id="more"></a><h2 id="数据通路"><a href="#数据通路" class="headerlink" title="数据通路"></a>数据通路</h2><h3 id="1-组合单元："><a href="#1-组合单元：" class="headerlink" title="1. 组合单元："></a>1. 组合单元：</h3><h3 id="2-状态单元："><a href="#2-状态单元：" class="headerlink" title="2. 状态单元："></a>2. 状态单元：</h3><p>两个输入 + 一个输出<br>    输入：<br>    写入单元的数据值<br>    决定何时写入的时钟信号</p><p>时钟方法：规定信号可以独处和写入的时间<br>    边沿触发的时钟</p><p>寄存器堆：寄存器集合，存放32个通用寄存器<br>    R型指令：<code>add $t1, $t2, $t3</code></p><h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><p>指令执行顺序：<br>取指<br>译码<br>执行<br>访存<br>写回<br>更新PC</p><h3 id="流水线冒险"><a href="#流水线冒险" class="headerlink" title="流水线冒险"></a>流水线冒险</h3><ol><li><p>结构冒险</p></li><li><p>数据冒险</p></li><li><p>控制冒险(分支冒险)：</p><p> 解决方法：</p><blockquote><p>阻塞<br>预测<br>延迟决定</p></blockquote></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>talk-in-wangxiaobo</title>
       <link href="/2019/05/31/talk-in-wangxiaobo/"/>
       <url>/2019/05/31/talk-in-wangxiaobo/</url>
@@ -30,11 +170,11 @@
     
     
     <entry>
-      <title>csapp-instructions</title>
+      <title>深入理解计算机系统--指令集</title>
       <link href="/2019/05/31/csapp-instructions/"/>
       <url>/2019/05/31/csapp-instructions/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>MIPS的2种实现方式：</p>]]></content>
       
       
       
@@ -81,7 +221,7 @@
     
     
     <entry>
-      <title>CSAPP概览</title>
+      <title>深入理解计算机系统--概览</title>
       <link href="/2019/05/29/csapp-base/"/>
       <url>/2019/05/29/csapp-base/</url>
       
@@ -507,11 +647,11 @@
     
     
     <entry>
-      <title>Tomcat</title>
+      <title>Tomcat--概览</title>
       <link href="/2019/01/03/tomcat-base/"/>
       <url>/2019/01/03/tomcat-base/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>Tomcat作为常见的Servlet容器，我接触的从最初的SSH/SSM架构，Tomcat需要单独维护，到SpringBoot的嵌入式容器。</p><a id="more"></a><h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><h3 id="Connector-amp-Container"><a href="#Connector-amp-Container" class="headerlink" title="Connector &amp; Container"></a>Connector &amp; Container</h3><h4 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h4><p>负责处理Service的请求，Connector作为中间媒介</p><h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>表示一个虚拟主机，每个虚拟主机和一个网络域名对应</p><h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><p>每个Context对应一个Web应用</p><p>Wrapper：代表一个Servlet，使用门面设计模式</p><p>Connector有两种：可以在server.xml中看到配置<br>1) 监听8080端口<br>2) 监听8009端口</p><h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>1、</p><p>3、并行类加载</p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="独立容器"><a href="#独立容器" class="headerlink" title="独立容器"></a>独立容器</h3><p>1、日志乱码问题</p><h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p>1、URL路径转义问题</p>]]></content>
       
       
       
@@ -539,11 +679,11 @@
     
     
     <entry>
-      <title>java中范型</title>
-      <link href="/2018/12/26/java-enum/"/>
-      <url>/2018/12/26/java-enum/</url>
+      <title>java--范型</title>
+      <link href="/2018/12/26/java-pattern/"/>
+      <url>/2018/12/26/java-pattern/</url>
       
-        <content type="html"><![CDATA[<p>范型是一种语法糖，</p><a id="more"></a><h3 id="范型擦除"><a href="#范型擦除" class="headerlink" title="范型擦除"></a>范型擦除</h3><h3 id="范型标识"><a href="#范型标识" class="headerlink" title="范型标识"></a>范型标识</h3><ol><li>E - Element (在集合中使用，因为集合中存放的是元素)，E是对各方法中的泛型类型进行限制，以保证同一个对象调用不同的方法时，操作的类型必定是相同的。E可以用其它任意字母代替</li><li>T - Type（Java 类），T代表在调用时的指定类型。会进行类型推断</li><li>K - Key（键）</li><li>V - Value（值）</li><li>N - Number（数值类型）</li><li>？ -  表示不确定的java类型，是类型通配符，代表所有类型。？不会进行类型推断</li></ol><h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>&lt;?&gt;</p><p>&lt;? extends T&gt;</p><p>&lt;? super T&gt;</p><h3 id="范型数组"><a href="#范型数组" class="headerlink" title="范型数组"></a>范型数组</h3>]]></content>
+        <content type="html"><![CDATA[<p>范型是一种语法糖，</p><a id="more"></a><h3 id="范型擦除"><a href="#范型擦除" class="headerlink" title="范型擦除"></a>范型擦除</h3><p>范型只在编译阶段有效，在生成字节码后类型会被擦除。范型可以用在范型类、范型接口、范型方法</p><h3 id="范型标识"><a href="#范型标识" class="headerlink" title="范型标识"></a>范型标识</h3><ol><li>E - Element (在集合中使用，因为集合中存放的是元素)，E是对各方法中的泛型类型进行限制，以保证同一个对象调用不同的方法时，操作的类型必定是相同的。E可以用其它任意字母代替</li><li>T - Type（Java 类），T代表在调用时的指定类型。会进行类型推断</li><li>K - Key（键）</li><li>V - Value（值）</li><li>N - Number（数值类型）</li><li>？ -  表示不确定的java类型，是类型通配符，代表所有类型。？不会进行类型推断</li></ol><h3 id="通配符，范型上下边界"><a href="#通配符，范型上下边界" class="headerlink" title="通配符，范型上下边界"></a>通配符，范型上下边界</h3><p>&lt;?&gt;</p><p>&lt;? extends T&gt;</p><p>&lt;? super T&gt;</p><h3 id="范型数组"><a href="#范型数组" class="headerlink" title="范型数组"></a>范型数组</h3><p>注意：<strong> 不能创建一个确定类型的范型数组 </strong></p><p>例如：<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;[] ls = <span class="keyword">new</span> ArrayList&lt;<span class="built_in">String</span>&gt;[<span class="number">10</span>];  <span class="comment">// 错误</span></span><br><span class="line"><span class="built_in">List</span>&lt;?&gt;[] ls = <span class="keyword">new</span> ArrayList&lt;?&gt;[<span class="number">10</span>];  <span class="comment">// 正确</span></span><br><span class="line"><span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;[] ls = <span class="keyword">new</span> ArrayList[<span class="number">10</span>];  <span class="comment">// 正确</span></span><br></pre></td></tr></table></figure></p><h3 id="静态方法和范型"><a href="#静态方法和范型" class="headerlink" title="静态方法和范型"></a>静态方法和范型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -596,13 +736,19 @@
     
     
     <entry>
-      <title>mybatis-sql</title>
+      <title>MyBatis中sql的解析过程(四)</title>
       <link href="/2018/12/25/mybatis-sql/"/>
       <url>/2018/12/25/mybatis-sql/</url>
       
         <content type="html"><![CDATA[]]></content>
       
       
+      
+        <tags>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
       
     </entry>
     
@@ -613,7 +759,7 @@
       <link href="/2018/12/25/maven-plugin/"/>
       <url>/2018/12/25/maven-plugin/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>开发Maven插件，原来做过，但是今天看，竟然没有留下记录，以后新东西必须强迫自己写博客！！！</p><a id="more"></a>]]></content>
       
       
       
@@ -1398,23 +1544,23 @@
     
     
     <entry>
-      <title>mybatis核心代码分析</title>
-      <link href="/2018/09/30/mybatis-core/"/>
-      <url>/2018/09/30/mybatis-core/</url>
+      <title>MyBatis配置文件解析(二)</title>
+      <link href="/2018/09/30/mybatis-config/"/>
+      <url>/2018/09/30/mybatis-config/</url>
       
-        <content type="html"><![CDATA[<p>MapperScannerConfigurer</p>]]></content>
+        <content type="html"><![CDATA[<p>MyBatis实例化过程实质上还是Spring加载bean的过程，配置方式有不同的方案：1)xml配置 2)注解配置</p><a id="more"></a><h2 id="mybatis-–-spring-boot-starter"><a href="#mybatis-–-spring-boot-starter" class="headerlink" title="mybatis – spring-boot-starter"></a>mybatis – spring-boot-starter</h2><p>1、通过properties/yml配置</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mybatis.config：mybatis-config.xml配置文件的路径</span><br><span class="line">mybatis.typeHandlersPackage：扫描typeHandlers的包</span><br><span class="line">mybatis.checkConfigLocation：检查配置文件是否存在</span><br><span class="line">mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE</span><br><span class="line">mybatis.mapper-locations=<span class="keyword">classpath</span>:<span class="regexp">/mybatis/</span>*Mapper.xml <span class="comment">//2</span></span><br><span class="line">mybatis.type-aliases-<span class="keyword">package</span>=tk.mapper.model</span><br></pre></td></tr></table></figure><h2 id="mybatis-–-spring"><a href="#mybatis-–-spring" class="headerlink" title="mybatis – spring"></a>mybatis – spring</h2><p>创建@Configuration MyBatisConfig配置类，</p><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ol><li><p>configLocation</p><p> 指定mybatis-config核心配置文件的路径</p></li><li>objectFactory  DefaultObjectFactory</li><li>objectWrapperFactory DefaultObjectWrapperFactory</li><li><p>vfs</p><p> 用来读取服务器相关资源，并加载相关的类</p></li><li><p>typeAliasesPackage </p><p> 给整个包起一个别名，</p></li><li><p>typeAliases</p><p> 设置别名，</p></li><li><p>Plugins</p><p> 插件，用于sql执行过程中对方法对拦截调用。常见的几种插件：<br> · Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</p><p> · ParameterHandler (getParameterObject, setParameters)</p><p> · ResultSetHandler (handleResultSets, handleOutputParameters)</p><p> · StatementHandler (prepare, parameterize, batch, update, query)</p></li><li><p>typeHandlersPackage、typeHandlers</p><p> 类型转换器，用于Javabean和数据库类型之间的转换</p></li><li><p>databaseIdProvider</p><p> 用于多数据源切换</p></li><li><p>Cache</p><p>扩展MyBatis Cache接口，自定义缓存</p></li><li>xmlConfigBuilder</li></ol><ol start="12"><li><p>transactionFactory</p><p>没有自定义事务时，默认使用Spring的事务</p></li><li><p>mapperLocations</p><p>Mapper.xml文件的扫描路径</p></li></ol><h2 id="Mapper配置过程源码分析"><a href="#Mapper配置过程源码分析" class="headerlink" title="Mapper配置过程源码分析"></a>Mapper配置过程源码分析</h2><p>mapper.xml的初始化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config1.png" alt="图1"></p><p>mapper实例化过程：<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-config2.png" alt="图2"></p>]]></content>
       
       
       <categories>
           
-          <category> mybatis </category>
+          <category> MyBatis </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> mybatis </tag>
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -1423,23 +1569,48 @@
     
     
     <entry>
-      <title>MyBatis配置文件解析</title>
-      <link href="/2018/09/30/mybatis-config/"/>
-      <url>/2018/09/30/mybatis-config/</url>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
       
-        <content type="html"><![CDATA[<p>springboot整合mybatis有不同的方式：</p><h2 id="mybatis-–-spring-boot-starter"><a href="#mybatis-–-spring-boot-starter" class="headerlink" title="mybatis – spring-boot-starter"></a>mybatis – spring-boot-starter</h2><p>通过properties/yml配置</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mybatis.config：mybatis-config.xml配置文件的路径</span><br><span class="line">mybatis.typeHandlersPackage：扫描typeHandlers的包</span><br><span class="line">mybatis.checkConfigLocation：检查配置文件是否存在</span><br><span class="line">mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE</span><br><span class="line">mybatis.mapper-locations=<span class="keyword">classpath</span>:<span class="regexp">/mybatis/</span>*Mapper.xml <span class="comment">//2</span></span><br><span class="line">mybatis.type-aliases-<span class="keyword">package</span>=tk.mapper.model</span><br></pre></td></tr></table></figure><h2 id="mybatis-–-spring"><a href="#mybatis-–-spring" class="headerlink" title="mybatis – spring"></a>mybatis – spring</h2><p>创建@Configuration MyBatisConfig配置类，</p><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ol><li><p>configLocation</p><p> 指定mybatis-config核心配置文件的路径</p></li><li>objectFactory  DefaultObjectFactory</li><li>objectWrapperFactory DefaultObjectWrapperFactory</li><li><p>vfs</p><p> 用来读取服务器相关资源，并加载相关的类</p></li><li><p>typeAliasesPackage </p><p> 给整个包起一个别名，</p></li><li><p>typeAliases</p><p> 设置别名，</p></li><li><p>Plugins</p><p> 插件，用于sql执行过程中对方法对拦截调用。常见的几种插件：<br> · Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</p><p> · ParameterHandler (getParameterObject, setParameters)</p><p> · ResultSetHandler (handleResultSets, handleOutputParameters)</p><p> · StatementHandler (prepare, parameterize, batch, update, query)</p></li><li><p>typeHandlersPackage、typeHandlers</p><p> 类型转换器，用于Javabean和数据库类型之间的转换</p></li><li><p>databaseIdProvider</p><p> 用于多数据源切换</p></li><li><p>Cache</p><p>扩展MyBatis Cache接口，自定义缓存</p></li><li>xmlConfigBuilder</li></ol><ol start="12"><li><p>transactionFactory</p><p>没有自定义事务时，默认使用Spring的事务</p></li><li><p>mapperLocations</p><p>Mapper.xml文件的扫描路径</p></li></ol>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
           
-          <category> mybatis </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> mybatis </tag>
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--存储</title>
+      <link href="/2018/09/28/csapp-cache/"/>
+      <url>/2018/09/28/csapp-cache/</url>
+      
+        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -1498,98 +1669,23 @@
     
     
     <entry>
-      <title>架构基础</title>
-      <link href="/2018/09/28/architecture-base/"/>
-      <url>/2018/09/28/architecture-base/</url>
+      <title>快排</title>
+      <link href="/2018/09/28/algorithms-quicksort/"/>
+      <url>/2018/09/28/algorithms-quicksort/</url>
       
-        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> Architect </category>
+          <category> Algorithms </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Architect </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--存储</title>
-      <link href="/2018/09/28/csapp-memory/"/>
-      <url>/2018/09/28/csapp-memory/</url>
-      
-        <content type="html"><![CDATA[<ol><li><p>静态RAM</p></li><li><p>动态RAM</p></li><li><p>传统的DRAM</p></li><li><p>内存模块</p></li><li><p>增强的DRAM</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java多线程</title>
-      <link href="/2018/09/28/java-multithread/"/>
-      <url>/2018/09/28/java-multithread/</url>
-      
-        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
+            <tag> Algorithms </tag>
             
         </tags>
       
@@ -1623,23 +1719,48 @@
     
     
     <entry>
-      <title>快排</title>
-      <link href="/2018/09/28/algorithms-quicksort/"/>
-      <url>/2018/09/28/algorithms-quicksort/</url>
+      <title>Java多线程</title>
+      <link href="/2018/09/28/java-multithread/"/>
+      <url>/2018/09/28/java-multithread/</url>
       
-        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
       
       
       <categories>
           
-          <category> Algorithms </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Algorithms </tag>
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>架构基础</title>
+      <link href="/2018/09/28/architecture-base/"/>
+      <url>/2018/09/28/architecture-base/</url>
+      
+        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Architect </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Architect </tag>
             
         </tags>
       
@@ -1665,7 +1786,7 @@
       <link href="/2018/09/27/maven-base/"/>
       <url>/2018/09/27/maven-base/</url>
       
-        <content type="html"><![CDATA[<p>一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错：</p><a id="more"></a><pre><code>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.5.2:install (default-cli) on project StarTeamCollisionUtil: The packaging for this project did not assign a file to the build artifact -&gt; [Help 1]</code></pre><p>后来使用Lifecycle–install，编译成功；使用maven clean install也会成功。最后查看<a href="https://stackoverflow.com/questions/6308162/maven-the-packaging-for-this-project-did-not-assign-a-file-to-the-build-artifac" target="_blank" rel="noopener">StackOverflow</a></p><p>大致意思：install:install命令是插件maven-install-plugin中的命令，不同于Lifecycle中的install命令。</p><p>mvn clean install在每个周期中会运行所有的命令，包括：compile、package、test等等。</p><p>mvn clean install:install则只会install一个命令，甚至不包括compile、package</p><h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>本地仓库</p><p>远程仓库</p><p>中央仓库</p><p>先从本地仓库查找，再从私服查找，最后再到远处、中央仓库查找。</p><h2 id="setting-xml"><a href="#setting-xml" class="headerlink" title="setting.xml"></a>setting.xml</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>用于配置速度更快的的仓库镜像，mirrorOf可以配置’central,*’不同仓库<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-net-cn<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven China Mirror<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.net.cn/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure></p><h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><h3 id="packaging类型"><a href="#packaging类型" class="headerlink" title="packaging类型"></a>packaging类型</h3><pre><code>&lt;packaging&gt;&lt;/packaging&gt;</code></pre><h3 id="parent标签"><a href="#parent标签" class="headerlink" title="parent标签"></a>parent标签</h3><h3 id="dependencies标签"><a href="#dependencies标签" class="headerlink" title="dependencies标签"></a>dependencies标签</h3><ol><li>compile：默认编译依赖范围。对于编译，测试，运行三种classpath都有效。如log4j</li><li>test：测试依赖范围。只对于测试classpath有效。如junit</li><li>provided：已提供依赖范围。对于编译，测试的classpath都有效，但对运行无效。servlet-api</li><li>runtime：运行时提供。例如：jdbc驱动。<br>最主要要区分compile和provided。</li></ol><h4 id="依赖传递"><a href="#依赖传递" class="headerlink" title="依赖传递"></a>依赖传递</h4><p>原则：近路优先，声明优先</p><ol><li>当第二依赖的范围是compile的时候，传递性依赖的范围与第一直接依赖的范围一致。</li><li>当第二直接依赖的范围是test的时候，依赖不会得以传递。</li><li>当第二依赖的范围是provided的时候，只传递第一直接依赖范围也为provided的依赖，且传递性依赖的范围同样为 provided；</li><li>当第二直接依赖的范围是runtime的时候，传递性依赖的范围与第一直接依赖的范围一致，但compile例外，此时传递的依赖范围为runtime；</li></ol><h4 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h4><p>在maven中存在两种冲突方式：一种是跨pom文件的冲突，一种是同一个pom文件的冲突</p><ol><li>如果直接与间接依赖中包含有同一个坐标不同版本的资源依赖，以直接依赖的版本为准（就近原则）</li><li>同一个pom文件中的冲突。pom文件从上到下加载，那么下面的jar包会覆盖上面的jar包。这也体现了就近原则。</li></ol><h4 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h4><pre><code>&lt;optional&gt;true/false&lt;/optional&gt;</code></pre><p>true，则表示该依赖不会传递下去<br>false，则会传递下去。</p><h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><pre><code>&lt;exclusions&gt;    &lt;exclusion&gt;        &lt;groupId&gt;xxx&lt;/groupId&gt;        &lt;artifactId&gt;xxx&lt;/artifactId&gt;    &lt;/exclusion&gt;&lt;/exclusions&gt;</code></pre><h3 id="Lifecycle生命周期"><a href="#Lifecycle生命周期" class="headerlink" title="Lifecycle生命周期"></a>Lifecycle生命周期</h3><h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><ol><li>pre-clean 执行一些需要在clean之前完成的工作；</li><li>clean 移除所有上一次构建生成的文件 ；</li><li>post-clean 执行一些需要在clean之后立刻完成的工作 。</li></ol><p>mvn clean命令，等同于 mvn pre-clean clean。只要执行后面的命令，那么前面的命令都会执行，不需要再重新去输入命令。有Clean生命周期，在生命周期又有clean阶段。</p><h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><ol><li>pre-site 执行一些需要在生成站点文档之前完成的工作 ；</li><li>site 生成项目的站点文档 ；</li><li>post-site 执行一些需要在生成站点文档之后完成的工作，并且为部署做准备 ；</li><li>site-deploy 将生成的站点文档部署到特定的服务器上 。</li></ol><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><h3 id="pluginManagement标签"><a href="#pluginManagement标签" class="headerlink" title="pluginManagement标签"></a>pluginManagement标签</h3><h3 id="dependencyManagement标签"><a href="#dependencyManagement标签" class="headerlink" title="dependencyManagement标签"></a>dependencyManagement标签</h3><h3 id="distributionManagement标签"><a href="#distributionManagement标签" class="headerlink" title="distributionManagement标签"></a>distributionManagement标签</h3><p>分发构件至远程仓库</p>]]></content>
+        <content type="html"><![CDATA[<p>一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，</p><a id="more"></a><p>编译报错：</p><pre><code>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.5.2:install (default-cli) on project StarTeamCollisionUtil: The packaging for this project did not assign a file to the build artifact -&gt; [Help 1]</code></pre><p>后来使用Lifecycle–install，编译成功；使用maven clean install也会成功。最后查看<a href="https://stackoverflow.com/questions/6308162/maven-the-packaging-for-this-project-did-not-assign-a-file-to-the-build-artifac" target="_blank" rel="noopener">StackOverflow</a></p><p>大致意思：install:install命令是插件maven-install-plugin中的命令，不同于Lifecycle中的install命令。</p><p>mvn clean install在每个周期中会运行所有的命令，包括：compile、package、test等等。</p><p>mvn clean install:install则只会install一个命令，甚至不包括compile、package</p><h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><ol><li><p>本地仓库</p></li><li><p>远程仓库</p></li><li><p>中央仓库</p></li></ol><p>先从本地仓库查找，再从私服查找，最后再到远处、中央仓库查找。</p><h2 id="setting-xml"><a href="#setting-xml" class="headerlink" title="setting.xml"></a>setting.xml</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>用于配置速度更快的的仓库镜像，mirrorOf可以配置’central,*’不同仓库</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-net-cn<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven China Mirror<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.net.cn/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><h3 id="packaging类型"><a href="#packaging类型" class="headerlink" title="packaging类型"></a>packaging类型</h3><pre><code>&lt;packaging&gt;&lt;/packaging&gt;</code></pre><h3 id="parent标签"><a href="#parent标签" class="headerlink" title="parent标签"></a>parent标签</h3><h3 id="dependencies标签"><a href="#dependencies标签" class="headerlink" title="dependencies标签"></a>dependencies标签</h3><ol><li>compile：默认编译依赖范围。对于编译，测试，运行三种classpath都有效。如log4j</li><li>test：测试依赖范围。只对于测试classpath有效。如junit</li><li>provided：已提供依赖范围。对于编译，测试的classpath都有效，但对运行无效。servlet-api</li><li>runtime：运行时提供。例如：jdbc驱动。<br>最主要要区分compile和provided。</li></ol><h4 id="依赖传递"><a href="#依赖传递" class="headerlink" title="依赖传递"></a>依赖传递</h4><p>原则：近路优先，声明优先</p><ol><li>当第二依赖的范围是compile的时候，传递性依赖的范围与第一直接依赖的范围一致。</li><li>当第二直接依赖的范围是test的时候，依赖不会得以传递。</li><li>当第二依赖的范围是provided的时候，只传递第一直接依赖范围也为provided的依赖，且传递性依赖的范围同样为 provided；</li><li>当第二直接依赖的范围是runtime的时候，传递性依赖的范围与第一直接依赖的范围一致，但compile例外，此时传递的依赖范围为runtime；</li></ol><h4 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h4><p>在maven中存在两种冲突方式：一种是跨pom文件的冲突，一种是同一个pom文件的冲突</p><ol><li>如果直接与间接依赖中包含有同一个坐标不同版本的资源依赖，以直接依赖的版本为准（就近原则）</li><li>同一个pom文件中的冲突。pom文件从上到下加载，那么下面的jar包会覆盖上面的jar包。这也体现了就近原则。</li></ol><h4 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h4><pre><code>&lt;optional&gt;true/false&lt;/optional&gt;</code></pre><p>true，则表示该依赖不会传递下去<br>false，则会传递下去。</p><h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="Lifecycle生命周期"><a href="#Lifecycle生命周期" class="headerlink" title="Lifecycle生命周期"></a>Lifecycle生命周期</h3><h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><ol><li>pre-clean 执行一些需要在clean之前完成的工作；</li><li>clean 移除所有上一次构建生成的文件 ；</li><li>post-clean 执行一些需要在clean之后立刻完成的工作 。</li></ol><p>mvn clean命令，等同于 mvn pre-clean clean。只要执行后面的命令，那么前面的命令都会执行，不需要再重新去输入命令。有Clean生命周期，在生命周期又有clean阶段。</p><h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><ol><li>pre-site 执行一些需要在生成站点文档之前完成的工作 ；</li><li>site 生成项目的站点文档 ；</li><li>post-site 执行一些需要在生成站点文档之后完成的工作，并且为部署做准备 ；</li><li>site-deploy 将生成的站点文档部署到特定的服务器上 。</li></ol><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><h3 id="pluginManagement标签"><a href="#pluginManagement标签" class="headerlink" title="pluginManagement标签"></a>pluginManagement标签</h3><h3 id="dependencyManagement标签"><a href="#dependencyManagement标签" class="headerlink" title="dependencyManagement标签"></a>dependencyManagement标签</h3><h3 id="distributionManagement标签"><a href="#distributionManagement标签" class="headerlink" title="distributionManagement标签"></a>distributionManagement标签</h3><p>分发构件至远程仓库</p>]]></content>
       
       
       <categories>
@@ -3108,11 +3229,11 @@
     
     
     <entry>
-      <title>Spring boot内嵌tomcat分析</title>
-      <link href="/2018/07/12/spring-boot-tomcat/"/>
-      <url>/2018/07/12/spring-boot-tomcat/</url>
+      <title>Spring boot注解自动装配原理分析</title>
+      <link href="/2018/07/12/spring-boot-loader/"/>
+      <url>/2018/07/12/spring-boot-loader/</url>
       
-        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
+        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
       
       
       <categories>
@@ -3133,11 +3254,11 @@
     
     
     <entry>
-      <title>Spring boot注解自动装配原理分析</title>
-      <link href="/2018/07/12/spring-boot-loader/"/>
-      <url>/2018/07/12/spring-boot-loader/</url>
+      <title>Spring boot内嵌tomcat分析</title>
+      <link href="/2018/07/12/spring-boot-tomcat/"/>
+      <url>/2018/07/12/spring-boot-tomcat/</url>
       
-        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
       
       
       <categories>
@@ -3206,7 +3327,7 @@
       <link href="/2018/03/02/hello-world/"/>
       <url>/2018/03/02/hello-world/</url>
       
-        <content type="html"><![CDATA[<p>“间歇性踌躇满志，持续性混吃等死”，在这条路上见过了太多太多的大佬，默默的做一个小码农，当然能够有点产出是最好的:)<br>博客间歇式更新</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=444267928&auto=1&height=66"></iframe><h2 id="计划："><a href="#计划：" class="headerlink" title="计划："></a>计划：</h2><p>2019主线目标：造轮子</p><a id="more"></a><h2 id="Hexo搭建博客"><a href="#Hexo搭建博客" class="headerlink" title="Hexo搭建博客"></a>Hexo搭建博客</h2><p><a href="https://github.com/theme-next/hexo-theme-next.git" target="_blank" rel="noopener">Hexo GitHub仓库</a></p><p>1、新建博客</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">new</span> <span class="string">"My New Post"</span>/hexo <span class="built_in">new</span> <span class="built_in">post</span> hello-world</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><p>2、生成草稿</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">draft</span> hello-world</span><br></pre></td></tr></table></figure><p>3、发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [post] hello-world</span><br></pre></td></tr></table></figure><p>4、生成静态文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate/hexo g</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><p>5、运行服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo </span><br><span class="line">$ hexo server/hexo s</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><p>6、发布博客到github</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy/hexo d</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h2 id="优化博客"><a href="#优化博客" class="headerlink" title="优化博客"></a>优化博客</h2><p>1、修改主题</p><p>采用Next</p><p>2、添加RSS，RSS迁移; 添加Search本地搜索<br>rss:<br>hexo-generator-feed插件</p><p>search:</p><p>3、添加博客访问量PV/UV</p><p>4、添加博客字数、阅读时长; 修改博客国际化<br>统计也遇到两种方法：<br>1）、hexo-wordcount插件 + 开启config + 修改post-swig添加统计</p><p>2）、hexo-symbols-count-time插件，只需要开启config即可</p><p>5、修改博文底部标签样式; 添加<code>Read more</code></p><p>修改模板 <code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将’#’换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p><p>6、增加博文置顶功能<br>两种方案：<br>1）、hexo-generator-index</p><p>2）、hexo-generator-index-pin-top</p><p>找到<code>/blog/themes/next/layout/_macro/post.swig</code>文件，定位到<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签下，插入代码：</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> post.top %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-thumb-tack"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">7D26CD</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure><p>7、添加评论功能</p><p>8、修改域名</p><p>9、网站备案</p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>操作都在博客根目录下进行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HEXO_BLOG</span></span><br></pre></td></tr></table></figure><p>1、安装依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>2、卸载依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>3、查看安装的模块</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">ls</span> <span class="params">--depth</span> 0</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>“间歇性踌躇满志，持续性混吃等死”，在这条路上见过了太多太多的大佬，默默的做一个小码农，当然能够有点产出是最好的:)<br>博客间歇式更新</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=444267928&auto=1&height=66"></iframe><h2 id="计划："><a href="#计划：" class="headerlink" title="计划："></a>计划：</h2><p>2019主线目标：造轮子</p><a id="more"></a><h2 id="Hexo搭建博客"><a href="#Hexo搭建博客" class="headerlink" title="Hexo搭建博客"></a>Hexo搭建博客</h2><p><a href="https://github.com/theme-next/hexo-theme-next.git" target="_blank" rel="noopener">Hexo GitHub仓库</a></p><p>1、新建博客</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">new</span> <span class="string">"My New Post"</span>/hexo <span class="built_in">new</span> <span class="built_in">post</span> hello-world</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><p>2、生成草稿</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">draft</span> hello-world</span><br></pre></td></tr></table></figure><p>3、发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [post] hello-world</span><br></pre></td></tr></table></figure><p>4、生成静态文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate/hexo g</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><p>5、运行服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo </span><br><span class="line">$ hexo server/hexo s</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><p>6、发布博客到github</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy/hexo d</span><br></pre></td></tr></table></figure><p>详情: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h2 id="优化博客"><a href="#优化博客" class="headerlink" title="优化博客"></a>优化博客</h2><p>1、修改主题</p><p>采用Next</p><p>2、添加RSS，RSS迁移; 添加Search本地搜索<br>rss:<br>hexo-generator-feed插件<br>修改主题下config文件，添加 <code>rss: /atom.xml</code></p><p>search:</p><p>3、添加博客访问量PV/UV<br>两种方法：<br>1)、在<code>theme/next/layout/_partials/footer.swig</code>添加’不蒜子’js脚本、统计标签</p><p>2）、直接开启config配置</p><p>4、添加博客字数、阅读时长; 修改博客国际化<br>统计也遇到两种方法：<br>1）、hexo-wordcount插件 + 开启config + 修改post-swig添加统计</p><p>2）、hexo-symbols-count-time插件，只需要开启config即可</p><p>5、修改博文底部标签样式; 添加<code>Read more</code></p><p>修改模板 <code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将’#’换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p><p>6、增加博文置顶功能<br>两种方案：<br>1）、hexo-generator-index</p><p>2）、hexo-generator-index-pin-top</p><p>找到<code>/blog/themes/next/layout/_macro/post.swig</code>文件，定位到<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签下，插入代码：</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> post.top %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-thumb-tack"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">7D26CD</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure><p>7、添加评论功能</p><p>8、修改域名</p><p>9、网站备案</p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>操作都在博客根目录下进行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HEXO_BLOG</span></span><br></pre></td></tr></table></figure><p>1、安装依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>2、卸载依赖包</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-generator-<span class="keyword">index</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure><p>3、查看安装的模块</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">ls</span> <span class="params">--depth</span> 0</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>

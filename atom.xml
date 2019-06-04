@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-05-31T13:24:40.420Z</updated>
+  <updated>2019-06-04T16:14:17.812Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,157 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MyBatis概览(一)</title>
+    <link href="http://wangwanchao.wang/2019/06/04/mybatis-base/"/>
+    <id>http://wangwanchao.wang/2019/06/04/mybatis-base/</id>
+    <published>2019-06-04T12:30:05.000Z</published>
+    <updated>2019-06-04T16:14:17.812Z</updated>
+    
+    <content type="html"><![CDATA[<p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p><a id="more"></a><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png" alt="图1"></p><p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p><h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png" alt="图2"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatis缓存(三)</title>
+    <link href="http://wangwanchao.wang/2019/06/04/mybatis-cache/"/>
+    <id>http://wangwanchao.wang/2019/06/04/mybatis-cache/</id>
+    <published>2019-06-04T12:28:52.000Z</published>
+    <updated>2019-06-04T16:26:53.125Z</updated>
+    
+    <content type="html"><![CDATA[<p>mybatis分为一级缓存、二级缓存</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mybatis分为一级缓存、二级缓存&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatis中的事务管理(五)</title>
+    <link href="http://wangwanchao.wang/2019/06/04/mybatis-transaction/"/>
+    <id>http://wangwanchao.wang/2019/06/04/mybatis-transaction/</id>
+    <published>2019-06-04T12:28:37.000Z</published>
+    <updated>2019-06-04T16:28:33.241Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务--服务编排</title>
+    <link href="http://wangwanchao.wang/2019/06/03/servicemesh-serverless/"/>
+    <id>http://wangwanchao.wang/2019/06/03/servicemesh-serverless/</id>
+    <published>2019-06-03T03:42:30.000Z</published>
+    <updated>2019-06-03T06:32:14.539Z</updated>
+    
+    <content type="html"><![CDATA[<p>服务编排</p><a id="more"></a><h2 id="Dubbo-SpringCloud"><a href="#Dubbo-SpringCloud" class="headerlink" title="Dubbo/SpringCloud"></a>Dubbo/SpringCloud</h2><h2 id="ServiceMesh"><a href="#ServiceMesh" class="headerlink" title="ServiceMesh"></a>ServiceMesh</h2><p>服务网格</p><p>Linkerd/Envoy</p><p>Istio</p><h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><p>无服务器架构</p><p>Knative</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;服务编排&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Maven依赖冲突问题</title>
+    <link href="http://wangwanchao.wang/2019/06/03/maven-conflict/"/>
+    <id>http://wangwanchao.wang/2019/06/03/maven-conflict/</id>
+    <published>2019-06-03T02:45:33.000Z</published>
+    <updated>2019-06-03T06:36:43.132Z</updated>
+    
+    <content type="html"><![CDATA[<p>maven依赖冲突</p><a id="more"></a><h3 id="冲突分类："><a href="#冲突分类：" class="headerlink" title="冲突分类："></a>冲突分类：</h3><p>第一类Jar包问题：依赖的同一个Jar出现不同的版本。<br>第二类Jar包问题：同样的类Class出现在多个不同的Jar包中。</p><h3 id="冲突原因："><a href="#冲突原因：" class="headerlink" title="冲突原因："></a>冲突原因：</h3><p>maven的依赖机制：<br>优先按照依赖管理<dependencymanagement>元素中指定的版本声明进行仲裁，此时下面的两个原则都无效了<br>若无版本声明，则按照“短路径优先”的原则（Maven2.0）进行仲裁，即选择依赖树中路径最短的版本<br>若路径长度一致，则按照“第一声明优先”的原则进行仲裁，即选择POM中最先声明的版本</dependencymanagement></p><h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><h4 id="1、依赖管理"><a href="#1、依赖管理" class="headerlink" title="1、依赖管理"></a>1、依赖管理</h4><p>针对第一类冲突<br>方法1）通过<excludes>排除传递依赖<br>方法2）使用<dependencymanagement>对依赖包统一版本管理</dependencymanagement></excludes></p><h3 id="2、冲突检测插件"><a href="#2、冲突检测插件" class="headerlink" title="2、冲突检测插件"></a>2、冲突检测插件</h3><p>针对第二类冲突<br>maven-enforcer-plugin插件 + extra-enforcer-rules工具，注意：应用在子模块上，</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;maven依赖冲突&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Maven" scheme="http://wangwanchao.wang/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>断路器hystrix</title>
+    <link href="http://wangwanchao.wang/2019/06/03/architecture-hystrix/"/>
+    <id>http://wangwanchao.wang/2019/06/03/architecture-hystrix/</id>
+    <published>2019-06-03T02:18:27.000Z</published>
+    <updated>2019-06-04T13:09:44.530Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解计算机系统--异常控制流</title>
+    <link href="http://wangwanchao.wang/2019/06/01/csapp-exception/"/>
+    <id>http://wangwanchao.wang/2019/06/01/csapp-exception/</id>
+    <published>2019-06-01T15:47:09.000Z</published>
+    <updated>2019-06-03T02:19:28.580Z</updated>
+    
+    <content type="html"><![CDATA[<p>异常</p><a id="more"></a><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>异常控制流：现代系统通过使控制流发生突变来对这些情况做出反应，这些突变称为异常控制流。</p><p>异常：控制流中的突变。一部分由硬件实现，一部分由操作系统实现。</p><p>异常号：系统中可能的每种类型的异常都分配了一个唯一的非负整数，称为异常号。</p><blockquote><p>其中一些异常号由CPU设计中分配。例如：被零除、缺页、内存访问违例、断点、算术运算溢出<br>其它号码由操作系统内核的设计者分配。例如：系统调用、来自外部I/O设备的信号</p></blockquote><p>异常表：系统启动时，分配和初始化一张跳转表，称为异常表。表中维护了异常号-异常处理程序地址的关系。异常表的起始地址放在一个‘异常表基址寄存器’的特殊CPU寄存器内。</p><h3 id="异常种类"><a href="#异常种类" class="headerlink" title="异常种类"></a>异常种类</h3><table><thead><tr><th>类别</th><th style="text-align:center">原因</th><th style="text-align:center">异步/同步</th><th style="text-align:center">返回行为</th></tr></thead><tbody><tr><td>中断</td><td style="text-align:center">来自I/O设备的信号</td><td style="text-align:center">异步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>陷阱</td><td style="text-align:center">有意的异常。</td><td style="text-align:center">同步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>故障</td><td style="text-align:center">潜在的可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">可能返回到当前指令</td></tr><tr><td>终止</td><td style="text-align:center">不可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">不会返回</td></tr></tbody></table><h4 id="故障指令"><a href="#故障指令" class="headerlink" title="故障指令"></a>故障指令</h4><p>陷阱(系统调用)：普通程序运行在<code>用户模式</code>，系统调用运行在<code></code>内核模式<code>，系统为用户提供了特殊的</code>syscall n`指令，用户进行系统调用时进入陷阱模式。</p><p>故障：故障是由错误引起的，如果错误可以被修复，则将控制返回到引起故障的指令；如果不可修复，则返回到内核中的abort例程，abort例程会终止引起故障的应用程序。</p><p>终止：由不可恢复的致命错误引起，通常是一些硬件错误。</p><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="逻辑控制流"><a href="#逻辑控制流" class="headerlink" title="逻辑控制流"></a>逻辑控制流</h3><p>并发流：并发流的思想与流运行的CPU核数、计算机数无关。</p><p>并行流：</p><h3 id="私有地址空间"><a href="#私有地址空间" class="headerlink" title="私有地址空间"></a>私有地址空间</h3><p>进程间内存空间私有</p><h3 id="用户模式和内核模式"><a href="#用户模式和内核模式" class="headerlink" title="用户模式和内核模式"></a>用户模式和内核模式</h3><p>模式位：CPU通过设置某个寄存器的模式位，指定进程处于内核模式。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;异常&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解计算机系统--CPU</title>
+    <link href="http://wangwanchao.wang/2019/06/01/csapp-cpu/"/>
+    <id>http://wangwanchao.wang/2019/06/01/csapp-cpu/</id>
+    <published>2019-06-01T04:27:49.000Z</published>
+    <updated>2019-06-03T02:46:14.477Z</updated>
+    
+    <content type="html"><![CDATA[<p>决定计算机性能的3个关键因素：</p><blockquote><p>指令数目 (编译器和指令集决定)<br>时钟周期长度 (CPU决定)<br>每条指令所需要的时钟周期数 (CPU决定)</p></blockquote><a id="more"></a><h2 id="数据通路"><a href="#数据通路" class="headerlink" title="数据通路"></a>数据通路</h2><h3 id="1-组合单元："><a href="#1-组合单元：" class="headerlink" title="1. 组合单元："></a>1. 组合单元：</h3><h3 id="2-状态单元："><a href="#2-状态单元：" class="headerlink" title="2. 状态单元："></a>2. 状态单元：</h3><p>两个输入 + 一个输出<br>    输入：<br>    写入单元的数据值<br>    决定何时写入的时钟信号</p><p>时钟方法：规定信号可以独处和写入的时间<br>    边沿触发的时钟</p><p>寄存器堆：寄存器集合，存放32个通用寄存器<br>    R型指令：<code>add $t1, $t2, $t3</code></p><h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><p>指令执行顺序：<br>取指<br>译码<br>执行<br>访存<br>写回<br>更新PC</p><h3 id="流水线冒险"><a href="#流水线冒险" class="headerlink" title="流水线冒险"></a>流水线冒险</h3><ol><li><p>结构冒险</p></li><li><p>数据冒险</p></li><li><p>控制冒险(分支冒险)：</p><p> 解决方法：</p><blockquote><p>阻塞<br>预测<br>延迟决定</p></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;决定计算机性能的3个关键因素：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;指令数目 (编译器和指令集决定)&lt;br&gt;时钟周期长度 (CPU决定)&lt;br&gt;每条指令所需要的时钟周期数 (CPU决定)&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
+    
+  </entry>
   
   <entry>
     <title>talk-in-wangxiaobo</title>
@@ -45,13 +196,21 @@
   </entry>
   
   <entry>
-    <title>csapp-instructions</title>
+    <title>深入理解计算机系统--指令集</title>
     <link href="http://wangwanchao.wang/2019/05/31/csapp-instructions/"/>
     <id>http://wangwanchao.wang/2019/05/31/csapp-instructions/</id>
     <published>2019-05-31T06:46:13.000Z</published>
-    <updated>2019-05-31T06:46:13.864Z</updated>
+    <updated>2019-06-01T04:28:48.700Z</updated>
+    
+    <content type="html"><![CDATA[<p>MIPS的2种实现方式：</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;MIPS的2种实现方式：&lt;/p&gt;
+
+      
     
     </summary>
     
@@ -99,11 +258,11 @@
   </entry>
   
   <entry>
-    <title>CSAPP概览</title>
+    <title>深入理解计算机系统--概览</title>
     <link href="http://wangwanchao.wang/2019/05/29/csapp-base/"/>
     <id>http://wangwanchao.wang/2019/05/29/csapp-base/</id>
     <published>2019-05-29T12:07:05.000Z</published>
-    <updated>2019-05-29T12:56:14.722Z</updated>
+    <updated>2019-06-01T04:06:01.414Z</updated>
     
     <content type="html"><![CDATA[<p>2014年就接触CSAPP，一直拖一直拖，直到今天才决定完完整整深耕，并产生输出。无论什么原因吧，种一棵树的最好时机就是十年前，还有就是今天。</p><a id="more"></a><h2 id="7-操作系统"><a href="#7-操作系统" class="headerlink" title="7. 操作系统"></a>7. 操作系统</h2><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>操作系统：处于应用程序和底层硬件之间，对应用程序提供API接口。例如Windows、Linux、MacOS等。</p><p>主要的作用：</p><blockquote><p>防止硬件被应用程序随意调用<br>提供统一的接口。因为底层硬件商不同，内部实现也不一样，操作系统对所有的硬件提供一个统一的实现标准</p></blockquote><p>标准：<br>    Unix：贝尔实验室开发的一套系统<br>    Posix标准：IEEE为了规范Unix的开发，制定了一些标准。系统调用的C语言接口、shell程序、工具、线程、网络编程<br>    标准Unix规范：”标准Unix规范”工作组和Posix一起创建的Unix系统标准</p><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>文件：对I/O设备的抽象</p><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>虚拟内存：对主存、磁盘等I/O设备的抽象，和文件的描述存在交集，很难说谁包含谁</p><p>虚拟内存分为<br>内核虚拟内存：存储操作系统的代码和数据，对所有进程不可见<br>进程虚拟内存：存放所有进程信息</p><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程：对处理器、主存、磁盘I/O的抽象</p><p>进程是对操作系统中正在运行的程序的一种抽象。<br>计算机CPU分单核、多核，即使一个CPU，看起来好像并发执行多个进程，实际上内部是通过进程间切换实现的，即’上下文切换’</p><p>上下文：进程在运行状态下，操作系统会维护进程所有的信息(主存内容、寄存器文件的当前值)。进程各自的这些信息就是上下文。</p><p>上下文切换：每个CPU每个时刻只能有一个进程运行，把CPU的控制权交给别的进行，换取CPU的进程可以继续上次的执行，进程间运行的切换就是上下文切换</p><p>线程：一个进程可以由多个线程组成，每个线程运行在进程的上下文中，共享同样的代码和全局变量。</p><h4 id="并发、并行"><a href="#并发、并行" class="headerlink" title="并发、并行"></a>并发、并行</h4><p>并发运行：</p><p>并行运行：</p>]]></content>
     
@@ -230,193 +389,6 @@
     
     
       <category term="life" scheme="http://wangwanchao.wang/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>zk-zab</title>
-    <link href="http://wangwanchao.wang/2019/04/12/zk-zab/"/>
-    <id>http://wangwanchao.wang/2019/04/12/zk-zab/</id>
-    <published>2019-04-12T07:45:43.000Z</published>
-    <updated>2019-05-27T08:27:59.381Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h2 id="Paxos协议"><a href="#Paxos协议" class="headerlink" title="Paxos协议"></a>Paxos协议</h2><p>Chubby技术架构</p><h2 id="ZAB协议"><a href="#ZAB协议" class="headerlink" title="ZAB协议"></a>ZAB协议</h2><p>Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Paxos协议&quot;&gt;&lt;a href=&quot;#Paxos协议&quot; class=&quot;headerlink&quot; title=&quot;Paxos协议&quot;&gt;&lt;/a&gt;Paxos协议&lt;/h2&gt;&lt;p&gt;Chubby技术架构&lt;/p&gt;
-&lt;h2 id=&quot;ZAB协议&quot;&gt;&lt;a
-      
-    
-    </summary>
-    
-    
-      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java特殊类Unsafe</title>
-    <link href="http://wangwanchao.wang/2019/03/23/java-unsafe/"/>
-    <id>http://wangwanchao.wang/2019/03/23/java-unsafe/</id>
-    <published>2019-03-23T10:36:58.000Z</published>
-    <updated>2019-05-27T08:27:59.366Z</updated>
-    
-    <content type="html"><![CDATA[<p>Unsafe类，回头整理</p><a id="more"></a><p>特性</p><ol><li><p>虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：<a href="http://en.wikipedia.org/wiki/Compare-and-swap。" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Compare-and-swap。</a></p></li><li><p>主机虚拟机（译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。</p></li><li><p>你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！</p></li><li><p>使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。</p></li><li><p>arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Unsafe类，回头整理&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://wangwanchao.wang/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>架构中的网关</title>
-    <link href="http://wangwanchao.wang/2019/03/23/architecture-gateway/"/>
-    <id>http://wangwanchao.wang/2019/03/23/architecture-gateway/</id>
-    <published>2019-03-23T04:45:47.000Z</published>
-    <updated>2019-05-27T08:27:59.355Z</updated>
-    
-    <content type="html"><![CDATA[<p>网关在微服务中的应用</p><p>特性：</p><p>认证、鉴权、缓存、服务编排、监控告警</p><p>权限分级、流量管控、超时熔断</p><a id="more"></a><p>场景：</p><h2 id="组件对比"><a href="#组件对比" class="headerlink" title="组件对比"></a>组件对比</h2><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>原理：异步非阻塞</p><h3 id="Zuul"><a href="#Zuul" class="headerlink" title="Zuul"></a>Zuul</h3><h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>身份认证与安全：识别每个资源的验证要求，并拒绝那些与要求不符的请求。</p><p>审查与监控：与边缘位置追踪有意义的数据和统计结果，从而带来精确的生产视图。</p><p>动态路由：动态地将请求路由到不同的后端集群。</p><p>压力测试：逐渐增加指向集群的流量，以了解性能。</p><p>负载分配：为每一种负载类型分配对应容量，并弃用超出限定值的请求。</p><p>静态响应处理：在边缘位置直接建立部分响应，从而避免其转发到内部集群。</p><p>多区域弹性：跨越 AWS Region 进行请求路由，旨在实现 ELB（Elastic Load Balancing，弹性负载均衡）使用的多样化，以及让系统的边缘更贴近系统的使用者。</p><p>zuul1 </p><p>原理：阻塞+多线程的过滤器，线程激增</p><p>zuul2</p><p>异步非阻塞，事件+回调</p><p>高可用方案：</p><blockquote><p>zuul集群 + eureka server<br>Nginx/HAproxy/F5 + zuul</p></blockquote><h3 id="Linkerd"><a href="#Linkerd" class="headerlink" title="Linkerd"></a>Linkerd</h3><h3 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h3><h3 id="Undertow"><a href="#Undertow" class="headerlink" title="Undertow"></a>Undertow</h3><h3 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网关在微服务中的应用&lt;/p&gt;
-&lt;p&gt;特性：&lt;/p&gt;
-&lt;p&gt;认证、鉴权、缓存、服务编排、监控告警&lt;/p&gt;
-&lt;p&gt;权限分级、流量管控、超时熔断&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Architecture" scheme="http://wangwanchao.wang/tags/Architecture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于写作</title>
-    <link href="http://wangwanchao.wang/2019/03/23/thinking-in-writing/"/>
-    <id>http://wangwanchao.wang/2019/03/23/thinking-in-writing/</id>
-    <published>2019-03-23T03:35:00.000Z</published>
-    <updated>2019-05-27T08:27:59.379Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于我，对于感兴趣的事情，会尽力克服拖延症，带着乐趣去做一些事情。但是往往有时候因为忙或者其他原因，一直拖延，直到欠下的债太多，才会强迫自己重新开始。</p><a id="more"></a><p>写作其实是一件很费力的事情，尤其是写技术博客，更是需要很多精力，关于写的一些东西，有时间会结合一些方法论补充一下。强化一下自己的写作意识:(待续…</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关于我，对于感兴趣的事情，会尽力克服拖延症，带着乐趣去做一些事情。但是往往有时候因为忙或者其他原因，一直拖延，直到欠下的债太多，才会强迫自己重新开始。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="life" scheme="http://wangwanchao.wang/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spark基础</title>
-    <link href="http://wangwanchao.wang/2019/03/16/spark-scala-loader/"/>
-    <id>http://wangwanchao.wang/2019/03/16/spark-scala-loader/</id>
-    <published>2019-03-16T02:58:32.000Z</published>
-    <updated>2019-05-27T08:27:59.374Z</updated>
-    
-    <content type="html"><![CDATA[<p>依赖包provided</p><p>assembly打包</p><h2 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h2><p>转化操作 – 惰性求值</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;依赖包provided&lt;/p&gt;
-&lt;p&gt;assembly打包&lt;/p&gt;
-&lt;h2 id=&quot;RDD&quot;&gt;&lt;a href=&quot;#RDD&quot; class=&quot;headerlink&quot; title=&quot;RDD&quot;&gt;&lt;/a&gt;RDD&lt;/h2&gt;&lt;p&gt;转化操作 – 惰性求值&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="Spark" scheme="http://wangwanchao.wang/tags/Spark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搬瓦工搭建Shadowsocks服务器完整教程</title>
-    <link href="http://wangwanchao.wang/2019/03/07/ss-bwh/"/>
-    <id>http://wangwanchao.wang/2019/03/07/ss-bwh/</id>
-    <published>2019-03-07T04:11:51.000Z</published>
-    <updated>2019-03-07T05:09:13.113Z</updated>
-    
-    <content type="html"><![CDATA[<p>利用国外服务器搭建翻墙服务。</p><p>1、搜索搬瓦工，注册账号，购买服务器</p><p>先借用赛风搜索搬瓦工网站，由于国内对搬瓦工的封锁，无法确定一个固定的域名，比如我原来使用<a href="https://bwh8.net，后来突然就不能访问了，搜索后，发现bwh1.net可以访问" target="_blank" rel="noopener">https://bwh8.net，后来突然就不能访问了，搜索后，发现bwh1.net可以访问</a></p><p>2、安装Shadowsocks server，配置服务器信息</p><p>3、下载Shadowsocks client，配置代理信息</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;利用国外服务器搭建翻墙服务。&lt;/p&gt;
-&lt;p&gt;1、搜索搬瓦工，注册账号，购买服务器&lt;/p&gt;
-&lt;p&gt;先借用赛风搜索搬瓦工网站，由于国内对搬瓦工的封锁，无法确定一个固定的域名，比如我原来使用&lt;a href=&quot;https://bwh8.net，后来突然就不能访问了，搜索后，发现bw
-      
-    
-    </summary>
-    
-    
-      <category term="SS" scheme="http://wangwanchao.wang/tags/SS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>computer</title>
-    <link href="http://wangwanchao.wang/2019/02/13/computer/"/>
-    <id>http://wangwanchao.wang/2019/02/13/computer/</id>
-    <published>2019-02-13T02:43:16.000Z</published>
-    <updated>2019-02-13T02:52:11.670Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="大型机"><a href="#大型机" class="headerlink" title="大型机"></a>大型机</h2><p>特点：</p><ol><li>RAS</li></ol><h2 id="小型机"><a href="#小型机" class="headerlink" title="小型机"></a>小型机</h2><p>RISC、MIPS指令</p><h2 id="x86架构服务器"><a href="#x86架构服务器" class="headerlink" title="x86架构服务器"></a>x86架构服务器</h2><p>CISC指令</p><h2 id="ARM架构服务器"><a href="#ARM架构服务器" class="headerlink" title="ARM架构服务器"></a>ARM架构服务器</h2><p>RISC指令</p><h2 id="power、sparc、安腾、xeon"><a href="#power、sparc、安腾、xeon" class="headerlink" title="power、sparc、安腾、xeon"></a>power、sparc、安腾、xeon</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;大型机&quot;&gt;&lt;a href=&quot;#大型机&quot; class=&quot;headerlink&quot; title=&quot;大型机&quot;&gt;&lt;/a&gt;大型机&lt;/h2&gt;&lt;p&gt;特点：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;RAS&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;小型机&quot;&gt;&lt;a href=&quot;#小型机&quot; class=
-      
-    
-    </summary>
-    
-    
-      <category term="Computer" scheme="http://wangwanchao.wang/tags/Computer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Servlet Web容器对比</title>
-    <link href="http://wangwanchao.wang/2019/02/12/tomcat-jetty-undertow/"/>
-    <id>http://wangwanchao.wang/2019/02/12/tomcat-jetty-undertow/</id>
-    <published>2019-02-12T15:59:57.000Z</published>
-    <updated>2019-05-27T08:27:59.380Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h2><h2 id="jetty"><a href="#jetty" class="headerlink" title="jetty"></a>jetty</h2><h2 id="undertow"><a href="#undertow" class="headerlink" title="undertow"></a>undertow</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;tomcat&quot;&gt;&lt;a href=&quot;#tomcat&quot; class=&quot;headerlink&quot; title=&quot;tomcat&quot;&gt;&lt;/a&gt;tomcat&lt;/h2&gt;&lt;h2 id=&quot;jetty&quot;&gt;&lt;a href=&quot;#jetty&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
     
   </entry>
   

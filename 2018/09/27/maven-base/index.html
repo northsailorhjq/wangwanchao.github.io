@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错：">
+  <meta name="description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，">
 <meta name="keywords" content="Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="maven配置文件">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/27/maven-base/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错：">
+<meta property="og:description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-07T08:35:16.721Z">
+<meta property="og:updated_time" content="2019-06-03T06:31:12.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="maven配置文件">
-<meta name="twitter:description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错：">
+<meta name="twitter:description" content="一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，">
 
 
 
@@ -433,7 +433,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-01-07 16:35:16" itemprop="dateModified" datetime="2019-01-07T16:35:16+08:00">2019-01-07</time>
+                <time title="Modified: 2019-06-03 14:31:12" itemprop="dateModified" datetime="2019-06-03T14:31:12+08:00">2019-06-03</time>
               
             
           </span>
@@ -520,18 +520,25 @@
       
 
       
-        <p>一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，编译报错：</p>
+        <p>一直在用maven，其实对maven并没有非常深入理解，任重道远啊。最近一个项目编译的时候，开始使用Plugins–install–install:install命令，</p>
 <a id="more"></a>
+<p>编译报错：</p>
 <pre><code>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-install-plugin:2.5.2:install (default-cli) on project StarTeamCollisionUtil: The packaging for this project did not assign a file to the build artifact -&gt; [Help 1]
 </code></pre><p>后来使用Lifecycle–install，编译成功；使用maven clean install也会成功。最后查看<a href="https://stackoverflow.com/questions/6308162/maven-the-packaging-for-this-project-did-not-assign-a-file-to-the-build-artifac" target="_blank" rel="noopener">StackOverflow</a></p>
 <p>大致意思：install:install命令是插件maven-install-plugin中的命令，不同于Lifecycle中的install命令。</p>
 <p>mvn clean install在每个周期中会运行所有的命令，包括：compile、package、test等等。</p>
 <p>mvn clean install:install则只会install一个命令，甚至不包括compile、package</p>
-<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>本地仓库</p>
-<p>远程仓库</p>
-<p>中央仓库</p>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><ol>
+<li><p>本地仓库</p>
+</li>
+<li><p>远程仓库</p>
+</li>
+<li><p>中央仓库</p>
+</li>
+</ol>
 <p>先从本地仓库查找，再从私服查找，最后再到远处、中央仓库查找。</p>
-<h2 id="setting-xml"><a href="#setting-xml" class="headerlink" title="setting.xml"></a>setting.xml</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>用于配置速度更快的的仓库镜像，mirrorOf可以配置’central,*’不同仓库<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-net-cn<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven China Mirror<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.net.cn/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="setting-xml"><a href="#setting-xml" class="headerlink" title="setting.xml"></a>setting.xml</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>用于配置速度更快的的仓库镜像，mirrorOf可以配置’central,*’不同仓库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-net-cn<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven China Mirror<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.net.cn/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><h3 id="packaging类型"><a href="#packaging类型" class="headerlink" title="packaging类型"></a>packaging类型</h3><pre><code>&lt;packaging&gt;&lt;/packaging&gt;
 </code></pre><h3 id="parent标签"><a href="#parent标签" class="headerlink" title="parent标签"></a>parent标签</h3><h3 id="dependencies标签"><a href="#dependencies标签" class="headerlink" title="dependencies标签"></a>dependencies标签</h3><ol>
 <li>compile：默认编译依赖范围。对于编译，测试，运行三种classpath都有效。如log4j</li>
@@ -553,13 +560,8 @@
 </ol>
 <h4 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h4><pre><code>&lt;optional&gt;true/false&lt;/optional&gt;
 </code></pre><p>true，则表示该依赖不会传递下去<br>false，则会传递下去。</p>
-<h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><pre><code>&lt;exclusions&gt;
-    &lt;exclusion&gt;
-        &lt;groupId&gt;xxx&lt;/groupId&gt;
-        &lt;artifactId&gt;xxx&lt;/artifactId&gt;
-    &lt;/exclusion&gt;
-&lt;/exclusions&gt;
-</code></pre><h3 id="Lifecycle生命周期"><a href="#Lifecycle生命周期" class="headerlink" title="Lifecycle生命周期"></a>Lifecycle生命周期</h3><h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><ol>
+<h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">       	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   	<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Lifecycle生命周期"><a href="#Lifecycle生命周期" class="headerlink" title="Lifecycle生命周期"></a>Lifecycle生命周期</h3><h4 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h4><ol>
 <li>pre-clean 执行一些需要在clean之前完成的工作；</li>
 <li>clean 移除所有上一次构建生成的文件 ；</li>
 <li>post-clean 执行一些需要在clean之后立刻完成的工作 。</li>
@@ -689,7 +691,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">151</span>
+                    <span class="site-state-item-count">158</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1027,7 +1029,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">179k</span>
   
 
   
@@ -1038,7 +1040,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">2:43</span>
   
 </div>
 
