@@ -4,6 +4,51 @@
   
     
     <entry>
+      <title>netty-transport</title>
+      <link href="/2019/06/05/netty-transport/"/>
+      <url>/2019/06/05/netty-transport/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>netty-codec</title>
+      <link href="/2019/06/05/netty-codec/"/>
+      <url>/2019/06/05/netty-codec/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Netty概览(一)</title>
+      <link href="/2019/06/05/netty-base/"/>
+      <url>/2019/06/05/netty-base/</url>
+      
+        <content type="html"><![CDATA[<p>基于Netty4.1分支，可以看到代码已经非常复杂</p><a id="more"></a><p>netty结构图<br>基础部分：</p><image width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base1.png"><p>test组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base2.png"><p>transport组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base3.png"><h2 id="事件驱动模型"><a href="#事件驱动模型" class="headerlink" title="事件驱动模型"></a>事件驱动模型</h2><h2 id="Reactor模型"><a href="#Reactor模型" class="headerlink" title="Reactor模型"></a>Reactor模型</h2><p>示意图：</p><p>Reactor模型主要有2部分：</p><blockquote><p>Reactor：单独的线程，负责监听、分发事件，<br>Handlers：</p></blockquote><h4 id="1-单Reactor、单线程"><a href="#1-单Reactor、单线程" class="headerlink" title="1. 单Reactor、单线程"></a>1. 单Reactor、单线程</h4><h4 id="2-单Reactor、多线程"><a href="#2-单Reactor、多线程" class="headerlink" title="2. 单Reactor、多线程"></a>2. 单Reactor、多线程</h4><h4 id="3-主从Reactor、多线程"><a href="#3-主从Reactor、多线程" class="headerlink" title="3. 主从Reactor、多线程"></a>3. 主从Reactor、多线程</h4><p>模型：</p><blockquote><p>MainReactor：负责连接请求，把请求转交给SubReactor<br>SubReactor：负责相应Channel的I/O读写请求<br>非I/O请求则直接写入队列，等待worker threads(工作线程)处理</p></blockquote><h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>传输服务，支持 BIO 和 NIO。<br>容器集成，支持 OSGI、JBossMC、Spring、Guice 容器。<br>协议支持，HTTP、Protobuf、二进制、文本、WebSocket、RTSP等，还支持通过实行编码解码逻辑来实现自定义协议。<br>Core 核心，可扩展事件模型、通用通信 API、支持零拷贝的 ByteBuf 缓冲对象。</p><h3 id="线程模型"><a href="#线程模型" class="headerlink" title="线程模型"></a>线程模型</h3><p>Netty基于主从Reactor、多线程模型。</p><blockquote><p>bossGroup：线程池，在绑定某个端口后，从线程池获取一个线程处理Accept事件(相当于MainReactor)，这样每个端口对应一个Boss线程<br>workerGroup：线程池，SubReactor和Worker线程会共用该线程池</p></blockquote><h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><p>Bootstrap/ServerBootstrap<br>Future/ChannelFuture<br>Channel/ChannelHandler/ChannelPipline<br>Selector<br>NioEventLoop/NioEventLoopGroup</p><p>总结：从结构上看，核心功能主要有2个：</p><ol><li>I/O模型</li><li>解析协议(编码/解码)</li></ol></image></image></image>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> netty </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MyBatis概览(一)</title>
       <link href="/2019/06/04/mybatis-base/"/>
       <url>/2019/06/04/mybatis-base/</url>
@@ -1569,73 +1614,23 @@
     
     
     <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
+      <title>快排</title>
+      <link href="/2018/09/28/algorithms-quicksort/"/>
+      <url>/2018/09/28/algorithms-quicksort/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> Algorithms </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java虚拟机</title>
-      <link href="/2018/09/28/java-jvm/"/>
-      <url>/2018/09/28/java-jvm/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><a id="more"></a> <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。</p><p>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、</p><p>操作数栈、</p><p>动态链接、</p><p>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：</p><p>常量</p><p>静态变量</p><p>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--存储</title>
-      <link href="/2018/09/28/csapp-cache/"/>
-      <url>/2018/09/28/csapp-cache/</url>
-      
-        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
+            <tag> Algorithms </tag>
             
         </tags>
       
@@ -1694,6 +1689,56 @@
     
     
     <entry>
+      <title>Java虚拟机</title>
+      <link href="/2018/09/28/java-jvm/"/>
+      <url>/2018/09/28/java-jvm/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><a id="more"></a> <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。</p><p>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、</p><p>操作数栈、</p><p>动态链接、</p><p>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：</p><p>常量</p><p>静态变量</p><p>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java多线程</title>
+      <link href="/2018/09/28/java-multithread/"/>
+      <url>/2018/09/28/java-multithread/</url>
+      
+        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深入理解计算机系统--内存</title>
       <link href="/2018/09/28/csapp-vm/"/>
       <url>/2018/09/28/csapp-vm/</url>
@@ -1719,23 +1764,23 @@
     
     
     <entry>
-      <title>快排</title>
-      <link href="/2018/09/28/algorithms-quicksort/"/>
-      <url>/2018/09/28/algorithms-quicksort/</url>
+      <title>深入理解计算机系统--存储</title>
+      <link href="/2018/09/28/csapp-cache/"/>
+      <url>/2018/09/28/csapp-cache/</url>
       
-        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
       
       
       <categories>
           
-          <category> Algorithms </category>
+          <category> CSAPP </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Algorithms </tag>
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -1744,11 +1789,11 @@
     
     
     <entry>
-      <title>Java多线程</title>
-      <link href="/2018/09/28/java-multithread/"/>
-      <url>/2018/09/28/java-multithread/</url>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
       
-        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
@@ -2696,6 +2741,31 @@
         <tags>
             
             <tag> java, 集合 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java中的NIO</title>
+      <link href="/2018/08/14/java-nio/"/>
+      <url>/2018/08/14/java-nio/</url>
+      
+        <content type="html"><![CDATA[<p>Unix系统中的I/O模型</p><a id="more"></a><h2 id="BIO"><a href="#BIO" class="headerlink" title="BIO"></a>BIO</h2><h2 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><p>nio的使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>nio的核心组件其实就3个：</p><h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><h2 id="AIO-NIO2-0"><a href="#AIO-NIO2-0" class="headerlink" title="AIO/NIO2.0"></a>AIO/NIO2.0</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       

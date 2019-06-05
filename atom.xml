@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-04T16:42:43.138Z</updated>
+  <updated>2019-06-05T05:39:33.210Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>netty-transport</title>
+    <link href="http://wangwanchao.wang/2019/06/05/netty-transport/"/>
+    <id>http://wangwanchao.wang/2019/06/05/netty-transport/</id>
+    <published>2019-06-05T05:39:33.000Z</published>
+    <updated>2019-06-05T05:39:33.210Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>netty-codec</title>
+    <link href="http://wangwanchao.wang/2019/06/05/netty-codec/"/>
+    <id>http://wangwanchao.wang/2019/06/05/netty-codec/</id>
+    <published>2019-06-05T05:39:20.000Z</published>
+    <updated>2019-06-05T05:39:20.564Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Netty概览(一)</title>
+    <link href="http://wangwanchao.wang/2019/06/05/netty-base/"/>
+    <id>http://wangwanchao.wang/2019/06/05/netty-base/</id>
+    <published>2019-06-05T04:25:13.000Z</published>
+    <updated>2019-06-05T05:37:17.319Z</updated>
+    
+    <content type="html"><![CDATA[<p>基于Netty4.1分支，可以看到代码已经非常复杂</p><a id="more"></a><p>netty结构图<br>基础部分：</p><image width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base1.png"><p>test组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base2.png"><p>transport组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base3.png"><h2 id="事件驱动模型"><a href="#事件驱动模型" class="headerlink" title="事件驱动模型"></a>事件驱动模型</h2><h2 id="Reactor模型"><a href="#Reactor模型" class="headerlink" title="Reactor模型"></a>Reactor模型</h2><p>示意图：</p><p>Reactor模型主要有2部分：</p><blockquote><p>Reactor：单独的线程，负责监听、分发事件，<br>Handlers：</p></blockquote><h4 id="1-单Reactor、单线程"><a href="#1-单Reactor、单线程" class="headerlink" title="1. 单Reactor、单线程"></a>1. 单Reactor、单线程</h4><h4 id="2-单Reactor、多线程"><a href="#2-单Reactor、多线程" class="headerlink" title="2. 单Reactor、多线程"></a>2. 单Reactor、多线程</h4><h4 id="3-主从Reactor、多线程"><a href="#3-主从Reactor、多线程" class="headerlink" title="3. 主从Reactor、多线程"></a>3. 主从Reactor、多线程</h4><p>模型：</p><blockquote><p>MainReactor：负责连接请求，把请求转交给SubReactor<br>SubReactor：负责相应Channel的I/O读写请求<br>非I/O请求则直接写入队列，等待worker threads(工作线程)处理</p></blockquote><h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>传输服务，支持 BIO 和 NIO。<br>容器集成，支持 OSGI、JBossMC、Spring、Guice 容器。<br>协议支持，HTTP、Protobuf、二进制、文本、WebSocket、RTSP等，还支持通过实行编码解码逻辑来实现自定义协议。<br>Core 核心，可扩展事件模型、通用通信 API、支持零拷贝的 ByteBuf 缓冲对象。</p><h3 id="线程模型"><a href="#线程模型" class="headerlink" title="线程模型"></a>线程模型</h3><p>Netty基于主从Reactor、多线程模型。</p><blockquote><p>bossGroup：线程池，在绑定某个端口后，从线程池获取一个线程处理Accept事件(相当于MainReactor)，这样每个端口对应一个Boss线程<br>workerGroup：线程池，SubReactor和Worker线程会共用该线程池</p></blockquote><h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><p>Bootstrap/ServerBootstrap<br>Future/ChannelFuture<br>Channel/ChannelHandler/ChannelPipline<br>Selector<br>NioEventLoop/NioEventLoopGroup</p><p>总结：从结构上看，核心功能主要有2个：</p><ol><li>I/O模型</li><li>解析协议(编码/解码)</li></ol></image></image></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;基于Netty4.1分支，可以看到代码已经非常复杂&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="netty" scheme="http://wangwanchao.wang/tags/netty/"/>
+    
+  </entry>
   
   <entry>
     <title>MyBatis概览(一)</title>
@@ -330,65 +378,6 @@
     
     
       <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>go-iris-websocket</title>
-    <link href="http://wangwanchao.wang/2019/05/27/go-iris-websocket/"/>
-    <id>http://wangwanchao.wang/2019/05/27/go-iris-websocket/</id>
-    <published>2019-05-27T08:44:00.000Z</published>
-    <updated>2019-05-27T08:44:00.431Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Dart和Flutter的那些事儿</title>
-    <link href="http://wangwanchao.wang/2019/05/27/flutter-base/"/>
-    <id>http://wangwanchao.wang/2019/05/27/flutter-base/</id>
-    <published>2019-05-27T08:38:24.000Z</published>
-    <updated>2019-05-27T08:44:25.303Z</updated>
-    
-    <content type="html"><![CDATA[<p>Flutter是一门</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Flutter是一门&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="flutter" scheme="http://wangwanchao.wang/tags/flutter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>对一些事情的思考</title>
-    <link href="http://wangwanchao.wang/2019/05/04/thinking-in-youthday/"/>
-    <id>http://wangwanchao.wang/2019/05/04/thinking-in-youthday/</id>
-    <published>2019-05-04T03:56:42.000Z</published>
-    <updated>2019-05-27T08:27:59.379Z</updated>
-    
-    <content type="html"><![CDATA[<p>从2019-04-22开始第一次面试，到现在半个月的时间。个中经历不用言语，最大的感受就是发现自己越来越菜，需要学习的东西越来越多。</p><p>从五一开始也一直在整理收藏的技术博客，面试中很多东西说不明白，终究还是没有真正明白。每次面对面试官无法回答问题，都感觉好尴尬，默默地骂自己一句：“辣鸡”。</p><a id="more"></a><p>针对面试的弱点主要以下几点：</p><p>1、缺乏深入</p><p>很多知识点，只能说个大概，底层的概念很模糊。</p><p>将来要循序渐进的对弱点进行源码分析，分析源码可以更好的成长。</p><p>2、对新技术缺乏认识。</p><p>分布式、高并发、JVM调优，这些虽然很少接触，还是要抽时间模拟实践一下。</p><p>要能实现基本的Demo，才算对新技术的简单了解</p><p>3、坚持算法</p><p>算法和实际工作关系不大，但是刷算法能保证不断的思考，加深问题的分析能力</p><p>每天坚持算法</p><p>今年的目标就是把知识点串成面，写出精品，而不是每天制造垃圾。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从2019-04-22开始第一次面试，到现在半个月的时间。个中经历不用言语，最大的感受就是发现自己越来越菜，需要学习的东西越来越多。&lt;/p&gt;
-&lt;p&gt;从五一开始也一直在整理收藏的技术博客，面试中很多东西说不明白，终究还是没有真正明白。每次面对面试官无法回答问题，都感觉好尴尬，默默地骂自己一句：“辣鸡”。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="life" scheme="http://wangwanchao.wang/tags/life/"/>
     
   </entry>
   
