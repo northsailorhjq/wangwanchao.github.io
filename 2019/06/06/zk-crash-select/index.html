@@ -100,14 +100,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="zk-crash-select">
+  <meta name="description" content="zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举">
+<meta name="keywords" content="ZooKeeper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZooKeeper选举过程(五)">
 <meta property="og:url" content="http://wangwanchao.wang/2019/06/06/zk-crash-select/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
+<meta property="og:description" content="zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T05:36:56.232Z">
+<meta property="og:updated_time" content="2019-06-06T08:26:21.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zk-crash-select">
+<meta name="twitter:title" content="ZooKeeper选举过程(五)">
+<meta name="twitter:description" content="zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举">
 
 
 
@@ -127,7 +131,7 @@
   };
 </script>
 
-  <title>zk-crash-select | Wangsir's Blog</title>
+  <title>ZooKeeper选举过程(五) | Wangsir's Blog</title>
   
 
 
@@ -389,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zk-crash-select
+          <h1 class="post-title" itemprop="name headline">ZooKeeper选举过程(五)
 
               
             
@@ -416,9 +420,13 @@
                 
               
 
-              <time title="Created: 2019-06-06 13:36:56" itemprop="dateCreated datePublished" datetime="2019-06-06T13:36:56+08:00">2019-06-06</time>
+              <time title="Created: 2019-06-06 13:36:56 / Modified: 16:26:21" itemprop="dateCreated datePublished" datetime="2019-06-06T13:36:56+08:00">2019-06-06</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -452,7 +460,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">156</span>
               
 
               
@@ -486,7 +494,14 @@
       
 
       
-        
+        <p>zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举</p>
+<a id="more"></a>
+<h2 id="正常集群启动选举"><a href="#正常集群启动选举" class="headerlink" title="正常集群启动选举"></a>正常集群启动选举</h2><h2 id="Leader重启选举"><a href="#Leader重启选举" class="headerlink" title="Leader重启选举"></a>Leader重启选举</h2><p>leader由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p>
+<image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-2.png">
+
+<h2 id="Follower重启选举"><a href="#Follower重启选举" class="headerlink" title="Follower重启选举"></a>Follower重启选举</h2><p>follower由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p>
+<image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-3.png">
+</image></image>
       
     </div>
 
@@ -507,6 +522,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ZooKeeper/" rel="tag"><i class="fa fa-tag"></i> ZooKeeper</a>
+          
+        </div>
+      
 
       
       
@@ -516,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/06/zk-lock/" rel="next" title="zk-lock">
-                <i class="fa fa-chevron-left"></i> zk-lock
+              <a href="/2019/06/06/zk-lock/" rel="next" title="ZooKeeper分布式锁(六)">
+                <i class="fa fa-chevron-left"></i> ZooKeeper分布式锁(六)
               </a>
             
           </div>
@@ -572,8 +593,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -883,6 +913,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正常集群启动选举"><span class="nav-number">1.</span> <span class="nav-text">正常集群启动选举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader重启选举"><span class="nav-number">2.</span> <span class="nav-text">Leader重启选举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Follower重启选举"><span class="nav-number">3.</span> <span class="nav-text">Follower重启选举</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -922,7 +969,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:45</span>
+    <span title="Reading time total">2:46</span>
   
 </div>
 

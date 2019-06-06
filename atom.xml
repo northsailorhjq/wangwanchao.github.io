@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-06T07:46:05.292Z</updated>
+  <updated>2019-06-06T08:25:41.664Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ZooKeeper基于TCP的FastLeader(三)</title>
+    <title>ZooKeeper基于TCP的FastLeader(四)</title>
     <link href="http://wangwanchao.wang/2019/06/06/zk-fastleader3/"/>
     <id>http://wangwanchao.wang/2019/06/06/zk-fastleader3/</id>
     <published>2019-06-06T05:57:58.000Z</published>
-    <updated>2019-06-06T07:46:05.292Z</updated>
+    <updated>2019-06-06T08:25:41.664Z</updated>
     
     <content type="html"><![CDATA[<p>TCP选举算法</p><a id="more"></a><h2 id="核心结构"><a href="#核心结构" class="headerlink" title="核心结构"></a>核心结构</h2><h3 id="myid"><a href="#myid" class="headerlink" title="myid"></a>myid</h3><p>对应服务器在集群中的唯一ID</p><h3 id="zxid"><a href="#zxid" class="headerlink" title="zxid"></a>zxid</h3><p>类似于事务ID，顺序递增</p><p>|  高32位  |  低32位  |<br>epoch_h：用于标记leader的epoch，从1开始，每次选举出新的leader<br>，epoch_h加1，</p><p>epoch_l：用于标记epoch_h内的版本，epoch_h改变后，epoch_l会被重置</p><h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>服务器状态：<br>looking：<br>leading：<br>following：<br>observing:</p><h3 id="选票数据结构"><a href="#选票数据结构" class="headerlink" title="选票数据结构"></a>选票数据结构</h3><p>选举领导时会进行投票，投票的数据结构：</p><p>logicClock: 表示该服务器发起的是第几轮投票，每个服务器都维护一个自增的logicClock<br>state: 当前服务器状态<br>self_id: 当前服务器的myid<br>self_zxid: zxid<br>vote_id: 被推选的的服务器的myid<br>vote_zxid: 被推选的服务器zxid</p><h2 id="选举流程"><a href="#选举流程" class="headerlink" title="选举流程"></a>选举流程</h2><p>选举过程很重要，也很复杂，做了一个流程图，不合理的回头补充：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/FastLeaderElection%E9%80%89%E4%B8%BE%E5%8E%9F%E7%90%86.png"><p>投票过程数据结构: (logicClock, myid, zxid)<br>投票箱存储结构：(投票服务器id, 被推选服务器id)</p></image>]]></content>
     
@@ -57,30 +57,42 @@
   </entry>
   
   <entry>
-    <title>zk-crash-select</title>
+    <title>ZooKeeper选举过程(五)</title>
     <link href="http://wangwanchao.wang/2019/06/06/zk-crash-select/"/>
     <id>http://wangwanchao.wang/2019/06/06/zk-crash-select/</id>
     <published>2019-06-06T05:36:56.000Z</published>
-    <updated>2019-06-06T05:36:56.232Z</updated>
+    <updated>2019-06-06T08:26:21.367Z</updated>
+    
+    <content type="html"><![CDATA[<p>zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举</p><a id="more"></a><h2 id="正常集群启动选举"><a href="#正常集群启动选举" class="headerlink" title="正常集群启动选举"></a>正常集群启动选举</h2><h2 id="Leader重启选举"><a href="#Leader重启选举" class="headerlink" title="Leader重启选举"></a>Leader重启选举</h2><p>leader由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-2.png"><h2 id="Follower重启选举"><a href="#Follower重启选举" class="headerlink" title="Follower重启选举"></a>Follower重启选举</h2><p>follower由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-3.png"></image></image>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举&lt;/p&gt;
+    
     </summary>
     
+    
+      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
     
   </entry>
   
   <entry>
-    <title>zk-lock</title>
+    <title>ZooKeeper分布式锁(六)</title>
     <link href="http://wangwanchao.wang/2019/06/06/zk-lock/"/>
     <id>http://wangwanchao.wang/2019/06/06/zk-lock/</id>
     <published>2019-06-06T05:36:37.000Z</published>
-    <updated>2019-06-06T05:36:37.135Z</updated>
+    <updated>2019-06-06T08:44:38.258Z</updated>
+    
+    <content type="html"><![CDATA[<p>zk典型的应用是可以作为分布式锁。</p><a id="more"></a><h2 id="zk分布式锁的特性"><a href="#zk分布式锁的特性" class="headerlink" title="zk分布式锁的特性"></a>zk分布式锁的特性</h2><p>zk作为分布式锁主要利用的还是临时节点、顺序性的特性</p><ol><li>最多只有一个获取锁：最多只有一个进程获取锁</li><li>释放锁：获取锁的进程可以主动释放锁；进程宕机后也可以释放锁</li><li>锁重入：获取锁的进程在释放锁之前可以重新进入</li><li>感知释放锁：等待锁的进程可以感知到锁的释放，并且重新竞争锁</li></ol><h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p><h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;zk典型的应用是可以作为分布式锁。&lt;/p&gt;
+    
     </summary>
     
+    
+      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
     
   </entry>
   

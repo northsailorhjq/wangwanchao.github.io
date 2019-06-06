@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>ZooKeeper基于TCP的FastLeader(三)</title>
+      <title>ZooKeeper基于TCP的FastLeader(四)</title>
       <link href="/2019/06/06/zk-fastleader3/"/>
       <url>/2019/06/06/zk-fastleader3/</url>
       
@@ -42,26 +42,38 @@
     
     
     <entry>
-      <title>zk-crash-select</title>
+      <title>ZooKeeper选举过程(五)</title>
       <link href="/2019/06/06/zk-crash-select/"/>
       <url>/2019/06/06/zk-crash-select/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举</p><a id="more"></a><h2 id="正常集群启动选举"><a href="#正常集群启动选举" class="headerlink" title="正常集群启动选举"></a>正常集群启动选举</h2><h2 id="Leader重启选举"><a href="#Leader重启选举" class="headerlink" title="Leader重启选举"></a>Leader重启选举</h2><p>leader由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-2.png"><h2 id="Follower重启选举"><a href="#Follower重启选举" class="headerlink" title="Follower重启选举"></a>Follower重启选举</h2><p>follower由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-3.png"></image></image>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> ZooKeeper </tag>
+            
+        </tags>
       
     </entry>
     
     
     
     <entry>
-      <title>zk-lock</title>
+      <title>ZooKeeper分布式锁(六)</title>
       <link href="/2019/06/06/zk-lock/"/>
       <url>/2019/06/06/zk-lock/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>zk典型的应用是可以作为分布式锁。</p><a id="more"></a><h2 id="zk分布式锁的特性"><a href="#zk分布式锁的特性" class="headerlink" title="zk分布式锁的特性"></a>zk分布式锁的特性</h2><p>zk作为分布式锁主要利用的还是临时节点、顺序性的特性</p><ol><li>最多只有一个获取锁：最多只有一个进程获取锁</li><li>释放锁：获取锁的进程可以主动释放锁；进程宕机后也可以释放锁</li><li>锁重入：获取锁的进程在释放锁之前可以重新进入</li><li>感知释放锁：等待锁的进程可以感知到锁的释放，并且重新竞争锁</li></ol><h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p><h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> ZooKeeper </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1678,11 +1690,36 @@
     
     
     <entry>
-      <title>Java多线程</title>
-      <link href="/2018/09/28/java-multithread/"/>
-      <url>/2018/09/28/java-multithread/</url>
+      <title>MySQL索引</title>
+      <link href="/2018/09/28/mysql-index/"/>
+      <url>/2018/09/28/mysql-index/</url>
       
-        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
@@ -1728,23 +1765,23 @@
     
     
     <entry>
-      <title>MySQL索引</title>
-      <link href="/2018/09/28/mysql-index/"/>
-      <url>/2018/09/28/mysql-index/</url>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
       
-        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
       
       
       <categories>
           
-          <category> MySQL </category>
+          <category> CSAPP </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -1778,31 +1815,6 @@
     
     
     <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>架构基础</title>
       <link href="/2018/09/28/architecture-base/"/>
       <url>/2018/09/28/architecture-base/</url>
@@ -1828,23 +1840,23 @@
     
     
     <entry>
-      <title>深入理解计算机系统--存储</title>
-      <link href="/2018/09/28/csapp-cache/"/>
-      <url>/2018/09/28/csapp-cache/</url>
+      <title>Java多线程</title>
+      <link href="/2018/09/28/java-multithread/"/>
+      <url>/2018/09/28/java-multithread/</url>
       
-        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
       
       
       <categories>
           
-          <category> CSAPP </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> CSAPP </tag>
+            <tag> Java </tag>
             
         </tags>
       
@@ -1853,11 +1865,11 @@
     
     
     <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
+      <title>深入理解计算机系统--存储</title>
+      <link href="/2018/09/28/csapp-cache/"/>
+      <url>/2018/09/28/csapp-cache/</url>
       
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
       
       
       <categories>
@@ -2629,7 +2641,7 @@
       <link href="/2018/08/28/zk-base/"/>
       <url>/2018/08/28/zk-base/</url>
       
-        <content type="html"><![CDATA[<p>ZooKeeper环境搭建，把以前的东西整理一下，</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="特性-语义"><a href="#特性-语义" class="headerlink" title="特性/语义"></a>特性/语义</h3><ol><li>顺序性：客户端发起的更新操作会按照发送顺序在zk上执行</li><li>原子性：zk操作要么成功，要么失败，不会有中间状态</li><li>可靠性：客户端请求的操作一旦被接受，不会意外丢失，除非被覆盖</li><li>最终一致性：写操作最终会对客户端可见(并非实时一致性)</li></ol><h3 id="核心组成"><a href="#核心组成" class="headerlink" title="核心组成"></a>核心组成</h3><ol><li>Leader：zk集群中只能同时有一个leader，<br> 它会发起并维护和各follower、observer之间的心跳<br> 所有的写操作必须由leader完成，leader写入本地日志后，再将写操作广播给follower、observer</li><li>Follower：一个zk集群可能有多个follower，它会响应leader的心跳<br> follower可以直接处理客户端的读请求，并将写请求转发给leader处理<br> 在leader处理写请求的时候对请求进行投票()</li><li>Observer： 角色与follower类似，但无投票权</li></ol><h3 id="watch机制"><a href="#watch机制" class="headerlink" title="watch机制"></a>watch机制</h3><p>客户端所有对zk的读操作，都会有一个Watch，数据改变时，该watch机制被触发<br>特点：</p><blockquote><p>主动推送：zk服务器<strong>主动</strong>将更新推送给客户端<br>一次性：数据变化时，只会被触发一次。如果客户端想要继续监听，必须重新注册一个新的watch<br>可见性：<br>顺序性：如果多个更新触发了watch机制，watch的顺序执行</p></blockquote><h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>zk的节点类型是一个文件系统的树形结构。</p><ol><li><p>永久节点、临时节点</p><blockquote><p>永久节点：一旦创建，不会丢失，服务端重启后仍然存在。既可以包含数据，也可以包含子节点<br>临时节点：客户端和服务端session会话结束，节点被删除。服务端重启后，节点消失</p></blockquote></li><li><p>顺序节点、非顺序性节点</p><blockquote><p>顺序节点：节点名在名称后带有10位10进制序号，多个客户端可以创建名称一样的节点，后面序号递增<br>非顺序节点：客户端只能创建名称不同的节点。</p></blockquote></li></ol><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol><li>分布式锁</li></ol><h2 id="单节点环境"><a href="#单节点环境" class="headerlink" title="单节点环境"></a>单节点环境</h2><p>单节点的安装可以增加用户，而不是使用root用户启动。</p><ol><li><p>下载安装包、解压缩</p><p> zookeeper-3.4.10.tar.gz</p></li><li><p>修改配置文件zoo.cfg</p><p> zk提供了zoo_sample.cfg在conf目录下，可以增加data、log目录，也可以直接使用模板文件。</p><pre><code>cp zoo_sample.cfg zoo.cfg</code></pre></li></ol><ol start="3"><li><p>启动服务端server</p><p> 服务端启动可以默认启动</p><pre><code>bin/zkServer.sh start</code></pre></li><li><p>启动客户端client</p><p> 客户端可以默认启动，也可以指定服务器参数</p><pre><code>bin/zkCli.shbin/zkCli.sh -server 127.0.0.1:2181</code></pre><p> 1). 创建节点</p><p> 语法 </p><pre><code>create [-s] [-e] path data acl</code></pre><p> “-s”表示创建一个”有序”节点; “-e”表示创建一个临时节点.【默认为持久性节点】</p><pre><code>create /test null  create -s /test null </code></pre><p> ACL授权方式为”digest”,其中授权的用户名:密码为”test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=”,ACL的权限列表为”r””w””c””d””a”.</p><pre><code>create -s /test null digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcdacreate /mykey1 myvalue1create /mykey2 myvalue2    </code></pre><p> 2). 删除节点</p><p> 删除所有节点</p><pre><code>rmr &lt;path&gt;    #删除&quot;/test&quot;以及其下的所有子节点.</code></pre><p> 删除指定节点 </p><pre><code>delete &lt;path&gt; [version]delete /test -1   #如果此path下还有子节点,将导致删除失败.这是和&quot;rmr&quot;指令的区别.</code></pre><p> 3). 修改节点</p><pre><code>set path data [version]set /test 1313131 -1  #如果版本号为&quot;-1&quot;表示更新时忽略版本校验.</code></pre><p> 节点设置ACL权限</p><pre><code>setAcl path aclsetAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda </code></pre></li></ol><pre><code>4). 查看节点数据    get /mykey15). 添加授权信息</code></pre><h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2>]]></content>
+        <content type="html"><![CDATA[<p>ZooKeeper环境搭建，把以前的东西整理一下，</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="特性-语义"><a href="#特性-语义" class="headerlink" title="特性/语义"></a>特性/语义</h3><ol><li>顺序性：客户端发起的更新操作会按照发送顺序在zk上执行</li><li>原子性：zk操作要么成功，要么失败，不会有中间状态</li><li>可靠性：客户端请求的操作一旦被接受，不会意外丢失，除非被覆盖</li><li>最终一致性：写操作最终会对客户端可见(并非实时一致性)</li></ol><h3 id="核心组成"><a href="#核心组成" class="headerlink" title="核心组成"></a>核心组成</h3><ol><li>Leader：zk集群中只能同时有一个leader，<br> 它会发起并维护和各follower、observer之间的心跳<br> 所有的写操作必须由leader完成，leader写入本地日志后，再将写操作广播给follower、observer</li><li>Follower：一个zk集群可能有多个follower，它会响应leader的心跳<br> follower可以直接处理客户端的读请求，并将写请求转发给leader处理<br> 在leader处理写请求的时候对请求进行投票()</li><li>Observer： 角色与follower类似，但无投票权</li></ol><h3 id="watch机制"><a href="#watch机制" class="headerlink" title="watch机制"></a>watch机制</h3><p>客户端所有对zk的读操作，都会有一个Watch，数据改变时，该watch机制被触发<br>特点：</p><blockquote><p>主动推送：zk服务器<strong>主动</strong>将更新推送给客户端<br>一次性：数据变化时，只会被触发一次。如果客户端想要继续监听，必须重新注册一个新的watch<br>可见性：<br>顺序性：如果多个更新触发了watch机制，watch的顺序执行</p></blockquote><h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>zk的节点类型是一个文件系统的树形结构。</p><ol><li><p>永久节点、临时节点</p><blockquote><p>永久节点：一旦创建，不会丢失，服务端重启后仍然存在。既可以包含数据，也可以包含子节点<br>临时节点：客户端和服务端session会话结束，节点被删除。服务端重启后，节点消失</p></blockquote></li><li><p>顺序节点、非顺序性节点</p><blockquote><p>顺序节点：节点名在名称后带有10位10进制序号，多个客户端可以创建名称一样的节点，后面序号递增<br>非顺序节点：客户端只能创建名称不同的节点。</p></blockquote></li></ol><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol><li>注册中心</li><li>分布式锁</li></ol><h2 id="单节点环境"><a href="#单节点环境" class="headerlink" title="单节点环境"></a>单节点环境</h2><p>单节点的安装可以增加用户，而不是使用root用户启动。</p><ol><li><p>下载安装包、解压缩</p><pre><code>zookeeper-3.4.10.tar.gz</code></pre></li><li><p>修改配置文件zoo.cfg</p><p> zk提供了zoo_sample.cfg在conf目录下，可以增加data、log目录，也可以直接使用模板文件。</p><pre><code>cp zoo_sample.cfg zoo.cfg</code></pre></li><li><p>启动服务端server</p><p> 服务端启动可以默认启动</p><pre><code>bin/zkServer.sh start</code></pre></li><li><p>启动客户端client</p><p> 客户端可以默认启动，也可以指定服务器参数</p><pre><code>bin/zkCli.shbin/zkCli.sh -server 127.0.0.1:2181</code></pre><p> 1). 创建节点</p><p> 语法 </p><pre><code>create [-s] [-e] path data acl</code></pre><p> “-s”表示创建一个”有序”节点; “-e”表示创建一个临时节点.【默认为持久性节点】</p><pre><code>create /test null  create -s /test null </code></pre><p> ACL授权方式为”digest”,其中授权的用户名:密码为”test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=”,ACL的权限列表为”r””w””c””d””a”.</p><pre><code>create -s /test null digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcdacreate /mykey1 myvalue1create /mykey2 myvalue2    </code></pre><p> 2). 删除节点</p><p> 删除所有节点</p><pre><code>rmr &lt;path&gt;    #删除&quot;/test&quot;以及其下的所有子节点.</code></pre><p> 删除指定节点 </p><pre><code>delete &lt;path&gt; [version]delete /test -1   #如果此path下还有子节点,将导致删除失败.这是和&quot;rmr&quot;指令的区别.</code></pre><p> 3). 修改节点</p><pre><code>set path data [version]set /test 1313131 -1  #如果版本号为&quot;-1&quot;表示更新时忽略版本校验.</code></pre><p> 节点设置ACL权限</p><pre><code>setAcl path aclsetAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda </code></pre><p> 4). 查看节点数据</p><pre><code>get /mykey1</code></pre><p> 5). 添加授权信息</p></li></ol><h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2>]]></content>
       
       
       <categories>
@@ -3363,11 +3375,11 @@
     
     
     <entry>
-      <title>Spring boot注解自动装配原理分析</title>
-      <link href="/2018/07/12/spring-boot-loader/"/>
-      <url>/2018/07/12/spring-boot-loader/</url>
+      <title>Spring boot内嵌tomcat分析</title>
+      <link href="/2018/07/12/spring-boot-tomcat/"/>
+      <url>/2018/07/12/spring-boot-tomcat/</url>
       
-        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
       
       
       <categories>
@@ -3388,11 +3400,11 @@
     
     
     <entry>
-      <title>Spring boot内嵌tomcat分析</title>
-      <link href="/2018/07/12/spring-boot-tomcat/"/>
-      <url>/2018/07/12/spring-boot-tomcat/</url>
+      <title>Spring boot注解自动装配原理分析</title>
+      <link href="/2018/07/12/spring-boot-loader/"/>
+      <url>/2018/07/12/spring-boot-loader/</url>
       
-        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
+        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
       
       
       <categories>

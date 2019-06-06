@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T05:39:44.724Z">
+<meta property="og:updated_time" content="2019-06-06T08:46:31.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZooKeeper概览(一)">
 <meta name="twitter:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-06 13:39:44" itemprop="dateModified" datetime="2019-06-06T13:39:44+08:00">2019-06-06</time>
+                <time title="Modified: 2019-06-06 16:46:31" itemprop="dateModified" datetime="2019-06-06T16:46:31+08:00">2019-06-06</time>
               
             
           </span>
@@ -555,19 +555,18 @@
 </li>
 </ol>
 <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>注册中心</li>
 <li>分布式锁</li>
 </ol>
 <h2 id="单节点环境"><a href="#单节点环境" class="headerlink" title="单节点环境"></a>单节点环境</h2><p>单节点的安装可以增加用户，而不是使用root用户启动。</p>
 <ol>
 <li><p>下载安装包、解压缩</p>
-<p> zookeeper-3.4.10.tar.gz</p>
-</li>
+<pre><code>zookeeper-3.4.10.tar.gz
+</code></pre></li>
 <li><p>修改配置文件zoo.cfg</p>
 <p> zk提供了zoo_sample.cfg在conf目录下，可以增加data、log目录，也可以直接使用模板文件。</p>
 <pre><code>cp zoo_sample.cfg zoo.cfg
 </code></pre></li>
-</ol>
-<ol start="3">
 <li><p>启动服务端server</p>
 <p> 服务端启动可以默认启动</p>
 <pre><code>bin/zkServer.sh start
@@ -575,7 +574,6 @@
 <li><p>启动客户端client</p>
 <p> 客户端可以默认启动，也可以指定服务器参数</p>
 <pre><code>bin/zkCli.sh
-
 bin/zkCli.sh -server 127.0.0.1:2181
 </code></pre><p> 1). 创建节点</p>
 <p> 语法 </p>
@@ -592,24 +590,19 @@ create /mykey2 myvalue2
 <pre><code>rmr &lt;path&gt;    #删除&quot;/test&quot;以及其下的所有子节点.
 </code></pre><p> 删除指定节点 </p>
 <pre><code>delete &lt;path&gt; [version]
-
 delete /test -1   #如果此path下还有子节点,将导致删除失败.这是和&quot;rmr&quot;指令的区别.
 </code></pre><p> 3). 修改节点</p>
 <pre><code>set path data [version]
-
 set /test 1313131 -1  #如果版本号为&quot;-1&quot;表示更新时忽略版本校验.
 </code></pre><p> 节点设置ACL权限</p>
 <pre><code>setAcl path acl
-
 setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda 
-</code></pre></li>
+</code></pre><p> 4). 查看节点数据</p>
+<pre><code>get /mykey1
+</code></pre><p> 5). 添加授权信息</p>
+</li>
 </ol>
-<pre><code>4). 查看节点数据
-
-    get /mykey1
-
-5). 添加授权信息
-</code></pre><h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2>
+<h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2>
       
     </div>
 
@@ -1077,7 +1070,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:45</span>
+    <span title="Reading time total">2:46</span>
   
 </div>
 
