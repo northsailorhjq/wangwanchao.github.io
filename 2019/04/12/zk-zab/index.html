@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="Paxos协议Chubby技术架构 ZAB协议Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议">
+  <meta name="description" content="ZAB 源自一致性协议">
 <meta name="keywords" content="ZooKeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zk-zab">
+<meta property="og:title" content="ZooKeeper原子广播协议ZAB(二)">
 <meta property="og:url" content="http://wangwanchao.wang/2019/04/12/zk-zab/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="Paxos协议Chubby技术架构 ZAB协议Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议">
+<meta property="og:description" content="ZAB 源自一致性协议">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.381Z">
+<meta property="og:updated_time" content="2019-06-06T05:51:47.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zk-zab">
-<meta name="twitter:description" content="Paxos协议Chubby技术架构 ZAB协议Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议">
+<meta name="twitter:title" content="ZooKeeper原子广播协议ZAB(二)">
+<meta name="twitter:description" content="ZAB 源自一致性协议">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>zk-zab | Wangsir's Blog</title>
+  <title>ZooKeeper原子广播协议ZAB(二) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zk-zab
+          <h1 class="post-title" itemprop="name headline">ZooKeeper原子广播协议ZAB(二)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-06 13:51:47" itemprop="dateModified" datetime="2019-06-06T13:51:47+08:00">2019-06-06</time>
               
             
           </span>
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">69</span>
+                <span title="Symbols count in article">308</span>
               
 
               
@@ -506,9 +506,17 @@
       
 
       
-        <a id="more"></a>
+        <p>ZAB 源自一致性协议</p>
+<a id="more"></a>
 <h2 id="Paxos协议"><a href="#Paxos协议" class="headerlink" title="Paxos协议"></a>Paxos协议</h2><p>Chubby技术架构</p>
 <h2 id="ZAB协议"><a href="#ZAB协议" class="headerlink" title="ZAB协议"></a>ZAB协议</h2><p>Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
+<li>保证各个服务器之间的数据一致性</li>
+<li>leader节点无法工作后，ZAB协议自动从Follower节点中选举新的leader</li>
+</ol>
+<h3 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h3><p>写请求分为leader、follower/observer两种接收</p>
+<h4 id="写leader"><a href="#写leader" class="headerlink" title="写leader"></a>写leader</h4><h4 id="写follower-observer"><a href="#写follower-observer" class="headerlink" title="写follower/observer"></a>写follower/observer</h4><p>follower/observer接收到写请求都会转发到leader，再由leader<br>做一些ACK机制处理</p>
+<h3 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h3><p>leader/follower/observer都可以处理读请求，直接返回结果给客户端</p>
 
       
     </div>
@@ -626,7 +634,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">162</span>
+                    <span class="site-state-item-count">166</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -931,7 +939,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Paxos协议"><span class="nav-number">1.</span> <span class="nav-text">Paxos协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZAB协议"><span class="nav-number">2.</span> <span class="nav-text">ZAB协议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Paxos协议"><span class="nav-number">1.</span> <span class="nav-text">Paxos协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZAB协议"><span class="nav-number">2.</span> <span class="nav-text">ZAB协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写操作"><span class="nav-number">2.2.</span> <span class="nav-text">写操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写leader"><span class="nav-number">2.2.1.</span> <span class="nav-text">写leader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写follower-observer"><span class="nav-number">2.2.2.</span> <span class="nav-text">写follower/observer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读操作"><span class="nav-number">2.3.</span> <span class="nav-text">读操作</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -966,7 +974,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">180k</span>
+    <span title="Symbols count total">182k</span>
   
 
   
@@ -977,7 +985,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:44</span>
+    <span title="Reading time total">2:45</span>
   
 </div>
 

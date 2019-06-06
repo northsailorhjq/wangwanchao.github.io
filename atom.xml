@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-05T05:39:33.210Z</updated>
+  <updated>2019-06-06T07:46:05.292Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ZooKeeper基于TCP的FastLeader(三)</title>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-fastleader3/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-fastleader3/</id>
+    <published>2019-06-06T05:57:58.000Z</published>
+    <updated>2019-06-06T07:46:05.292Z</updated>
+    
+    <content type="html"><![CDATA[<p>TCP选举算法</p><a id="more"></a><h2 id="核心结构"><a href="#核心结构" class="headerlink" title="核心结构"></a>核心结构</h2><h3 id="myid"><a href="#myid" class="headerlink" title="myid"></a>myid</h3><p>对应服务器在集群中的唯一ID</p><h3 id="zxid"><a href="#zxid" class="headerlink" title="zxid"></a>zxid</h3><p>类似于事务ID，顺序递增</p><p>|  高32位  |  低32位  |<br>epoch_h：用于标记leader的epoch，从1开始，每次选举出新的leader<br>，epoch_h加1，</p><p>epoch_l：用于标记epoch_h内的版本，epoch_h改变后，epoch_l会被重置</p><h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>服务器状态：<br>looking：<br>leading：<br>following：<br>observing:</p><h3 id="选票数据结构"><a href="#选票数据结构" class="headerlink" title="选票数据结构"></a>选票数据结构</h3><p>选举领导时会进行投票，投票的数据结构：</p><p>logicClock: 表示该服务器发起的是第几轮投票，每个服务器都维护一个自增的logicClock<br>state: 当前服务器状态<br>self_id: 当前服务器的myid<br>self_zxid: zxid<br>vote_id: 被推选的的服务器的myid<br>vote_zxid: 被推选的服务器zxid</p><h2 id="选举流程"><a href="#选举流程" class="headerlink" title="选举流程"></a>选举流程</h2><p>选举过程很重要，也很复杂，做了一个流程图，不合理的回头补充：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/FastLeaderElection%E9%80%89%E4%B8%BE%E5%8E%9F%E7%90%86.png"><p>投票过程数据结构: (logicClock, myid, zxid)<br>投票箱存储结构：(投票服务器id, 被推选服务器id)</p></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;TCP选举算法&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ZooKeeper选举算法基础(三)</title>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-select-base/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-select-base/</id>
+    <published>2019-06-06T05:52:31.000Z</published>
+    <updated>2019-06-06T05:56:54.259Z</updated>
+    
+    <content type="html"><![CDATA[<p>选举算法有多种</p><a id="more"></a><h2 id="选举算法"><a href="#选举算法" class="headerlink" title="选举算法"></a>选举算法</h2><p>electionAlg配置：</p><ol><li>0：基于UDP的LeaderElection</li><li>1：基于UDP的FastLeaderElection</li><li>2：基于UDP和认证的FastLeaderElection</li><li>3：基于TCP的FastLeaderElection(新版本默认算法)</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;选举算法有多种&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zk-crash-select</title>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-crash-select/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-crash-select/</id>
+    <published>2019-06-06T05:36:56.000Z</published>
+    <updated>2019-06-06T05:36:56.232Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>zk-lock</title>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-lock/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-lock/</id>
+    <published>2019-06-06T05:36:37.000Z</published>
+    <updated>2019-06-06T05:36:37.135Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>netty-transport</title>
@@ -297,82 +365,6 @@
     <summary type="html">
     
       &lt;p&gt;看了一遍，感觉并没有解释的很深刻，也许是自己理解的问题。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统--概览</title>
-    <link href="http://wangwanchao.wang/2019/05/29/csapp-base/"/>
-    <id>http://wangwanchao.wang/2019/05/29/csapp-base/</id>
-    <published>2019-05-29T12:07:05.000Z</published>
-    <updated>2019-06-01T04:06:01.414Z</updated>
-    
-    <content type="html"><![CDATA[<p>2014年就接触CSAPP，一直拖一直拖，直到今天才决定完完整整深耕，并产生输出。无论什么原因吧，种一棵树的最好时机就是十年前，还有就是今天。</p><a id="more"></a><h2 id="7-操作系统"><a href="#7-操作系统" class="headerlink" title="7. 操作系统"></a>7. 操作系统</h2><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>操作系统：处于应用程序和底层硬件之间，对应用程序提供API接口。例如Windows、Linux、MacOS等。</p><p>主要的作用：</p><blockquote><p>防止硬件被应用程序随意调用<br>提供统一的接口。因为底层硬件商不同，内部实现也不一样，操作系统对所有的硬件提供一个统一的实现标准</p></blockquote><p>标准：<br>    Unix：贝尔实验室开发的一套系统<br>    Posix标准：IEEE为了规范Unix的开发，制定了一些标准。系统调用的C语言接口、shell程序、工具、线程、网络编程<br>    标准Unix规范：”标准Unix规范”工作组和Posix一起创建的Unix系统标准</p><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>文件：对I/O设备的抽象</p><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><p>虚拟内存：对主存、磁盘等I/O设备的抽象，和文件的描述存在交集，很难说谁包含谁</p><p>虚拟内存分为<br>内核虚拟内存：存储操作系统的代码和数据，对所有进程不可见<br>进程虚拟内存：存放所有进程信息</p><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程：对处理器、主存、磁盘I/O的抽象</p><p>进程是对操作系统中正在运行的程序的一种抽象。<br>计算机CPU分单核、多核，即使一个CPU，看起来好像并发执行多个进程，实际上内部是通过进程间切换实现的，即’上下文切换’</p><p>上下文：进程在运行状态下，操作系统会维护进程所有的信息(主存内容、寄存器文件的当前值)。进程各自的这些信息就是上下文。</p><p>上下文切换：每个CPU每个时刻只能有一个进程运行，把CPU的控制权交给别的进行，换取CPU的进程可以继续上次的执行，进程间运行的切换就是上下文切换</p><p>线程：一个进程可以由多个线程组成，每个线程运行在进程的上下文中，共享同样的代码和全局变量。</p><h4 id="并发、并行"><a href="#并发、并行" class="headerlink" title="并发、并行"></a>并发、并行</h4><p>并发运行：</p><p>并行运行：</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2014年就接触CSAPP，一直拖一直拖，直到今天才决定完完整整深耕，并产生输出。无论什么原因吧，种一棵树的最好时机就是十年前，还有就是今天。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于今天某思面试的思考</title>
-    <link href="http://wangwanchao.wang/2019/05/29/thinking-in-20190529/"/>
-    <id>http://wangwanchao.wang/2019/05/29/thinking-in-20190529/</id>
-    <published>2019-05-29T10:53:24.000Z</published>
-    <updated>2019-05-29T17:18:12.494Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天下午参加了某思的面试，天挺热的，某思去了两次，第一次面到总监，莫名其妙的杳无音讯。这次是第二次。<br>面试过程前HR提前说明了面试官喜欢问算法，也没怎么准备，只是为了白板，简单看了一下基础的算法。</p><a id="more"></a><p>面试中因为面试官看到我不是科班出身，就问了我两道题，一道关于系统中进程和线程，我答的不是很好，面试官说再考考你的基础，就出了一道算法题，大约五分钟后，</p><blockquote><p>面试官问我有思路吗，<br>其实这个并不难，我就把思路大致讲了一下，<br>然后面试官就要结束，习惯性的说，你还有什么要问我的吗<br>我说，我表现很差吗？<br>接着，他说不问上层应用层的东西，比较注重基础 blablabla…<br>我接着问，这道算法题是有什么模式吗？您是怎么做的？<br>其实这个，blabla…讲了一堆<br>我说，我这个用Map有问题吗？<br>你这个主要是太占空间(这时候，我其实很无奈，就是一个优化的问题，但是我也没办法)<br>然后，我说前辈有什么要指导的吗？<br>你既然是非科班出身，就应该在一年内把计算机系统、编译原理、数据结构、网络这些都学习一下(此时，我知道面试官只是对我的出身比较有看法吧，所谓的这几道题无非是不显得那么明显)</p></blockquote><p>面试出来，我知道这个行业门槛越来越高，而我们这些非科班出身的人，未来的路将越来越难走，我觉得自己在这个级别上，表现并没有那么差，但是依然会有人用自己的偏见去看待这一切。</p><p>虽然有点不甘，但是给自己加油吧！希望未来的自己越来越强大！</p><p>拆分目标，把每年的计划拆分到每个月，每一周，然后不断的复盘，总结，看看自己能不能突破当前的桎梏</p><p>6月计划：</p><p>一、读完《CSAPP》，并整理出博客</p><p>二、读完《HTTP/IP详解卷1》，并整理出博客</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天下午参加了某思的面试，天挺热的，某思去了两次，第一次面到总监，莫名其妙的杳无音讯。这次是第二次。&lt;br&gt;面试过程前HR提前说明了面试官喜欢问算法，也没怎么准备，只是为了白板，简单看了一下基础的算法。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="life" scheme="http://wangwanchao.wang/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络中的网桥、交换机、集线器</title>
-    <link href="http://wangwanchao.wang/2019/05/29/net-hub-bridge-switch/"/>
-    <id>http://wangwanchao.wang/2019/05/29/net-hub-bridge-switch/</id>
-    <published>2019-05-29T10:47:19.000Z</published>
-    <updated>2019-05-29T10:49:22.732Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="net" scheme="http://wangwanchao.wang/tags/net/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统--I/O</title>
-    <link href="http://wangwanchao.wang/2019/05/29/csapp-io/"/>
-    <id>http://wangwanchao.wang/2019/05/29/csapp-io/</id>
-    <published>2019-05-29T10:33:03.000Z</published>
-    <updated>2019-05-29T15:41:15.586Z</updated>
-    
-    <content type="html"><![CDATA[<p>看了CSAPP中关于I/O部分，感觉找不到重点，又浏览了一下《Linux内核设计与实现》，总感觉缺点意思，下一步希望能够结合《计算机组成与设计》分析一下</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;看了CSAPP中关于I/O部分，感觉找不到重点，又浏览了一下《Linux内核设计与实现》，总感觉缺点意思，下一步希望能够结合《计算机组成与设计》分析一下&lt;/p&gt;
     
     </summary>
     

@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="ZooKeeper环境搭建，把以前的东西整理一下， 单节点环境单节点的安装可以增加用户，而不是使用root用户启动。  下载安装包、解压缩  zookeeper-3.4.10.tar.gz">
+  <meta name="description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
 <meta name="keywords" content="ZooKeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ZooKeeper环境搭建">
+<meta property="og:title" content="ZooKeeper概览(一)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/08/28/zk-base/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="ZooKeeper环境搭建，把以前的东西整理一下， 单节点环境单节点的安装可以增加用户，而不是使用root用户启动。  下载安装包、解压缩  zookeeper-3.4.10.tar.gz">
+<meta property="og:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.381Z">
+<meta property="og:updated_time" content="2019-06-06T05:39:44.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZooKeeper环境搭建">
-<meta name="twitter:description" content="ZooKeeper环境搭建，把以前的东西整理一下， 单节点环境单节点的安装可以增加用户，而不是使用root用户启动。  下载安装包、解压缩  zookeeper-3.4.10.tar.gz">
+<meta name="twitter:title" content="ZooKeeper概览(一)">
+<meta name="twitter:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>ZooKeeper环境搭建 | Wangsir's Blog</title>
+  <title>ZooKeeper概览(一) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ZooKeeper环境搭建
+          <h1 class="post-title" itemprop="name headline">ZooKeeper概览(一)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-06 13:39:44" itemprop="dateModified" datetime="2019-06-06T13:39:44+08:00">2019-06-06</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.1k</span>
+                <span title="Symbols count in article">1.8k</span>
               
 
               
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -525,14 +525,43 @@
 
       
         <p>ZooKeeper环境搭建，把以前的东西整理一下，</p>
+<a id="more"></a>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="特性-语义"><a href="#特性-语义" class="headerlink" title="特性/语义"></a>特性/语义</h3><ol>
+<li>顺序性：客户端发起的更新操作会按照发送顺序在zk上执行</li>
+<li>原子性：zk操作要么成功，要么失败，不会有中间状态</li>
+<li>可靠性：客户端请求的操作一旦被接受，不会意外丢失，除非被覆盖</li>
+<li>最终一致性：写操作最终会对客户端可见(并非实时一致性)</li>
+</ol>
+<h3 id="核心组成"><a href="#核心组成" class="headerlink" title="核心组成"></a>核心组成</h3><ol>
+<li>Leader：zk集群中只能同时有一个leader，<br> 它会发起并维护和各follower、observer之间的心跳<br> 所有的写操作必须由leader完成，leader写入本地日志后，再将写操作广播给follower、observer</li>
+<li>Follower：一个zk集群可能有多个follower，它会响应leader的心跳<br> follower可以直接处理客户端的读请求，并将写请求转发给leader处理<br> 在leader处理写请求的时候对请求进行投票()</li>
+<li>Observer： 角色与follower类似，但无投票权</li>
+</ol>
+<h3 id="watch机制"><a href="#watch机制" class="headerlink" title="watch机制"></a>watch机制</h3><p>客户端所有对zk的读操作，都会有一个Watch，数据改变时，该watch机制被触发<br>特点：</p>
+<blockquote>
+<p>主动推送：zk服务器<strong>主动</strong>将更新推送给客户端<br>一次性：数据变化时，只会被触发一次。如果客户端想要继续监听，必须重新注册一个新的watch<br>可见性：<br>顺序性：如果多个更新触发了watch机制，watch的顺序执行</p>
+</blockquote>
+<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>zk的节点类型是一个文件系统的树形结构。</p>
+<ol>
+<li><p>永久节点、临时节点</p>
+<blockquote>
+<p>永久节点：一旦创建，不会丢失，服务端重启后仍然存在。既可以包含数据，也可以包含子节点<br>临时节点：客户端和服务端session会话结束，节点被删除。服务端重启后，节点消失</p>
+</blockquote>
+</li>
+<li><p>顺序节点、非顺序性节点</p>
+<blockquote>
+<p>顺序节点：节点名在名称后带有10位10进制序号，多个客户端可以创建名称一样的节点，后面序号递增<br>非顺序节点：客户端只能创建名称不同的节点。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>分布式锁</li>
+</ol>
 <h2 id="单节点环境"><a href="#单节点环境" class="headerlink" title="单节点环境"></a>单节点环境</h2><p>单节点的安装可以增加用户，而不是使用root用户启动。</p>
 <ol>
 <li><p>下载安装包、解压缩</p>
 <p> zookeeper-3.4.10.tar.gz</p>
 </li>
-</ol>
-<a id="more"></a>
-<ol start="2">
 <li><p>修改配置文件zoo.cfg</p>
 <p> zk提供了zoo_sample.cfg在conf目录下，可以增加data、log目录，也可以直接使用模板文件。</p>
 <pre><code>cp zoo_sample.cfg zoo.cfg
@@ -697,7 +726,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">162</span>
+                    <span class="site-state-item-count">166</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1002,7 +1031,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单节点环境"><span class="nav-number">1.</span> <span class="nav-text">单节点环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群环境"><span class="nav-number">2.</span> <span class="nav-text">集群环境</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性-语义"><span class="nav-number">1.1.</span> <span class="nav-text">特性/语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组成"><span class="nav-number">1.2.</span> <span class="nav-text">核心组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch机制"><span class="nav-number">1.3.</span> <span class="nav-text">watch机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点"><span class="nav-number">1.4.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">1.5.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单节点环境"><span class="nav-number">2.</span> <span class="nav-text">单节点环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群环境"><span class="nav-number">3.</span> <span class="nav-text">集群环境</span></a></li></ol></div>
             
 
           </div>
@@ -1037,7 +1066,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">180k</span>
+    <span title="Symbols count total">182k</span>
   
 
   
@@ -1048,7 +1077,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:44</span>
+    <span title="Reading time total">2:45</span>
   
 </div>
 
