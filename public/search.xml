@@ -1554,11 +1554,11 @@
     
     
     <entry>
-      <title>jdk版本特性概览</title>
-      <link href="/2018/10/17/jdk-overview/"/>
-      <url>/2018/10/17/jdk-overview/</url>
+      <title>jdk版本特性概览(一)</title>
+      <link href="/2018/10/17/java-jdk-overview/"/>
+      <url>/2018/10/17/java-jdk-overview/</url>
       
-        <content type="html"><![CDATA[<p>目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：</p><a id="more"></a><h2 id="jdk8"><a href="#jdk8" class="headerlink" title="jdk8"></a>jdk8</h2><p><a href="https://docs.oracle.com/en/java/javase/12/gctuning/garbage-first-garbage-collector-tuning.html#GUID-90E30ACA-8040-432E-B3A0-1E0440AB556A" target="_blank" rel="noopener">OracleJDk8文档</a></p><h3 id="1-Lambda表达式和Functional接口"><a href="#1-Lambda表达式和Functional接口" class="headerlink" title="1. Lambda表达式和Functional接口"></a>1. Lambda表达式和Functional接口</h3><ol><li><p>接口的默认与静态方法</p></li><li><p>方法引用：</p><p> 方法引用</p><pre><code>对象::实例方法名类::静态方法名类::实例方法名</code></pre><p> 构造器引用</p><pre><code>类::new</code></pre><p> 数组引用</p><pre><code>Type[]::new</code></pre></li><li><p>重复注解</p></li><li><p>更好的类型推测机制</p></li><li><p>扩展注解： ElementType.TYPE_USE、 ElementType.TYPE_PARAMETER；可以为任何代码添加注解(接口、异常)</p></li></ol><h3 id="2-编译器新特性"><a href="#2-编译器新特性" class="headerlink" title="2. 编译器新特性"></a>2. 编译器新特性</h3><pre><code>通过&apos;-parameters&apos;参数可以将方法参数名添加到字节码</code></pre><h3 id="3-类库的新特性"><a href="#3-类库的新特性" class="headerlink" title="3. 类库的新特性"></a>3. 类库的新特性</h3><ol><li>Optional：解决空指针异常</li></ol><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Consumer<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Supplier<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Function<span class="tag">&lt;<span class="name">T,</span> <span class="attr">R</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Predicate<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Comparator<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br></pre></td></tr></table></figure><ol start="2"><li><p>Stream：</p><p> filter过滤</p><p> sort排序</p><p> map映射</p><p> match匹配</p><p> reduce规约</p></li></ol><ol start="3"><li><p>Date/Time API</p><p> Instant</p><p> Clock时钟</p><p> Timezones时区</p><p> LocalTime/LocalDate/LocalDateTime本地时间</p><p> <strong>注意：</strong>和java.text.SimpleDateFormat不同的是，DateTimeFormatter是不可变的，所以它是线程安全的。</p></li><li><p>Base64：Base64编码成为类库标准</p></li><li><p>并行：parallelSort()、</p></li><li><p>并发：java.util.concurrent包</p><blockquote><p>ConcurrentHashMap增加新方法支持聚集<br>ForkJoinPool增加新方法支持共有资源池<br>locks.StampedLock，用来替换locks.ReadWriteLock<br>atomic包下增加DoubleAccumulator、DoubleAdder、LongAccumulator、LongAdder</p></blockquote></li><li><p>集合</p><p> HashMap</p><p> 链表 + 红黑树</p><p> ConcurrentHashMap</p><p> 采用了CAS算法</p></li></ol><h3 id="4-Java工具"><a href="#4-Java工具" class="headerlink" title="4. Java工具"></a>4. Java工具</h3><ol><li><p>Norshorn引擎 jjs</p></li><li><p>类依赖分析器 jdeps：可以用来分析’.class’、目录、jar</p></li></ol><h3 id="5-JVM新特性"><a href="#5-JVM新特性" class="headerlink" title="5. JVM新特性"></a>5. JVM新特性</h3><ol><li><p>PermGen空间被Metaspace取代，</p><pre><code>-XX:PermSize      -XX:MetaSpaceSize-XX:MaxPermSize   -XX:MaxMetaspaceSize</code></pre></li></ol><h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><h3 id="7-IO-NIO改进"><a href="#7-IO-NIO改进" class="headerlink" title="7. IO/NIO改进"></a>7. IO/NIO改进</h3><ol><li>改进java.nio.charset.Charset的实现，精简了 jre/lib/charsets.jar 包；优化了 String(byte[],*) 构造方法和 String.getBytes() 方法的性能</li><li><p>新增API</p><pre><code>BufferedReader.line(): 返回文本行的流 Stream&lt;String&gt;File.lines(Path, Charset):返回文本行的流 Stream&lt;String&gt;File.list(Path): 遍历当前目录下的文件和目录File.walk(Path, int, FileVisitOption): 遍历某一个目录下的所有文件和指定深度的子目录File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件</code></pre></li></ol><h2 id="jdk9"><a href="#jdk9" class="headerlink" title="jdk9"></a>jdk9</h2><p><a href="https://openjdk.java.net/projects/jdk9/" target="_blank" rel="noopener">OpenJDK9</a></p><p>“Java SE 9 has reached end of support. Users of Java SE 9 should switch to Java SE 10.”</p><p>官网明确表明，jdk9已经不被支持，用户可以切到jdk10</p><ol><li>模块化</li><li>Linking</li><li>JShell</li><li>JSON API</li><li>金钱和货币API</li><li>锁争用机制</li><li>代码分段缓存</li><li>编译工具 sjavac</li><li>接口私有方法</li><li>HTTP/2 用于替换’HttpURLConnection’</li><li>多版本兼容jar</li><li>Stream API 增加4个新的方法: dropWhile、takeWhile、ofNullable、iterate</li></ol><h2 id="jdk10"><a href="#jdk10" class="headerlink" title="jdk10"></a>jdk10</h2><p><a href="https://openjdk.java.net/projects/jdk/10/" target="_blank" rel="noopener">OpenJDK10</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html" target="_blank" rel="noopener">OracleJDK下载</a></p><h3 id="主要新特性"><a href="#主要新特性" class="headerlink" title="主要新特性"></a>主要新特性</h3><blockquote><p>286: Local-Variable Type Inference</p><p>296: Consolidate the JDK Forest into a Single Repository</p><p>304: Garbage-Collector Interface</p><p>307: Parallel Full GC for G1</p><p>310: Application Class-Data Sharing</p><p>312: Thread-Local Handshakes</p><p>313: Remove the Native-Header Generation Tool (javah)</p><p>314: Additional Unicode Language-Tag Extensions</p><p>316: Heap Allocation on Alternative Memory Devices</p><p>317: Experimental Java-Based JIT Compiler</p><p>319: Root Certificates</p><p>322: Time-Based Release Versioning</p></blockquote><h3 id="1-类库API-73项"><a href="#1-类库API-73项" class="headerlink" title="1. 类库API 73项"></a>1. 类库API 73项</h3><h3 id="2-JVM规范改动"><a href="#2-JVM规范改动" class="headerlink" title="2. JVM规范改动"></a>2. JVM规范改动</h3><h3 id="3-Java语言规范"><a href="#3-Java语言规范" class="headerlink" title="3. Java语言规范"></a>3. Java语言规范</h3><h3 id="4-乱七八糟"><a href="#4-乱七八糟" class="headerlink" title="4. 乱七八糟"></a>4. 乱七八糟</h3><h2 id="jdk11"><a href="#jdk11" class="headerlink" title="jdk11"></a>jdk11</h2><p>继jdk8后的大版本LTS</p><p><a href="https://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">OpenJDK11下载</a></p><p><a href="https://openjdk.java.net/projects/jdk/11/" target="_blank" rel="noopener">OpenJDK11文档</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank" rel="noopener">OracleJDK下载</a></p><p><a href="https://docs.oracle.com/en/java/javase/11/" target="_blank" rel="noopener">Oracle文档</a></p><p>既然都到了JDK11，那就跟着英文文档来一波吧！</p><h3 id="主要新特性-1"><a href="#主要新特性-1" class="headerlink" title="主要新特性"></a>主要新特性</h3><blockquote><p>181: Nest-Based Access Control</p><p>309: Dynamic Class-File Constants</p><p>315: Improve Aarch64 Intrinsics</p><p>318: Epsilon: A No-Op Garbage Collector</p><p>320: Remove the Java EE and CORBA Modules</p><p>321: HTTP Client (Standard)</p><p>323: Local-Variable Syntax for Lambda Parameters</p><p>324: Key Agreement with Curve25519 and Curve448</p><p>327: Unicode 10</p><p>328: Flight Recorder</p><p>329: ChaCha20 and Poly1305 Cryptographic Algorithms</p><p>330: Launch Single-File Source-Code Programs</p><p>331: Low-Overhead Heap Profiling</p><p>332: Transport Layer Security (TLS) 1.3</p><p>333: ZGC: A Scalable Low-Latency Garbage Collector<br>(Experimental)</p><p>335: Deprecate the Nashorn JavaScript Engine</p><p>336: Deprecate the Pack200 Tools and API</p></blockquote><h2 id="jdk12"><a href="#jdk12" class="headerlink" title="jdk12"></a>jdk12</h2><p>jdk12发布了，jdk20还会远吗</p><p><a href="https://jdk.java.net/12/" target="_blank" rel="noopener">OpenJDK下载</a></p><p><a href="https://openjdk.java.net/projects/jdk/12/" target="_blank" rel="noopener">OpenJDk12文档</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">OracleJDK下载</a></p><p><a href="https://docs.oracle.com/en/java/javase/12/" target="_blank" rel="noopener">Oracle文档</a></p><h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><blockquote><p>189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)</p><p>230:    Microbenchmark Suite</p><p>325:    Switch Expressions (Preview)</p><p>334:    JVM Constants API</p><p>340:    One AArch64 Port, Not Two</p><p>341:    Default CDS Archives</p><p>344:    Abortable Mixed Collections for G1</p><p>346:    Promptly Return Unused Committed Memory from G1</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：</p><a id="more"></a><h2 id="jdk8"><a href="#jdk8" class="headerlink" title="jdk8"></a>jdk8</h2><p><a href="https://jdk.java.net/java-se-ri/8" target="_blank" rel="noopener">OpenJDK1.8下载</a><br><!--[OracleJDK8文档]()--></p><p>特性表详细的list没有找到，自己手动整理了一下</p><h3 id="Lambda表达式和Functional接口"><a href="#Lambda表达式和Functional接口" class="headerlink" title="Lambda表达式和Functional接口"></a>Lambda表达式和Functional接口</h3><ol><li><p>接口的默认与静态方法</p></li><li><p>方法引用：<br> 方法引用</p><pre><code>对象::实例方法名类::静态方法名类::实例方法名</code></pre><p> 构造器引用</p><pre><code>类::new</code></pre><p> 数组引用</p><pre><code>Type[]::new</code></pre></li><li><p>重复注解</p></li><li><p>更好的类型推测机制</p></li><li><p>扩展注解： ElementType.TYPE_USE、 ElementType.TYPE_PARAMETER；可以为任何代码添加注解(接口、异常)</p></li></ol><h3 id="编译器新特性"><a href="#编译器新特性" class="headerlink" title="编译器新特性"></a>编译器新特性</h3><pre><code>通过&apos;-parameters&apos;参数可以将方法参数名添加到字节码</code></pre><h3 id="类库的新特性"><a href="#类库的新特性" class="headerlink" title="类库的新特性"></a>类库的新特性</h3><ol><li>Optional：解决空指针异常</li></ol><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Consumer<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Supplier<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Function<span class="tag">&lt;<span class="name">T,</span> <span class="attr">R</span>&gt;</span></span><br><span class="line">Predicate<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Comparator<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br></pre></td></tr></table></figure><ol start="2"><li><p>Stream：<br> filter过滤<br> sort排序<br> map映射<br> match匹配<br> reduce规约</p></li><li><p>Date/Time API<br> Instant<br> Clock时钟<br> Timezones时区<br> LocalTime/LocalDate/LocalDateTime本地时间</p><p> <strong>注意：</strong>和java.text.SimpleDateFormat不同的是，DateTimeFormatter是不可变的，所以它是线程安全的。</p></li><li><p>Base64：Base64编码成为类库标准</p></li><li><p>并行：parallelSort()、</p></li><li><p>并发：java.util.concurrent包</p><blockquote><p>ConcurrentHashMap增加新方法支持聚集<br>ForkJoinPool增加新方法支持共有资源池<br>locks.StampedLock，用来替换locks.ReadWriteLock<br>atomic包下增加DoubleAccumulator、DoubleAdder、LongAccumulator、LongAdder</p></blockquote></li><li><p>集合<br> HashMap：链表 + 红黑树<br> ConcurrentHashMap：采用了CAS算法</p></li></ol><h3 id="Java工具"><a href="#Java工具" class="headerlink" title="Java工具"></a>Java工具</h3><ol><li>Norshorn引擎 jjs</li><li>类依赖分析器 jdeps：可以用来分析’.class’、目录、jar</li></ol><h3 id="JVM新特性"><a href="#JVM新特性" class="headerlink" title="JVM新特性"></a>JVM新特性</h3><ol><li><p>PermGen空间被Metaspace取代，</p><pre><code>-XX:PermSize      -XX:MetaSpaceSize-XX:MaxPermSize   -XX:MaxMetaspaceSize</code></pre></li></ol><h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><h3 id="IO-NIO改进"><a href="#IO-NIO改进" class="headerlink" title="IO/NIO改进"></a>IO/NIO改进</h3><ol><li>改进java.nio.charset.Charset的实现，精简了 jre/lib/charsets.jar 包；优化了 String(byte[],*) 构造方法和 String.getBytes() 方法的性能</li><li><p>新增API</p><pre><code>BufferedReader.line(): 返回文本行的流 Stream&lt;String&gt;File.lines(Path, Charset):返回文本行的流 Stream&lt;String&gt;File.list(Path): 遍历当前目录下的文件和目录File.walk(Path, int, FileVisitOption): 遍历某一个目录下的所有文件和指定深度的子目录File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件</code></pre></li></ol><h2 id="jdk9"><a href="#jdk9" class="headerlink" title="jdk9"></a>jdk9</h2><p><a href="https://openjdk.java.net/projects/jdk9/" target="_blank" rel="noopener">OpenJDK9</a></p><p>“Java SE 9 has reached end of support. Users of Java SE 9 should switch to Java SE 10.”<br><strong>注意：</strong>官网明确表明，jdk9已经不被支持，用户可以切到jdk10</p><h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><blockquote><p>102: Process API Updates<br>110: HTTP 2 Client: HTTP/2 用于替换’HttpURLConnection’<br>143: Improve Contended Locking: 锁争用机制<br>158: Unified JVM Logging<br>165: Compiler Control: 编译控制<br>193: Variable Handles: 操作变量<br>197: Segmented Code Cache: 代码分段缓存<br>199: Smart Java Compilation, Phase Two: 更智能的Java编译器<br>200: The Modular JDK<br>201: Modular Source Code<br>211: Elide Deprecation Warnings on Import Statements<br>212: Resolve Lint and Doclint Warnings<br>213: Milling Project Coin<br>214: Remove GC Combinations Deprecated in JDK 8<br>215: Tiered Attribution for javac<br>216: Process Import Statements Correctly<br>217: Annotations Pipeline 2.0: 注解2.0<br>219: Datagram Transport Layer Security (DTLS)<br>220: Modular Run-Time Images<br>221: Simplified Doclet API<br>222: jshell: The Java Shell (Read-Eval-Print Loop): REPL交互<br>223: New Version-String Scheme:<br>224: HTML5 Javadoc<br>225: Javadoc Search<br>226: UTF-8 Property Files<br>227: Unicode 7.0<br>228: Add More Diagnostic Commands<br>229: Create PKCS12 Keystores by Default<br>231: Remove Launch-Time JRE Version Selection<br>232: Improve Secure Application Performance<br>233: Generate Run-Time Compiler Tests Automatically<br>235: Test Class-File Attributes Generated by javac<br>236: Parser API for Nashorn: JS解析API<br>237: Linux/AArch64 Port<br>238: Multi-Release JAR Files: 多版本的jars<br>240: Remove the JVM TI hprof Agent<br>241: Remove the jhat Tool: 移除jhat工具<br>243: Java-Level JVM Compiler Interface<br>244: TLS Application-Layer Protocol Negotiation Extension<br>245: Validate JVM Command-Line Flag Arguments<br>246: Leverage CPU Instructions for GHASH and RSA<br>247: Compile for Older Platform Versions<br>248: Make G1 the Default Garbage Collector: 默认G1垃圾收集器<br>249: OCSP Stapling for TLS<br>250: Store Interned Strings in CDS Archives<br>251: Multi-Resolution Images<br>252: Use CLDR Locale Data by Default<br>253: Prepare JavaFX UI Controls &amp; CSS APIs for Modularization<br>254: Compact Strings: 压缩字符串<br>255: Merge Selected Xerces 2.11.0 Updates into JAXP<br>256: BeanInfo Annotations<br>257: Update JavaFX/Media to Newer Version of GStreamer<br>258: HarfBuzz Font-Layout Engine<br>259: Stack-Walking API: 栈跟踪API<br>260: Encapsulate Most Internal APIs<br>261: Module System: 模块化<br>262: TIFF Image I/O<br>263: HiDPI Graphics on Windows and Linux<br>264: Platform Logging API and Service<br>265: Marlin Graphics Renderer<br>266: More Concurrency Updates<br>267: Unicode 8.0<br>268: XML Catalogs<br>269: Convenience Factory Methods for Collections<br>270: Reserved Stack Areas for Critical Sections<br>271: Unified GC Logging<br>272: Platform-Specific Desktop Features<br>273: DRBG-Based SecureRandom Implementations<br>274: Enhanced Method Handles<br>275: Modular Java Application Packaging<br>276: Dynamic Linking of Language-Defined Object Models<br>277: Enhanced Deprecation<br>278: Additional Tests for Humongous Objects in G1<br>279: Improve Test-Failure Troubleshooting<br>280: Indify String Concatenation<br>281: HotSpot C++ Unit-Test Framework<br>282: jlink: The Java Linker: Linking链接<br>283: Enable GTK 3 on Linux<br>284: New HotSpot Build System<br>285: Spin-Wait Hints<br>287: SHA-3 Hash Algorithms<br>288: Disable SHA-1 Certificates<br>289: Deprecate the Applet API<br>290: Filter Incoming Serialization Data<br>291: Deprecate the Concurrent Mark Sweep (CMS) Garbage Collector<br>292: Implement Selected ECMAScript 6 Features in Nashorn<br>294: Linux/s390x Port<br>295: Ahead-of-Time Compilation&gt;<br>297: Unified arm32/arm64 Port<br>298: Remove Demos and Samples<br>299: Reorganize Documentation</p></blockquote><h2 id="jdk10"><a href="#jdk10" class="headerlink" title="jdk10"></a>jdk10</h2><p><a href="https://openjdk.java.net/projects/jdk/10/" target="_blank" rel="noopener">OpenJDK10文档</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html" target="_blank" rel="noopener">OracleJDK下载</a></p><h3 id="新特性-1"><a href="#新特性-1" class="headerlink" title="新特性"></a>新特性</h3><blockquote><p>286: Local-Variable Type Inference:<br>296: Consolidate the JDK Forest into a Single Repository<br>304: Garbage-Collector Interface<br>307: Parallel Full GC for G1:<br>310: Application Class-Data Sharing<br>312: Thread-Local Handshakes<br>313: Remove the Native-Header Generation Tool (javah)<br>314: Additional Unicode Language-Tag Extensions<br>316: Heap Allocation on Alternative Memory Devices<br>317: Experimental Java-Based JIT Compiler<br>319: Root Certificates<br>322: Time-Based Release Versioning</p></blockquote><h3 id="类库API-73项"><a href="#类库API-73项" class="headerlink" title="类库API 73项"></a>类库API 73项</h3><h3 id="JVM规范改动"><a href="#JVM规范改动" class="headerlink" title="JVM规范改动"></a>JVM规范改动</h3><h3 id="Java语言规范"><a href="#Java语言规范" class="headerlink" title="Java语言规范"></a>Java语言规范</h3><h3 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h3><h2 id="jdk11"><a href="#jdk11" class="headerlink" title="jdk11"></a>jdk11</h2><p>继jdk8后的大版本LTS</p><p><a href="https://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">OpenJDK11下载</a></p><p><a href="https://openjdk.java.net/projects/jdk/11/" target="_blank" rel="noopener">OpenJDK11文档</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank" rel="noopener">OracleJDK下载</a></p><p><a href="https://docs.oracle.com/en/java/javase/11/" target="_blank" rel="noopener">Oracle文档</a></p><p>既然都到了JDK11，那就跟着英文文档来一波吧！</p><h3 id="主要新特性"><a href="#主要新特性" class="headerlink" title="主要新特性"></a>主要新特性</h3><blockquote><p>181: Nest-Based Access Control<br>309: Dynamic Class-File Constants<br>315: Improve Aarch64 Intrinsics<br>318: Epsilon: A No-Op Garbage Collector: EGC收集器<br>320: Remove the Java EE and CORBA Modules: 移除了JavaEE+CORBA模块<br>321: HTTP Client (Standard)<br>323: Local-Variable Syntax for Lambda Parameters<br>324: Key Agreement with Curve25519 and Curve448<br>327: Unicode 10<br>328: Flight Recorder: 飞行记录器<br>329: ChaCha20 and Poly1305 Cryptographic Algorithms: xx20和Poly1305加密算法<br>330: Launch Single-File Source-Code Programs<br>331: Low-Overhead Heap Profiling<br>332: Transport Layer Security (TLS) 1.3: TLS升级为1.3<br>333: ZGC: A Scalable Low-Latency Garbage Collector(Experimental): 更稳定的ZGC收集器<br>335: Deprecate the Nashorn JavaScript Engine: 废除了JS解析器<br>336: Deprecate the Pack200 Tools and API</p></blockquote><h2 id="jdk12"><a href="#jdk12" class="headerlink" title="jdk12"></a>jdk12</h2><p>jdk12发布了，jdk20还会远吗?</p><p><a href="https://jdk.java.net/12/" target="_blank" rel="noopener">OpenJDK下载</a></p><p><a href="https://openjdk.java.net/projects/jdk/12/" target="_blank" rel="noopener">OpenJDK12文档</a></p><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">OracleJDK12下载</a></p><p><a href="https://docs.oracle.com/en/java/javase/12/" target="_blank" rel="noopener">OracleJDK12文档</a></p><h3 id="新特性-2"><a href="#新特性-2" class="headerlink" title="新特性"></a>新特性</h3><blockquote><p>189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)<br>230:    Microbenchmark Suite<br>325:    Switch Expressions (Preview)<br>334:    JVM Constants API<br>340:    One AArch64 Port, Not Two<br>341:    Default CDS Archives<br>344:    Abortable Mixed Collections for G1: G1可移除的Mixed GC<br>346:    Promptly Return Unused Committed Memory from G1</p></blockquote><h2 id="JDK13"><a href="#JDK13" class="headerlink" title="JDK13"></a>JDK13</h2>]]></content>
       
       
       <categories>
@@ -1570,7 +1570,7 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> java,jdk </tag>
             
         </tags>
       
@@ -1779,23 +1779,48 @@
     
     
     <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
+      <title>深入理解计算机系统--存储</title>
+      <link href="/2018/09/28/csapp-cache/"/>
+      <url>/2018/09/28/csapp-cache/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> CSAPP </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>架构基础</title>
+      <link href="/2018/09/28/architecture-base/"/>
+      <url>/2018/09/28/architecture-base/</url>
+      
+        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Architect </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Architect </tag>
             
         </tags>
       
@@ -1821,6 +1846,56 @@
         <tags>
             
             <tag> java, jvm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
+      
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1879,31 +1954,6 @@
     
     
     <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
-      
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java多线程</title>
       <link href="/2018/09/28/java-multithread/"/>
       <url>/2018/09/28/java-multithread/</url>
@@ -1921,56 +1971,6 @@
         <tags>
             
             <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>架构基础</title>
-      <link href="/2018/09/28/architecture-base/"/>
-      <url>/2018/09/28/architecture-base/</url>
-      
-        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Architect </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Architect </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--存储</title>
-      <link href="/2018/09/28/csapp-cache/"/>
-      <url>/2018/09/28/csapp-cache/</url>
-      
-        <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
             
         </tags>
       
@@ -3464,11 +3464,11 @@
     
     
     <entry>
-      <title>Spring boot内嵌tomcat分析</title>
-      <link href="/2018/07/12/spring-boot-tomcat/"/>
-      <url>/2018/07/12/spring-boot-tomcat/</url>
+      <title>Spring boot注解自动装配原理分析</title>
+      <link href="/2018/07/12/spring-boot-loader/"/>
+      <url>/2018/07/12/spring-boot-loader/</url>
       
-        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
+        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
       
       
       <categories>
@@ -3489,11 +3489,11 @@
     
     
     <entry>
-      <title>Spring boot注解自动装配原理分析</title>
-      <link href="/2018/07/12/spring-boot-loader/"/>
-      <url>/2018/07/12/spring-boot-loader/</url>
+      <title>Spring boot内嵌tomcat分析</title>
+      <link href="/2018/07/12/spring-boot-tomcat/"/>
+      <url>/2018/07/12/spring-boot-tomcat/</url>
       
-        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
       
       
       <categories>

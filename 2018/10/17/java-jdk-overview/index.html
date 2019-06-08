@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：">
+<meta name="keywords" content="java,jdk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jdk版本特性概览(一)">
+<meta property="og:url" content="http://wangwanchao.wang/2018/10/17/java-jdk-overview/index.html">
+<meta property="og:site_name" content="Wangsir&#39;s Blog">
+<meta property="og:description" content="目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-08T07:29:56.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jdk版本特性概览(一)">
+<meta name="twitter:description" content="目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wangsir's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://wangwanchao.wang/2018/10/17/java-jdk-overview/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>jdk版本特性概览(一) | Wangsir's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wangsir's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangwanchao.wang/2018/10/17/java-jdk-overview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanchao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wangsir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jdk版本特性概览(一)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-17 00:21:01" itemprop="dateCreated datePublished" datetime="2018-10-17T00:21:01+08:00">2018-10-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-08 15:29:56" itemprop="dateModified" datetime="2019-06-08T15:29:56+08:00">2019-06-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">6.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">6 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：</p>
+<a id="more"></a>
+<h2 id="jdk8"><a href="#jdk8" class="headerlink" title="jdk8"></a>jdk8</h2><p><a href="https://jdk.java.net/java-se-ri/8" target="_blank" rel="noopener">OpenJDK1.8下载</a><br><!--[OracleJDK8文档]()
+--></p>
+<p>特性表详细的list没有找到，自己手动整理了一下</p>
+<h3 id="Lambda表达式和Functional接口"><a href="#Lambda表达式和Functional接口" class="headerlink" title="Lambda表达式和Functional接口"></a>Lambda表达式和Functional接口</h3><ol>
+<li><p>接口的默认与静态方法</p>
+</li>
+<li><p>方法引用：<br> 方法引用</p>
+<pre><code>对象::实例方法名
+类::静态方法名
+类::实例方法名
+</code></pre><p> 构造器引用</p>
+<pre><code>类::new
+</code></pre><p> 数组引用</p>
+<pre><code>Type[]::new
+</code></pre></li>
+<li><p>重复注解</p>
+</li>
+<li><p>更好的类型推测机制</p>
+</li>
+<li><p>扩展注解： ElementType.TYPE_USE、 ElementType.TYPE_PARAMETER；可以为任何代码添加注解(接口、异常)</p>
+</li>
+</ol>
+<h3 id="编译器新特性"><a href="#编译器新特性" class="headerlink" title="编译器新特性"></a>编译器新特性</h3><pre><code>通过&apos;-parameters&apos;参数可以将方法参数名添加到字节码
+</code></pre><h3 id="类库的新特性"><a href="#类库的新特性" class="headerlink" title="类库的新特性"></a>类库的新特性</h3><ol>
+<li>Optional：解决空指针异常</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Consumer<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Supplier<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Function<span class="tag">&lt;<span class="name">T,</span> <span class="attr">R</span>&gt;</span></span><br><span class="line">Predicate<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br><span class="line">Comparator<span class="tag">&lt;<span class="name">T</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>Stream：<br> filter过滤<br> sort排序<br> map映射<br> match匹配<br> reduce规约</p>
+</li>
+<li><p>Date/Time API<br> Instant<br> Clock时钟<br> Timezones时区<br> LocalTime/LocalDate/LocalDateTime本地时间</p>
+<p> <strong>注意：</strong>和java.text.SimpleDateFormat不同的是，DateTimeFormatter是不可变的，所以它是线程安全的。</p>
+</li>
+<li><p>Base64：Base64编码成为类库标准</p>
+</li>
+<li><p>并行：parallelSort()、</p>
+</li>
+<li><p>并发：java.util.concurrent包</p>
+<blockquote>
+<p>ConcurrentHashMap增加新方法支持聚集<br>ForkJoinPool增加新方法支持共有资源池<br>locks.StampedLock，用来替换locks.ReadWriteLock<br>atomic包下增加DoubleAccumulator、DoubleAdder、LongAccumulator、LongAdder</p>
+</blockquote>
+</li>
+<li><p>集合<br> HashMap：链表 + 红黑树<br> ConcurrentHashMap：采用了CAS算法</p>
+</li>
+</ol>
+<h3 id="Java工具"><a href="#Java工具" class="headerlink" title="Java工具"></a>Java工具</h3><ol>
+<li>Norshorn引擎 jjs</li>
+<li>类依赖分析器 jdeps：可以用来分析’.class’、目录、jar</li>
+</ol>
+<h3 id="JVM新特性"><a href="#JVM新特性" class="headerlink" title="JVM新特性"></a>JVM新特性</h3><ol>
+<li><p>PermGen空间被Metaspace取代，</p>
+<pre><code>-XX:PermSize      -XX:MetaSpaceSize
+-XX:MaxPermSize   -XX:MaxMetaspaceSize
+</code></pre></li>
+</ol>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><h3 id="IO-NIO改进"><a href="#IO-NIO改进" class="headerlink" title="IO/NIO改进"></a>IO/NIO改进</h3><ol>
+<li>改进java.nio.charset.Charset的实现，精简了 jre/lib/charsets.jar 包；优化了 String(byte[],*) 构造方法和 String.getBytes() 方法的性能</li>
+<li><p>新增API</p>
+<pre><code>BufferedReader.line(): 返回文本行的流 Stream&lt;String&gt;
+File.lines(Path, Charset):返回文本行的流 Stream&lt;String&gt;
+File.list(Path): 遍历当前目录下的文件和目录
+File.walk(Path, int, FileVisitOption): 遍历某一个目录下的所有文件和指定深度的子目录
+File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
+</code></pre></li>
+</ol>
+<h2 id="jdk9"><a href="#jdk9" class="headerlink" title="jdk9"></a>jdk9</h2><p><a href="https://openjdk.java.net/projects/jdk9/" target="_blank" rel="noopener">OpenJDK9</a></p>
+<p>“Java SE 9 has reached end of support. Users of Java SE 9 should switch to Java SE 10.”<br><strong>注意：</strong>官网明确表明，jdk9已经不被支持，用户可以切到jdk10</p>
+<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><blockquote>
+<p>102: Process API Updates<br>110: HTTP 2 Client: HTTP/2 用于替换’HttpURLConnection’<br>143: Improve Contended Locking: 锁争用机制<br>158: Unified JVM Logging<br>165: Compiler Control: 编译控制<br>193: Variable Handles: 操作变量<br>197: Segmented Code Cache: 代码分段缓存<br>199: Smart Java Compilation, Phase Two: 更智能的Java编译器<br>200: The Modular JDK<br>201: Modular Source Code<br>211: Elide Deprecation Warnings on Import Statements<br>212: Resolve Lint and Doclint Warnings<br>213: Milling Project Coin<br>214: Remove GC Combinations Deprecated in JDK 8<br>215: Tiered Attribution for javac<br>216: Process Import Statements Correctly<br>217: Annotations Pipeline 2.0: 注解2.0<br>219: Datagram Transport Layer Security (DTLS)<br>220: Modular Run-Time Images<br>221: Simplified Doclet API<br>222: jshell: The Java Shell (Read-Eval-Print Loop): REPL交互<br>223: New Version-String Scheme:<br>224: HTML5 Javadoc<br>225: Javadoc Search<br>226: UTF-8 Property Files<br>227: Unicode 7.0<br>228: Add More Diagnostic Commands<br>229: Create PKCS12 Keystores by Default<br>231: Remove Launch-Time JRE Version Selection<br>232: Improve Secure Application Performance<br>233: Generate Run-Time Compiler Tests Automatically<br>235: Test Class-File Attributes Generated by javac<br>236: Parser API for Nashorn: JS解析API<br>237: Linux/AArch64 Port<br>238: Multi-Release JAR Files: 多版本的jars<br>240: Remove the JVM TI hprof Agent<br>241: Remove the jhat Tool: 移除jhat工具<br>243: Java-Level JVM Compiler Interface<br>244: TLS Application-Layer Protocol Negotiation Extension<br>245: Validate JVM Command-Line Flag Arguments<br>246: Leverage CPU Instructions for GHASH and RSA<br>247: Compile for Older Platform Versions<br>248: Make G1 the Default Garbage Collector: 默认G1垃圾收集器<br>249: OCSP Stapling for TLS<br>250: Store Interned Strings in CDS Archives<br>251: Multi-Resolution Images<br>252: Use CLDR Locale Data by Default<br>253: Prepare JavaFX UI Controls &amp; CSS APIs for Modularization<br>254: Compact Strings: 压缩字符串<br>255: Merge Selected Xerces 2.11.0 Updates into JAXP<br>256: BeanInfo Annotations<br>257: Update JavaFX/Media to Newer Version of GStreamer<br>258: HarfBuzz Font-Layout Engine<br>259: Stack-Walking API: 栈跟踪API<br>260: Encapsulate Most Internal APIs<br>261: Module System: 模块化<br>262: TIFF Image I/O<br>263: HiDPI Graphics on Windows and Linux<br>264: Platform Logging API and Service<br>265: Marlin Graphics Renderer<br>266: More Concurrency Updates<br>267: Unicode 8.0<br>268: XML Catalogs<br>269: Convenience Factory Methods for Collections<br>270: Reserved Stack Areas for Critical Sections<br>271: Unified GC Logging<br>272: Platform-Specific Desktop Features<br>273: DRBG-Based SecureRandom Implementations<br>274: Enhanced Method Handles<br>275: Modular Java Application Packaging<br>276: Dynamic Linking of Language-Defined Object Models<br>277: Enhanced Deprecation<br>278: Additional Tests for Humongous Objects in G1<br>279: Improve Test-Failure Troubleshooting<br>280: Indify String Concatenation<br>281: HotSpot C++ Unit-Test Framework<br>282: jlink: The Java Linker: Linking链接<br>283: Enable GTK 3 on Linux<br>284: New HotSpot Build System<br>285: Spin-Wait Hints<br>287: SHA-3 Hash Algorithms<br>288: Disable SHA-1 Certificates<br>289: Deprecate the Applet API<br>290: Filter Incoming Serialization Data<br>291: Deprecate the Concurrent Mark Sweep (CMS) Garbage Collector<br>292: Implement Selected ECMAScript 6 Features in Nashorn<br>294: Linux/s390x Port<br>295: Ahead-of-Time Compilation&gt;<br>297: Unified arm32/arm64 Port<br>298: Remove Demos and Samples<br>299: Reorganize Documentation</p>
+</blockquote>
+<h2 id="jdk10"><a href="#jdk10" class="headerlink" title="jdk10"></a>jdk10</h2><p><a href="https://openjdk.java.net/projects/jdk/10/" target="_blank" rel="noopener">OpenJDK10文档</a></p>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html" target="_blank" rel="noopener">OracleJDK下载</a></p>
+<h3 id="新特性-1"><a href="#新特性-1" class="headerlink" title="新特性"></a>新特性</h3><blockquote>
+<p>286: Local-Variable Type Inference:<br>296: Consolidate the JDK Forest into a Single Repository<br>304: Garbage-Collector Interface<br>307: Parallel Full GC for G1:<br>310: Application Class-Data Sharing<br>312: Thread-Local Handshakes<br>313: Remove the Native-Header Generation Tool (javah)<br>314: Additional Unicode Language-Tag Extensions<br>316: Heap Allocation on Alternative Memory Devices<br>317: Experimental Java-Based JIT Compiler<br>319: Root Certificates<br>322: Time-Based Release Versioning</p>
+</blockquote>
+<h3 id="类库API-73项"><a href="#类库API-73项" class="headerlink" title="类库API 73项"></a>类库API 73项</h3><h3 id="JVM规范改动"><a href="#JVM规范改动" class="headerlink" title="JVM规范改动"></a>JVM规范改动</h3><h3 id="Java语言规范"><a href="#Java语言规范" class="headerlink" title="Java语言规范"></a>Java语言规范</h3><h3 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h3><h2 id="jdk11"><a href="#jdk11" class="headerlink" title="jdk11"></a>jdk11</h2><p>继jdk8后的大版本LTS</p>
+<p><a href="https://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">OpenJDK11下载</a></p>
+<p><a href="https://openjdk.java.net/projects/jdk/11/" target="_blank" rel="noopener">OpenJDK11文档</a></p>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank" rel="noopener">OracleJDK下载</a></p>
+<p><a href="https://docs.oracle.com/en/java/javase/11/" target="_blank" rel="noopener">Oracle文档</a></p>
+<p>既然都到了JDK11，那就跟着英文文档来一波吧！</p>
+<h3 id="主要新特性"><a href="#主要新特性" class="headerlink" title="主要新特性"></a>主要新特性</h3><blockquote>
+<p>181: Nest-Based Access Control<br>309: Dynamic Class-File Constants<br>315: Improve Aarch64 Intrinsics<br>318: Epsilon: A No-Op Garbage Collector: EGC收集器<br>320: Remove the Java EE and CORBA Modules: 移除了JavaEE+CORBA模块<br>321: HTTP Client (Standard)<br>323: Local-Variable Syntax for Lambda Parameters<br>324: Key Agreement with Curve25519 and Curve448<br>327: Unicode 10<br>328: Flight Recorder: 飞行记录器<br>329: ChaCha20 and Poly1305 Cryptographic Algorithms: xx20和Poly1305加密算法<br>330: Launch Single-File Source-Code Programs<br>331: Low-Overhead Heap Profiling<br>332: Transport Layer Security (TLS) 1.3: TLS升级为1.3<br>333: ZGC: A Scalable Low-Latency Garbage Collector(Experimental): 更稳定的ZGC收集器<br>335: Deprecate the Nashorn JavaScript Engine: 废除了JS解析器<br>336: Deprecate the Pack200 Tools and API</p>
+</blockquote>
+<h2 id="jdk12"><a href="#jdk12" class="headerlink" title="jdk12"></a>jdk12</h2><p>jdk12发布了，jdk20还会远吗?</p>
+<p><a href="https://jdk.java.net/12/" target="_blank" rel="noopener">OpenJDK下载</a></p>
+<p><a href="https://openjdk.java.net/projects/jdk/12/" target="_blank" rel="noopener">OpenJDK12文档</a></p>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">OracleJDK12下载</a></p>
+<p><a href="https://docs.oracle.com/en/java/javase/12/" target="_blank" rel="noopener">OracleJDK12文档</a></p>
+<h3 id="新特性-2"><a href="#新特性-2" class="headerlink" title="新特性"></a>新特性</h3><blockquote>
+<p>189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)<br>230:    Microbenchmark Suite<br>325:    Switch Expressions (Preview)<br>334:    JVM Constants API<br>340:    One AArch64 Port, Not Two<br>341:    Default CDS Archives<br>344:    Abortable Mixed Collections for G1: G1可移除的Mixed GC<br>346:    Promptly Return Unused Committed Memory from G1</p>
+</blockquote>
+<h2 id="JDK13"><a href="#JDK13" class="headerlink" title="JDK13"></a>JDK13</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java-jdk/" rel="tag"><i class="fa fa-tag"></i> java,jdk</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/java-manifest/" rel="next" title="java-manifest">
+                <i class="fa fa-chevron-left"></i> java-manifest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/19/cat-base/" rel="prev" title="Cat实现监控埋点">
+                Cat实现监控埋点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wanchao</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">171</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk8"><span class="nav-number">1.</span> <span class="nav-text">jdk8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda表达式和Functional接口"><span class="nav-number">1.1.</span> <span class="nav-text">Lambda表达式和Functional接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器新特性"><span class="nav-number">1.2.</span> <span class="nav-text">编译器新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类库的新特性"><span class="nav-number">1.3.</span> <span class="nav-text">类库的新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java工具"><span class="nav-number">1.4.</span> <span class="nav-text">Java工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM新特性"><span class="nav-number">1.5.</span> <span class="nav-text">JVM新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性"><span class="nav-number">1.6.</span> <span class="nav-text">安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO-NIO改进"><span class="nav-number">1.7.</span> <span class="nav-text">IO/NIO改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk9"><span class="nav-number">2.</span> <span class="nav-text">jdk9</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新特性"><span class="nav-number">2.1.</span> <span class="nav-text">新特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk10"><span class="nav-number">3.</span> <span class="nav-text">jdk10</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新特性-1"><span class="nav-number">3.1.</span> <span class="nav-text">新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类库API-73项"><span class="nav-number">3.2.</span> <span class="nav-text">类库API 73项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM规范改动"><span class="nav-number">3.3.</span> <span class="nav-text">JVM规范改动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java语言规范"><span class="nav-number">3.4.</span> <span class="nav-text">Java语言规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乱七八糟"><span class="nav-number">3.5.</span> <span class="nav-text">乱七八糟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk11"><span class="nav-number">4.</span> <span class="nav-text">jdk11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要新特性"><span class="nav-number">4.1.</span> <span class="nav-text">主要新特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk12"><span class="nav-number">5.</span> <span class="nav-text">jdk12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新特性-2"><span class="nav-number">5.1.</span> <span class="nav-text">新特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK13"><span class="nav-number">6.</span> <span class="nav-text">JDK13</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanchao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Symbols count total: </span>
+    
+    <span title="Symbols count total">189k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    
+    <span title="Reading time total">2:52</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
