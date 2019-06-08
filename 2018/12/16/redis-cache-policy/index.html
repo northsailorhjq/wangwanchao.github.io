@@ -103,14 +103,14 @@
   <meta name="description" content="简单记录，回头需要深入再做整理">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis缓存过期策略">
+<meta property="og:title" content="Redis缓存过期策略(四)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/12/16/redis-cache-policy/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="简单记录，回头需要深入再做整理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T08:50:58.896Z">
+<meta property="og:updated_time" content="2019-06-06T16:22:26.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis缓存过期策略">
+<meta name="twitter:title" content="Redis缓存过期策略(四)">
 <meta name="twitter:description" content="简单记录，回头需要深入再做整理">
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>Redis缓存过期策略 | Wangsir's Blog</title>
+  <title>Redis缓存过期策略(四) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis缓存过期策略
+          <h1 class="post-title" itemprop="name headline">Redis缓存过期策略(四)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-17 16:50:58" itemprop="dateModified" datetime="2018-12-17T16:50:58+08:00">2018-12-17</time>
+                <time title="Modified: 2019-06-07 00:22:26" itemprop="dateModified" datetime="2019-06-07T00:22:26+08:00">2019-06-07</time>
               
             
           </span>
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">170</span>
+                <span title="Symbols count in article">154</span>
               
 
               
@@ -508,9 +508,11 @@
       
         <p>简单记录，回头需要深入再做整理</p>
 <a id="more"></a>
-<p>定时过期：每个设置过期时间的key分配定时器，到过期时间自动清除；占用CPU资源</p>
-<p>惰性过期：当访问key时，才判断是否过期，过期则清除；如果大量key没有被访问，则不会被清除</p>
-<p>定期过期：每隔一段固定时间，去扫描一定数量的数据库中expires字典表的key，</p>
+<p>策略方式：</p>
+<ol>
+<li>定期过期：每隔一段固定时间，去扫描一定数量的数据库中expires字典表的key，到过期时间自动清除；占用CPU资源</li>
+<li>惰性过期：当访问key时，才判断是否过期，过期则清除；如果大量key没有被访问，则不会被清除</li>
+</ol>
 <p><strong>Redis中同时使用了惰性过期和定期过期策略</strong></p>
 
       
@@ -548,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/redis-mem-policy/" rel="next" title="Redis内存淘汰策略">
-                <i class="fa fa-chevron-left"></i> Redis内存淘汰策略
+              <a href="/2018/12/16/redis-mem-policy/" rel="next" title="Redis内存淘汰策略(三)">
+                <i class="fa fa-chevron-left"></i> Redis内存淘汰策略(三)
               </a>
             
           </div>
@@ -620,7 +622,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -880,7 +882,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -943,7 +947,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -954,7 +958,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

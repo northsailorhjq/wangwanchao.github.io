@@ -100,14 +100,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="java-jvm-cms-g1">
+  <meta name="description" content="结合GC日志对CMS、G1分析">
+<meta name="keywords" content="java, jvm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm垃圾收集器CMS和G1比较(四)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/12/04/java-jvm-cms-g1/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
+<meta property="og:description" content="结合GC日志对CMS、G1分析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-04T06:09:26.838Z">
+<meta property="og:updated_time" content="2019-06-08T06:25:08.541Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-jvm-cms-g1">
+<meta name="twitter:title" content="jvm垃圾收集器CMS和G1比较(四)">
+<meta name="twitter:description" content="结合GC日志对CMS、G1分析">
 
 
 
@@ -127,7 +131,7 @@
   };
 </script>
 
-  <title>java-jvm-cms-g1 | Wangsir's Blog</title>
+  <title>jvm垃圾收集器CMS和G1比较(四) | Wangsir's Blog</title>
   
 
 
@@ -389,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java-jvm-cms-g1
+          <h1 class="post-title" itemprop="name headline">jvm垃圾收集器CMS和G1比较(四)
 
               
             
@@ -419,6 +423,22 @@
               <time title="Created: 2018-12-04 14:09:26" itemprop="dateCreated datePublished" datetime="2018-12-04T14:09:26+08:00">2018-12-04</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-08 14:25:08" itemprop="dateModified" datetime="2019-06-08T14:25:08+08:00">2019-06-08</time>
+              
             
           </span>
 
@@ -452,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">1.3k</span>
               
 
               
@@ -486,7 +506,109 @@
       
 
       
-        
+        <p>结合GC日志对CMS、G1分析</p>
+<a id="more"></a>
+<h2 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h2><h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:center">详解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td style="text-align:center">激活CMS收集器</td>
+</tr>
+<tr>
+<td>-XX:ConcGCThreads</td>
+<td style="text-align:center">设置CMS线程的数量</td>
+</tr>
+<tr>
+<td>-XX:+UseCMSInitiatingOccupancyOnly</td>
+<td style="text-align:center">只根据老年代使用比例来决定是否进行CMS</td>
+</tr>
+<tr>
+<td>-XX:CMSInitiatingOccupancyFraction</td>
+<td style="text-align:center">设置触发CMS老年代回收的内存使用率占比</td>
+</tr>
+<tr>
+<td>-XX:+CMSParallelRemarkEnabled</td>
+<td style="text-align:center">并行运行最终标记阶段，加快最终标记的速度</td>
+</tr>
+<tr>
+<td>-XX:+UseCMSCompactAtFullCollection</td>
+<td style="text-align:center">每次触发CMS Full GC的时候都整理一次碎片</td>
+</tr>
+<tr>
+<td>-XX:CMSFullGCsBeforeCompaction</td>
+<td style="text-align:center">经过几次CMS Full GC的时候整理一次碎片</td>
+</tr>
+<tr>
+<td>-XX:+CMSClassUnloadingEnabled</td>
+<td style="text-align:center">让CMS可以收集永久带，默认不会收集</td>
+</tr>
+<tr>
+<td>-XX:+CMSScavengeBeforeRemark</td>
+<td style="text-align:center">最终标记之前强制进行一个Minor GC</td>
+</tr>
+<tr>
+<td>-XX:+ExplicitGCInvokesConcurrent</td>
+<td style="text-align:center">当调用System.gc()的时候，执行并行gc，只有在CMS或者G1下该参数才</td>
+</tr>
+</tbody>
+</table>
+<h3 id="日志："><a href="#日志：" class="headerlink" title="日志："></a>日志：</h3><h2 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h2><h3 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:center">详解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-XX:+UseG1GC</td>
+<td style="text-align:center">使用 G1 垃圾收集器</td>
+</tr>
+<tr>
+<td>-XX:MaxGCPauseMillis=200</td>
+<td style="text-align:center">设置期望达到的最大GC停顿时间指标（JVM会尽力实现，但不保证达到）</td>
+</tr>
+<tr>
+<td>-XX:InitiatingHeapOccupancyPercent=45</td>
+<td style="text-align:center">启动并发GC周期时的堆内存占用百分比. G1之类的垃圾收集器用它来触发并发GC周期,基于整个堆的使用率,而不只是某一代内存的使用比. 值为 0 则表示”一直执行GC循环”. 默认值为 45</td>
+</tr>
+<tr>
+<td>-XX:NewRatio=n</td>
+<td style="text-align:center">新生代与老生代(new/old generation)的大小比例(Ratio). 默认值为 2</td>
+</tr>
+<tr>
+<td>-XX:SurvivorRatio=n</td>
+<td style="text-align:center">eden/survivor 空间大小的比例(Ratio). 默认值为 8.</td>
+</tr>
+<tr>
+<td>-XX:MaxTenuringThreshold=n</td>
+<td style="text-align:center">提升年老代的最大临界值(tenuring threshold). 默认值15</td>
+</tr>
+<tr>
+<td>-XX:ParallelGCThreads=n</td>
+<td style="text-align:center">设置垃圾收集器在并行阶段使用的线程数,默认值随JVM运行的平台不同而不同.</td>
+</tr>
+<tr>
+<td>-XX:ConcGCThreads=n</td>
+<td style="text-align:center">并发垃圾收集器使用的线程数量. 默认值随JVM运行的平台不同而不同.</td>
+</tr>
+<tr>
+<td>-XX:G1ReservePercent=n</td>
+<td style="text-align:center">设置堆内存保留为假天花板的总量,以降低提升失败的可能性. 默认值是 10.</td>
+</tr>
+<tr>
+<td>-XX:G1HeapRegionSize=n</td>
+<td style="text-align:center">使用G1时Java堆会被分为大小统一的的区(region)。此参数可以指定每个heap区的大小. 默认值将根据 heap size 算出最优解. 最小值为 1Mb, 最大值为 32Mb.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="日志：-1"><a href="#日志：-1" class="headerlink" title="日志："></a>日志：</h3>
       
     </div>
 
@@ -506,6 +628,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java-jvm/" rel="tag"><i class="fa fa-tag"></i> java, jvm</a>
+          
+        </div>
       
 
       
@@ -572,8 +700,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,7 +725,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -848,7 +985,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -883,6 +1022,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMS"><span class="nav-number">1.</span> <span class="nav-text">CMS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数："><span class="nav-number">1.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志："><span class="nav-number">1.2.</span> <span class="nav-text">日志：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G1"><span class="nav-number">2.</span> <span class="nav-text">G1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数：-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志：-1"><span class="nav-number">2.2.</span> <span class="nav-text">日志：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -911,7 +1067,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -922,7 +1078,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

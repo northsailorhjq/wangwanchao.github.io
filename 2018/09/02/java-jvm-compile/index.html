@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸 编译器在JJava中根据不同大致分为3部分： 前端编译器：Javac、增量编译器ECJ JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器 AOT编译器：GNU Compiler for the Java(GCJ)、Excels">
-<meta name="keywords" content="java">
+  <meta name="description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸">
+<meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java编译器">
+<meta property="og:title" content="java编译器(五)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/02/java-jvm-compile/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸 编译器在JJava中根据不同大致分为3部分： 前端编译器：Javac、增量编译器ECJ JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器 AOT编译器：GNU Compiler for the Java(GCJ)、Excels">
+<meta property="og:description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.399Z">
+<meta property="og:updated_time" content="2019-06-08T06:15:39.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java编译器">
-<meta name="twitter:description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸 编译器在JJava中根据不同大致分为3部分： 前端编译器：Javac、增量编译器ECJ JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器 AOT编译器：GNU Compiler for the Java(GCJ)、Excels">
+<meta name="twitter:title" content="java编译器(五)">
+<meta name="twitter:description" content="编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>java编译器 | Wangsir's Blog</title>
+  <title>java编译器(五) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java编译器
+          <h1 class="post-title" itemprop="name headline">java编译器(五)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-08 14:15:39" itemprop="dateModified" datetime="2019-06-08T14:15:39+08:00">2019-06-08</time>
               
             
           </span>
@@ -454,7 +454,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
 
                 
                 
@@ -525,11 +525,13 @@
 
       
         <p>编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸</p>
-<p>编译器在JJava中根据不同大致分为3部分：</p>
-<p>前端编译器：Javac、增量编译器ECJ</p>
-<p>JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器</p>
-<p>AOT编译器：GNU Compiler for the Java(GCJ)、Excelsior JET</p>
 <a id="more"></a>
+<p>编译器在Java中根据不同大致分为3部分：</p>
+<ol>
+<li>前端编译器：Javac、增量编译器ECJ</li>
+<li>JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器</li>
+<li>AOT编译器：GNU Compiler for the Java(GCJ)、Excelsior JET</li>
+</ol>
 <h2 id="静态提前编译-AOT"><a href="#静态提前编译-AOT" class="headerlink" title="静态提前编译 AOT"></a>静态提前编译 AOT</h2><p>直接把.java文件编译成机器码的过程。例如：GCJ, JET</p>
 <p>编译过程：</p>
 <ol>
@@ -587,12 +589,9 @@
 <li>方法内联</li>
 <li>逃逸分析</li>
 </ol>
-<p>Java编译器和C/C++编译器的对比：</p>
-<p>优点：</p>
+<h3 id="Java编译器和C-C-编译器的对比："><a href="#Java编译器和C-C-编译器的对比：" class="headerlink" title="Java编译器和C/C++编译器的对比："></a>Java编译器和C/C++编译器的对比：</h3><p>优点：</p>
 <blockquote>
-<p>调用频率预测</p>
-<p>分支频率预测</p>
-<p>裁剪未被选择的分支</p>
+<p>调用频率预测<br>分支频率预测<br>裁剪未被选择的分支</p>
 </blockquote>
 
       
@@ -617,7 +616,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+            <a href="/tags/java-jvm/" rel="tag"><i class="fa fa-tag"></i> java,jvm</a>
           
         </div>
       
@@ -630,8 +629,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/01/redis-cluster/" rel="next" title="Redis集群模式">
-                <i class="fa fa-chevron-left"></i> Redis集群模式
+              <a href="/2018/09/01/redis-cluster/" rel="next" title="Redis集群模式(五)">
+                <i class="fa fa-chevron-left"></i> Redis集群模式(五)
               </a>
             
           </div>
@@ -711,7 +710,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -971,7 +970,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1016,7 +1017,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态提前编译-AOT"><span class="nav-number">1.</span> <span class="nav-text">静态提前编译 AOT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端运行时编译-JIT"><span class="nav-number">2.</span> <span class="nav-text">后端运行时编译 JIT</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态提前编译-AOT"><span class="nav-number">1.</span> <span class="nav-text">静态提前编译 AOT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端运行时编译-JIT"><span class="nav-number">2.</span> <span class="nav-text">后端运行时编译 JIT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java编译器和C-C-编译器的对比："><span class="nav-number">2.1.</span> <span class="nav-text">Java编译器和C/C++编译器的对比：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1051,7 +1052,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -1062,7 +1063,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

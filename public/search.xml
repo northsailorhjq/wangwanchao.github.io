@@ -4,6 +4,89 @@
   
     
     <entry>
+      <title>net-nat</title>
+      <link href="/2019/06/07/net-nat/"/>
+      <url>/2019/06/07/net-nat/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis概览(一)</title>
+      <link href="/2019/06/07/redis-base/"/>
+      <url>/2019/06/07/redis-base/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis中的跳表(二)</title>
+      <link href="/2019/06/07/redis-skiplist/"/>
+      <url>/2019/06/07/redis-skiplist/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis哨兵机制(七)</title>
+      <link href="/2019/06/07/redis-election/"/>
+      <url>/2019/06/07/redis-election/</url>
+      
+        <content type="html"><![CDATA[<p>redis引入了哨兵机制</p><a id="more"></a><h2 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a>哨兵机制</h2><h3 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h3><p>启动哨兵机制，可以对主从数据库进行监控</p><h3 id="一主多从"><a href="#一主多从" class="headerlink" title="一主多从"></a>一主多从</h3><p>启动多个哨兵(建议3个，并且使用奇数个哨兵)，可以对主从数据库进行监控，哨兵之间也可以互相通信。<br>哨兵主要功能：</p><ol><li>监控：监控master和slave是否运行正常</li><li>提醒：某个redis出现故障，可以发起通知</li><li>自动故障转移：当一个master不能正常工作时，将master下其中一个slave转为master</li></ol><p>补充：为什么哨兵至少3个？</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>每个哨兵会向其它哨兵、master、slave定时发送消息，保持心跳。如果指定时间未回应，则认为对方<strong>主观下线</strong>；若多数哨兵都认为某一服务没响应，则认为<strong>客观下线</strong></p><h2 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h2><p>用于接收master是否下线的消息</p><h2 id="选举master协议"><a href="#选举master协议" class="headerlink" title="选举master协议"></a>选举master协议</h2><p>用来决定是否执行故障转移，以及slave中的选主<br>选主会有两个过程：</p><h3 id="Sentinel哨兵选出leader"><a href="#Sentinel哨兵选出leader" class="headerlink" title="Sentinel哨兵选出leader"></a>Sentinel哨兵选出leader</h3><p>当某个哨兵节点确认master主管下线后，发出广播请求其它哨兵选举自己为leader，<br>被请求的哨兵如果没有选举过其它哨兵的请求，则同意该请求，否则不同意<br>当哨兵节点票数达到Max(quorum, num(sentinel)/2 + 1)，则升级为leader</p><h3 id="Sentinel-Leader选举主节点master"><a href="#Sentinel-Leader选举主节点master" class="headerlink" title="Sentinel Leader选举主节点master"></a>Sentinel Leader选举主节点master</h3><p>master选举：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/redis/redis-leader.png"><p>slave-priority在conf中配置</p></image>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>etcd-raft</title>
+      <link href="/2019/06/06/etcd-raft/"/>
+      <url>/2019/06/06/etcd-raft/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ZooKeeper基于TCP的FastLeader(四)</title>
       <link href="/2019/06/06/zk-fastleader3/"/>
       <url>/2019/06/06/zk-fastleader3/</url>
@@ -473,7 +556,7 @@
       <link href="/2019/04/12/zk-zab/"/>
       <url>/2019/04/12/zk-zab/</url>
       
-        <content type="html"><![CDATA[<p>ZAB 源自一致性协议</p><a id="more"></a><h2 id="Paxos协议"><a href="#Paxos协议" class="headerlink" title="Paxos协议"></a>Paxos协议</h2><p>Chubby技术架构</p><h2 id="ZAB协议"><a href="#ZAB协议" class="headerlink" title="ZAB协议"></a>ZAB协议</h2><p>Zookeeper Atomic Broadcast，ZooKeeper原子消息广播协议</p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol><li>保证各个服务器之间的数据一致性</li><li>leader节点无法工作后，ZAB协议自动从Follower节点中选举新的leader</li></ol><h3 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h3><p>写请求分为leader、follower/observer两种接收</p><h4 id="写leader"><a href="#写leader" class="headerlink" title="写leader"></a>写leader</h4><h4 id="写follower-observer"><a href="#写follower-observer" class="headerlink" title="写follower/observer"></a>写follower/observer</h4><p>follower/observer接收到写请求都会转发到leader，再由leader<br>做一些ACK机制处理</p><h3 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h3><p>leader/follower/observer都可以处理读请求，直接返回结果给客户端</p>]]></content>
+        <content type="html"><![CDATA[<p>ZAB 源自一致性协议</p><a id="more"></a><h2 id="Paxos协议"><a href="#Paxos协议" class="headerlink" title="Paxos协议"></a>Paxos协议</h2><p>Paxos(帕索克斯)：<br>Chubby技术架构</p><h2 id="ZAB协议"><a href="#ZAB协议" class="headerlink" title="ZAB协议"></a>ZAB协议</h2><p>ZAB(Zookeeper Atomic Broadcast)：ZooKeeper原子消息广播协议，因为paxos太过于复杂，zk基于paxos实现了ZAB协议</p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol><li>保证各个服务器之间的数据一致性</li><li>leader节点无法工作后，ZAB协议自动从Follower节点中选举新的leader</li></ol><h3 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h3><p>写请求分为leader、follower/observer两种接收</p><h4 id="写leader"><a href="#写leader" class="headerlink" title="写leader"></a>写leader</h4><h4 id="写follower-observer"><a href="#写follower-observer" class="headerlink" title="写follower/observer"></a>写follower/observer</h4><p>follower/observer接收到写请求都会转发到leader，再由leader<br>做一些ACK机制处理</p><h3 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h3><p>leader/follower/observer都可以处理读请求，直接返回结果给客户端</p><h2 id="数据一致性问题"><a href="#数据一致性问题" class="headerlink" title="数据一致性问题"></a>数据一致性问题</h2><p>因为leader负责写操作，leader随时可能挂掉，接着进入选举过程，这个期间如何保证数据一致性</p><p>leader可能挂掉的场景：</p><ol><li>数据到达Leader节点前</li><li>数据到达 Leader 节点，但未复制到 Follower 节点</li><li>数据到达 Leader 节点，成功复制到 Follower 所有节点，但还未向 Leader 响应接收</li><li>数据到达 Leader 节点，成功复制到 Follower 部分节点，但还未向 Leader 响应接收</li><li>数据到达 Leader 节点，成功复制到 Follower 所有或多数节点，数据在 Leader 处于已提交状态，但在 Follower 处于未提交状态</li><li>数据到达 Leader 节点，成功复制到 Follower 所有或多数节点，数据在所有节点都处于已提交状态，但还未响应 Client</li><li>网络分区导致的脑裂情况，出现双 Leader</li></ol>]]></content>
       
       
       
@@ -1036,11 +1119,11 @@
     
     
     <entry>
-      <title>Redis缓存过期策略</title>
+      <title>Redis缓存过期策略(四)</title>
       <link href="/2018/12/16/redis-cache-policy/"/>
       <url>/2018/12/16/redis-cache-policy/</url>
       
-        <content type="html"><![CDATA[<p>简单记录，回头需要深入再做整理</p><a id="more"></a><p>定时过期：每个设置过期时间的key分配定时器，到过期时间自动清除；占用CPU资源</p><p>惰性过期：当访问key时，才判断是否过期，过期则清除；如果大量key没有被访问，则不会被清除</p><p>定期过期：每隔一段固定时间，去扫描一定数量的数据库中expires字典表的key，</p><p><strong>Redis中同时使用了惰性过期和定期过期策略</strong></p>]]></content>
+        <content type="html"><![CDATA[<p>简单记录，回头需要深入再做整理</p><a id="more"></a><p>策略方式：</p><ol><li>定期过期：每隔一段固定时间，去扫描一定数量的数据库中expires字典表的key，到过期时间自动清除；占用CPU资源</li><li>惰性过期：当访问key时，才判断是否过期，过期则清除；如果大量key没有被访问，则不会被清除</li></ol><p><strong>Redis中同时使用了惰性过期和定期过期策略</strong></p>]]></content>
       
       
       
@@ -1055,7 +1138,7 @@
     
     
     <entry>
-      <title>Redis内存淘汰策略</title>
+      <title>Redis内存淘汰策略(三)</title>
       <link href="/2018/12/16/redis-mem-policy/"/>
       <url>/2018/12/16/redis-mem-policy/</url>
       
@@ -1163,13 +1246,19 @@
     
     
     <entry>
-      <title>java-jvm-cms-g1</title>
+      <title>jvm垃圾收集器CMS和G1比较(四)</title>
       <link href="/2018/12/04/java-jvm-cms-g1/"/>
       <url>/2018/12/04/java-jvm-cms-g1/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>结合GC日志对CMS、G1分析</p><a id="more"></a><h2 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h2><h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><table><thead><tr><th>参数</th><th style="text-align:center">详解</th></tr></thead><tbody><tr><td>-XX:+UseConcMarkSweepGC</td><td style="text-align:center">激活CMS收集器</td></tr><tr><td>-XX:ConcGCThreads</td><td style="text-align:center">设置CMS线程的数量</td></tr><tr><td>-XX:+UseCMSInitiatingOccupancyOnly</td><td style="text-align:center">只根据老年代使用比例来决定是否进行CMS</td></tr><tr><td>-XX:CMSInitiatingOccupancyFraction</td><td style="text-align:center">设置触发CMS老年代回收的内存使用率占比</td></tr><tr><td>-XX:+CMSParallelRemarkEnabled</td><td style="text-align:center">并行运行最终标记阶段，加快最终标记的速度</td></tr><tr><td>-XX:+UseCMSCompactAtFullCollection</td><td style="text-align:center">每次触发CMS Full GC的时候都整理一次碎片</td></tr><tr><td>-XX:CMSFullGCsBeforeCompaction</td><td style="text-align:center">经过几次CMS Full GC的时候整理一次碎片</td></tr><tr><td>-XX:+CMSClassUnloadingEnabled</td><td style="text-align:center">让CMS可以收集永久带，默认不会收集</td></tr><tr><td>-XX:+CMSScavengeBeforeRemark</td><td style="text-align:center">最终标记之前强制进行一个Minor GC</td></tr><tr><td>-XX:+ExplicitGCInvokesConcurrent</td><td style="text-align:center">当调用System.gc()的时候，执行并行gc，只有在CMS或者G1下该参数才</td></tr></tbody></table><h3 id="日志："><a href="#日志：" class="headerlink" title="日志："></a>日志：</h3><h2 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h2><h3 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h3><table><thead><tr><th>参数</th><th style="text-align:center">详解</th></tr></thead><tbody><tr><td>-XX:+UseG1GC</td><td style="text-align:center">使用 G1 垃圾收集器</td></tr><tr><td>-XX:MaxGCPauseMillis=200</td><td style="text-align:center">设置期望达到的最大GC停顿时间指标（JVM会尽力实现，但不保证达到）</td></tr><tr><td>-XX:InitiatingHeapOccupancyPercent=45</td><td style="text-align:center">启动并发GC周期时的堆内存占用百分比. G1之类的垃圾收集器用它来触发并发GC周期,基于整个堆的使用率,而不只是某一代内存的使用比. 值为 0 则表示”一直执行GC循环”. 默认值为 45</td></tr><tr><td>-XX:NewRatio=n</td><td style="text-align:center">新生代与老生代(new/old generation)的大小比例(Ratio). 默认值为 2</td></tr><tr><td>-XX:SurvivorRatio=n</td><td style="text-align:center">eden/survivor 空间大小的比例(Ratio). 默认值为 8.</td></tr><tr><td>-XX:MaxTenuringThreshold=n</td><td style="text-align:center">提升年老代的最大临界值(tenuring threshold). 默认值15</td></tr><tr><td>-XX:ParallelGCThreads=n</td><td style="text-align:center">设置垃圾收集器在并行阶段使用的线程数,默认值随JVM运行的平台不同而不同.</td></tr><tr><td>-XX:ConcGCThreads=n</td><td style="text-align:center">并发垃圾收集器使用的线程数量. 默认值随JVM运行的平台不同而不同.</td></tr><tr><td>-XX:G1ReservePercent=n</td><td style="text-align:center">设置堆内存保留为假天花板的总量,以降低提升失败的可能性. 默认值是 10.</td></tr><tr><td>-XX:G1HeapRegionSize=n</td><td style="text-align:center">使用G1时Java堆会被分为大小统一的的区(region)。此参数可以指定每个heap区的大小. 默认值将根据 heap size 算出最优解. 最小值为 1Mb, 最大值为 32Mb.</td></tr></tbody></table><h3 id="日志：-1"><a href="#日志：-1" class="headerlink" title="日志："></a>日志：</h3>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> java, jvm </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1690,31 +1779,6 @@
     
     
     <entry>
-      <title>MySQL索引</title>
-      <link href="/2018/09/28/mysql-index/"/>
-      <url>/2018/09/28/mysql-index/</url>
-      
-        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> MySQL </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java加载器</title>
       <link href="/2018/09/28/java-classloader/"/>
       <url>/2018/09/28/java-classloader/</url>
@@ -1740,48 +1804,23 @@
     
     
     <entry>
-      <title>Java虚拟机</title>
+      <title>Java虚拟机(一)</title>
       <link href="/2018/09/28/java-jvm/"/>
       <url>/2018/09/28/java-jvm/</url>
       
-        <content type="html"><![CDATA[<h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><a id="more"></a> <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。</p><p>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、</p><p>操作数栈、</p><p>动态链接、</p><p>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：</p><p>常量</p><p>静态变量</p><p>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
+        <content type="html"><![CDATA[<p>JVM运行时栈帧模型</p><a id="more"></a> <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、</p><p>操作数栈、</p><p>动态链接、</p><p>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：</p><p>常量</p><p>静态变量</p><p>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JVM </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
-      
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
+            <tag> java, jvm </tag>
             
         </tags>
       
@@ -1815,23 +1854,48 @@
     
     
     <entry>
-      <title>架构基础</title>
-      <link href="/2018/09/28/architecture-base/"/>
-      <url>/2018/09/28/architecture-base/</url>
+      <title>MySQL索引</title>
+      <link href="/2018/09/28/mysql-index/"/>
+      <url>/2018/09/28/mysql-index/</url>
       
-        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
       
       
       <categories>
           
-          <category> Architect </category>
+          <category> MySQL </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Architect </tag>
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
+      
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -1857,6 +1921,31 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>架构基础</title>
+      <link href="/2018/09/28/architecture-base/"/>
+      <url>/2018/09/28/architecture-base/</url>
+      
+        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Architect </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Architect </tag>
             
         </tags>
       
@@ -2424,23 +2513,23 @@
     
     
     <entry>
-      <title>java编译器</title>
+      <title>java编译器(五)</title>
       <link href="/2018/09/02/java-jvm-compile/"/>
       <url>/2018/09/02/java-jvm-compile/</url>
       
-        <content type="html"><![CDATA[<p>编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸</p><p>编译器在JJava中根据不同大致分为3部分：</p><p>前端编译器：Javac、增量编译器ECJ</p><p>JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器</p><p>AOT编译器：GNU Compiler for the Java(GCJ)、Excelsior JET</p><a id="more"></a><h2 id="静态提前编译-AOT"><a href="#静态提前编译-AOT" class="headerlink" title="静态提前编译 AOT"></a>静态提前编译 AOT</h2><p>直接把.java文件编译成机器码的过程。例如：GCJ, JET</p><p>编译过程：</p><ol><li><p>解析与填充符号表</p><blockquote><p>词法、语法分析</p><p>填充符号表</p></blockquote></li><li><p>注解处理</p></li><li><p>语义分析与字节码生成</p><blockquote><p>标注检查: 实现方法JavaCompiler.attribute()–sun.tools.javac.comp.Attr/Check类</p><p>数据及控制流分析: JavaCompiler.flow()<br>解语法糖: 泛型、变长参数、自动装箱/拆箱。实现类com.sun.tools.javac.comp.TransTypes/Lower类<br>字节码生成: 把以上生成的语法树、符号表转为字节码写到磁盘，同时添加少量代码。实现类com.sun.tools.javac.jvm.Gen/ClassWriter类</p></blockquote></li></ol><h2 id="后端运行时编译-JIT"><a href="#后端运行时编译-JIT" class="headerlink" title="后端运行时编译 JIT"></a>后端运行时编译 JIT</h2><p>把字节码编译成机器码的过程。例如：C1, C2</p><p>HotSpot内置了两个即时编译器： Client Compiler(C1编译器) + Server Compiler(C2编译器)，默认jvm会根据自身版本和系统硬件环境自动选择模式。<br>默认使用解释器 + 编译器混合模式。</p><p>-client: 强制Client模式</p><p>-server: 强制Server模式</p><p>-Xint: 强制使用解释模式</p><p>-Xcomp: 强制使用编译模式</p><p>分层编译：</p><ol><li>第0层</li><li>第1层</li><li>第2层</li></ol><p>JDK1.7 Server模式下默认开启分层编译。</p><p>热点代码：</p><p>栈上替换(OSR编译)</p><p>热点探测：判断一段代码是不是热点代码，是不是需要即时编译的行为。</p><blockquote><p>基于采样的热点探测：周期性的检查各个线程的栈顶</p><p>基于计数器的热点探测：建立计数器，统计方法的执行次数。</p></blockquote><p>HotSpot采用基于计数器探测，为每个方法准备了:方法调用计数器; 回边计数器</p><ol><li><p>方法调用计数器：统计方法被调用次数</p><p> -XX: CompileThreshold 设置方法被调用次数的阈值    </p><p> -XX: -UseCounterDecay  设置关闭热度衰减</p><p> -XX: CounterHalfLifeTime 设置版帅周期的时间</p></li><li><p>回边计数器：统计一个方法中循环体代码执行次数</p><p> -XX: BackEdgeThreshold 类似于CompileThreshold</p><p> -XX: OnStackReplacePercentage OSR比率，Client模式和Server下 默认值不同</p></li></ol><p>编译优化：</p><ol><li>公共子表达式消除</li><li>数组范围检查</li><li>方法内联</li><li>逃逸分析</li></ol><p>Java编译器和C/C++编译器的对比：</p><p>优点：</p><blockquote><p>调用频率预测</p><p>分支频率预测</p><p>裁剪未被选择的分支</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>编译器是一门很深入的模块，完全理解需要很深厚的功底，就是所谓的”内功”，例如《编译原理》，回头接着好好撸</p><a id="more"></a><p>编译器在Java中根据不同大致分为3部分：</p><ol><li>前端编译器：Javac、增量编译器ECJ</li><li>JIT编译器：HotSpot中的C1(Client Compiler)、C2(Server Compiler)编译器</li><li>AOT编译器：GNU Compiler for the Java(GCJ)、Excelsior JET</li></ol><h2 id="静态提前编译-AOT"><a href="#静态提前编译-AOT" class="headerlink" title="静态提前编译 AOT"></a>静态提前编译 AOT</h2><p>直接把.java文件编译成机器码的过程。例如：GCJ, JET</p><p>编译过程：</p><ol><li><p>解析与填充符号表</p><blockquote><p>词法、语法分析</p><p>填充符号表</p></blockquote></li><li><p>注解处理</p></li><li><p>语义分析与字节码生成</p><blockquote><p>标注检查: 实现方法JavaCompiler.attribute()–sun.tools.javac.comp.Attr/Check类</p><p>数据及控制流分析: JavaCompiler.flow()<br>解语法糖: 泛型、变长参数、自动装箱/拆箱。实现类com.sun.tools.javac.comp.TransTypes/Lower类<br>字节码生成: 把以上生成的语法树、符号表转为字节码写到磁盘，同时添加少量代码。实现类com.sun.tools.javac.jvm.Gen/ClassWriter类</p></blockquote></li></ol><h2 id="后端运行时编译-JIT"><a href="#后端运行时编译-JIT" class="headerlink" title="后端运行时编译 JIT"></a>后端运行时编译 JIT</h2><p>把字节码编译成机器码的过程。例如：C1, C2</p><p>HotSpot内置了两个即时编译器： Client Compiler(C1编译器) + Server Compiler(C2编译器)，默认jvm会根据自身版本和系统硬件环境自动选择模式。<br>默认使用解释器 + 编译器混合模式。</p><p>-client: 强制Client模式</p><p>-server: 强制Server模式</p><p>-Xint: 强制使用解释模式</p><p>-Xcomp: 强制使用编译模式</p><p>分层编译：</p><ol><li>第0层</li><li>第1层</li><li>第2层</li></ol><p>JDK1.7 Server模式下默认开启分层编译。</p><p>热点代码：</p><p>栈上替换(OSR编译)</p><p>热点探测：判断一段代码是不是热点代码，是不是需要即时编译的行为。</p><blockquote><p>基于采样的热点探测：周期性的检查各个线程的栈顶</p><p>基于计数器的热点探测：建立计数器，统计方法的执行次数。</p></blockquote><p>HotSpot采用基于计数器探测，为每个方法准备了:方法调用计数器; 回边计数器</p><ol><li><p>方法调用计数器：统计方法被调用次数</p><p> -XX: CompileThreshold 设置方法被调用次数的阈值    </p><p> -XX: -UseCounterDecay  设置关闭热度衰减</p><p> -XX: CounterHalfLifeTime 设置版帅周期的时间</p></li><li><p>回边计数器：统计一个方法中循环体代码执行次数</p><p> -XX: BackEdgeThreshold 类似于CompileThreshold</p><p> -XX: OnStackReplacePercentage OSR比率，Client模式和Server下 默认值不同</p></li></ol><p>编译优化：</p><ol><li>公共子表达式消除</li><li>数组范围检查</li><li>方法内联</li><li>逃逸分析</li></ol><h3 id="Java编译器和C-C-编译器的对比："><a href="#Java编译器和C-C-编译器的对比：" class="headerlink" title="Java编译器和C/C++编译器的对比："></a>Java编译器和C/C++编译器的对比：</h3><p>优点：</p><blockquote><p>调用频率预测<br>分支频率预测<br>裁剪未被选择的分支</p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JVM </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java </tag>
+            <tag> java,jvm </tag>
             
         </tags>
       
@@ -2449,11 +2538,11 @@
     
     
     <entry>
-      <title>Redis集群模式</title>
+      <title>Redis集群模式(五)</title>
       <link href="/2018/09/01/redis-cluster/"/>
       <url>/2018/09/01/redis-cluster/</url>
       
-        <content type="html"><![CDATA[<h2 id="Codis集群"><a href="#Codis集群" class="headerlink" title="Codis集群"></a>Codis集群</h2><h2 id="ruby集群"><a href="#ruby集群" class="headerlink" title="ruby集群"></a>ruby集群</h2>]]></content>
+        <content type="html"><![CDATA[<p>redis高可用有不同的实现，集群、主从</p><a id="more"></a><h2 id="Codis集群"><a href="#Codis集群" class="headerlink" title="Codis集群"></a>Codis集群</h2><h2 id="ruby集群"><a href="#ruby集群" class="headerlink" title="ruby集群"></a>ruby集群</h2>]]></content>
       
       
       <categories>
@@ -2474,7 +2563,7 @@
     
     
     <entry>
-      <title>Redis主从模式</title>
+      <title>Redis主从模式(六)</title>
       <link href="/2018/09/01/redis-master-slave/"/>
       <url>/2018/09/01/redis-master-slave/</url>
       
@@ -3100,7 +3189,7 @@
     
     
     <entry>
-      <title>JVM虚拟机命令详解</title>
+      <title>JVM虚拟机命令详解(三)</title>
       <link href="/2018/08/07/java-jvm-cmd/"/>
       <url>/2018/08/07/java-jvm-cmd/</url>
       
@@ -3125,11 +3214,11 @@
     
     
     <entry>
-      <title>jvm垃圾回收器</title>
+      <title>jvm垃圾回收器(二)</title>
       <link href="/2018/08/07/java-jvm-gc/"/>
       <url>/2018/08/07/java-jvm-gc/</url>
       
-        <content type="html"><![CDATA[<h2 id="GC算法"><a href="#GC算法" class="headerlink" title="GC算法"></a>GC算法</h2><p>1.标记-清除算法(Mark-Sweep):</p><p>缺点：</p><blockquote><p>效率不高</p><p>产生大量不连续的内存碎片</p></blockquote><a id="more"></a><p>2.复制算法</p><p>优点：</p><blockquote><p>实现简单，运行高效</p></blockquote><p>缺点：</p><blockquote><p>内存浪费</p></blockquote><p>商业用例：</p><pre><code>Eden:Survivor = 8:1</code></pre><p>3.标记-整理算法/标记-压缩算法</p><p>4.分代收集算法</p><blockquote><p>新生代：复制算法</p><p>老年代：标记-清除/标记-整理</p></blockquote><h3 id="案例分析：HotSpot的实现"><a href="#案例分析：HotSpot的实现" class="headerlink" title="案例分析：HotSpot的实现"></a>案例分析：HotSpot的实现</h3><p>1.枚举根节点</p><p>2.安全点</p><p>3.安全区域</p><h2 id="gc回收器"><a href="#gc回收器" class="headerlink" title="gc回收器"></a>gc回收器</h2><p>常用的参数</p><table><thead><tr><th>参数</th><th style="text-align:center">描述</th></tr></thead><tbody><tr><td>UseSerialGC</td><td style="text-align:center">client模式下的默认值，Serial + Serial Old收集器</td></tr><tr><td>UseParallelGC</td><td style="text-align:center">Server模式下的默认值，Parallel Scavenge + Serial Old收集器</td></tr></tbody></table><h3 id="1-Serial"><a href="#1-Serial" class="headerlink" title="1. Serial"></a>1. Serial</h3><h3 id="2-ParNew"><a href="#2-ParNew" class="headerlink" title="2. ParNew"></a>2. ParNew</h3><h3 id="3-Parallel-Scavenge"><a href="#3-Parallel-Scavenge" class="headerlink" title="3. Parallel Scavenge"></a>3. Parallel Scavenge</h3><h3 id="4-Serial-Old"><a href="#4-Serial-Old" class="headerlink" title="4. Serial Old"></a>4. Serial Old</h3><h3 id="5-Parallel-Old"><a href="#5-Parallel-Old" class="headerlink" title="5. Parallel Old"></a>5. Parallel Old</h3><h3 id="6-CMS"><a href="#6-CMS" class="headerlink" title="6. CMS"></a>6. CMS</h3><p>(并发低停顿收集器), 基于标记-清除算法</p><p>目标：以获取最短回收停顿时间</p><p>原理：</p><blockquote><p>初始标记</p><p>并发标记</p><p>重新标记</p><p>并发清除</p></blockquote><p>优点：</p><p>缺点：</p><blockquote><p>对CPU资源非常敏感</p><p>无法处理浮动垃圾</p><p>产生大量空间碎片</p></blockquote><h3 id="7-G1"><a href="#7-G1" class="headerlink" title="7. G1"></a>7. G1</h3><p>目标：</p><p>原理：</p><p>概念：<br>优先列表</p><p>Region</p><p>Remembered Set</p><p>Write Barrier</p><p>CarTable</p><blockquote><p>初始标记</p><p>并发标记</p><p>最终标记</p><p>筛选回收</p></blockquote><p>优点：</p><blockquote><p>并行与并发</p><p>分代收集</p><p>空间整合：与CMS的标记-清除算法不同，G1整理看是标记-整理算法，局部(Region)看则是复制算法，不会产生内存碎片。</p><p>可预测的停顿：这是G1相比CMS的一大优势，降低停顿时间时G1和CMS共同的关注点，但G1除了追求低停顿，还能建立可预测的停顿时间模型</p></blockquote><p>缺点：</p><h3 id="8-ZGC"><a href="#8-ZGC" class="headerlink" title="8. ZGC"></a>8. ZGC</h3><p>目标：</p><blockquote><p>GC停顿时间不超过10ms<br>处理堆从MB到TB<br>相比G1减少了15%的吞吐量</p></blockquote><h3 id="9-Shenandoah-GC"><a href="#9-Shenandoah-GC" class="headerlink" title="9. Shenandoah GC"></a>9. Shenandoah GC</h3><p>对比：</p><p>Zing/Azul有一个低停顿的收集器，但是没有贡献到OpenJDK。</p><p>ZGC是基于colored pointers的收集器。Shenandoah GC是基于brook pointer的收集器。</p><p>G1可以并行、并发的工作，但是不能并发的evacuation。</p><p>CMS并发标记，在停顿期间复制年轻代，但是不压缩老年代。结果导致更多的时间管理剩余空间和碎片空间。</p><h2 id="内存分配、回收策略"><a href="#内存分配、回收策略" class="headerlink" title="内存分配、回收策略"></a>内存分配、回收策略</h2><p>Minor GC: 指发生在新生代的垃圾回收动作</p><p>Full GC/Major GC: 指发生在老年代的GC，出现Full GC，经常会伴随至少一次Minor GC;</p><p><strong>如果更细粒度，Major GC可以认为只对老年的GC，而Full GC是对整个堆来说的。</strong></p><p>1、对象优先在新生代Eden区分配，当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC</p><p>2、大对象直接进入老年代。大对象典型的就是那些很长的字符串、数组</p><p>参数-XX:PretenureSizeThreshold可以设定大对象的标准</p><p>3、长期存活的对象将进入老年代(默认是15岁)</p><p>Eden区对象经过Minor GC后，年龄增1，然后在Survivor每经历一次Minor GC，年龄增长1，达到指定年龄，进入老年代</p><p>参数-XX:MaxTenuringThreshold</p><p>4、动态年龄判定</p><p>如果在Survivor区，相同年龄的所有对象大小总和大于Survivor空间的一半，年龄大于等于该年龄的对象可以直接进入老年代。【可以破坏规则3】</p><p>5、空间分配担保</p><h3 id="GC触发"><a href="#GC触发" class="headerlink" title="GC触发"></a>GC触发</h3><p><a href="https://blog.csdn.net/chenleixing/article/details/46706039" target="_blank" rel="noopener">参考</a></p><p>Minor GC触发条件：</p><blockquote><p>Eden区没有足够空间分配时，触发</p></blockquote><p>Full GC触发条件：</p><blockquote><ol><li><p>显式调用System.gc()。可以通过-XX:+ DisableExplicitGC禁止显式调用</p></li><li><p>方法区(永生代)空间不足。方法区在HotSpot中又被称为永生代/永生区。如果被占满，在未配置为CMS GC的情况下，会执行一次Full GC，如果空间还是不足，则抛出异常java.lang.OutOfMemoryError: PermGen space </p></li><li><p>老年代空间不足。出现的原因：新生代对象转入；分配大对象、大数组。如果Full GC后空间仍然不够，则抛出java.lang.OutOfMemoryError: Java heap space </p></li><li><p>Eden区对象执行Minor GC后，进入老年代的所有对象和大于老年代可用内存时，触发Full GC</p></li><li><p>(promotion failed)Eden + From执行Minor GC时，如果存活对象大于To内存区，则直接进入老年代，如果老年代的可用内存小于该对象，则触发Full GC</p></li><li><p>(concurrent mode failure)执行CMS GC的过程中同时有对象要放入老年代，而此时老年代空间不足，则执行一次Full GC </p></li></ol></blockquote><p><strong>注意:</strong>jdk1.6_24之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会执行Minor GC,否则进行Full GC</p>]]></content>
+        <content type="html"><![CDATA[<p>JVM中的一些垃圾回收算法、垃圾收集器</p><a id="more"></a><h2 id="GC算法"><a href="#GC算法" class="headerlink" title="GC算法"></a>GC算法</h2><h3 id="1-标记-清除算法-Mark-Sweep"><a href="#1-标记-清除算法-Mark-Sweep" class="headerlink" title="1. 标记-清除算法(Mark-Sweep):"></a>1. 标记-清除算法(Mark-Sweep):</h3><p>缺点：</p><blockquote><p>效率不高</p><p>产生大量不连续的内存碎片</p></blockquote><h3 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2. 复制算法"></a>2. 复制算法</h3><p>优点：</p><blockquote><p>实现简单，运行高效</p></blockquote><p>缺点：</p><blockquote><p>内存浪费</p></blockquote><p>商业用例：</p><pre><code>Eden:Survivor = 8:1</code></pre><h3 id="3-标记-整理算法-标记-压缩算法"><a href="#3-标记-整理算法-标记-压缩算法" class="headerlink" title="3. 标记-整理算法/标记-压缩算法"></a>3. 标记-整理算法/标记-压缩算法</h3><h3 id="4-分代收集算法"><a href="#4-分代收集算法" class="headerlink" title="4. 分代收集算法"></a>4. 分代收集算法</h3><blockquote><p>新生代：复制算法<br>老年代：标记-清除/标记-整理</p></blockquote><h3 id="案例分析：HotSpot的实现"><a href="#案例分析：HotSpot的实现" class="headerlink" title="案例分析：HotSpot的实现"></a>案例分析：HotSpot的实现</h3><p>1.枚举根节点</p><p>2.安全点</p><p>3.安全区域</p><h2 id="gc回收器"><a href="#gc回收器" class="headerlink" title="gc回收器"></a>gc回收器</h2><p>常用的参数：</p><table><thead><tr><th>参数</th><th style="text-align:center">描述</th></tr></thead><tbody><tr><td>UseSerialGC</td><td style="text-align:center">client模式下的默认值，Serial + Serial Old收集器</td></tr><tr><td>UseParallelGC</td><td style="text-align:center">Server模式下的默认值，Parallel Scavenge + Serial Old收集器</td></tr></tbody></table><h3 id="1-Serial"><a href="#1-Serial" class="headerlink" title="1. Serial"></a>1. Serial</h3><h3 id="2-ParNew"><a href="#2-ParNew" class="headerlink" title="2. ParNew"></a>2. ParNew</h3><h3 id="3-Parallel-Scavenge"><a href="#3-Parallel-Scavenge" class="headerlink" title="3. Parallel Scavenge"></a>3. Parallel Scavenge</h3><h3 id="4-Serial-Old"><a href="#4-Serial-Old" class="headerlink" title="4. Serial Old"></a>4. Serial Old</h3><h3 id="5-Parallel-Old"><a href="#5-Parallel-Old" class="headerlink" title="5. Parallel Old"></a>5. Parallel Old</h3><h3 id="6-CMS"><a href="#6-CMS" class="headerlink" title="6. CMS"></a>6. CMS</h3><p>(并发低停顿收集器), 基于标记-清除算法<br>目标：主要针对老年代，以获取最短回收停顿时间</p><h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><blockquote><p>初始标记：stop-the-world，仅仅标记GC Roots能关联到的对象<br>并发标记：进行GC Roots Tracing的过程<br>重新标记：stop-the-world，修正并发标记期间程序运行变化的对象<br>并发清除：用户程序同时运行</p></blockquote><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol><li><p>对CPU资源非常敏感：</p><blockquote><p>并发处理对CPU要求就比较高，占用一部分线程，会导致吞吐量降低。<br><strong>默认</strong>垃圾回收线程数量(NUM(cpu) + 3)/4；<br>CPU不足4个时，对应用的影响就会比较大</p></blockquote></li><li>无法处理浮动垃圾：concurrent mode failure(并发模式失败)<blockquote><p>浮动垃圾：并发清理和用户程序同时运行，这样在清理期间就会产生对象垃圾，这部分垃圾需要留到下一次GC去处理，就会产生浮动垃圾。<br>由于用户程序需要同时运行，所以老年代需要为用户程序预留一部分空间，预留空间无法满足用户程序，就会导致<code>Concurrent Mode Failure</code>，接着产生Full GC<br>jdk1.5增加参数<code>-XX:CMSInitiatingOccupancyFraction</code>，老年代使用超过该阈值，触发CMS垃圾回收，如果老年代不是增长太快，可以适当调高该值<br>jdk1.6<br>参数<code>-XX:ConGCThreads=N</code>，可以设置垃圾收集线程数量</p></blockquote></li><li>产生大量空间碎片：promoration failure(晋升失败)<blockquote><p>标记-清除算法会导致空间碎片，碎片过多在大对象分配的时候，虽然有足够的时间，无法找到连续空间，不得不触发一次Full GC<br>参数<code>-XX:+UseCMSCompactAtFullCollection</code>，默认开启，在执行Full GC的时候，开启内存碎片的整理<br>参数<code>-XX:CMSFullGCsBeforeCompaction</code>，默认值为0，用于控制执行多少次不压缩的Full GC后执行一次带压缩的Full GC。</p></blockquote></li></ol><h3 id="7-G1"><a href="#7-G1" class="headerlink" title="7. G1"></a>7. G1</h3><p>目标：</p><h4 id="原理：-1"><a href="#原理：-1" class="headerlink" title="原理："></a>原理：</h4><p>概念：<br>优先列表</p><h5 id="Region："><a href="#Region：" class="headerlink" title="Region："></a>Region：</h5><blockquote><p>默认堆内存分为1024个region分区。每个region大小相等<br>region分为：Eden Survivor Old Humongous(巨型对象)，垃圾收集时，一个对象可以跨region<br>参数<code>-XX:G1HeapRegionSize</code>可以设置region大小，最小1Mb，最大32Mb</p></blockquote><h5 id="SATB-Snapchat-At-The-Beginning-："><a href="#SATB-Snapchat-At-The-Beginning-：" class="headerlink" title="SATB(Snapchat-At-The-Beginning)："></a>SATB(Snapchat-At-The-Beginning)：</h5><blockquote><p>并发GC时用户程序同时运行，可能会生成新对象，所以在GC前，会先执行SATB，生成快照记录存活的对象<br>每个region记录两个TAMS(top-at-mark-start)指针，GC过程中生成的新对象，在TAMS上的对象就是新分配的对象<br>Write Barrier</p></blockquote><h5 id="RSet-Remembered-Set-："><a href="#RSet-Remembered-Set-：" class="headerlink" title="RSet(Remembered Set)："></a>RSet(Remembered Set)：</h5><blockquote><p>G1收集器中还有一个CSet(Collection Set)，用来记录要收集的Region的集合，<br>RSet用来记录其它region引用本地region对象的关系，对象可以跨代引用，old-&gt;young/young-&gt;old</p></blockquote><h5 id="CarTable"><a href="#CarTable" class="headerlink" title="CarTable"></a>CarTable</h5><h4 id="垃圾回收-1"><a href="#垃圾回收-1" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><h5 id="全局并发标记阶段"><a href="#全局并发标记阶段" class="headerlink" title="全局并发标记阶段"></a>全局并发标记阶段</h5><blockquote><p>初始标记：stop-the-world，仅仅标记GC Roots能关联到的对象<br>并发标记：<br>最终标记：stop-the-world，会处理在并发标记阶段write barrier记录下来的对象；与CMS最大的差别就是，CMS会扫描整个GC Roots，包括Eden区<br>筛选回收：stop-the-world，这一阶段并不会收集垃圾，而是根据停顿预测模型预测出CSet，等待下一个Evacuation阶段回收</p></blockquote><h5 id="拷贝存活对象阶段-Evacuation"><a href="#拷贝存活对象阶段-Evacuation" class="headerlink" title="拷贝存活对象阶段 Evacuation"></a>拷贝存活对象阶段 Evacuation</h5><blockquote><p>stop-the-world，将一部分region中的存活对象拷贝到另一部分region，只剩下垃圾对象的region被记录在CSet，<br>evacuation failure：堆空间垃圾太多，导致无法完成region之间的拷贝，导致执行一次Full GC。类似于CMS的<code>promoration failure</code>。</p></blockquote><h5 id="收集模式"><a href="#收集模式" class="headerlink" title="收集模式"></a>收集模式</h5><p>Young GC：<br>Mix GC：</p><h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><ol><li>并行与并发</li><li>分代收集</li><li><p>空间整合：</p><blockquote><p>与CMS的标记-清除算法不同，G1整体看是标记-整理算法，局部(Region)看则是复制算法，不会产生内存碎片。</p></blockquote></li><li><p>可预测的停顿：</p><blockquote><p>这是G1相比CMS的一大优势，降低停顿时间时G1和CMS共同的关注点，但G1除了追求低停顿，还能建立可预测的停顿时间模型<br>参数<code>-XX:MaxGCPauseMillis</code>，可以设置停顿时间</p></blockquote></li></ol><h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><h4 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h4><ol><li>不断调优停顿时间</li><li>不设置新生代/老年代大小，由JVM自动调整，设置大小后会导致停顿时间设置失效</li><li>关注Evacuation Failure问题</li></ol><h3 id="8-ZGC"><a href="#8-ZGC" class="headerlink" title="8. ZGC"></a>8. ZGC</h3><p>目标：</p><blockquote><p>GC停顿时间不超过10ms<br>处理堆从MB到TB<br>相比G1减少了15%的吞吐量</p></blockquote><h3 id="9-Shenandoah-GC"><a href="#9-Shenandoah-GC" class="headerlink" title="9. Shenandoah GC"></a>9. Shenandoah GC</h3><h4 id="对比："><a href="#对比：" class="headerlink" title="对比："></a>对比：</h4><p>Zing/Azul有一个低停顿的收集器，但是没有贡献到OpenJDK。</p><p>ZGC是基于colored pointers的收集器。Shenandoah GC是基于brook pointer的收集器。</p><p>G1可以并行、并发的工作，但是不能并发的evacuation。</p><p>CMS并发标记，在停顿期间复制年轻代，但是不压缩老年代。结果导致更多的时间管理剩余空间和碎片空间。</p><h2 id="内存分配、回收策略"><a href="#内存分配、回收策略" class="headerlink" title="内存分配、回收策略"></a>内存分配、回收策略</h2><p>Minor GC: 指发生在新生代的垃圾回收动作</p><p>Full GC/Major GC: 指发生在老年代的GC，出现Full GC，经常会伴随至少一次Minor GC;</p><p><strong>如果更细粒度，Major GC可以认为只对老年的GC，而Full GC是对整个堆来说的。</strong></p><p>1、对象优先在新生代Eden区分配，当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC</p><p>2、大对象直接进入老年代。大对象典型的就是那些很长的字符串、数组</p><p>参数-XX:PretenureSizeThreshold可以设定大对象的标准</p><p>3、长期存活的对象将进入老年代(默认是15岁)</p><p>Eden区对象经过Minor GC后，年龄增1，然后在Survivor每经历一次Minor GC，年龄增长1，达到指定年龄，进入老年代</p><p>参数-XX:MaxTenuringThreshold</p><p>4、动态年龄判定</p><p>如果在Survivor区，相同年龄的所有对象大小总和大于Survivor空间的一半，年龄大于等于该年龄的对象可以直接进入老年代。【可以破坏规则3】</p><p>5、空间分配担保</p><h3 id="GC触发"><a href="#GC触发" class="headerlink" title="GC触发"></a>GC触发</h3><p><a href="https://blog.csdn.net/chenleixing/article/details/46706039" target="_blank" rel="noopener">参考</a></p><p>Minor GC触发条件：</p><blockquote><p>Eden区没有足够空间分配时，触发</p></blockquote><p>Full GC触发条件：</p><blockquote><ol><li><p>显式调用System.gc()。可以通过-XX:+ DisableExplicitGC禁止显式调用</p></li><li><p>方法区(永生代)空间不足。方法区在HotSpot中又被称为永生代/永生区。如果被占满，在未配置为CMS GC的情况下，会执行一次Full GC，如果空间还是不足，则抛出异常java.lang.OutOfMemoryError: PermGen space </p></li><li><p>老年代空间不足。出现的原因：新生代对象转入；分配大对象、大数组。如果Full GC后空间仍然不够，则抛出java.lang.OutOfMemoryError: Java heap space </p></li><li><p>Eden区对象执行Minor GC后，进入老年代的所有对象和大于老年代可用内存时，触发Full GC</p></li><li><p>(promotion failed)Eden + From执行Minor GC时，如果存活对象大于To内存区，则直接进入老年代，如果老年代的可用内存小于该对象，则触发Full GC</p></li><li><p>(concurrent mode failure)执行CMS GC的过程中同时有对象要放入老年代，而此时老年代空间不足，则执行一次Full GC </p></li></ol></blockquote><p><strong>注意:</strong>jdk1.6_24之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会执行Minor GC，否则进行Full GC</p>]]></content>
       
       
       <categories>

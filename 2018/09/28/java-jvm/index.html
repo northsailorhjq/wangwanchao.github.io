@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="Java内存区域程序计数器可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。 每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。">
-<meta name="keywords" content="Java">
+  <meta name="description" content="JVM运行时栈帧模型">
+<meta name="keywords" content="java, jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java虚拟机">
+<meta property="og:title" content="Java虚拟机(一)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/28/java-jvm/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="Java内存区域程序计数器可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。 每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。">
+<meta property="og:description" content="JVM运行时栈帧模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-26T09:39:18.703Z">
+<meta property="og:updated_time" content="2019-06-07T04:34:33.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java虚拟机">
-<meta name="twitter:description" content="Java内存区域程序计数器可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。 每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。">
+<meta name="twitter:title" content="Java虚拟机(一)">
+<meta name="twitter:description" content="JVM运行时栈帧模型">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>Java虚拟机 | Wangsir's Blog</title>
+  <title>Java虚拟机(一) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java虚拟机
+          <h1 class="post-title" itemprop="name headline">Java虚拟机(一)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-26 17:39:18" itemprop="dateModified" datetime="2018-11-26T17:39:18+08:00">2018-11-26</time>
+                <time title="Modified: 2019-06-07 12:34:33" itemprop="dateModified" datetime="2019-06-07T12:34:33+08:00">2019-06-07</time>
               
             
           </span>
@@ -454,7 +454,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
 
                 
                 
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">891</span>
+                <span title="Symbols count in article">901</span>
               
 
               
@@ -524,11 +524,11 @@
       
 
       
-        <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p>
-<p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p>
+        <p>JVM运行时栈帧模型</p>
 <a id="more"></a> 
-<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。</p>
-<p>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p>
+<h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p>
+<p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p>
+<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p>
 <blockquote>
 <p>存储局部变量表、</p>
 <p>操作数栈、</p>
@@ -601,7 +601,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+            <a href="/tags/java-jvm/" rel="tag"><i class="fa fa-tag"></i> java, jvm</a>
           
         </div>
       
@@ -614,8 +614,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/csapp-vm/" rel="next" title="深入理解计算机系统--内存">
-                <i class="fa fa-chevron-left"></i> 深入理解计算机系统--内存
+              <a href="/2018/09/28/algorithms-quicksort/" rel="next" title="快排">
+                <i class="fa fa-chevron-left"></i> 快排
               </a>
             
           </div>
@@ -695,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -955,7 +955,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1035,7 +1037,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -1046,7 +1048,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

@@ -103,14 +103,14 @@
   <meta name="description" content="Redis主从复制原理Redis使用异步复制 复制在master和slave是非阻塞模式，即在执行同步时仍然可以提供查询 Redis复制工作原理： 如果设置了一个Slave，无论是第一次连接还是重连到Master，它都会发出一个SYNC命令； 当Master收到SYNC命令之后，会做两件事： a) Master执行BGSAVE，即在后台保存数据到磁盘（rdb快照文件）； b) Master同时将新">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis主从模式">
+<meta property="og:title" content="Redis主从模式(六)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/01/redis-master-slave/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="Redis主从复制原理Redis使用异步复制 复制在master和slave是非阻塞模式，即在执行同步时仍然可以提供查询 Redis复制工作原理： 如果设置了一个Slave，无论是第一次连接还是重连到Master，它都会发出一个SYNC命令； 当Master收到SYNC命令之后，会做两件事： a) Master执行BGSAVE，即在后台保存数据到磁盘（rdb快照文件）； b) Master同时将新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-04T03:52:07.607Z">
+<meta property="og:updated_time" content="2019-06-06T16:23:18.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis主从模式">
+<meta name="twitter:title" content="Redis主从模式(六)">
 <meta name="twitter:description" content="Redis主从复制原理Redis使用异步复制 复制在master和slave是非阻塞模式，即在执行同步时仍然可以提供查询 Redis复制工作原理： 如果设置了一个Slave，无论是第一次连接还是重连到Master，它都会发出一个SYNC命令； 当Master收到SYNC命令之后，会做两件事： a) Master执行BGSAVE，即在后台保存数据到磁盘（rdb快照文件）； b) Master同时将新">
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>Redis主从模式 | Wangsir's Blog</title>
+  <title>Redis主从模式(六) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis主从模式
+          <h1 class="post-title" itemprop="name headline">Redis主从模式(六)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-04 11:52:07" itemprop="dateModified" datetime="2018-12-04T11:52:07+08:00">2018-12-04</time>
+                <time title="Modified: 2019-06-07 00:23:18" itemprop="dateModified" datetime="2019-06-07T00:23:18+08:00">2019-06-07</time>
               
             
           </span>
@@ -597,8 +597,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/01/redis-cluster/" rel="prev" title="Redis集群模式">
-                Redis集群模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/01/redis-cluster/" rel="prev" title="Redis集群模式(五)">
+                Redis集群模式(五) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -668,7 +668,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -928,7 +928,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1008,7 +1010,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -1019,7 +1021,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

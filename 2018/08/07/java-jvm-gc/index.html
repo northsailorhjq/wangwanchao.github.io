@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="GC算法1.标记-清除算法(Mark-Sweep): 缺点：  效率不高 产生大量不连续的内存碎片">
+  <meta name="description" content="JVM中的一些垃圾回收算法、垃圾收集器">
 <meta name="keywords" content="java, jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jvm垃圾回收器">
+<meta property="og:title" content="jvm垃圾回收器(二)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/08/07/java-jvm-gc/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="GC算法1.标记-清除算法(Mark-Sweep): 缺点：  效率不高 产生大量不连续的内存碎片">
+<meta property="og:description" content="JVM中的一些垃圾回收算法、垃圾收集器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.362Z">
+<meta property="og:updated_time" content="2019-06-08T06:07:54.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jvm垃圾回收器">
-<meta name="twitter:description" content="GC算法1.标记-清除算法(Mark-Sweep): 缺点：  效率不高 产生大量不连续的内存碎片">
+<meta name="twitter:title" content="jvm垃圾回收器(二)">
+<meta name="twitter:description" content="JVM中的一些垃圾回收算法、垃圾收集器">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>jvm垃圾回收器 | Wangsir's Blog</title>
+  <title>jvm垃圾回收器(二) | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jvm垃圾回收器
+          <h1 class="post-title" itemprop="name headline">jvm垃圾回收器(二)
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-08 14:07:54" itemprop="dateModified" datetime="2019-06-08T14:07:54+08:00">2019-06-08</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.1k</span>
+                <span title="Symbols count in article">3.8k</span>
               
 
               
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -524,15 +524,14 @@
       
 
       
-        <h2 id="GC算法"><a href="#GC算法" class="headerlink" title="GC算法"></a>GC算法</h2><p>1.标记-清除算法(Mark-Sweep):</p>
-<p>缺点：</p>
+        <p>JVM中的一些垃圾回收算法、垃圾收集器</p>
+<a id="more"></a>
+<h2 id="GC算法"><a href="#GC算法" class="headerlink" title="GC算法"></a>GC算法</h2><h3 id="1-标记-清除算法-Mark-Sweep"><a href="#1-标记-清除算法-Mark-Sweep" class="headerlink" title="1. 标记-清除算法(Mark-Sweep):"></a>1. 标记-清除算法(Mark-Sweep):</h3><p>缺点：</p>
 <blockquote>
 <p>效率不高</p>
 <p>产生大量不连续的内存碎片</p>
 </blockquote>
-<a id="more"></a>
-<p>2.复制算法</p>
-<p>优点：</p>
+<h3 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2. 复制算法"></a>2. 复制算法</h3><p>优点：</p>
 <blockquote>
 <p>实现简单，运行高效</p>
 </blockquote>
@@ -542,16 +541,13 @@
 </blockquote>
 <p>商业用例：</p>
 <pre><code>Eden:Survivor = 8:1
-</code></pre><p>3.标记-整理算法/标记-压缩算法</p>
-<p>4.分代收集算法</p>
-<blockquote>
-<p>新生代：复制算法</p>
-<p>老年代：标记-清除/标记-整理</p>
+</code></pre><h3 id="3-标记-整理算法-标记-压缩算法"><a href="#3-标记-整理算法-标记-压缩算法" class="headerlink" title="3. 标记-整理算法/标记-压缩算法"></a>3. 标记-整理算法/标记-压缩算法</h3><h3 id="4-分代收集算法"><a href="#4-分代收集算法" class="headerlink" title="4. 分代收集算法"></a>4. 分代收集算法</h3><blockquote>
+<p>新生代：复制算法<br>老年代：标记-清除/标记-整理</p>
 </blockquote>
 <h3 id="案例分析：HotSpot的实现"><a href="#案例分析：HotSpot的实现" class="headerlink" title="案例分析：HotSpot的实现"></a>案例分析：HotSpot的实现</h3><p>1.枚举根节点</p>
 <p>2.安全点</p>
 <p>3.安全区域</p>
-<h2 id="gc回收器"><a href="#gc回收器" class="headerlink" title="gc回收器"></a>gc回收器</h2><p>常用的参数</p>
+<h2 id="gc回收器"><a href="#gc回收器" class="headerlink" title="gc回收器"></a>gc回收器</h2><p>常用的参数：</p>
 <table>
 <thead>
 <tr>
@@ -570,49 +566,67 @@
 </tr>
 </tbody>
 </table>
-<h3 id="1-Serial"><a href="#1-Serial" class="headerlink" title="1. Serial"></a>1. Serial</h3><h3 id="2-ParNew"><a href="#2-ParNew" class="headerlink" title="2. ParNew"></a>2. ParNew</h3><h3 id="3-Parallel-Scavenge"><a href="#3-Parallel-Scavenge" class="headerlink" title="3. Parallel Scavenge"></a>3. Parallel Scavenge</h3><h3 id="4-Serial-Old"><a href="#4-Serial-Old" class="headerlink" title="4. Serial Old"></a>4. Serial Old</h3><h3 id="5-Parallel-Old"><a href="#5-Parallel-Old" class="headerlink" title="5. Parallel Old"></a>5. Parallel Old</h3><h3 id="6-CMS"><a href="#6-CMS" class="headerlink" title="6. CMS"></a>6. CMS</h3><p>(并发低停顿收集器), 基于标记-清除算法</p>
-<p>目标：以获取最短回收停顿时间</p>
-<p>原理：</p>
-<blockquote>
-<p>初始标记</p>
-<p>并发标记</p>
-<p>重新标记</p>
-<p>并发清除</p>
+<h3 id="1-Serial"><a href="#1-Serial" class="headerlink" title="1. Serial"></a>1. Serial</h3><h3 id="2-ParNew"><a href="#2-ParNew" class="headerlink" title="2. ParNew"></a>2. ParNew</h3><h3 id="3-Parallel-Scavenge"><a href="#3-Parallel-Scavenge" class="headerlink" title="3. Parallel Scavenge"></a>3. Parallel Scavenge</h3><h3 id="4-Serial-Old"><a href="#4-Serial-Old" class="headerlink" title="4. Serial Old"></a>4. Serial Old</h3><h3 id="5-Parallel-Old"><a href="#5-Parallel-Old" class="headerlink" title="5. Parallel Old"></a>5. Parallel Old</h3><h3 id="6-CMS"><a href="#6-CMS" class="headerlink" title="6. CMS"></a>6. CMS</h3><p>(并发低停顿收集器), 基于标记-清除算法<br>目标：主要针对老年代，以获取最短回收停顿时间</p>
+<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><blockquote>
+<p>初始标记：stop-the-world，仅仅标记GC Roots能关联到的对象<br>并发标记：进行GC Roots Tracing的过程<br>重新标记：stop-the-world，修正并发标记期间程序运行变化的对象<br>并发清除：用户程序同时运行</p>
 </blockquote>
-<p>优点：</p>
-<p>缺点：</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol>
+<li><p>对CPU资源非常敏感：</p>
 <blockquote>
-<p>对CPU资源非常敏感</p>
-<p>无法处理浮动垃圾</p>
-<p>产生大量空间碎片</p>
+<p>并发处理对CPU要求就比较高，占用一部分线程，会导致吞吐量降低。<br><strong>默认</strong>垃圾回收线程数量(NUM(cpu) + 3)/4；<br>CPU不足4个时，对应用的影响就会比较大</p>
 </blockquote>
+</li>
+<li>无法处理浮动垃圾：concurrent mode failure(并发模式失败)<blockquote>
+<p>浮动垃圾：并发清理和用户程序同时运行，这样在清理期间就会产生对象垃圾，这部分垃圾需要留到下一次GC去处理，就会产生浮动垃圾。<br>由于用户程序需要同时运行，所以老年代需要为用户程序预留一部分空间，预留空间无法满足用户程序，就会导致<code>Concurrent Mode Failure</code>，接着产生Full GC<br>jdk1.5增加参数<code>-XX:CMSInitiatingOccupancyFraction</code>，老年代使用超过该阈值，触发CMS垃圾回收，如果老年代不是增长太快，可以适当调高该值<br>jdk1.6<br>参数<code>-XX:ConGCThreads=N</code>，可以设置垃圾收集线程数量</p>
+</blockquote>
+</li>
+<li>产生大量空间碎片：promoration failure(晋升失败)<blockquote>
+<p>标记-清除算法会导致空间碎片，碎片过多在大对象分配的时候，虽然有足够的时间，无法找到连续空间，不得不触发一次Full GC<br>参数<code>-XX:+UseCMSCompactAtFullCollection</code>，默认开启，在执行Full GC的时候，开启内存碎片的整理<br>参数<code>-XX:CMSFullGCsBeforeCompaction</code>，默认值为0，用于控制执行多少次不压缩的Full GC后执行一次带压缩的Full GC。</p>
+</blockquote>
+</li>
+</ol>
 <h3 id="7-G1"><a href="#7-G1" class="headerlink" title="7. G1"></a>7. G1</h3><p>目标：</p>
-<p>原理：</p>
-<p>概念：<br>优先列表</p>
-<p>Region</p>
-<p>Remembered Set</p>
-<p>Write Barrier</p>
-<p>CarTable</p>
-<blockquote>
-<p>初始标记</p>
-<p>并发标记</p>
-<p>最终标记</p>
-<p>筛选回收</p>
+<h4 id="原理：-1"><a href="#原理：-1" class="headerlink" title="原理："></a>原理：</h4><p>概念：<br>优先列表</p>
+<h5 id="Region："><a href="#Region：" class="headerlink" title="Region："></a>Region：</h5><blockquote>
+<p>默认堆内存分为1024个region分区。每个region大小相等<br>region分为：Eden Survivor Old Humongous(巨型对象)，垃圾收集时，一个对象可以跨region<br>参数<code>-XX:G1HeapRegionSize</code>可以设置region大小，最小1Mb，最大32Mb</p>
 </blockquote>
-<p>优点：</p>
-<blockquote>
-<p>并行与并发</p>
-<p>分代收集</p>
-<p>空间整合：与CMS的标记-清除算法不同，G1整理看是标记-整理算法，局部(Region)看则是复制算法，不会产生内存碎片。</p>
-<p>可预测的停顿：这是G1相比CMS的一大优势，降低停顿时间时G1和CMS共同的关注点，但G1除了追求低停顿，还能建立可预测的停顿时间模型</p>
+<h5 id="SATB-Snapchat-At-The-Beginning-："><a href="#SATB-Snapchat-At-The-Beginning-：" class="headerlink" title="SATB(Snapchat-At-The-Beginning)："></a>SATB(Snapchat-At-The-Beginning)：</h5><blockquote>
+<p>并发GC时用户程序同时运行，可能会生成新对象，所以在GC前，会先执行SATB，生成快照记录存活的对象<br>每个region记录两个TAMS(top-at-mark-start)指针，GC过程中生成的新对象，在TAMS上的对象就是新分配的对象<br>Write Barrier</p>
 </blockquote>
-<p>缺点：</p>
+<h5 id="RSet-Remembered-Set-："><a href="#RSet-Remembered-Set-：" class="headerlink" title="RSet(Remembered Set)："></a>RSet(Remembered Set)：</h5><blockquote>
+<p>G1收集器中还有一个CSet(Collection Set)，用来记录要收集的Region的集合，<br>RSet用来记录其它region引用本地region对象的关系，对象可以跨代引用，old-&gt;young/young-&gt;old</p>
+</blockquote>
+<h5 id="CarTable"><a href="#CarTable" class="headerlink" title="CarTable"></a>CarTable</h5><h4 id="垃圾回收-1"><a href="#垃圾回收-1" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><h5 id="全局并发标记阶段"><a href="#全局并发标记阶段" class="headerlink" title="全局并发标记阶段"></a>全局并发标记阶段</h5><blockquote>
+<p>初始标记：stop-the-world，仅仅标记GC Roots能关联到的对象<br>并发标记：<br>最终标记：stop-the-world，会处理在并发标记阶段write barrier记录下来的对象；与CMS最大的差别就是，CMS会扫描整个GC Roots，包括Eden区<br>筛选回收：stop-the-world，这一阶段并不会收集垃圾，而是根据停顿预测模型预测出CSet，等待下一个Evacuation阶段回收</p>
+</blockquote>
+<h5 id="拷贝存活对象阶段-Evacuation"><a href="#拷贝存活对象阶段-Evacuation" class="headerlink" title="拷贝存活对象阶段 Evacuation"></a>拷贝存活对象阶段 Evacuation</h5><blockquote>
+<p>stop-the-world，将一部分region中的存活对象拷贝到另一部分region，只剩下垃圾对象的region被记录在CSet，<br>evacuation failure：堆空间垃圾太多，导致无法完成region之间的拷贝，导致执行一次Full GC。类似于CMS的<code>promoration failure</code>。</p>
+</blockquote>
+<h5 id="收集模式"><a href="#收集模式" class="headerlink" title="收集模式"></a>收集模式</h5><p>Young GC：<br>Mix GC：</p>
+<h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><ol>
+<li>并行与并发</li>
+<li>分代收集</li>
+<li><p>空间整合：</p>
+<blockquote>
+<p>与CMS的标记-清除算法不同，G1整体看是标记-整理算法，局部(Region)看则是复制算法，不会产生内存碎片。</p>
+</blockquote>
+</li>
+<li><p>可预测的停顿：</p>
+<blockquote>
+<p>这是G1相比CMS的一大优势，降低停顿时间时G1和CMS共同的关注点，但G1除了追求低停顿，还能建立可预测的停顿时间模型<br>参数<code>-XX:MaxGCPauseMillis</code>，可以设置停顿时间</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><h4 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h4><ol>
+<li>不断调优停顿时间</li>
+<li>不设置新生代/老年代大小，由JVM自动调整，设置大小后会导致停顿时间设置失效</li>
+<li>关注Evacuation Failure问题</li>
+</ol>
 <h3 id="8-ZGC"><a href="#8-ZGC" class="headerlink" title="8. ZGC"></a>8. ZGC</h3><p>目标：</p>
 <blockquote>
 <p>GC停顿时间不超过10ms<br>处理堆从MB到TB<br>相比G1减少了15%的吞吐量</p>
 </blockquote>
-<h3 id="9-Shenandoah-GC"><a href="#9-Shenandoah-GC" class="headerlink" title="9. Shenandoah GC"></a>9. Shenandoah GC</h3><p>对比：</p>
-<p>Zing/Azul有一个低停顿的收集器，但是没有贡献到OpenJDK。</p>
+<h3 id="9-Shenandoah-GC"><a href="#9-Shenandoah-GC" class="headerlink" title="9. Shenandoah GC"></a>9. Shenandoah GC</h3><h4 id="对比："><a href="#对比：" class="headerlink" title="对比："></a>对比：</h4><p>Zing/Azul有一个低停顿的收集器，但是没有贡献到OpenJDK。</p>
 <p>ZGC是基于colored pointers的收集器。Shenandoah GC是基于brook pointer的收集器。</p>
 <p>G1可以并行、并发的工作，但是不能并发的evacuation。</p>
 <p>CMS并发标记，在停顿期间复制年轻代，但是不压缩老年代。结果导致更多的时间管理剩余空间和碎片空间。</p>
@@ -650,7 +664,7 @@
 </li>
 </ol>
 </blockquote>
-<p><strong>注意:</strong>jdk1.6_24之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会执行Minor GC,否则进行Full GC</p>
+<p><strong>注意:</strong>jdk1.6_24之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小，就会执行Minor GC，否则进行Full GC</p>
 
       
     </div>
@@ -697,8 +711,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/07/java-jvm-cmd/" rel="prev" title="JVM虚拟机命令详解">
-                JVM虚拟机命令详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/07/java-jvm-cmd/" rel="prev" title="JVM虚拟机命令详解(三)">
+                JVM虚拟机命令详解(三) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -768,7 +782,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">166</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1028,7 +1042,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1073,7 +1089,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC算法"><span class="nav-number">1.</span> <span class="nav-text">GC算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#案例分析：HotSpot的实现"><span class="nav-number">1.1.</span> <span class="nav-text">案例分析：HotSpot的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gc回收器"><span class="nav-number">2.</span> <span class="nav-text">gc回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Serial"><span class="nav-number">2.1.</span> <span class="nav-text">1. Serial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ParNew"><span class="nav-number">2.2.</span> <span class="nav-text">2. ParNew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Parallel-Scavenge"><span class="nav-number">2.3.</span> <span class="nav-text">3. Parallel Scavenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Serial-Old"><span class="nav-number">2.4.</span> <span class="nav-text">4. Serial Old</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Parallel-Old"><span class="nav-number">2.5.</span> <span class="nav-text">5. Parallel Old</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CMS"><span class="nav-number">2.6.</span> <span class="nav-text">6. CMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-G1"><span class="nav-number">2.7.</span> <span class="nav-text">7. G1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-ZGC"><span class="nav-number">2.8.</span> <span class="nav-text">8. ZGC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Shenandoah-GC"><span class="nav-number">2.9.</span> <span class="nav-text">9. Shenandoah GC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分配、回收策略"><span class="nav-number">3.</span> <span class="nav-text">内存分配、回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GC触发"><span class="nav-number">3.1.</span> <span class="nav-text">GC触发</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC算法"><span class="nav-number">1.</span> <span class="nav-text">GC算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-标记-清除算法-Mark-Sweep"><span class="nav-number">1.1.</span> <span class="nav-text">1. 标记-清除算法(Mark-Sweep):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-复制算法"><span class="nav-number">1.2.</span> <span class="nav-text">2. 复制算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-标记-整理算法-标记-压缩算法"><span class="nav-number">1.3.</span> <span class="nav-text">3. 标记-整理算法/标记-压缩算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-分代收集算法"><span class="nav-number">1.4.</span> <span class="nav-text">4. 分代收集算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#案例分析：HotSpot的实现"><span class="nav-number">1.5.</span> <span class="nav-text">案例分析：HotSpot的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gc回收器"><span class="nav-number">2.</span> <span class="nav-text">gc回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Serial"><span class="nav-number">2.1.</span> <span class="nav-text">1. Serial</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ParNew"><span class="nav-number">2.2.</span> <span class="nav-text">2. ParNew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Parallel-Scavenge"><span class="nav-number">2.3.</span> <span class="nav-text">3. Parallel Scavenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Serial-Old"><span class="nav-number">2.4.</span> <span class="nav-text">4. Serial Old</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Parallel-Old"><span class="nav-number">2.5.</span> <span class="nav-text">5. Parallel Old</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-CMS"><span class="nav-number">2.6.</span> <span class="nav-text">6. CMS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理："><span class="nav-number">2.6.1.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收"><span class="nav-number">2.6.2.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点："><span class="nav-number">2.6.3.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点："><span class="nav-number">2.6.4.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-G1"><span class="nav-number">2.7.</span> <span class="nav-text">7. G1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理：-1"><span class="nav-number">2.7.1.</span> <span class="nav-text">原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Region："><span class="nav-number">2.7.1.1.</span> <span class="nav-text">Region：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SATB-Snapchat-At-The-Beginning-："><span class="nav-number">2.7.1.2.</span> <span class="nav-text">SATB(Snapchat-At-The-Beginning)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RSet-Remembered-Set-："><span class="nav-number">2.7.1.3.</span> <span class="nav-text">RSet(Remembered Set)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CarTable"><span class="nav-number">2.7.1.4.</span> <span class="nav-text">CarTable</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收-1"><span class="nav-number">2.7.2.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#全局并发标记阶段"><span class="nav-number">2.7.2.1.</span> <span class="nav-text">全局并发标记阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#拷贝存活对象阶段-Evacuation"><span class="nav-number">2.7.2.2.</span> <span class="nav-text">拷贝存活对象阶段 Evacuation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#收集模式"><span class="nav-number">2.7.2.3.</span> <span class="nav-text">收集模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点：-1"><span class="nav-number">2.7.3.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点：-1"><span class="nav-number">2.7.4.</span> <span class="nav-text">缺点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最佳实践"><span class="nav-number">2.7.5.</span> <span class="nav-text">最佳实践</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-ZGC"><span class="nav-number">2.8.</span> <span class="nav-text">8. ZGC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Shenandoah-GC"><span class="nav-number">2.9.</span> <span class="nav-text">9. Shenandoah GC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对比："><span class="nav-number">2.9.1.</span> <span class="nav-text">对比：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分配、回收策略"><span class="nav-number">3.</span> <span class="nav-text">内存分配、回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GC触发"><span class="nav-number">3.1.</span> <span class="nav-text">GC触发</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1108,7 +1124,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">182k</span>
+    <span title="Symbols count total">186k</span>
   
 
   
@@ -1119,7 +1135,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:46</span>
+    <span title="Reading time total">2:49</span>
   
 </div>
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-06T08:25:41.664Z</updated>
+  <updated>2019-06-07T03:56:03.732Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>net-nat</title>
+    <link href="http://wangwanchao.wang/2019/06/07/net-nat/"/>
+    <id>http://wangwanchao.wang/2019/06/07/net-nat/</id>
+    <published>2019-06-07T03:56:03.000Z</published>
+    <updated>2019-06-07T03:56:03.732Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Redis概览(一)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-base/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-base/</id>
+    <published>2019-06-06T16:25:54.000Z</published>
+    <updated>2019-06-06T16:26:32.796Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis中的跳表(二)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-skiplist/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-skiplist/</id>
+    <published>2019-06-06T16:25:35.000Z</published>
+    <updated>2019-06-06T16:27:14.851Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis哨兵机制(七)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-election/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-election/</id>
+    <published>2019-06-06T16:18:30.000Z</published>
+    <updated>2019-06-06T17:58:45.458Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis引入了哨兵机制</p><a id="more"></a><h2 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a>哨兵机制</h2><h3 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h3><p>启动哨兵机制，可以对主从数据库进行监控</p><h3 id="一主多从"><a href="#一主多从" class="headerlink" title="一主多从"></a>一主多从</h3><p>启动多个哨兵(建议3个，并且使用奇数个哨兵)，可以对主从数据库进行监控，哨兵之间也可以互相通信。<br>哨兵主要功能：</p><ol><li>监控：监控master和slave是否运行正常</li><li>提醒：某个redis出现故障，可以发起通知</li><li>自动故障转移：当一个master不能正常工作时，将master下其中一个slave转为master</li></ol><p>补充：为什么哨兵至少3个？</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>每个哨兵会向其它哨兵、master、slave定时发送消息，保持心跳。如果指定时间未回应，则认为对方<strong>主观下线</strong>；若多数哨兵都认为某一服务没响应，则认为<strong>客观下线</strong></p><h2 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h2><p>用于接收master是否下线的消息</p><h2 id="选举master协议"><a href="#选举master协议" class="headerlink" title="选举master协议"></a>选举master协议</h2><p>用来决定是否执行故障转移，以及slave中的选主<br>选主会有两个过程：</p><h3 id="Sentinel哨兵选出leader"><a href="#Sentinel哨兵选出leader" class="headerlink" title="Sentinel哨兵选出leader"></a>Sentinel哨兵选出leader</h3><p>当某个哨兵节点确认master主管下线后，发出广播请求其它哨兵选举自己为leader，<br>被请求的哨兵如果没有选举过其它哨兵的请求，则同意该请求，否则不同意<br>当哨兵节点票数达到Max(quorum, num(sentinel)/2 + 1)，则升级为leader</p><h3 id="Sentinel-Leader选举主节点master"><a href="#Sentinel-Leader选举主节点master" class="headerlink" title="Sentinel Leader选举主节点master"></a>Sentinel Leader选举主节点master</h3><p>master选举：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/redis/redis-leader.png"><p>slave-priority在conf中配置</p></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;redis引入了哨兵机制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>etcd-raft</title>
+    <link href="http://wangwanchao.wang/2019/06/06/etcd-raft/"/>
+    <id>http://wangwanchao.wang/2019/06/06/etcd-raft/</id>
+    <published>2019-06-06T15:05:56.000Z</published>
+    <updated>2019-06-06T15:05:56.093Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ZooKeeper基于TCP的FastLeader(四)</title>
@@ -287,96 +367,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;指令数目 (编译器和指令集决定)&lt;br&gt;时钟周期长度 (CPU决定)&lt;br&gt;每条指令所需要的时钟周期数 (CPU决定)&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>talk-in-wangxiaobo</title>
-    <link href="http://wangwanchao.wang/2019/05/31/talk-in-wangxiaobo/"/>
-    <id>http://wangwanchao.wang/2019/05/31/talk-in-wangxiaobo/</id>
-    <published>2019-05-31T13:24:40.000Z</published>
-    <updated>2019-05-31T13:24:40.420Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>csapp-lab</title>
-    <link href="http://wangwanchao.wang/2019/05/31/csapp-lab/"/>
-    <id>http://wangwanchao.wang/2019/05/31/csapp-lab/</id>
-    <published>2019-05-31T09:06:20.000Z</published>
-    <updated>2019-05-31T09:06:20.615Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统--指令集</title>
-    <link href="http://wangwanchao.wang/2019/05/31/csapp-instructions/"/>
-    <id>http://wangwanchao.wang/2019/05/31/csapp-instructions/</id>
-    <published>2019-05-31T06:46:13.000Z</published>
-    <updated>2019-06-01T04:28:48.700Z</updated>
-    
-    <content type="html"><![CDATA[<p>MIPS的2种实现方式：</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;MIPS的2种实现方式：&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于失去</title>
-    <link href="http://wangwanchao.wang/2019/05/30/thinking-in-lost/"/>
-    <id>http://wangwanchao.wang/2019/05/30/thinking-in-lost/</id>
-    <published>2019-05-30T15:04:29.000Z</published>
-    <updated>2019-05-30T15:54:44.056Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于失去，说是老了也好，说是闲的也好，总之，这一刻，因为一些人，一些事儿。总想说点什么。</p><a id="more"></a><p>自从开始写代码这个行业，大多的时间忙于各种新技术的更新换代，怕自己被淘汰，就陷于无尽的焦虑当中。很少有时间享受读一本书，出去骑行的慢时光。即便这样，仍然面临被很多人拍死在沙滩上的处境。<br>最近得闲，因为某种原因，李志的专辑被全平台下线，网上遍寻，有幸发现一个网站《麦田音乐网》，这是一个运营了十多年的网站，而且是个人运营，很是惊讶，竟然还有这种佛系的地方。<br>大致浏览了一下，猜测站长应该是个很厉害、又有点文艺的人，我看大家称呼他鬼哥。网站中除了歌单，最精彩的地方是，还有个麦游记，然后就有很多人会写下自己的故事，感觉类似于那个很有创意的淘宝卖家《CY故事 • 一家卖故事的淘宝店》(有点忘了，可以去查了一下)，这些故事总能触动内心深处的某些东西。</p><p>网站有个很醒目的flag：”我没法像个农民那样善良，只是麦子还在对着太阳愤怒生长”，第一印象就是《麦田里的守望者》，然后一层一层的“扒光”，在留言本的地方，站长的：</p><blockquote><p>欢迎来到“麦田音乐网”，如果您有什么想说的话，请在这里留言！<br>麦田音乐网建于2006年，是一个简单纯粹的音乐、文字分享网站。<br>在浮躁、喧嚣的互联网中，希望你能在这里静下来。<br>网站取名于《麦田里的守望者》、《小王子》、海子的诗、梵高与麦田。<br>站长QQ:40589302 微信:linfox<br>微信公众号“麦音乐”：maiyinyue<br>不换友情链接。</p></blockquote><p>留言本下有些留言真的是别有意味，这种感觉恐怕就是旧友久别重逢而不曾遗忘的感觉吧。</p><blockquote><p>猪诺 2019-01-29    11:42 上午<br>初中时开始听，现在我研三即将毕业。一晃这么多年。<br>QQ上还加着你，但是QQ已经不用了。<br>走了好久，发现麦田还在，真好。</p></blockquote><p>在留言本后还有个淘宝店铺，也是十多年的老店，打开店铺，果然做生意也是很佛系的，我比较喜欢的是里面的文化衫，”grunge is dead”，”we are young”。真是一个很有趣的人。</p><p>总之，这是一个很有内容的网站，作为一个技术人，接触了太多的网站，这算是网站中的一股清流了。<br>意犹未尽之余，去查了一下”伍尔芙”，著名的一句话–你不能通过逃避生活以寻找安宁，有机会读一下《海浪》；<br>“科特柯本”，摇滚乐、朋克，这些东西没有系统的了解过，瞬间感觉自己的孤陋寡闻，不禁反思“我究竟是个有趣的人吗？”，因为最近也在读王小波，颇多感慨，也许自己还是太晚熟了，失去了太多宝贵的时间；<br>“麦田里的守望者”，这本书其实很早有了解，但是一直没读过，去豆瓣了解了一下，中间刘瑜老师在2009年的一条评论还是令人深思的，的确，生活有美好，也有颓废，但是不能只看到颓废。然后打开刘瑜老师的个人博客，域名早已变成一个机械公司的网站…</p><p>生活，究竟是什么？可能我们每个人都问过自己，也在不断的寻找答案，尤其是这个快速迭代的时代，很多的东西终会被新的事物掩盖，但是她的美好，或者对她的依恋，却仍然在散发着光辉。</p><p>就好像这个网站，有一天会不会突然不能用了？我不知道，但我会尽力维护下去，当成一种信仰。我想要看清这个世界！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关于失去，说是老了也好，说是闲的也好，总之，这一刻，因为一些人，一些事儿。总想说点什么。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="life" scheme="http://wangwanchao.wang/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统--并发和并行</title>
-    <link href="http://wangwanchao.wang/2019/05/29/csapp-concurrent/"/>
-    <id>http://wangwanchao.wang/2019/05/29/csapp-concurrent/</id>
-    <published>2019-05-29T12:56:35.000Z</published>
-    <updated>2019-05-29T15:30:34.482Z</updated>
-    
-    <content type="html"><![CDATA[<p>看了一遍，感觉并没有解释的很深刻，也许是自己理解的问题。</p><a id="more"></a><h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>现代操作系统构建并发程序的方式：</p><ol><li>进程<br> 接收到请求后，fork一个子进程，由子进程来处理任务。因为每个进程的虚拟内存空间是独立的，所以进程间通信需要显式进行。常见的有：<br> 优点：共享文件表，不共享用户地址空间<br> 缺点：通信困难</li></ol><ol start="2"><li><p>I/O多路复用模型<br> 由select来监听接收请求，没有数据时CPU挂起，只有发生I/O事件时，才会处理。状态机模型，流之间的通信通过状态实现。例如：jdk的NIO模型、Netty的I/O模型</p><p> 改进：基于多路复用的事件驱动模型</p><p> 状态机模型：</p><pre><code>状态：等待描述符 $d_i$ 准备好可读，是否可读就是一种true/false的状态输入事件：描述符 $d_i$ 准备好可读，其实就是一个触发事件转移：从描述符 $d_i$ 读取数据，即状态转移，</code></pre><p> 优点：处于同一进程内，所有的流可以共享该进程的全部地址空间<br> 缺点：编码复杂度上升</p></li><li><p>线程<br> 多个线程在单一进程中，由内核统一调度，像进程一样，但是共享进程的虚拟内存空间。<br> 每个线程有自己的执行上下文，线程代码和局部数据被封装在一个线程例程中。每个独立的线程中的线程栈通常不能被其它线程访问，除非线程得到指向其他线程的访问指针。除此之外，线程中的全局变量、静态变量只存在进程的虚拟内存中，可以被其它线程访问</p><p> Posix线程：在C程序中处理线程的一个标准接口</p><p> 可结合线程：线程能够被其它线程收回和杀死，内存也可以被其它线程回收。<br> 可分离线程：线程不能够被其它线程收回和杀死，内存由系统管理</p></li></ol><h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><p>共享变量存在线程安全的问题，可以使用一种进度图模型分析指令执行顺序问题。然后引入了信号量机制</p><h3 id="进度图"><a href="#进度图" class="headerlink" title="进度图"></a>进度图</h3><p>进度图：n个并发线程的执行模型。进度图模型存在局限性，多处理器并发执行，不能使用进度图解释<br>临界区：</p><p>互斥</p><p>不安全区</p><p>安全轨迹<br>不安全轨迹</p><h3 id="信号量-1"><a href="#信号量-1" class="headerlink" title="信号量"></a>信号量</h3><p>主要包含2个操作P(s)、V(s)，<br>P(s): 对s减1。如果s非0，则执行P线程s减1，否则P挂起，等待V唤醒<br>V(s): 对s加1。V可以重启P线程</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;看了一遍，感觉并没有解释的很深刻，也许是自己理解的问题。&lt;/p&gt;
     
     </summary>
     
