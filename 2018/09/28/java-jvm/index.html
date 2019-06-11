@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="JVM运行时栈帧模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T04:34:33.704Z">
+<meta property="og:updated_time" content="2019-06-08T09:15:39.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机(一)">
 <meta name="twitter:description" content="JVM运行时栈帧模型">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-07 12:34:33" itemprop="dateModified" datetime="2019-06-07T12:34:33+08:00">2019-06-07</time>
+                <time title="Modified: 2019-06-08 17:15:39" itemprop="dateModified" datetime="2019-06-08T17:15:39+08:00">2019-06-08</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">901</span>
+                <span title="Symbols count in article">1.7k</span>
               
 
               
@@ -504,7 +504,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -530,25 +530,33 @@
 <p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p>
 <h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p>
 <blockquote>
-<p>存储局部变量表、</p>
-<p>操作数栈、</p>
-<p>动态链接、</p>
-<p>方法出口。</p>
+<p>存储局部变量表、<br>操作数栈、<br>动态链接、<br>方法出口。</p>
 </blockquote>
-<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，</p>
+<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，用于存储本地方法的执行栈</p>
 <h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p>
 <p>逃逸分析技术：</p>
 <p>栈上分配</p>
 <p>标量替换</p>
 <h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p>
 <blockquote>
-<p>被虚拟机加载的类信息：</p>
-<p>常量</p>
-<p>静态变量</p>
-<p>即时编译器编译后的代码</p>
+<p>被虚拟机加载的类信息：<br>常量<br>静态变量<br>即时编译器编译后的代码</p>
 </blockquote>
 <h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p>
 <p>例如String.intern()方法。</p>
+<h4 id="PernGen和Metaspace"><a href="#PernGen和Metaspace" class="headerlink" title="PernGen和Metaspace"></a>PernGen和Metaspace</h4><p>PermGen：<br>永久代只是方法区在HotSpot虚拟机中的一种实现。其它类型的虚拟机没有永久代的概念。</p>
+<p>jdk1.7:<br>原来存储在永久代的部分数据，现在分配到Java Heap/Native Heap。</p>
+<p>jdk1.8:</p>
+<blockquote>
+<p>符号引用转移到native heap<br>字面量转移到Java heap<br>类的静态变量转移到Java heap<br>参数<code>-XX:PermSize -XX:MaxPermSize</code>已经失效<br>MetaSpac不在jvm中，而是使用本地内存，默认情况下，仅受本地内存限制，<br>参数<code>-XX:MetaspaceSize -XX:MaxMetaspaceSize</code>，用于限制元数据区空间，<strong>默认</strong>大小为20MB<br>参数<code>-XX:MinMetaspaceFreeRation -XX:MaxMetaspaceFreeRation</code>，用于控制GC后剩余空间容纳的百分比<br>参数<code>-XX:MinMetaspaceExpansion -XX:MaxMetaspaceExpansion</code>，用于控制元空间增长幅度<br>参数<code>-XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code>会在Metaspace空间分配空间，导致默认20MB失效</p>
+</blockquote>
+<p>Metaspace的优点：</p>
+<blockquote>
+<p>jar包和应用的class文件存放在永久代，如果jar包很多，可能导致永久代溢出<br>每个应用都有自己的永久代，改用Metaspace后，应用可以共享同样的class内存空间，例如：两个项目都引用rt.jar，在元空间只保留一份</p>
+</blockquote>
+<p>Metaspace对GC性能的提升：</p>
+<blockquote>
+<p>Full GC中，指向元数据的指针不需要扫描，减少了GC开销；减少了GC Roots对象的扫描<br>元空间只有少量的指针指向Java heap，<br>避免了元数据压缩的开销</p>
+</blockquote>
 <h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p>
 <ol>
 <li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p>
@@ -614,8 +622,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/mysql-index/" rel="next" title="MySQL索引">
-                <i class="fa fa-chevron-left"></i> MySQL索引
+              <a href="/2018/09/28/architecture-base/" rel="next" title="架构基础">
+                <i class="fa fa-chevron-left"></i> 架构基础
               </a>
             
           </div>
@@ -624,8 +632,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/28/java-classloader/" rel="prev" title="Java加载器">
-                Java加载器 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/28/csapp-cache/" rel="prev" title="深入理解计算机系统--存储">
+                深入理解计算机系统--存储 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -695,7 +703,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">171</span>
+                    <span class="site-state-item-count">172</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1004,7 +1012,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内存区域"><span class="nav-number">1.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java堆"><span class="nav-number">1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区"><span class="nav-number">1.5.</span> <span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.5.1.</span> <span class="nav-text">运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接内存"><span class="nav-number">1.6.</span> <span class="nav-text">直接内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机对象"><span class="nav-number">2.</span> <span class="nav-text">虚拟机对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的创建"><span class="nav-number">2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的定位访问"><span class="nav-number">2.3.</span> <span class="nav-text">对象的定位访问</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java内存区域"><span class="nav-number">1.</span> <span class="nav-text">Java内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java堆"><span class="nav-number">1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区"><span class="nav-number">1.5.</span> <span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.5.1.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PernGen和Metaspace"><span class="nav-number">1.5.2.</span> <span class="nav-text">PernGen和Metaspace</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接内存"><span class="nav-number">1.6.</span> <span class="nav-text">直接内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机对象"><span class="nav-number">2.</span> <span class="nav-text">虚拟机对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的创建"><span class="nav-number">2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的定位访问"><span class="nav-number">2.3.</span> <span class="nav-text">对象的定位访问</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1039,7 +1047,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">189k</span>
+    <span title="Symbols count total">192k</span>
   
 
   
@@ -1050,7 +1058,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:52</span>
+    <span title="Reading time total">2:54</span>
   
 </div>
 

@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-08T07:29:56.200Z">
+<meta property="og:updated_time" content="2019-06-08T07:50:57.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jdk版本特性概览(一)">
 <meta name="twitter:description" content="目前jdk已经升级到jdk12，大多还停留在jdk6/7/8上，jdk的快速迭代，让人非常兴奋，下面大致罗列一下jdk的新特性：">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-08 15:29:56" itemprop="dateModified" datetime="2019-06-08T15:29:56+08:00">2019-06-08</time>
+                <time title="Modified: 2019-06-08 15:50:57" itemprop="dateModified" datetime="2019-06-08T15:50:57+08:00">2019-06-08</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.6k</span>
+                <span title="Symbols count in article">6.7k</span>
               
 
               
@@ -599,7 +599,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
 <h2 id="jdk10"><a href="#jdk10" class="headerlink" title="jdk10"></a>jdk10</h2><p><a href="https://openjdk.java.net/projects/jdk/10/" target="_blank" rel="noopener">OpenJDK10文档</a></p>
 <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html" target="_blank" rel="noopener">OracleJDK下载</a></p>
 <h3 id="新特性-1"><a href="#新特性-1" class="headerlink" title="新特性"></a>新特性</h3><blockquote>
-<p>286: Local-Variable Type Inference:<br>296: Consolidate the JDK Forest into a Single Repository<br>304: Garbage-Collector Interface<br>307: Parallel Full GC for G1:<br>310: Application Class-Data Sharing<br>312: Thread-Local Handshakes<br>313: Remove the Native-Header Generation Tool (javah)<br>314: Additional Unicode Language-Tag Extensions<br>316: Heap Allocation on Alternative Memory Devices<br>317: Experimental Java-Based JIT Compiler<br>319: Root Certificates<br>322: Time-Based Release Versioning</p>
+<p>286: Local-Variable Type Inference:<br>296: Consolidate the JDK Forest into a Single Repository<br>304: Garbage-Collector Interface<br>307: Parallel Full GC for G1:<br>310: Application Class-Data Sharing: 程序类数据共享<br>312: Thread-Local Handshakes:<br>313: Remove the Native-Header Generation Tool (javah)<br>314: Additional Unicode Language-Tag Extensions<br>316: Heap Allocation on Alternative Memory Devices: 堆分配在可选择的内存设备上<br>317: Experimental Java-Based JIT Compiler<br>319: Root Certificates<br>322: Time-Based Release Versioning</p>
 </blockquote>
 <h3 id="类库API-73项"><a href="#类库API-73项" class="headerlink" title="类库API 73项"></a>类库API 73项</h3><h3 id="JVM规范改动"><a href="#JVM规范改动" class="headerlink" title="JVM规范改动"></a>JVM规范改动</h3><h3 id="Java语言规范"><a href="#Java语言规范" class="headerlink" title="Java语言规范"></a>Java语言规范</h3><h3 id="乱七八糟"><a href="#乱七八糟" class="headerlink" title="乱七八糟"></a>乱七八糟</h3><h2 id="jdk11"><a href="#jdk11" class="headerlink" title="jdk11"></a>jdk11</h2><p>继jdk8后的大版本LTS</p>
 <p><a href="https://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">OpenJDK11下载</a></p>
@@ -608,7 +608,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
 <p><a href="https://docs.oracle.com/en/java/javase/11/" target="_blank" rel="noopener">Oracle文档</a></p>
 <p>既然都到了JDK11，那就跟着英文文档来一波吧！</p>
 <h3 id="主要新特性"><a href="#主要新特性" class="headerlink" title="主要新特性"></a>主要新特性</h3><blockquote>
-<p>181: Nest-Based Access Control<br>309: Dynamic Class-File Constants<br>315: Improve Aarch64 Intrinsics<br>318: Epsilon: A No-Op Garbage Collector: EGC收集器<br>320: Remove the Java EE and CORBA Modules: 移除了JavaEE+CORBA模块<br>321: HTTP Client (Standard)<br>323: Local-Variable Syntax for Lambda Parameters<br>324: Key Agreement with Curve25519 and Curve448<br>327: Unicode 10<br>328: Flight Recorder: 飞行记录器<br>329: ChaCha20 and Poly1305 Cryptographic Algorithms: xx20和Poly1305加密算法<br>330: Launch Single-File Source-Code Programs<br>331: Low-Overhead Heap Profiling<br>332: Transport Layer Security (TLS) 1.3: TLS升级为1.3<br>333: ZGC: A Scalable Low-Latency Garbage Collector(Experimental): 更稳定的ZGC收集器<br>335: Deprecate the Nashorn JavaScript Engine: 废除了JS解析器<br>336: Deprecate the Pack200 Tools and API</p>
+<p>181: Nest-Based Access Control<br>309: Dynamic Class-File Constants: 动态的类文件常量<br>315: Improve Aarch64 Intrinsics<br>318: Epsilon: A No-Op Garbage Collector: EGC收集器<br>320: Remove the Java EE and CORBA Modules: 移除了JavaEE+CORBA模块<br>321: HTTP Client (Standard)<br>323: Local-Variable Syntax for Lambda Parameters<br>324: Key Agreement with Curve25519 and Curve448<br>327: Unicode 10<br>328: Flight Recorder: 飞行记录器<br>329: ChaCha20 and Poly1305 Cryptographic Algorithms: xx20和Poly1305加密算法<br>330: Launch Single-File Source-Code Programs<br>331: Low-Overhead Heap Profiling: 低开销的堆分配采样<br>332: Transport Layer Security (TLS) 1.3: TLS升级为1.3<br>333: ZGC: A Scalable Low-Latency Garbage Collector(Experimental): 更稳定的ZGC收集器<br>335: Deprecate the Nashorn JavaScript Engine: 废除了JS解析器<br>336: Deprecate the Pack200 Tools and API</p>
 </blockquote>
 <h2 id="jdk12"><a href="#jdk12" class="headerlink" title="jdk12"></a>jdk12</h2><p>jdk12发布了，jdk20还会远吗?</p>
 <p><a href="https://jdk.java.net/12/" target="_blank" rel="noopener">OpenJDK下载</a></p>
@@ -616,7 +616,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
 <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">OracleJDK12下载</a></p>
 <p><a href="https://docs.oracle.com/en/java/javase/12/" target="_blank" rel="noopener">OracleJDK12文档</a></p>
 <h3 id="新特性-2"><a href="#新特性-2" class="headerlink" title="新特性"></a>新特性</h3><blockquote>
-<p>189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental)<br>230:    Microbenchmark Suite<br>325:    Switch Expressions (Preview)<br>334:    JVM Constants API<br>340:    One AArch64 Port, Not Two<br>341:    Default CDS Archives<br>344:    Abortable Mixed Collections for G1: G1可移除的Mixed GC<br>346:    Promptly Return Unused Committed Memory from G1</p>
+<p>189:    Shenandoah: A Low-Pause-Time Garbage Collector (Experimental): 低停顿的Shenandoah垃圾收集器<br>230:    Microbenchmark Suite<br>325:    Switch Expressions (Preview)<br>334:    JVM Constants API<br>340:    One AArch64 Port, Not Two<br>341:    Default CDS Archives<br>344:    Abortable Mixed Collections for G1: G1可移除的Mixed GC<br>346:    Promptly Return Unused Committed Memory from G1</p>
 </blockquote>
 <h2 id="JDK13"><a href="#JDK13" class="headerlink" title="JDK13"></a>JDK13</h2>
       
@@ -735,7 +735,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">171</span>
+                    <span class="site-state-item-count">172</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1079,7 +1079,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">189k</span>
+    <span title="Symbols count total">192k</span>
   
 
   
@@ -1090,7 +1090,7 @@ File.find(Path, int, BiPredicate, FileVisitOption... ): 查找相应的文件
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:52</span>
+    <span title="Reading time total">2:54</span>
   
 </div>
 
