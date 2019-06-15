@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="zk典型的应用是可以作为分布式锁。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T08:44:38.258Z">
+<meta property="og:updated_time" content="2019-06-13T05:57:47.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZooKeeper分布式锁(六)">
 <meta name="twitter:description" content="zk典型的应用是可以作为分布式锁。">
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-06-06 13:36:37 / Modified: 16:44:38" itemprop="dateCreated datePublished" datetime="2019-06-06T13:36:37+08:00">2019-06-06</time>
+              <time title="Created: 2019-06-06 13:36:37" itemprop="dateCreated datePublished" datetime="2019-06-06T13:36:37+08:00">2019-06-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-13 13:57:47" itemprop="dateModified" datetime="2019-06-13T13:57:47+08:00">2019-06-13</time>
               
             
           </span>
@@ -460,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">283</span>
+                <span title="Symbols count in article">289</span>
               
 
               
@@ -505,7 +517,7 @@
 </ol>
 <h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p>
 <h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p>
-
+<h3 id="排他锁"><a href="#排他锁" class="headerlink" title="排他锁"></a>排他锁</h3><h3 id="共享锁"><a href="#共享锁" class="headerlink" title="共享锁"></a>共享锁</h3>
       
     </div>
 
@@ -551,7 +563,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/06/zk-crash-select/" rel="prev" title="ZooKeeper选举过程(五)">
+              <a href="/2019/06/06/zk-crash-election/" rel="prev" title="ZooKeeper选举过程(五)">
                 ZooKeeper选举过程(五) <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -622,7 +634,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -725,7 +737,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -886,7 +898,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -931,7 +945,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zk分布式锁的特性"><span class="nav-number">1.</span> <span class="nav-text">zk分布式锁的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁实现"><span class="nav-number">2.</span> <span class="nav-text">锁实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公平式锁"><span class="nav-number">2.1.</span> <span class="nav-text">公平式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非公平式锁"><span class="nav-number">2.2.</span> <span class="nav-text">非公平式锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zk分布式锁的特性"><span class="nav-number">1.</span> <span class="nav-text">zk分布式锁的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁实现"><span class="nav-number">2.</span> <span class="nav-text">锁实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公平式锁"><span class="nav-number">2.1.</span> <span class="nav-text">公平式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非公平式锁"><span class="nav-number">2.2.</span> <span class="nav-text">非公平式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排他锁"><span class="nav-number">2.3.</span> <span class="nav-text">排他锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享锁"><span class="nav-number">2.4.</span> <span class="nav-text">共享锁</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -966,7 +980,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">192k</span>
+    <span title="Symbols count total">194k</span>
   
 
   
@@ -977,7 +991,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:54</span>
+    <span title="Reading time total">2:57</span>
   
 </div>
 

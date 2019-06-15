@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
+  <meta name="description" content="zk是一个分布式协调服务，是Google Chubby框架的开源实现">
 <meta name="keywords" content="ZooKeeper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ZooKeeper概览(一)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/08/28/zk-base/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
+<meta property="og:description" content="zk是一个分布式协调服务，是Google Chubby框架的开源实现">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T08:46:31.971Z">
+<meta property="og:updated_time" content="2019-06-13T05:59:44.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZooKeeper概览(一)">
-<meta name="twitter:description" content="ZooKeeper环境搭建，把以前的东西整理一下，">
+<meta name="twitter:description" content="zk是一个分布式协调服务，是Google Chubby框架的开源实现">
 
 
 
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-06 16:46:31" itemprop="dateModified" datetime="2019-06-06T16:46:31+08:00">2019-06-06</time>
+                <time title="Modified: 2019-06-13 13:59:44" itemprop="dateModified" datetime="2019-06-13T13:59:44+08:00">2019-06-13</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.8k</span>
+                <span title="Symbols count in article">2.1k</span>
               
 
               
@@ -524,7 +524,7 @@
       
 
       
-        <p>ZooKeeper环境搭建，把以前的东西整理一下，</p>
+        <p>zk是一个分布式协调服务，是Google Chubby框架的开源实现</p>
 <a id="more"></a>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="特性-语义"><a href="#特性-语义" class="headerlink" title="特性/语义"></a>特性/语义</h3><ol>
 <li>顺序性：客户端发起的更新操作会按照发送顺序在zk上执行</li>
@@ -541,7 +541,7 @@
 <blockquote>
 <p>主动推送：zk服务器<strong>主动</strong>将更新推送给客户端<br>一次性：数据变化时，只会被触发一次。如果客户端想要继续监听，必须重新注册一个新的watch<br>可见性：<br>顺序性：如果多个更新触发了watch机制，watch的顺序执行</p>
 </blockquote>
-<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>zk的节点类型是一个文件系统的树形结构。</p>
+<h3 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h3><h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>zk的节点类型是一个文件系统的树形结构。每个节点存储Stat数据结构(version，cversion，aversion)，除此之外，还会记录节点本身的一些状态信息</p>
 <ol>
 <li><p>永久节点、临时节点</p>
 <blockquote>
@@ -554,9 +554,18 @@
 </blockquote>
 </li>
 </ol>
+<h4 id="节点ACL权限"><a href="#节点ACL权限" class="headerlink" title="节点ACL权限"></a>节点ACL权限</h4><ol>
+<li>CREATE: 创建子节点的权限。</li>
+<li>READ: 获取节点数据和子节点列表的权限。</li>
+<li>WRITE：更新节点数据的权限。</li>
+<li>DELETE: 删除子节点的权限。</li>
+<li>ADMIN: 设置节点ACL的权限。</li>
+</ol>
 <h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
 <li>注册中心</li>
 <li>分布式锁</li>
+<li>分布式队列</li>
+<li>分布式协调/通知</li>
 </ol>
 <h2 id="单节点环境"><a href="#单节点环境" class="headerlink" title="单节点环境"></a>单节点环境</h2><p>单节点的安装可以增加用户，而不是使用root用户启动。</p>
 <ol>
@@ -602,7 +611,11 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
 </code></pre><p> 5). 添加授权信息</p>
 </li>
 </ol>
-<h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2>
+<h2 id="集群环境"><a href="#集群环境" class="headerlink" title="集群环境"></a>集群环境</h2><h2 id="zk在大型分布式系统中的应用"><a href="#zk在大型分布式系统中的应用" class="headerlink" title="zk在大型分布式系统中的应用"></a>zk在大型分布式系统中的应用</h2><ol>
+<li>zk在Hadoop中的应</li>
+<li>zk在HBase中的应用</li>
+</ol>
+
       
     </div>
 
@@ -719,7 +732,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -822,7 +835,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -983,7 +996,9 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1028,7 +1043,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性-语义"><span class="nav-number">1.1.</span> <span class="nav-text">特性/语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组成"><span class="nav-number">1.2.</span> <span class="nav-text">核心组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch机制"><span class="nav-number">1.3.</span> <span class="nav-text">watch机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点"><span class="nav-number">1.4.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">1.5.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单节点环境"><span class="nav-number">2.</span> <span class="nav-text">单节点环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群环境"><span class="nav-number">3.</span> <span class="nav-text">集群环境</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性-语义"><span class="nav-number">1.1.</span> <span class="nav-text">特性/语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组成"><span class="nav-number">1.2.</span> <span class="nav-text">核心组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch机制"><span class="nav-number">1.3.</span> <span class="nav-text">watch机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话"><span class="nav-number">1.4.</span> <span class="nav-text">会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点"><span class="nav-number">1.5.</span> <span class="nav-text">节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#节点ACL权限"><span class="nav-number">1.5.1.</span> <span class="nav-text">节点ACL权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">1.6.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单节点环境"><span class="nav-number">2.</span> <span class="nav-text">单节点环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群环境"><span class="nav-number">3.</span> <span class="nav-text">集群环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zk在大型分布式系统中的应用"><span class="nav-number">4.</span> <span class="nav-text">zk在大型分布式系统中的应用</span></a></li></ol></div>
             
 
           </div>
@@ -1063,7 +1078,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">192k</span>
+    <span title="Symbols count total">194k</span>
   
 
   
@@ -1074,7 +1089,7 @@ setAcl /test digest:test:Kk3Nr5X06NH+XdlGMyOrULgK/mo=:rwcda
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:54</span>
+    <span title="Reading time total">2:57</span>
   
 </div>
 

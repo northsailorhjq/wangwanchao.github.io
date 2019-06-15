@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-11T11:21:38.481Z</updated>
+  <updated>2019-06-15T16:48:58.612Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,133 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端中的布局方式</title>
+    <link href="http://wangwanchao.wang/2019/06/16/js-layout/"/>
+    <id>http://wangwanchao.wang/2019/06/16/js-layout/</id>
+    <published>2019-06-15T16:32:06.000Z</published>
+    <updated>2019-06-15T16:48:58.612Z</updated>
+    
+    <content type="html"><![CDATA[<p>不同的布局方式</p><a id="more"></a><h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ol><li>伸缩容器</li><li>主轴、侧轴配置简单</li><li>子元素沿着容器对齐</li></ol><h3 id="微信小程序中的应用"><a href="#微信小程序中的应用" class="headerlink" title="微信小程序中的应用"></a>微信小程序中的应用</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>flex 行内元素<br>block 块元素</p><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>row<br>row-reverse<br>column<br>column-reverse</p><h4 id="轴对齐方式"><a href="#轴对齐方式" class="headerlink" title="轴对齐方式"></a>轴对齐方式</h4><p>justify-content<br>align-items</p><h2 id="Grid布局"><a href="#Grid布局" class="headerlink" title="Grid布局"></a>Grid布局</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;不同的布局方式&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat启动流程(二)</title>
+    <link href="http://wangwanchao.wang/2019/06/15/tomcat-startup/"/>
+    <id>http://wangwanchao.wang/2019/06/15/tomcat-startup/</id>
+    <published>2019-06-15T14:54:00.000Z</published>
+    <updated>2019-06-15T15:36:05.252Z</updated>
+    
+    <content type="html"><![CDATA[<p>tomcat启动流程</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;tomcat启动流程&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解析JavaScript/ECMAScript/TypeScript/COffeScript</title>
+    <link href="http://wangwanchao.wang/2019/06/14/es6-ts/"/>
+    <id>http://wangwanchao.wang/2019/06/14/es6-ts/</id>
+    <published>2019-06-14T07:46:52.000Z</published>
+    <updated>2019-06-15T14:40:32.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>JS框架层出不穷，</p><a id="more"></a><h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote><p>ECMAScript6的目标是使得JavaScript语言可以用来编写大型的复杂的应用程序，于是增添了许多特性，例如：模块和类，Maps、Sets、Promises、生成器（Generators）等。<br>尽管ECMAScript6做了大量的更新，但标准化委员会仍然决定要兼容以前的版本，但随之而来的问题是，目前主流的宿主环境（无论是浏览器环境还是服务器环境）不能完全支持ES6，导致了开发者真正要使用ECMAScript6时，需要将ECMAScript6代码进行转译。</p></blockquote><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote><p>TypeScript 是一种微软开源的编程语言。<br>由于JavaScript是弱类型的，TypeScript为JavaScript扩展类和模块的概念。正是由于TypeScript最大的特点是类型化，因此才叫做TypeScript。<br>TypeScript支持ECMAScript6标准（实际上相当于是对ECMAScript6的提前实现），并且能将代码根据需求转换为 ES3/5/6。这意味着开发者可以通过TypeScript使用最新的ECMAScript特性，无需再考虑兼容性的问题。</p></blockquote><h3 id="TypeScript分类"><a href="#TypeScript分类" class="headerlink" title="TypeScript分类"></a>TypeScript分类</h3><ol><li>一个是类似 Babel 的阵营，坚持JavaScript 的语法风格编写，为开发者提供最新的 ECMAScript 特性；</li><li>另一个则是Coffeescript、Clojure、Dart等的阵营，它们的语法与 JavaScript 迥然不同，但最终会编译为JavaScript；</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JS框架层出不穷，&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat--设计模式(四)</title>
+    <link href="http://wangwanchao.wang/2019/06/13/tomcat-pattern/"/>
+    <id>http://wangwanchao.wang/2019/06/13/tomcat-pattern/</id>
+    <published>2019-06-13T06:31:47.000Z</published>
+    <updated>2019-06-15T14:52:54.832Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat请求过程--NIO(三)</title>
+    <link href="http://wangwanchao.wang/2019/06/13/tomcat-nio/"/>
+    <id>http://wangwanchao.wang/2019/06/13/tomcat-nio/</id>
+    <published>2019-06-13T06:31:17.000Z</published>
+    <updated>2019-06-15T14:53:09.137Z</updated>
+    
+    <content type="html"><![CDATA[<p>tomcat处理请求的NIO是基于jdk的NIO操作</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;tomcat处理请求的NIO是基于jdk的NIO操作&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dubbo-base</title>
+    <link href="http://wangwanchao.wang/2019/06/13/dubbo-base/"/>
+    <id>http://wangwanchao.wang/2019/06/13/dubbo-base/</id>
+    <published>2019-06-13T05:27:17.000Z</published>
+    <updated>2019-06-13T05:27:17.805Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微服务--路由器(五)</title>
+    <link href="http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/"/>
+    <id>http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/</id>
+    <published>2019-06-11T16:53:57.000Z</published>
+    <updated>2019-06-11T16:55:05.496Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h2><h2 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h2><h2 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Ribbon&quot;&gt;&lt;a href=&quot;#Ribbon&quot; class=&quot;headerlink&quot; title=&quot;Ribbon&quot;&gt;&lt;/a&gt;Ribbon&lt;/h2&gt;&lt;h2 id=&quot;Feign&quot;&gt;&lt;a href=&quot;#Feign&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>java中特殊类Object</title>
@@ -144,8 +271,8 @@
   
   <entry>
     <title>ZooKeeper选举算法基础(三)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-select-base/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-select-base/</id>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-election-base/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-election-base/</id>
     <published>2019-06-06T05:52:31.000Z</published>
     <updated>2019-06-06T05:56:54.259Z</updated>
     
@@ -164,8 +291,8 @@
   
   <entry>
     <title>ZooKeeper选举过程(五)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-crash-select/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-crash-select/</id>
+    <link href="http://wangwanchao.wang/2019/06/06/zk-crash-election/"/>
+    <id>http://wangwanchao.wang/2019/06/06/zk-crash-election/</id>
     <published>2019-06-06T05:36:56.000Z</published>
     <updated>2019-06-06T08:26:21.367Z</updated>
     
@@ -187,9 +314,9 @@
     <link href="http://wangwanchao.wang/2019/06/06/zk-lock/"/>
     <id>http://wangwanchao.wang/2019/06/06/zk-lock/</id>
     <published>2019-06-06T05:36:37.000Z</published>
-    <updated>2019-06-06T08:44:38.258Z</updated>
+    <updated>2019-06-13T05:57:47.068Z</updated>
     
-    <content type="html"><![CDATA[<p>zk典型的应用是可以作为分布式锁。</p><a id="more"></a><h2 id="zk分布式锁的特性"><a href="#zk分布式锁的特性" class="headerlink" title="zk分布式锁的特性"></a>zk分布式锁的特性</h2><p>zk作为分布式锁主要利用的还是临时节点、顺序性的特性</p><ol><li>最多只有一个获取锁：最多只有一个进程获取锁</li><li>释放锁：获取锁的进程可以主动释放锁；进程宕机后也可以释放锁</li><li>锁重入：获取锁的进程在释放锁之前可以重新进入</li><li>感知释放锁：等待锁的进程可以感知到锁的释放，并且重新竞争锁</li></ol><h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p><h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p>]]></content>
+    <content type="html"><![CDATA[<p>zk典型的应用是可以作为分布式锁。</p><a id="more"></a><h2 id="zk分布式锁的特性"><a href="#zk分布式锁的特性" class="headerlink" title="zk分布式锁的特性"></a>zk分布式锁的特性</h2><p>zk作为分布式锁主要利用的还是临时节点、顺序性的特性</p><ol><li>最多只有一个获取锁：最多只有一个进程获取锁</li><li>释放锁：获取锁的进程可以主动释放锁；进程宕机后也可以释放锁</li><li>锁重入：获取锁的进程在释放锁之前可以重新进入</li><li>感知释放锁：等待锁的进程可以感知到锁的释放，并且重新竞争锁</li></ol><h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p><h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p><h3 id="排他锁"><a href="#排他锁" class="headerlink" title="排他锁"></a>排他锁</h3><h3 id="共享锁"><a href="#共享锁" class="headerlink" title="共享锁"></a>共享锁</h3>]]></content>
     
     <summary type="html">
     
@@ -247,134 +374,6 @@
     
     
       <category term="netty" scheme="http://wangwanchao.wang/tags/netty/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis概览(一)</title>
-    <link href="http://wangwanchao.wang/2019/06/04/mybatis-base/"/>
-    <id>http://wangwanchao.wang/2019/06/04/mybatis-base/</id>
-    <published>2019-06-04T12:30:05.000Z</published>
-    <updated>2019-06-04T16:42:43.138Z</updated>
-    
-    <content type="html"><![CDATA[<p>终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。</p><a id="more"></a><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>mybatis结构图：</p><p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-arc.png"></p><p>在我看来mybatis核心功能主要有3个：<br>1、xml/注解的解析(包括config配置、mapper)<br>2、一级缓存，二级缓存<br>3、事务</p><h2 id="MyBatis和Spring整合"><a href="#MyBatis和Spring整合" class="headerlink" title="MyBatis和Spring整合"></a>MyBatis和Spring整合</h2><p>mybatis和Spring整合插件结构图：</p><p><img width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/mybatis/mybatis-spring.png"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;终究还是要自己来分析源码了，网上有很多MyBatis的源码分析，自己决定做，一来是加深印象；二来摸索源码分析的方法论。很多时候看源码一脸懵逼，不知道该从哪里看，看完没有形成思路。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis缓存(三)</title>
-    <link href="http://wangwanchao.wang/2019/06/04/mybatis-cache/"/>
-    <id>http://wangwanchao.wang/2019/06/04/mybatis-cache/</id>
-    <published>2019-06-04T12:28:52.000Z</published>
-    <updated>2019-06-04T16:26:53.125Z</updated>
-    
-    <content type="html"><![CDATA[<p>mybatis分为一级缓存、二级缓存</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;mybatis分为一级缓存、二级缓存&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis中的事务管理(五)</title>
-    <link href="http://wangwanchao.wang/2019/06/04/mybatis-transaction/"/>
-    <id>http://wangwanchao.wang/2019/06/04/mybatis-transaction/</id>
-    <published>2019-06-04T12:28:37.000Z</published>
-    <updated>2019-06-04T16:28:33.241Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="MyBatis" scheme="http://wangwanchao.wang/tags/MyBatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务--服务编排</title>
-    <link href="http://wangwanchao.wang/2019/06/03/servicemesh-serverless/"/>
-    <id>http://wangwanchao.wang/2019/06/03/servicemesh-serverless/</id>
-    <published>2019-06-03T03:42:30.000Z</published>
-    <updated>2019-06-03T06:32:14.539Z</updated>
-    
-    <content type="html"><![CDATA[<p>服务编排</p><a id="more"></a><h2 id="Dubbo-SpringCloud"><a href="#Dubbo-SpringCloud" class="headerlink" title="Dubbo/SpringCloud"></a>Dubbo/SpringCloud</h2><h2 id="ServiceMesh"><a href="#ServiceMesh" class="headerlink" title="ServiceMesh"></a>ServiceMesh</h2><p>服务网格</p><p>Linkerd/Envoy</p><p>Istio</p><h2 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h2><p>无服务器架构</p><p>Knative</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;服务编排&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Maven依赖冲突问题</title>
-    <link href="http://wangwanchao.wang/2019/06/03/maven-conflict/"/>
-    <id>http://wangwanchao.wang/2019/06/03/maven-conflict/</id>
-    <published>2019-06-03T02:45:33.000Z</published>
-    <updated>2019-06-03T06:36:43.132Z</updated>
-    
-    <content type="html"><![CDATA[<p>maven依赖冲突</p><a id="more"></a><h3 id="冲突分类："><a href="#冲突分类：" class="headerlink" title="冲突分类："></a>冲突分类：</h3><p>第一类Jar包问题：依赖的同一个Jar出现不同的版本。<br>第二类Jar包问题：同样的类Class出现在多个不同的Jar包中。</p><h3 id="冲突原因："><a href="#冲突原因：" class="headerlink" title="冲突原因："></a>冲突原因：</h3><p>maven的依赖机制：<br>优先按照依赖管理<dependencymanagement>元素中指定的版本声明进行仲裁，此时下面的两个原则都无效了<br>若无版本声明，则按照“短路径优先”的原则（Maven2.0）进行仲裁，即选择依赖树中路径最短的版本<br>若路径长度一致，则按照“第一声明优先”的原则进行仲裁，即选择POM中最先声明的版本</dependencymanagement></p><h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><h4 id="1、依赖管理"><a href="#1、依赖管理" class="headerlink" title="1、依赖管理"></a>1、依赖管理</h4><p>针对第一类冲突<br>方法1）通过<excludes>排除传递依赖<br>方法2）使用<dependencymanagement>对依赖包统一版本管理</dependencymanagement></excludes></p><h3 id="2、冲突检测插件"><a href="#2、冲突检测插件" class="headerlink" title="2、冲突检测插件"></a>2、冲突检测插件</h3><p>针对第二类冲突<br>maven-enforcer-plugin插件 + extra-enforcer-rules工具，注意：应用在子模块上，</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;maven依赖冲突&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Maven" scheme="http://wangwanchao.wang/tags/Maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>断路器hystrix</title>
-    <link href="http://wangwanchao.wang/2019/06/03/architecture-hystrix/"/>
-    <id>http://wangwanchao.wang/2019/06/03/architecture-hystrix/</id>
-    <published>2019-06-03T02:18:27.000Z</published>
-    <updated>2019-06-04T13:09:44.530Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解计算机系统--异常控制流</title>
-    <link href="http://wangwanchao.wang/2019/06/01/csapp-exception/"/>
-    <id>http://wangwanchao.wang/2019/06/01/csapp-exception/</id>
-    <published>2019-06-01T15:47:09.000Z</published>
-    <updated>2019-06-03T02:19:28.580Z</updated>
-    
-    <content type="html"><![CDATA[<p>异常</p><a id="more"></a><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>异常控制流：现代系统通过使控制流发生突变来对这些情况做出反应，这些突变称为异常控制流。</p><p>异常：控制流中的突变。一部分由硬件实现，一部分由操作系统实现。</p><p>异常号：系统中可能的每种类型的异常都分配了一个唯一的非负整数，称为异常号。</p><blockquote><p>其中一些异常号由CPU设计中分配。例如：被零除、缺页、内存访问违例、断点、算术运算溢出<br>其它号码由操作系统内核的设计者分配。例如：系统调用、来自外部I/O设备的信号</p></blockquote><p>异常表：系统启动时，分配和初始化一张跳转表，称为异常表。表中维护了异常号-异常处理程序地址的关系。异常表的起始地址放在一个‘异常表基址寄存器’的特殊CPU寄存器内。</p><h3 id="异常种类"><a href="#异常种类" class="headerlink" title="异常种类"></a>异常种类</h3><table><thead><tr><th>类别</th><th style="text-align:center">原因</th><th style="text-align:center">异步/同步</th><th style="text-align:center">返回行为</th></tr></thead><tbody><tr><td>中断</td><td style="text-align:center">来自I/O设备的信号</td><td style="text-align:center">异步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>陷阱</td><td style="text-align:center">有意的异常。</td><td style="text-align:center">同步</td><td style="text-align:center">总是返回到下一条指令</td></tr><tr><td>故障</td><td style="text-align:center">潜在的可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">可能返回到当前指令</td></tr><tr><td>终止</td><td style="text-align:center">不可恢复的错误</td><td style="text-align:center">同步</td><td style="text-align:center">不会返回</td></tr></tbody></table><h4 id="故障指令"><a href="#故障指令" class="headerlink" title="故障指令"></a>故障指令</h4><p>陷阱(系统调用)：普通程序运行在<code>用户模式</code>，系统调用运行在<code></code>内核模式<code>，系统为用户提供了特殊的</code>syscall n`指令，用户进行系统调用时进入陷阱模式。</p><p>故障：故障是由错误引起的，如果错误可以被修复，则将控制返回到引起故障的指令；如果不可修复，则返回到内核中的abort例程，abort例程会终止引起故障的应用程序。</p><p>终止：由不可恢复的致命错误引起，通常是一些硬件错误。</p><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="逻辑控制流"><a href="#逻辑控制流" class="headerlink" title="逻辑控制流"></a>逻辑控制流</h3><p>并发流：并发流的思想与流运行的CPU核数、计算机数无关。</p><p>并行流：</p><h3 id="私有地址空间"><a href="#私有地址空间" class="headerlink" title="私有地址空间"></a>私有地址空间</h3><p>进程间内存空间私有</p><h3 id="用户模式和内核模式"><a href="#用户模式和内核模式" class="headerlink" title="用户模式和内核模式"></a>用户模式和内核模式</h3><p>模式位：CPU通过设置某个寄存器的模式位，指定进程处于内核模式。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;异常&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="CSAPP" scheme="http://wangwanchao.wang/tags/CSAPP/"/>
     
   </entry>
   

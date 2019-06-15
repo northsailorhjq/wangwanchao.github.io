@@ -422,9 +422,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2018/09/28/java-classloader/" itemprop="url">
+          <a class="post-title-link" href="/2018/09/28/java-multithread/" itemprop="url">
             
-              <span itemprop="name">Java加载器</span>
+              <span itemprop="name">Java多线程</span>
             
           </a>
         
@@ -448,9 +448,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2018/09/28/java-multithread/" itemprop="url">
+          <a class="post-title-link" href="/2018/09/28/java-classloader/" itemprop="url">
             
-              <span itemprop="name">Java多线程</span>
+              <span itemprop="name">Java加载器</span>
             
           </a>
         
@@ -552,6 +552,58 @@
 
       <h2 class="post-title">
         
+          <a class="post-title-link" href="/2018/08/11/java-reference/" itemprop="url">
+            
+              <span itemprop="name">java中的引用类型</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2018-08-11T11:58:29+08:00" content="2018-08-11">
+          08-11
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2018/08/11/java-threadlocal/" itemprop="url">
+            
+              <span itemprop="name">Threadlocal原理分析</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2018-08-11T10:16:46+08:00" content="2018-08-11">
+          08-11
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
           <a class="post-title-link" href="/2018/08/07/java-synchronized-lock/" itemprop="url">
             
               <span itemprop="name">synchronized和ReentrantLock</span>
@@ -597,32 +649,6 @@
 
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018/07/27/java-thread-base/" itemprop="url">
-            
-              <span itemprop="name">Java并发编程</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-27T23:12:48+08:00" content="2018-07-27">
-          07-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
     </div>
 
   </div>
@@ -631,6 +657,10 @@
   
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/categories/Java/page/2/">2</a><a class="extend next" rel="next" href="/categories/Java/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
 
 
 
@@ -671,7 +701,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -774,7 +804,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -935,7 +965,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -998,7 +1030,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">192k</span>
+    <span title="Symbols count total">194k</span>
   
 
   
@@ -1009,7 +1041,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:54</span>
+    <span title="Reading time total">2:57</span>
   
 </div>
 
@@ -1456,71 +1488,6 @@
 
           // remove loading animation
           $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
-ay").remove();
           $('body').css('overflow', '');
 
           proceedsearch();

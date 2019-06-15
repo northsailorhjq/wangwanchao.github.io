@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="数据一致性  本地事务:  JDBC事务:  XA事务: 分布式事务规范，定义了(全局)事务管理器TM(Transaction Manager)和(局部)资源管理器RM(Resource Manager)之间的接口。  JTA(Java Transaction API)事务: 符合X/Open DTP模型。在JTA中，事务管理器抽象为javax.transaction.TransactionMan">
+  <meta name="description" content="分布式事务">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java分布式事务">
+<meta property="og:title" content="微服务--分布式事务">
 <meta property="og:url" content="http://wangwanchao.wang/2018/09/09/distribute-transaction/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="数据一致性  本地事务:  JDBC事务:  XA事务: 分布式事务规范，定义了(全局)事务管理器TM(Transaction Manager)和(局部)资源管理器RM(Resource Manager)之间的接口。  JTA(Java Transaction API)事务: 符合X/Open DTP模型。在JTA中，事务管理器抽象为javax.transaction.TransactionMan">
+<meta property="og:description" content="分布式事务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.358Z">
+<meta property="og:updated_time" content="2019-06-12T16:27:18.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java分布式事务">
-<meta name="twitter:description" content="数据一致性  本地事务:  JDBC事务:  XA事务: 分布式事务规范，定义了(全局)事务管理器TM(Transaction Manager)和(局部)资源管理器RM(Resource Manager)之间的接口。  JTA(Java Transaction API)事务: 符合X/Open DTP模型。在JTA中，事务管理器抽象为javax.transaction.TransactionMan">
+<meta name="twitter:title" content="微服务--分布式事务">
+<meta name="twitter:description" content="分布式事务">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>java分布式事务 | Wangsir's Blog</title>
+  <title>微服务--分布式事务 | Wangsir's Blog</title>
   
 
 
@@ -393,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java分布式事务
+          <h1 class="post-title" itemprop="name headline">微服务--分布式事务
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-13 00:27:18" itemprop="dateModified" datetime="2019-06-13T00:27:18+08:00">2019-06-13</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.8k</span>
+                <span title="Symbols count in article">2k</span>
               
 
               
@@ -524,15 +524,22 @@
       
 
       
-        <p><a href="https://www.infoq.cn/article/solution-of-distributed-system-transaction-consistency" target="_blank" rel="noopener">数据一致性</a></p>
-<ol>
+        <p>分布式事务</p>
+<a id="more"></a>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><ol>
 <li><p>本地事务:</p>
 </li>
 <li><p>JDBC事务:</p>
 </li>
 <li><p>XA事务: 分布式事务规范，定义了(全局)事务管理器TM(Transaction Manager)和(局部)资源管理器RM(Resource Manager)之间的接口。</p>
+<blockquote>
+<p>XA协议：用于TM和RM之间的接口</p>
+</blockquote>
 </li>
-<li><p>JTA(Java Transaction API)事务: 符合X/Open DTP模型。在JTA中，事务管理器抽象为javax.transaction.TransactionManager接口，通过底层事务服务(JTS Java Transaction Service)实现。一般由容器进行管理。WebLogic、Websphere提供了JTA的实现和支持，Tomcat需要借助第三方框架Jotm、Automikos实现</p>
+<li><p>JTA(Java Transaction API)事务: 符合X/Open DTP模型。</p>
+<blockquote>
+<p>在JTA中，事务管理器抽象为javax.transaction.TransactionManager接口，通过底层事务服务(JTS Java Transaction Service)实现。一般由容器进行管理<br>WebLogic、Websphere提供了JTA的实现和支持，Tomcat需要借助第三方框架Jotm、Automikos实现</p>
+</blockquote>
 </li>
 <li><p>幂等性: 针对一个操作，无论执行多少次，产生的结果和返回的结果都是一致的。常用于表单的重复提交、支付接口的调用。</p>
 <blockquote>
@@ -541,18 +548,20 @@
 </blockquote>
 </li>
 </ol>
-<a id="more"></a>
-<h2 id="一致性协议解决方案："><a href="#一致性协议解决方案：" class="headerlink" title="一致性协议解决方案："></a>一致性协议解决方案：</h2><h2 id="1-事务补偿机制-TCC"><a href="#1-事务补偿机制-TCC" class="headerlink" title="1. 事务补偿机制(TCC)"></a>1. 事务补偿机制(TCC)</h2><p>业务S，对外提供服务，服务消费者M决定服务cancel还是commit</p>
-<p>TRYING阶段：主要对业务进行检测及资源预留。</p>
-<p>CONFIRMING阶段：业务提交，默认如果TRYING阶段执行成功，CONFIRMING阶段就一定能成功。</p>
-<p>CANCELING阶段：业务回滚</p>
-<h3 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h3><p>基于web service/rpc/jms等构建的高度自治的分布式系统接口</p>
-<h3 id="传统事务和TCC事务的区别"><a href="#传统事务和TCC事务的区别" class="headerlink" title="传统事务和TCC事务的区别"></a>传统事务和TCC事务的区别</h3><p>传统事务机制 = TCC事务机制Try + TCC事务机制Confirm</p>
-<p>传统事务： 业务逻辑部分访问资源实现数据存储，由业务系统负责；事务处理部分通过协调资源管理器以实现事务管理，由事务管理器负责</p>
-<p>TCC事务：业务逻辑和事务管理关系复杂。</p>
-<p><a href="https://github.com/liuyangming/ByteTCC/" target="_blank" rel="noopener">基于TCC的ByteTCC</a></p>
-<p><a href="https://github.com/liuyangming/ByteJTA/" target="_blank" rel="noopener">基于XA两阶段的ByteJTA</a></p>
-<h2 id="2-两阶段提交-2PC"><a href="#2-两阶段提交-2PC" class="headerlink" title="2. 两阶段提交(2PC)"></a>2. 两阶段提交(2PC)</h2><p>Two-Phase Commit</p>
+<h2 id="一致性协议解决方案："><a href="#一致性协议解决方案：" class="headerlink" title="一致性协议解决方案："></a>一致性协议解决方案：</h2><h2 id="eBay方案-BASE理论"><a href="#eBay方案-BASE理论" class="headerlink" title="eBay方案(BASE理论)"></a>eBay方案(BASE理论)</h2><p>Basically Available(基本可用)，Soft state(软状态)，Eventually consistent(最终一致性)</p>
+<p>核心：保证服务接口的幂等性。</p>
+<p>最终一致性存在5种实现：</p>
+<blockquote>
+<p>因果一致性<br>读己之所写<br>会话一致性<br>单调读一致性<br>单调写一致性</p>
+</blockquote>
+<h4 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h4><p>一种ACID的替代方案，可用性通过支持局部故障而不是全局故障来实现。</p>
+<ol>
+<li>将多表操作放在本地事务中来完成</li>
+<li>通过增加update_applied表避免重复消费用户表消息</li>
+<li>读取消息队列，但不删除消息，判断updates_applied表检测相关记录是否被执行，未执行的记录会修改user表 ，然后增加操作记录到updates_applied，事务执行完成后删除队列。</li>
+</ol>
+<h2 id="一阶段提交-1PC"><a href="#一阶段提交-1PC" class="headerlink" title="一阶段提交(1PC)"></a>一阶段提交(1PC)</h2><p>应用场景：基于数据库分片(sharding)</p>
+<h2 id="两阶段提交-2PC"><a href="#两阶段提交-2PC" class="headerlink" title="两阶段提交(2PC)"></a>两阶段提交(2PC)</h2><p>Two-Phase Commit，2PC在语言平台、主流数据库都有应用。例如：MySQL数据库</p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>第一阶段：准备阶段</p>
 <ol>
 <li>事务询问</li>
@@ -560,53 +569,51 @@
 <li>各参与者向协调者反馈事务询问的响应</li>
 </ol>
 <p>第二阶段：提交阶段</p>
-<p>情况一：事务提交</p>
-<p>情况二：中断事务</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
-<ol>
+<p>情况一：事务提交<br>情况二：中断事务</p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ol>
 <li>原理简单</li>
 <li>实现方便</li>
 </ol>
-<p>缺点：</p>
-<ol>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ol>
 <li>同步阻塞  导致性能问题</li>
 <li>单点问题  节点出现问题会导致事务失败，甚至事务锁定</li>
 <li>数据不一致  节点问题会导致部分事务提交，数据不一致</li>
 <li>太过保守  任何单点故障都会导致问题</li>
 </ol>
-<h2 id="3-一阶段提交-1PC"><a href="#3-一阶段提交-1PC" class="headerlink" title="3. 一阶段提交(1PC)"></a>3. 一阶段提交(1PC)</h2><p>应用场景：基于数据库分片(sharding)</p>
-<h2 id="4-三阶段提交-3PC"><a href="#4-三阶段提交-3PC" class="headerlink" title="4. 三阶段提交(3PC)"></a>4. 三阶段提交(3PC)</h2><h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p>第一阶段：CanCommit</p>
-<p>第二阶段：PreCommit</p>
-<p>第三阶段：doCommit</p>
-<h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
-<ol>
+<h2 id="提供回滚接口"><a href="#提供回滚接口" class="headerlink" title="提供回滚接口"></a>提供回滚接口</h2><p>作为一种过渡方案，</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><h2 id="三阶段提交-3PC"><a href="#三阶段提交-3PC" class="headerlink" title="三阶段提交(3PC)"></a>三阶段提交(3PC)</h2><p>二阶段提交事务存在问题，从而引入了三阶段提交事务</p>
+<h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p>第一阶段：CanCommit<br>第二阶段：PreCommit<br>第三阶段：doCommit</p>
+<h3 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h3><ol>
 <li>降低了阻塞范围</li>
 <li>在单点故障后继续达成一致</li>
 </ol>
-<p>缺点：</p>
-<ol>
+<h3 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h3><ol>
 <li></li>
 </ol>
-<h2 id="5-消息队列实现-异步确保型事务"><a href="#5-消息队列实现-异步确保型事务" class="headerlink" title="5. 消息队列实现(异步确保型事务)"></a>5. 消息队列实现(异步确保型事务)</h2><p>通过MQ消息队列实现，需要保证消息的成功发送和消费。</p>
-<h2 id="6-eBay方案-BASE理论"><a href="#6-eBay方案-BASE理论" class="headerlink" title="6. eBay方案(BASE理论)"></a>6. eBay方案(BASE理论)</h2><p>Basically Available(基本可用)，Soft state(软状态)，Eventually consistent(最终一致性)</p>
-<p>核心：保证服务接口的幂等性。</p>
-<p>最终一致性存在5种实现：</p>
-<blockquote>
-<p>因果一致性</p>
-<p>读己之所写</p>
-<p>会话一致性</p>
-<p>单调读一致性</p>
-<p>单调写一致性</p>
-</blockquote>
-<h4 id="Base"><a href="#Base" class="headerlink" title="Base"></a>Base</h4><pre><code>一种ACID的替代方案，可用性通过支持局部故障而不是全局故障来实现。
-
-1)、将多表操作放在本地事务中来完成
-
-2)、通过增加update_applied表避免重复消费用户表消息
-
-3)、读取消息队列，但不删除消息，判断updates_applied表检测相关记录是否被执行，未执行的记录会修改user表 ，然后增加操作记录到updates_applied，事务执行完成后删除队列。
-</code></pre><h2 id="7-最大努力通知型"><a href="#7-最大努力通知型" class="headerlink" title="7. 最大努力通知型"></a>7. 最大努力通知型</h2><pre><code>应用场景：调用第三方系统通信，例如微信支付、支付宝支付
-</code></pre><p><strong>建议：</strong></p>
+<h2 id="本地消息表"><a href="#本地消息表" class="headerlink" title="本地消息表"></a>本地消息表</h2><p>基于eBay理论，</p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><ol>
+<li>将远程分布式事务拆分为一系列本地事务</li>
+<li>消息消费，1）采用MQ 2）采用定时轮询</li>
+</ol>
+<h2 id="消息队列实现-异步确保型事务"><a href="#消息队列实现-异步确保型事务" class="headerlink" title="消息队列实现(异步确保型事务)"></a>消息队列实现(异步确保型事务)</h2><p>通过MQ消息队列实现，需要保证消息的成功发送和消费。</p>
+<h3 id="MQ非事务消息"><a href="#MQ非事务消息" class="headerlink" title="MQ非事务消息"></a>MQ非事务消息</h3><p>数据一致性：即生产者和消费者数据保持一致，通过持久化、重试机制实现<br>消息重复消费：接口幂等性</p>
+<h3 id="MQ事务消息"><a href="#MQ事务消息" class="headerlink" title="MQ事务消息"></a>MQ事务消息</h3><p>RocketMQ事务：<br>发送Prepared消息<br>执行本地事务<br>访问消息、修改状态</p>
+<h2 id="最大努力通知型"><a href="#最大努力通知型" class="headerlink" title="最大努力通知型"></a>最大努力通知型</h2><h3 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h3><ol>
+<li>调用第三方系统通信，例如微信支付、支付宝支付</li>
+</ol>
+<h2 id="事务补偿机制-TCC"><a href="#事务补偿机制-TCC" class="headerlink" title="事务补偿机制(TCC)"></a>事务补偿机制(TCC)</h2><p>业务S，对外提供服务，服务消费者M决定服务cancel还是commit</p>
+<p>TRYING阶段：主要对业务进行检测及资源预留。</p>
+<p>CONFIRMING阶段：业务提交，默认如果TRYING阶段执行成功，CONFIRMING阶段就一定能成功。</p>
+<p>CANCELING阶段：业务回滚</p>
+<h3 id="应用场景：-1"><a href="#应用场景：-1" class="headerlink" title="应用场景："></a>应用场景：</h3><ol>
+<li>基于web service/rpc/jms等构建的高度自治的分布式系统接口</li>
+</ol>
+<h3 id="传统事务和TCC事务的区别"><a href="#传统事务和TCC事务的区别" class="headerlink" title="传统事务和TCC事务的区别"></a>传统事务和TCC事务的区别</h3><p>传统事务机制 = TCC事务机制Try + TCC事务机制Confirm</p>
+<p>传统事务： 业务逻辑部分访问资源实现数据存储，由业务系统负责；事务处理部分通过协调资源管理器以实现事务管理，由事务管理器负责</p>
+<p>TCC事务：业务逻辑和事务管理关系复杂。</p>
+<p><a href="https://github.com/liuyangming/ByteTCC/" target="_blank" rel="noopener">基于TCC的ByteTCC</a></p>
+<p><a href="https://github.com/liuyangming/ByteJTA/" target="_blank" rel="noopener">基于XA两阶段的ByteJTA</a></p>
+<p><strong>建议：</strong></p>
 <ol>
 <li>子系统较少、负载长期稳定、无伸缩要求、考虑开发复杂度和工作量的情况下，使用分布式事务(2PC)</li>
 <li>开发时间充裕、性能要求高的情况下，尽量采用1PC、事务补偿机制</li>
@@ -734,7 +741,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -837,7 +844,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -998,7 +1005,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1043,7 +1052,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一致性协议解决方案："><span class="nav-number">1.</span> <span class="nav-text">一致性协议解决方案：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-事务补偿机制-TCC"><span class="nav-number">2.</span> <span class="nav-text">1. 事务补偿机制(TCC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景："><span class="nav-number">2.1.</span> <span class="nav-text">应用场景：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统事务和TCC事务的区别"><span class="nav-number">2.2.</span> <span class="nav-text">传统事务和TCC事务的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-两阶段提交-2PC"><span class="nav-number">3.</span> <span class="nav-text">2. 两阶段提交(2PC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">3.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">3.2.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-一阶段提交-1PC"><span class="nav-number">4.</span> <span class="nav-text">3. 一阶段提交(1PC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-三阶段提交-3PC"><span class="nav-number">5.</span> <span class="nav-text">4. 三阶段提交(3PC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-1"><span class="nav-number">5.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点-1"><span class="nav-number">5.2.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消息队列实现-异步确保型事务"><span class="nav-number">6.</span> <span class="nav-text">5. 消息队列实现(异步确保型事务)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-eBay方案-BASE理论"><span class="nav-number">7.</span> <span class="nav-text">6. eBay方案(BASE理论)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Base"><span class="nav-number">7.0.1.</span> <span class="nav-text">Base</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#7-最大努力通知型"><span class="nav-number">8.</span> <span class="nav-text">7. 最大努力通知型</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">1.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一致性协议解决方案："><span class="nav-number">2.</span> <span class="nav-text">一致性协议解决方案：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eBay方案-BASE理论"><span class="nav-number">3.</span> <span class="nav-text">eBay方案(BASE理论)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Base"><span class="nav-number">3.0.1.</span> <span class="nav-text">Base</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶段提交-1PC"><span class="nav-number">4.</span> <span class="nav-text">一阶段提交(1PC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两阶段提交-2PC"><span class="nav-number">5.</span> <span class="nav-text">两阶段提交(2PC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">5.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点："><span class="nav-number">5.2.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点："><span class="nav-number">5.3.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提供回滚接口"><span class="nav-number">6.</span> <span class="nav-text">提供回滚接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">6.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">6.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三阶段提交-3PC"><span class="nav-number">7.</span> <span class="nav-text">三阶段提交(3PC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程-1"><span class="nav-number">7.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点：-1"><span class="nav-number">7.2.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点：-1"><span class="nav-number">7.3.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地消息表"><span class="nav-number">8.</span> <span class="nav-text">本地消息表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理："><span class="nav-number">8.1.</span> <span class="nav-text">原理：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息队列实现-异步确保型事务"><span class="nav-number">9.</span> <span class="nav-text">消息队列实现(异步确保型事务)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ非事务消息"><span class="nav-number">9.1.</span> <span class="nav-text">MQ非事务消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ事务消息"><span class="nav-number">9.2.</span> <span class="nav-text">MQ事务消息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大努力通知型"><span class="nav-number">10.</span> <span class="nav-text">最大努力通知型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景："><span class="nav-number">10.1.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务补偿机制-TCC"><span class="nav-number">11.</span> <span class="nav-text">事务补偿机制(TCC)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景：-1"><span class="nav-number">11.1.</span> <span class="nav-text">应用场景：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统事务和TCC事务的区别"><span class="nav-number">11.2.</span> <span class="nav-text">传统事务和TCC事务的区别</span></a></li></ol></li></div>
             
 
           </div>
@@ -1078,7 +1087,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">192k</span>
+    <span title="Symbols count total">194k</span>
   
 
   
@@ -1089,7 +1098,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:54</span>
+    <span title="Reading time total">2:57</span>
   
 </div>
 

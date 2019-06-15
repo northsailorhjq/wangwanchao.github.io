@@ -100,17 +100,18 @@
 
 
 
-  <meta name="description" content="Hystrix特性： 应用场景：  隔离（线程隔离、信号量隔离）：主要是限制调用分布式服务的资源，避免个别服务出现问题时对其他服务产生影响 熔断（容错）：当失败率达到一定阈值时，熔断器触发快速失败 降级（超时降级、熔断降级）：触发降级时可以使用回调方法返回托底数据 缓存：请求缓存、请求合并 实时监控、报警  Sentinel特性：  轻量级、高性能： sentinel-core不到200KB，单机">
+  <meta name="description" content="服务之间的依赖，导致一个环节出问题，如果遇到高并发，就会导致资源耗尽，从而影响其它服务的调用，所以引入了断路器的概念">
+<meta name="keywords" content="springcloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="断路器">
+<meta property="og:title" content="微服务--断路器(三)">
 <meta property="og:url" content="http://wangwanchao.wang/2019/01/17/spring-cloud-hystrix/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="Hystrix特性： 应用场景：  隔离（线程隔离、信号量隔离）：主要是限制调用分布式服务的资源，避免个别服务出现问题时对其他服务产生影响 熔断（容错）：当失败率达到一定阈值时，熔断器触发快速失败 降级（超时降级、熔断降级）：触发降级时可以使用回调方法返回托底数据 缓存：请求缓存、请求合并 实时监控、报警  Sentinel特性：  轻量级、高性能： sentinel-core不到200KB，单机">
+<meta property="og:description" content="服务之间的依赖，导致一个环节出问题，如果遇到高并发，就会导致资源耗尽，从而影响其它服务的调用，所以引入了断路器的概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.376Z">
+<meta property="og:updated_time" content="2019-06-11T16:44:53.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="断路器">
-<meta name="twitter:description" content="Hystrix特性： 应用场景：  隔离（线程隔离、信号量隔离）：主要是限制调用分布式服务的资源，避免个别服务出现问题时对其他服务产生影响 熔断（容错）：当失败率达到一定阈值时，熔断器触发快速失败 降级（超时降级、熔断降级）：触发降级时可以使用回调方法返回托底数据 缓存：请求缓存、请求合并 实时监控、报警  Sentinel特性：  轻量级、高性能： sentinel-core不到200KB，单机">
+<meta name="twitter:title" content="微服务--断路器(三)">
+<meta name="twitter:description" content="服务之间的依赖，导致一个环节出问题，如果遇到高并发，就会导致资源耗尽，从而影响其它服务的调用，所以引入了断路器的概念">
 
 
 
@@ -130,7 +131,7 @@
   };
 </script>
 
-  <title>断路器 | Wangsir's Blog</title>
+  <title>微服务--断路器(三) | Wangsir's Blog</title>
   
 
 
@@ -392,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">断路器
+          <h1 class="post-title" itemprop="name headline">微服务--断路器(三)
 
               
             
@@ -436,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-12 00:44:53" itemprop="dateModified" datetime="2019-06-12T00:44:53+08:00">2019-06-12</time>
               
             
           </span>
@@ -471,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">342</span>
+                <span title="Symbols count in article">781</span>
               
 
               
@@ -505,16 +506,24 @@
       
 
       
-        <h2 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h2><p>特性：</p>
-<p>应用场景：</p>
-<ol>
+        <p>服务之间的依赖，导致一个环节出问题，如果遇到高并发，就会导致资源耗尽，从而影响其它服务的调用，所以引入了断路器的概念</p>
+<a id="more"></a>
+<h2 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>分为线程隔离、信号量隔离，线程隔离相对信号量隔离比较消耗资源。<strong>默认</strong>采用HystrixCommand线程隔离，</li>
+<li>微服务之间的调用包裹在HystrixCommand类中，这样每次都会启动一个新的线程执行</li>
+<li>熔断：<strong>默认</strong>超过50%的请求失败，将打开断路器，不再调用后端服务而直接失败，过一段时间后尝试一部分请求到后端，如果成功则关闭断路器</li>
+<li>超时时间：可以手动设置，当调用后端服务超过超时时间时，直接返回/执行fallback逻辑</li>
+<li>请求结果：成功、失败(异常、超时、拒绝、短路)</li>
+</ol>
+<h3 id="配置属性："><a href="#配置属性：" class="headerlink" title="配置属性："></a>配置属性：</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">circuitBreaker:</span></span><br><span class="line"><span class="symbol">	requestVolumeThreshold:</span> <span class="number">20</span>   		<span class="meta">#滑动窗口大小</span></span><br><span class="line"><span class="symbol">	sleepWindowInMilliseconds:</span> <span class="number">5000</span>  <span class="meta">#过多久断路器再次检测是否开启</span></span><br><span class="line"><span class="symbol">	errorThresholdPercentage:</span> <span class="number">50</span>  	<span class="meta">#错误率</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h3><ol>
 <li>隔离（线程隔离、信号量隔离）：主要是限制调用分布式服务的资源，避免个别服务出现问题时对其他服务产生影响</li>
 <li>熔断（容错）：当失败率达到一定阈值时，熔断器触发快速失败</li>
 <li>降级（超时降级、熔断降级）：触发降级时可以使用回调方法返回托底数据</li>
 <li>缓存：请求缓存、请求合并</li>
 <li>实时监控、报警</li>
 </ol>
-<h2 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h2><p>特性：</p>
+<h2 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>特性：</p>
 <ol>
 <li>轻量级、高性能： sentinel-core不到200KB，单机超过25W QPS才会有影响</li>
 <li>流量控制：以不同的运行指标为基准，<blockquote>
@@ -523,8 +532,7 @@
 </li>
 <li>系统负载保护</li>
 </ol>
-<p>应用场景：</p>
-<ol>
+<h3 id="应用场景：-1"><a href="#应用场景：-1" class="headerlink" title="应用场景："></a>应用场景：</h3><ol>
 <li>和Dubbo整合，通过限流实现服务的高可用</li>
 <li>和RocketMQ整合，通过匀速请求和冷启动保障服务的稳定性</li>
 </ol>
@@ -549,6 +557,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/springcloud/" rel="tag"><i class="fa fa-tag"></i> springcloud</a>
+          
+        </div>
+      
 
       
       
@@ -568,8 +582,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/23/spring-cloud-eureka/" rel="prev" title="spring-cloud-eureka">
-                spring-cloud-eureka <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/23/spring-cloud-eureka/" rel="prev" title="微服务--注册中心(二)">
+                微服务--注册中心(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -742,7 +756,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -903,7 +917,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -948,7 +964,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix"><span class="nav-number">1.</span> <span class="nav-text">Hystrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel"><span class="nav-number">2.</span> <span class="nav-text">Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hystrix和Sentinel的对比"><span class="nav-number">2.1.</span> <span class="nav-text">Hystrix和Sentinel的对比</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hystrix"><span class="nav-number">1.</span> <span class="nav-text">Hystrix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置属性："><span class="nav-number">1.2.</span> <span class="nav-text">配置属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景："><span class="nav-number">1.3.</span> <span class="nav-text">应用场景：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentinel"><span class="nav-number">2.</span> <span class="nav-text">Sentinel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景：-1"><span class="nav-number">2.2.</span> <span class="nav-text">应用场景：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hystrix和Sentinel的对比"><span class="nav-number">2.3.</span> <span class="nav-text">Hystrix和Sentinel的对比</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -983,7 +999,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">192k</span>
+    <span title="Symbols count total">194k</span>
   
 
   
@@ -994,7 +1010,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:54</span>
+    <span title="Reading time total">2:57</span>
   
 </div>
 
