@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="Unsafe类，回头整理">
+  <meta name="description" content="Unsafe类，可以用来直接访问系统内存资源、自主管理内存资源">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java特殊类Unsafe">
 <meta property="og:url" content="http://wangwanchao.wang/2019/03/23/java-unsafe/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="Unsafe类，回头整理">
+<meta property="og:description" content="Unsafe类，可以用来直接访问系统内存资源、自主管理内存资源">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:27:59.366Z">
+<meta property="og:updated_time" content="2019-06-16T11:58:37.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java特殊类Unsafe">
-<meta name="twitter:description" content="Unsafe类，回头整理">
+<meta name="twitter:description" content="Unsafe类，可以用来直接访问系统内存资源、自主管理内存资源">
 
 
 
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 16:27:59" itemprop="dateModified" datetime="2019-05-27T16:27:59+08:00">2019-05-27</time>
+                <time title="Modified: 2019-06-16 19:58:37" itemprop="dateModified" datetime="2019-06-16T19:58:37+08:00">2019-06-16</time>
               
             
           </span>
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">568</span>
+                <span title="Symbols count in article">1.2k</span>
               
 
               
@@ -506,21 +506,47 @@
       
 
       
-        <p>Unsafe类，回头整理</p>
+        <p>Unsafe类，可以用来直接访问系统内存资源、自主管理内存资源</p>
 <a id="more"></a>
-<p>特性</p>
-<ol>
-<li><p>虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：<a href="http://en.wikipedia.org/wiki/Compare-and-swap。" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Compare-and-swap。</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
+<li>虚拟机“集约化”（VM intrinsification）：如用于无锁Hash表中的CAS（比较和交换）。再比如compareAndSwapInt这个方法用JNI调用，包含了对CAS有特殊引导的本地代码。在这里你能读到更多关于CAS的信息：<a href="http://en.wikipedia.org/wiki/Compare-and-swap。" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Compare-and-swap。</a></li>
+<li>主机虚拟机（译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。</li>
+<li>你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！</li>
+<li>使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。</li>
+<li>arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。</li>
+</ol>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ol>
+<li>内存操作<blockquote>
+<p>例如：堆外内存操作<code>DirectByteBuffer</code></p>
+</blockquote>
 </li>
-<li><p>主机虚拟机（译注：主机虚拟机主要用来管理其他虚拟机。而虚拟平台我们看到只有guest VM）的sun.misc.Unsafe功能能够被用于未初始化的对象分配内存（用allocateInstance方法），然后将构造器调用解释为其他方法的调用。</p>
+<li>CAS操作<blockquote>
+<p>例如：atomic原子类；AQS类；ConcurrentHashMap类</p>
+</blockquote>
 </li>
-<li><p>你可以从本地内存地址中追踪到这些数据。使用java.lang.Unsafe类获取内存地址是可能的。而且可以通过unsafe方法直接操作这些变量！</p>
+<li>Class类：</li>
+<li>对象操作：对象成员属性操作；非常规的对象实例化方式</li>
+<li>线程调度：挂起、唤醒<blockquote>
+<p>例如：LockSupport.park()/unpark()</p>
+</blockquote>
 </li>
-<li><p>使用allocateMemory方法，内存可以被分配到堆外。例如当allocateDirect方法被调用时DirectByteBuffer构造器内部会使用allocateMemory。</p>
+<li>系统信息获取：系统指针大小；内存页大小<blockquote>
+<p>例如：java.nio.Bits使用pageSize计算内存页</p>
+</blockquote>
 </li>
-<li><p>arrayBaseOffset和arrayIndexScale方法可以被用于开发arraylets，一种用来将大数组分解为小对象、限制扫描的实时消耗或者在大对象上做更新和移动。</p>
+<li>内存屏障：jdk1.8引入，用来避免重排序<blockquote>
+<p>例如：java.util.concurrent.locks.StampedLock改进版读写锁实现</p>
+</blockquote>
+</li>
+<li>数组操作：<blockquote>
+<p>AtomicINtegerArray类使用<code>arrayBaseOffset和arrayIndexScale</code>来定位元素</p>
+</blockquote>
 </li>
 </ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>Unsafe类通过Bootstrap ClassLoader加载，有诸多限制。使用有两种方法。</p>
+<h3 id="使用命令行实现"><a href="#使用命令行实现" class="headerlink" title="使用命令行实现"></a>使用命令行实现</h3><p>调用Unsafe类使用Application ClassLoader加载，要想使用Unsafe类，需要使用Boostrap类加载器加载。</p>
+<p><strong>注意：</strong>(分隔符与classpath参数类似，unix使用:号,windows使用;号，这里以unix为例)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xbootclasspath/<span class="selector-tag">a</span>:/usrhome/thirdlib<span class="selector-class">.jar</span>: -jar yourJarExe.jar</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -613,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -629,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">179</span>
+                    <span class="site-state-item-count">193</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -895,7 +930,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -930,6 +967,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">1.2.</span> <span class="nav-text">API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用命令行实现"><span class="nav-number">2.1.</span> <span class="nav-text">使用命令行实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -958,7 +1012,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">194k</span>
+    <span title="Symbols count total">198k</span>
   
 
   
@@ -969,7 +1023,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:57</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 

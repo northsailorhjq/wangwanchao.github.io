@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="Tomcat作为常见的Servlet容器，我接触的从最初的SSH/SSM架构，Tomcat需要单独维护，到SpringBoot的嵌入式容器。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-15T14:52:27.065Z">
+<meta property="og:updated_time" content="2019-06-16T03:56:27.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat--概览(一)">
 <meta name="twitter:description" content="Tomcat作为常见的Servlet容器，我接触的从最初的SSH/SSM架构，Tomcat需要单独维护，到SpringBoot的嵌入式容器。">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-15 22:52:27" itemprop="dateModified" datetime="2019-06-15T22:52:27+08:00">2019-06-15</time>
+                <time title="Modified: 2019-06-16 11:56:27" itemprop="dateModified" datetime="2019-06-16T11:56:27+08:00">2019-06-16</time>
               
             
           </span>
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">341</span>
+                <span title="Symbols count in article">643</span>
               
 
               
@@ -508,16 +508,30 @@
       
         <p>Tomcat作为常见的Servlet容器，我接触的从最初的SSH/SSM架构，Tomcat需要单独维护，到SpringBoot的嵌入式容器。</p>
 <a id="more"></a>
-<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><h3 id="Connector-amp-Container"><a href="#Connector-amp-Container" class="headerlink" title="Connector &amp; Container"></a>Connector &amp; Container</h3><h4 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h4><p>负责处理Service的请求，Connector作为中间媒介</p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>架构示意图：</p>
+<image src>
+
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>Server包含一个或多个Service</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>Service是多个Connector和一个Container的集合，因为有不同的协议，需要用相应的Connector接收请求，转发给Container</p>
+<h3 id="Connector"><a href="#Connector" class="headerlink" title="Connector"></a>Connector</h3><p>Connector安装不同的协议分为：</p>
+<ol>
+<li>HTTP Connector</li>
+<li>AJP Connector</li>
+</ol>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><h4 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h4><p>负责处理Service的请求，Connector作为中间媒介</p>
 <h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>表示一个虚拟主机，每个虚拟主机和一个网络域名对应</p>
 <h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><p>每个Context对应一个Web应用</p>
 <p>Wrapper：代表一个Servlet，使用门面设计模式</p>
 <p>Connector有两种：可以在server.xml中看到配置<br>1) 监听8080端口<br>2) 监听8009端口</p>
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>1、</p>
+<h4 id="Wrapper"><a href="#Wrapper" class="headerlink" title="Wrapper"></a>Wrapper</h4><h3 id="其它组件"><a href="#其它组件" class="headerlink" title="其它组件"></a>其它组件</h3><h4 id="manager"><a href="#manager" class="headerlink" title="manager"></a>manager</h4><p>主要用来管理会话</p>
+<h4 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h4><p>启动Context，管理context的ClassLoader。</p>
+<h4 id="pipline"><a href="#pipline" class="headerlink" title="pipline"></a>pipline</h4><p>Enging/Host/Context都有一个管道，在每个管道中设置了不同的valve，由valve做一些处理</p>
+<h4 id="valve"><a href="#valve" class="headerlink" title="valve"></a>valve</h4><p>用来做一些拦截处理，</p>
+<h4 id="logger"><a href="#logger" class="headerlink" title="logger"></a>logger</h4><h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>1、</p>
 <p>3、并行类加载</p>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="独立容器"><a href="#独立容器" class="headerlink" title="独立容器"></a>独立容器</h3><p>1、日志乱码问题</p>
 <h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p>1、URL路径转义问题</p>
-
+</image>
       
     </div>
 
@@ -553,8 +567,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/31/spring-boot-starter/" rel="next" title="spring-boot-starter">
-                <i class="fa fa-chevron-left"></i> spring-boot-starter
+              <a href="/2018/12/31/spring-boot-starter/" rel="next" title="SpringBoot--启动流程(一)">
+                <i class="fa fa-chevron-left"></i> SpringBoot--启动流程(一)
               </a>
             
           </div>
@@ -634,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">179</span>
+                    <span class="site-state-item-count">193</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -900,7 +914,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -945,7 +961,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体架构"><span class="nav-number">1.</span> <span class="nav-text">整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-number">1.1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service"><span class="nav-number">1.2.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connector-amp-Container"><span class="nav-number">1.3.</span> <span class="nav-text">Connector &amp; Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Engine"><span class="nav-number">1.3.1.</span> <span class="nav-text">Engine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Host"><span class="nav-number">1.3.2.</span> <span class="nav-text">Host</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context"><span class="nav-number">1.3.3.</span> <span class="nav-text">Context</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">1.4.</span> <span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">2.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#独立容器"><span class="nav-number">2.1.</span> <span class="nav-text">独立容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot"><span class="nav-number">2.2.</span> <span class="nav-text">SpringBoot</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体架构"><span class="nav-number">1.</span> <span class="nav-text">整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-number">1.1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service"><span class="nav-number">1.2.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connector"><span class="nav-number">1.3.</span> <span class="nav-text">Connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Container"><span class="nav-number">1.4.</span> <span class="nav-text">Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Engine"><span class="nav-number">1.4.1.</span> <span class="nav-text">Engine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Host"><span class="nav-number">1.4.2.</span> <span class="nav-text">Host</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Context"><span class="nav-number">1.4.3.</span> <span class="nav-text">Context</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wrapper"><span class="nav-number">1.4.4.</span> <span class="nav-text">Wrapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它组件"><span class="nav-number">1.5.</span> <span class="nav-text">其它组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#manager"><span class="nav-number">1.5.1.</span> <span class="nav-text">manager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loader"><span class="nav-number">1.5.2.</span> <span class="nav-text">loader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pipline"><span class="nav-number">1.5.3.</span> <span class="nav-text">pipline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#valve"><span class="nav-number">1.5.4.</span> <span class="nav-text">valve</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logger"><span class="nav-number">1.5.5.</span> <span class="nav-text">logger</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">1.6.</span> <span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">2.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#独立容器"><span class="nav-number">2.1.</span> <span class="nav-text">独立容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot"><span class="nav-number">2.2.</span> <span class="nav-text">SpringBoot</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -980,7 +996,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">194k</span>
+    <span title="Symbols count total">198k</span>
   
 
   
@@ -991,7 +1007,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:57</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 

@@ -100,17 +100,17 @@
 
 
 
-  <meta name="description" content="Spring跨域文档 跨域原理前端方案后端方案1. 局部跨域 添加在Cotroller上 添加在Method上 同时添加在Controller + Method上  注意： 如果使用到Spring Security框架，确保在Spring Security层次上配置，同时允许使用Spring MVC层面的配置 @EnableWebSecurity public class WebSecurityC">
+  <meta name="description" content="Spring跨域文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域请求">
 <meta property="og:url" content="http://wangwanchao.wang/2018/12/13/http-cors/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="Spring跨域文档 跨域原理前端方案后端方案1. 局部跨域 添加在Cotroller上 添加在Method上 同时添加在Controller + Method上  注意： 如果使用到Spring Security框架，确保在Spring Security层次上配置，同时允许使用Spring MVC层面的配置 @EnableWebSecurity public class WebSecurityC">
+<meta property="og:description" content="Spring跨域文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T08:50:58.895Z">
+<meta property="og:updated_time" content="2019-07-15T16:17:48.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域请求">
-<meta name="twitter:description" content="Spring跨域文档 跨域原理前端方案后端方案1. 局部跨域 添加在Cotroller上 添加在Method上 同时添加在Controller + Method上  注意： 如果使用到Spring Security框架，确保在Spring Security层次上配置，同时允许使用Spring MVC层面的配置 @EnableWebSecurity public class WebSecurityC">
+<meta name="twitter:description" content="Spring跨域文档">
 
 
 
@@ -436,7 +436,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-17 16:50:58" itemprop="dateModified" datetime="2018-12-17T16:50:58+08:00">2018-12-17</time>
+                <time title="Modified: 2019-07-16 00:17:48" itemprop="dateModified" datetime="2019-07-16T00:17:48+08:00">2019-07-16</time>
               
             
           </span>
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.5k</span>
+                <span title="Symbols count in article">3.4k</span>
               
 
               
@@ -506,6 +506,7 @@
 
       
         <p><a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank" rel="noopener">Spring跨域文档</a></p>
+<a id="more"></a>
 <h2 id="跨域原理"><a href="#跨域原理" class="headerlink" title="跨域原理"></a>跨域原理</h2><h2 id="前端方案"><a href="#前端方案" class="headerlink" title="前端方案"></a>前端方案</h2><h2 id="后端方案"><a href="#后端方案" class="headerlink" title="后端方案"></a>后端方案</h2><h3 id="1-局部跨域"><a href="#1-局部跨域" class="headerlink" title="1. 局部跨域"></a>1. 局部跨域</h3><ol>
 <li>添加在Cotroller上</li>
 <li>添加在Method上</li>
@@ -557,20 +558,9 @@ public void addCorsMappings(CorsRegistry registry) {
 }
 </code></pre><p><strong>注意：如果使用Spring Security，配置方式和局部跨域中相同</strong></p>
 <ol start="2">
-<li><p>基于XML方式</p>
-<p> <a href="mvc:cors" target="_blank" rel="noopener">mvc:cors</a></p>
-<pre><code>&lt;mvc:mapping path=&quot;/api/**&quot;
-    allowed-origins=&quot;http://domain1.com, http://domain2.com&quot;
-    allowed-methods=&quot;GET, PUT&quot;
-    allowed-headers=&quot;header1, header2, header3&quot;
-    exposed-headers=&quot;header1, header2&quot; allow-credentials=&quot;false&quot;
-    max-age=&quot;123&quot; /&gt;
-
-&lt;mvc:mapping path=&quot;/resources/**&quot;
-    allowed-origins=&quot;http://domain1.com&quot; /&gt;
-</code></pre><p> &lt;/mvc:cors&gt;</p>
-</li>
+<li>基于XML方式</li>
 </ol>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:cors&gt;</span><br><span class="line">	&lt;mvc:mapping path=<span class="string">"/api/**"</span></span><br><span class="line">		allowed-origins=<span class="string">"http://domain1.com, http://domain2.com"</span></span><br><span class="line">		allowed-methods=<span class="string">"<span class="keyword">GET</span>, <span class="keyword">PUT</span>"</span></span><br><span class="line">		allowed-headers=<span class="string">"header1, header2, header3"</span></span><br><span class="line">		exposed-headers=<span class="string">"header1, header2"</span> allow-credentials=<span class="string">"false"</span></span><br><span class="line">		max-age=<span class="string">"123"</span> /&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;mvc:mapping path=<span class="string">"/resources/**"</span></span><br><span class="line">		allowed-origins=<span class="string">"http://domain1.com"</span> /&gt;	</span><br><span class="line">&lt;/mvc:cors&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：使用Spring Security</strong></p>
 <pre><code>&lt;http&gt;
     &lt;!-- Default to Spring MVC&apos;s CORS configuration --&gt;
@@ -578,24 +568,9 @@ public void addCorsMappings(CorsRegistry registry) {
     ...
 &lt;/http&gt;
 </code></pre><ol start="3">
-<li><p>基于Filter方式</p>
-<p> @Configuration<br> public class MyConfiguration {</p>
-<pre><code>@Bean
-public FilterRegistrationBean corsFilter() {
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    CorsConfiguration config = new CorsConfiguration();
-    config.setAllowCredentials(true);
-    config.addAllowedOrigin(&quot;http://domain1.com&quot;);
-    config.addAllowedHeader(&quot;*&quot;);
-    config.addAllowedMethod(&quot;*&quot;);
-    source.registerCorsConfiguration(&quot;/**&quot;, config);
-    FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-    bean.setOrder(0);
-    return bean;
-}
-</code></pre><p> }</p>
-</li>
+<li>基于Filter方式</li>
 </ol>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MyConfiguration &#123;</span><br><span class="line">	</span><br><span class="line">	@<span class="keyword">Bean</span></span><br><span class="line"><span class="keyword">	</span>public FilterRegistrationBean corsFilter() &#123;</span><br><span class="line">		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource()<span class="comment">;</span></span><br><span class="line">		CorsConfiguration <span class="built_in">config</span> = new CorsConfiguration()<span class="comment">;</span></span><br><span class="line">		<span class="built_in">config</span>.setAllowCredentials(true)<span class="comment">;</span></span><br><span class="line">		<span class="built_in">config</span>.<span class="keyword">addAllowedOrigin("http://domain1.com");</span></span><br><span class="line"><span class="keyword">	</span>	<span class="built_in">config</span>.<span class="keyword">addAllowedHeader("*");</span></span><br><span class="line"><span class="keyword">	</span>	<span class="built_in">config</span>.<span class="keyword">addAllowedMethod("*");</span></span><br><span class="line"><span class="keyword">	</span>	source.registerCorsConfiguration(<span class="string">"/**"</span>, <span class="built_in">config</span>)<span class="comment">;</span></span><br><span class="line">		FilterRegistrationBean <span class="keyword">bean </span>= new FilterRegistrationBean(new CorsFilter(source))<span class="comment">;</span></span><br><span class="line">		<span class="keyword">bean.setOrder(0);</span></span><br><span class="line"><span class="keyword">	</span>	return <span class="keyword">bean;</span></span><br><span class="line"><span class="keyword">	</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.jianshu.com/p/87e1ef68794c" target="_blank" rel="noopener">参考1</a></p>
 <p><a href="https://blog.csdn.net/pinebud55/article/details/60874725" target="_blank" rel="noopener">参考2</a></p>
 <p><strong>注意：使用Spring Security</strong></p>
@@ -731,7 +706,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">179</span>
+                    <span class="site-state-item-count">193</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -997,7 +972,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1077,7 +1054,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">194k</span>
+    <span title="Symbols count total">198k</span>
   
 
   
@@ -1088,7 +1065,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:57</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 

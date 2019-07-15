@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-06-15T16:48:58.612Z</updated>
+  <updated>2019-07-03T01:33:02.493Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -17,13 +17,235 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>consul-base</title>
+    <link href="http://wangwanchao.wang/2019/07/03/consul-base/"/>
+    <id>http://wangwanchao.wang/2019/07/03/consul-base/</id>
+    <published>2019-07-03T01:33:02.000Z</published>
+    <updated>2019-07-03T01:33:02.493Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue-lifecycle</title>
+    <link href="http://wangwanchao.wang/2019/06/28/vue-lifecycle/"/>
+    <id>http://wangwanchao.wang/2019/06/28/vue-lifecycle/</id>
+    <published>2019-06-28T02:18:58.000Z</published>
+    <updated>2019-06-28T02:18:58.823Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue--数据传递</title>
+    <link href="http://wangwanchao.wang/2019/06/28/vue-data/"/>
+    <id>http://wangwanchao.wang/2019/06/28/vue-data/</id>
+    <published>2019-06-28T02:03:57.000Z</published>
+    <updated>2019-06-28T02:07:25.102Z</updated>
+    
+    <content type="html"><![CDATA[<p>组件之间的数据传递</p><a id="more"></a><h2 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h2><h2 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h2><h2 id="Event-Bus"><a href="#Event-Bus" class="headerlink" title="Event Bus"></a>Event Bus</h2><p>可以平级传数</p><h2 id="Vuex传递"><a href="#Vuex传递" class="headerlink" title="Vuex传递"></a>Vuex传递</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;组件之间的数据传递&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js-icon</title>
+    <link href="http://wangwanchao.wang/2019/06/24/js-icon/"/>
+    <id>http://wangwanchao.wang/2019/06/24/js-icon/</id>
+    <published>2019-06-24T01:20:26.000Z</published>
+    <updated>2019-06-24T01:20:26.255Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--SAAS平台设计思路(七)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-saas/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-saas/</id>
+    <published>2019-06-21T03:49:55.000Z</published>
+    <updated>2019-06-24T02:05:57.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID</p><a id="more"></a><p>RBAC模型</p><h3 id="安全原则"><a href="#安全原则" class="headerlink" title="安全原则"></a>安全原则</h3><ol><li>最小权限原则</li><li>责任分离原则</li><li>数据抽象原则</li></ol><p>页面权限<br>功能权限<br>数据权限</p><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>用户</p><p>角色：可以按照部门、岗位、</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--原理与流程(二)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-flow/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-flow/</id>
+    <published>2019-06-21T03:12:47.000Z</published>
+    <updated>2019-06-21T03:18:23.636Z</updated>
+    
+    <content type="html"><![CDATA[<p>从启动，到权限认证过程</p><a id="more"></a><p>流程图：</p><image src></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从启动，到权限认证过程&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--过滤器(三)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-filter/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-filter/</id>
+    <published>2019-06-21T03:12:01.000Z</published>
+    <updated>2019-06-21T03:16:46.049Z</updated>
+    
+    <content type="html"><![CDATA[<p>实现权限的框架，无非都是一些filter过滤</p><a id="more"></a><p>SpringSecurity有十多种filter，</p><p>filter流程时序图：</p><image src></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实现权限的框架，无非都是一些filter过滤&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--整合jwt(六)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-jwt/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-jwt/</id>
+    <published>2019-06-21T03:11:21.000Z</published>
+    <updated>2019-06-21T03:24:25.810Z</updated>
+    
+    <content type="html"><![CDATA[<p>jwt模式</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;jwt模式&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--整合oauth2(五)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-oauth2/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-oauth2/</id>
+    <published>2019-06-21T03:11:03.000Z</published>
+    <updated>2019-06-21T03:20:28.898Z</updated>
+    
+    <content type="html"><![CDATA[<p>oauth2.0有4种认证模型</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。</p><p>第一阶段使用account + secret登录中间层，获得token</p><p>第二阶段开始使用token进行权限验证</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;oauth2.0有4种认证模型&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--概览(一)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-base/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-base/</id>
+    <published>2019-06-21T03:07:55.000Z</published>
+    <updated>2019-06-24T02:05:51.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>权限模型</p><a id="more"></a><h2 id="权限控制模型"><a href="#权限控制模型" class="headerlink" title="权限控制模型"></a>权限控制模型</h2><h3 id="自主访问控制-DAC"><a href="#自主访问控制-DAC" class="headerlink" title="自主访问控制 DAC"></a>自主访问控制 DAC</h3><h3 id="强制访问控制-MAC"><a href="#强制访问控制-MAC" class="headerlink" title="强制访问控制 MAC"></a>强制访问控制 MAC</h3><p>通过硬件实现</p><p>场景：安全要求较高的军事系统</p><h3 id="基于角色的访问控制-RBAC"><a href="#基于角色的访问控制-RBAC" class="headerlink" title="基于角色的访问控制 RBAC"></a>基于角色的访问控制 RBAC</h3><h4 id="RBAC0-基本模型"><a href="#RBAC0-基本模型" class="headerlink" title="RBAC0 基本模型"></a>RBAC0 基本模型</h4><p>U 用户<br>R 角色<br>P 权限</p><h4 id="RBAC1-角色分级模型"><a href="#RBAC1-角色分级模型" class="headerlink" title="RBAC1 角色分级模型"></a>RBAC1 角色分级模型</h4><ol><li>一般继承关系：允许角色之间多继承关系</li><li>受限继承关系：角色继承是一个树形的单继承关系</li></ol><p>优点：<br>缺点：<br>适用场景：</p><h4 id="RBAC2-角色限制模型"><a href="#RBAC2-角色限制模型" class="headerlink" title="RBAC2 角色限制模型"></a>RBAC2 角色限制模型</h4><ol><li>静态分离：互斥的角色不能赋给同一个用户</li><li>动态分离：用户不能使用两个互斥的角色登录</li></ol><h4 id="RBAC3-统一模型"><a href="#RBAC3-统一模型" class="headerlink" title="RBAC3 统一模型"></a>RBAC3 统一模型</h4><p>用户管理角色<br>角色关联权限</p><h3 id="基于属性的访问控制-ABAC"><a href="#基于属性的访问控制-ABAC" class="headerlink" title="基于属性的访问控制 ABAC"></a>基于属性的访问控制 ABAC</h3><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ol><li>用户属性 用户年龄</li><li>环境属性 当前时间</li><li>操作属性 读/写</li><li>资源属性 文章/图片</li></ol><h2 id="权限对象模型"><a href="#权限对象模型" class="headerlink" title="权限对象模型"></a>权限对象模型</h2><h3 id="按-分类："><a href="#按-分类：" class="headerlink" title="按  分类："></a>按  分类：</h3><p>页面权限 用户可以看到那些页面；<br>操作权限 用户可以在页面内进行那些操作，增删改查等；<br>数据权限 用户可以看到那些数据或内容；</p><h3 id="按-分类：-1"><a href="#按-分类：-1" class="headerlink" title="按  分类："></a>按  分类：</h3><p>功能权限<br>数据权限</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;权限模型&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux--零拷贝</title>
+    <link href="http://wangwanchao.wang/2019/06/17/linux-zerocopy/"/>
+    <id>http://wangwanchao.wang/2019/06/17/linux-zerocopy/</id>
+    <published>2019-06-17T02:13:56.000Z</published>
+    <updated>2019-06-17T02:23:02.181Z</updated>
+    
+    <content type="html"><![CDATA[<p>linux中的零拷贝技术</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;linux中的零拷贝技术&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://wangwanchao.wang/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat--类加载模型(五)</title>
+    <link href="http://wangwanchao.wang/2019/06/16/tomcat-classloader/"/>
+    <id>http://wangwanchao.wang/2019/06/16/tomcat-classloader/</id>
+    <published>2019-06-16T04:15:30.000Z</published>
+    <updated>2019-06-16T04:47:48.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>tomcat类加载器破坏了jvm的双亲委派机制</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.catalina.startup;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Daemon reference.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">Object</span> catalinaDaemon = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">ClassLoader commonLoader = <span class="keyword">null</span>;</span><br><span class="line">ClassLoader catalinaLoader = <span class="keyword">null</span>;</span><br><span class="line">ClassLoader sharedLoader = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> initClassLoaders() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        commonLoader = createClassLoader(<span class="string">"common"</span>, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> (commonLoader == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// no config file, default to this loader - we might be in a 'single' env.</span></span><br><span class="line">            commonLoader = <span class="keyword">this</span>.getClass().getClassLoader();</span><br><span class="line">        &#125;</span><br><span class="line">        catalinaLoader = createClassLoader(<span class="string">"server"</span>, commonLoader);</span><br><span class="line">        sharedLoader = createClassLoader(<span class="string">"shared"</span>, commonLoader);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">        handleThrowable(t);</span><br><span class="line">        <span class="built_in">log</span>.error(<span class="string">"Class loader creation threw exception"</span>, t);</span><br><span class="line">        System.<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><table><thead><tr><th>类加载器</th><th style="text-align:center">tomcat可见性</th><th style="text-align:center">webapp可见性</th></tr></thead><tbody><tr><td>commonLoader</td><td style="text-align:center">可见</td><td style="text-align:center">可见</td></tr><tr><td>catalinaLoader</td><td style="text-align:center">可见</td><td style="text-align:center">不可见</td></tr><tr><td>sharedLoader</td><td style="text-align:center">不可见</td><td style="text-align:center">可见</td></tr><tr><td>WebappClassLoader</td><td style="text-align:center">不可见</td><td style="text-align:center">只对当前web可见</td></tr></tbody></table><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ol><li>jar类库隔离：tomcat可以部署多个应用，如果引用多个不同版本的jar，类实现不同，所以需要加载不同的jar包</li><li>jar类库共享：如果jar版本相同，则只加载一份</li><li>安全隔离：tomcat自身的类加载器和web应用的类加载器隔离</li><li>热加载：jsp修改后不需要重启也可以刷新，这样就需要动态加载jsp文件</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;tomcat类加载器破坏了jvm的双亲委派机制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java-jmx</title>
+    <link href="http://wangwanchao.wang/2019/06/16/java-jmx/"/>
+    <id>http://wangwanchao.wang/2019/06/16/java-jmx/</id>
+    <published>2019-06-16T04:04:45.000Z</published>
+    <updated>2019-06-16T04:04:45.112Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>前端中的布局方式</title>
     <link href="http://wangwanchao.wang/2019/06/16/js-layout/"/>
     <id>http://wangwanchao.wang/2019/06/16/js-layout/</id>
     <published>2019-06-15T16:32:06.000Z</published>
-    <updated>2019-06-15T16:48:58.612Z</updated>
+    <updated>2019-06-24T02:05:43.215Z</updated>
     
-    <content type="html"><![CDATA[<p>不同的布局方式</p><a id="more"></a><h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ol><li>伸缩容器</li><li>主轴、侧轴配置简单</li><li>子元素沿着容器对齐</li></ol><h3 id="微信小程序中的应用"><a href="#微信小程序中的应用" class="headerlink" title="微信小程序中的应用"></a>微信小程序中的应用</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>flex 行内元素<br>block 块元素</p><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>row<br>row-reverse<br>column<br>column-reverse</p><h4 id="轴对齐方式"><a href="#轴对齐方式" class="headerlink" title="轴对齐方式"></a>轴对齐方式</h4><p>justify-content<br>align-items</p><h2 id="Grid布局"><a href="#Grid布局" class="headerlink" title="Grid布局"></a>Grid布局</h2>]]></content>
+    <content type="html"><![CDATA[<p>不同的布局方式</p><a id="more"></a><h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ol><li>伸缩容器</li><li>主轴、侧轴配置简单</li><li>子元素沿着容器对齐</li></ol><h3 id="微信小程序中的应用"><a href="#微信小程序中的应用" class="headerlink" title="微信小程序中的应用"></a>微信小程序中的应用</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>flex 行内元素<br>block 块元素</p><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>row<br>row-reverse<br>column<br>column-reverse</p><h4 id="轴对齐方式"><a href="#轴对齐方式" class="headerlink" title="轴对齐方式"></a>轴对齐方式</h4><p>justify-content<br>align-items</p><h2 id="Grid布局"><a href="#Grid布局" class="headerlink" title="Grid布局"></a>Grid布局</h2><h2 id="实际场景"><a href="#实际场景" class="headerlink" title="实际场景"></a>实际场景</h2><h3 id="两列自适应布局"><a href="#两列自适应布局" class="headerlink" title="两列自适应布局"></a>两列自适应布局</h3><h4 id="margin-float"><a href="#margin-float" class="headerlink" title="margin + float"></a>margin + float</h4><p>左列定宽，右列自适应</p><h4 id="absolute"><a href="#absolute" class="headerlink" title="absolute"></a>absolute</h4><h4 id="float-BFC"><a href="#float-BFC" class="headerlink" title="float + BFC"></a>float + BFC</h4><h4 id="table布局"><a href="#table布局" class="headerlink" title="table布局"></a>table布局</h4><h4 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h4>]]></content>
     
     <summary type="html">
     
@@ -55,11 +277,11 @@
   </entry>
   
   <entry>
-    <title>解析JavaScript/ECMAScript/TypeScript/COffeScript</title>
+    <title>解析JavaScript ECMAScript TypeScript COffeScript</title>
     <link href="http://wangwanchao.wang/2019/06/14/es6-ts/"/>
     <id>http://wangwanchao.wang/2019/06/14/es6-ts/</id>
     <published>2019-06-14T07:46:52.000Z</published>
-    <updated>2019-06-15T14:40:32.726Z</updated>
+    <updated>2019-07-15T16:14:01.464Z</updated>
     
     <content type="html"><![CDATA[<p>JS框架层出不穷，</p><a id="more"></a><h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote><p>ECMAScript6的目标是使得JavaScript语言可以用来编写大型的复杂的应用程序，于是增添了许多特性，例如：模块和类，Maps、Sets、Promises、生成器（Generators）等。<br>尽管ECMAScript6做了大量的更新，但标准化委员会仍然决定要兼容以前的版本，但随之而来的问题是，目前主流的宿主环境（无论是浏览器环境还是服务器环境）不能完全支持ES6，导致了开发者真正要使用ECMAScript6时，需要将ECMAScript6代码进行转译。</p></blockquote><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote><p>TypeScript 是一种微软开源的编程语言。<br>由于JavaScript是弱类型的，TypeScript为JavaScript扩展类和模块的概念。正是由于TypeScript最大的特点是类型化，因此才叫做TypeScript。<br>TypeScript支持ECMAScript6标准（实际上相当于是对ECMAScript6的提前实现），并且能将代码根据需求转换为 ES3/5/6。这意味着开发者可以通过TypeScript使用最新的ECMAScript特性，无需再考虑兼容性的问题。</p></blockquote><h3 id="TypeScript分类"><a href="#TypeScript分类" class="headerlink" title="TypeScript分类"></a>TypeScript分类</h3><ol><li>一个是类似 Babel 的阵营，坚持JavaScript 的语法风格编写，为开发者提供最新的 ECMAScript 特性；</li><li>另一个则是Coffeescript、Clojure、Dart等的阵营，它们的语法与 JavaScript 迥然不同，但最终会编译为JavaScript；</li></ol>]]></content>
     
@@ -140,240 +362,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>java中特殊类Object</title>
-    <link href="http://wangwanchao.wang/2019/06/10/java-object/"/>
-    <id>http://wangwanchao.wang/2019/06/10/java-object/</id>
-    <published>2019-06-10T15:21:14.000Z</published>
-    <updated>2019-06-11T11:21:38.481Z</updated>
-    
-    <content type="html"><![CDATA[<p>Object是所有类的父类。</p><a id="more"></a><p>Object类方法结构：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/java/object.png"><h2 id="equals、hashCode"><a href="#equals、hashCode" class="headerlink" title="equals、hashCode"></a>equals、hashCode</h2><h2 id="wait、notify、notifyAll"><a href="#wait、notify、notifyAll" class="headerlink" title="wait、notify、notifyAll"></a>wait、notify、notifyAll</h2><p>原理：<br>obj.wait(), obj.notify()必须在synchronized(obj)语句块内，wait释放对象锁，线程休眠。notify唤醒线程，但不会马上释放对象锁。synchronized执行结束，自动释放锁后，jvm层在持有wait对象锁的线程中随机选取一线程，赋予对象锁，唤醒线程。</p><p>虚假唤醒：</p><p><strong>注意：lost wake up问题</strong> </p><blockquote></blockquote><ol><li>wait/notify/notify必须在锁对象的synchronized同步块内。 因为这三个方法都是释放锁的，如果没有synchronized先获取锁就调用释放锁会引起异常.</li><li>java.util.concurrent.locks.Condition类中的await/signal也必须在同步块内</li></ol><p>案例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="wait-notify的缺点："><a href="#wait-notify的缺点：" class="headerlink" title="wait/notify的缺点："></a>wait/notify的缺点：</h3><ol><li>线程B通知线程A时，线程A必须在wait调用上等待，否则线程A永远不会被唤醒</li><li>notify只能唤醒一个线程，而notifyAll则唤醒全部线程</li></ol><h3 id="改进方案LockSupport"><a href="#改进方案LockSupport" class="headerlink" title="改进方案LockSupport:"></a>改进方案LockSupport:</h3><image src="https://impwang.oss-cn-beijing.aliyuncs.com/java/LockSupport.png"><p>原理：<br>LockSupport使用：<br>park：等待许可，类似于wait<br>unpark：提供许可，类似于notify<br>park和unpark之间没有时序问题，最底层通过Posix的mutex、condition实现。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p>相同点：</p><ol><li>wait/park都会阻塞线程，释放锁</li><li>上层表现机制不一样，系统层面都是通过<strong>中断</strong>实现</li></ol><p>不同点：</p><ol><li>wait/notify/notifyAll针对的是对象，而且notify不能唤醒某个具体线程；LockSupport可以具体到某一个线程</li><li>实现原理不同，wait/notify基于；LockSupport底层基于Unsafe.park实现</li><li>wait完成同步，需要依赖监视器锁；LockSupport可以使用getBlocker监视锁的持有情况</li></ol></image></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Object是所有类的父类。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://wangwanchao.wang/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络中的NAT、P2P</title>
-    <link href="http://wangwanchao.wang/2019/06/07/net-nat/"/>
-    <id>http://wangwanchao.wang/2019/06/07/net-nat/</id>
-    <published>2019-06-07T03:56:03.000Z</published>
-    <updated>2019-06-11T15:50:45.242Z</updated>
-    
-    <content type="html"><![CDATA[<p>网络其实相当有意思，接触NAT主要是在VMware中用到过，一种是懵懵懂懂。</p><a id="more"></a><h2 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h2><p>桥接模式，</p><blockquote><p>每个新建的虚拟机系统都是局域网内和宿主机对等的独立主机，<br>需要手动分配一个和宿主机同IP段的IP地址<br>可以访问公网</p></blockquote><h2 id="Host-only"><a href="#Host-only" class="headerlink" title="Host-only"></a>Host-only</h2><p>主机模式，</p><blockquote><p>虚拟环境和宿主真实环境隔离，<br>虚拟机无法访问公网</p></blockquote><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换器，</p><blockquote><p>可以通过宿主机访问公网<br>虚拟机和宿主机可以互相访问，但是和宿主机之外的局域网主机无法互通</p></blockquote><h3 id="Basic-NAT"><a href="#Basic-NAT" class="headerlink" title="Basic NAT"></a>Basic NAT</h3><h3 id="NAPT"><a href="#NAPT" class="headerlink" title="NAPT"></a>NAPT</h3><p>网络地址-端口转换器</p><h3 id="Cone-NAT"><a href="#Cone-NAT" class="headerlink" title="Cone NAT"></a>Cone NAT</h3><p>锥形NAT</p><h4 id="Full-Cone-NAT"><a href="#Full-Cone-NAT" class="headerlink" title="Full Cone NAT"></a>Full Cone NAT</h4><p>全锥形NAT</p><h4 id="Restricted-Cone-NAT"><a href="#Restricted-Cone-NAT" class="headerlink" title="Restricted Cone NAT"></a>Restricted Cone NAT</h4><p>受限锥形NAT</p><h4 id="Port-Restricted-Cone-NAT"><a href="#Port-Restricted-Cone-NAT" class="headerlink" title="Port-Restricted Cone NAT"></a>Port-Restricted Cone NAT</h4><p>端口受限型NAT</p><h3 id="对称NAT"><a href="#对称NAT" class="headerlink" title="对称NAT"></a>对称NAT</h3><h2 id="P2P通信"><a href="#P2P通信" class="headerlink" title="P2P通信"></a>P2P通信</h2><h3 id="Relaying"><a href="#Relaying" class="headerlink" title="Relaying"></a>Relaying</h3><p>中继</p><h3 id="Connection-reversal"><a href="#Connection-reversal" class="headerlink" title="Connection reversal"></a>Connection reversal</h3><p>逆向连接</p><h3 id="UDP-hole-punching"><a href="#UDP-hole-punching" class="headerlink" title="UDP hole punching"></a>UDP hole punching</h3><p>UDP打洞</p><h4 id="端点在不同的NAT之下"><a href="#端点在不同的NAT之下" class="headerlink" title="端点在不同的NAT之下"></a>端点在不同的NAT之下</h4><h4 id="端点在相同的NAT之下"><a href="#端点在相同的NAT之下" class="headerlink" title="端点在相同的NAT之下"></a>端点在相同的NAT之下</h4><h4 id="固定端口绑定"><a href="#固定端口绑定" class="headerlink" title="固定端口绑定"></a>固定端口绑定</h4>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;网络其实相当有意思，接触NAT主要是在VMware中用到过，一种是懵懵懂懂。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="NetWork" scheme="http://wangwanchao.wang/tags/NetWork/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis概览(一)</title>
-    <link href="http://wangwanchao.wang/2019/06/07/redis-base/"/>
-    <id>http://wangwanchao.wang/2019/06/07/redis-base/</id>
-    <published>2019-06-06T16:25:54.000Z</published>
-    <updated>2019-06-06T16:26:32.796Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的跳表(二)</title>
-    <link href="http://wangwanchao.wang/2019/06/07/redis-skiplist/"/>
-    <id>http://wangwanchao.wang/2019/06/07/redis-skiplist/</id>
-    <published>2019-06-06T16:25:35.000Z</published>
-    <updated>2019-06-06T16:27:14.851Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis哨兵机制(七)</title>
-    <link href="http://wangwanchao.wang/2019/06/07/redis-election/"/>
-    <id>http://wangwanchao.wang/2019/06/07/redis-election/</id>
-    <published>2019-06-06T16:18:30.000Z</published>
-    <updated>2019-06-06T17:58:45.458Z</updated>
-    
-    <content type="html"><![CDATA[<p>redis引入了哨兵机制</p><a id="more"></a><h2 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a>哨兵机制</h2><h3 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h3><p>启动哨兵机制，可以对主从数据库进行监控</p><h3 id="一主多从"><a href="#一主多从" class="headerlink" title="一主多从"></a>一主多从</h3><p>启动多个哨兵(建议3个，并且使用奇数个哨兵)，可以对主从数据库进行监控，哨兵之间也可以互相通信。<br>哨兵主要功能：</p><ol><li>监控：监控master和slave是否运行正常</li><li>提醒：某个redis出现故障，可以发起通知</li><li>自动故障转移：当一个master不能正常工作时，将master下其中一个slave转为master</li></ol><p>补充：为什么哨兵至少3个？</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>每个哨兵会向其它哨兵、master、slave定时发送消息，保持心跳。如果指定时间未回应，则认为对方<strong>主观下线</strong>；若多数哨兵都认为某一服务没响应，则认为<strong>客观下线</strong></p><h2 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h2><p>用于接收master是否下线的消息</p><h2 id="选举master协议"><a href="#选举master协议" class="headerlink" title="选举master协议"></a>选举master协议</h2><p>用来决定是否执行故障转移，以及slave中的选主<br>选主会有两个过程：</p><h3 id="Sentinel哨兵选出leader"><a href="#Sentinel哨兵选出leader" class="headerlink" title="Sentinel哨兵选出leader"></a>Sentinel哨兵选出leader</h3><p>当某个哨兵节点确认master主管下线后，发出广播请求其它哨兵选举自己为leader，<br>被请求的哨兵如果没有选举过其它哨兵的请求，则同意该请求，否则不同意<br>当哨兵节点票数达到Max(quorum, num(sentinel)/2 + 1)，则升级为leader</p><h3 id="Sentinel-Leader选举主节点master"><a href="#Sentinel-Leader选举主节点master" class="headerlink" title="Sentinel Leader选举主节点master"></a>Sentinel Leader选举主节点master</h3><p>master选举：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/redis/redis-leader.png"><p>slave-priority在conf中配置</p></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;redis引入了哨兵机制&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>etcd-raft</title>
-    <link href="http://wangwanchao.wang/2019/06/06/etcd-raft/"/>
-    <id>http://wangwanchao.wang/2019/06/06/etcd-raft/</id>
-    <published>2019-06-06T15:05:56.000Z</published>
-    <updated>2019-06-06T15:05:56.093Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ZooKeeper基于TCP的FastLeader(四)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-fastleader3/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-fastleader3/</id>
-    <published>2019-06-06T05:57:58.000Z</published>
-    <updated>2019-06-06T08:25:41.664Z</updated>
-    
-    <content type="html"><![CDATA[<p>TCP选举算法</p><a id="more"></a><h2 id="核心结构"><a href="#核心结构" class="headerlink" title="核心结构"></a>核心结构</h2><h3 id="myid"><a href="#myid" class="headerlink" title="myid"></a>myid</h3><p>对应服务器在集群中的唯一ID</p><h3 id="zxid"><a href="#zxid" class="headerlink" title="zxid"></a>zxid</h3><p>类似于事务ID，顺序递增</p><p>|  高32位  |  低32位  |<br>epoch_h：用于标记leader的epoch，从1开始，每次选举出新的leader<br>，epoch_h加1，</p><p>epoch_l：用于标记epoch_h内的版本，epoch_h改变后，epoch_l会被重置</p><h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>服务器状态：<br>looking：<br>leading：<br>following：<br>observing:</p><h3 id="选票数据结构"><a href="#选票数据结构" class="headerlink" title="选票数据结构"></a>选票数据结构</h3><p>选举领导时会进行投票，投票的数据结构：</p><p>logicClock: 表示该服务器发起的是第几轮投票，每个服务器都维护一个自增的logicClock<br>state: 当前服务器状态<br>self_id: 当前服务器的myid<br>self_zxid: zxid<br>vote_id: 被推选的的服务器的myid<br>vote_zxid: 被推选的服务器zxid</p><h2 id="选举流程"><a href="#选举流程" class="headerlink" title="选举流程"></a>选举流程</h2><p>选举过程很重要，也很复杂，做了一个流程图，不合理的回头补充：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/FastLeaderElection%E9%80%89%E4%B8%BE%E5%8E%9F%E7%90%86.png"><p>投票过程数据结构: (logicClock, myid, zxid)<br>投票箱存储结构：(投票服务器id, 被推选服务器id)</p></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;TCP选举算法&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZooKeeper选举算法基础(三)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-election-base/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-election-base/</id>
-    <published>2019-06-06T05:52:31.000Z</published>
-    <updated>2019-06-06T05:56:54.259Z</updated>
-    
-    <content type="html"><![CDATA[<p>选举算法有多种</p><a id="more"></a><h2 id="选举算法"><a href="#选举算法" class="headerlink" title="选举算法"></a>选举算法</h2><p>electionAlg配置：</p><ol><li>0：基于UDP的LeaderElection</li><li>1：基于UDP的FastLeaderElection</li><li>2：基于UDP和认证的FastLeaderElection</li><li>3：基于TCP的FastLeaderElection(新版本默认算法)</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;选举算法有多种&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZooKeeper选举过程(五)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-crash-election/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-crash-election/</id>
-    <published>2019-06-06T05:36:56.000Z</published>
-    <updated>2019-06-06T08:26:21.367Z</updated>
-    
-    <content type="html"><![CDATA[<p>zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举</p><a id="more"></a><h2 id="正常集群启动选举"><a href="#正常集群启动选举" class="headerlink" title="正常集群启动选举"></a>正常集群启动选举</h2><h2 id="Leader重启选举"><a href="#Leader重启选举" class="headerlink" title="Leader重启选举"></a>Leader重启选举</h2><p>leader由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-2.png"><h2 id="Follower重启选举"><a href="#Follower重启选举" class="headerlink" title="Follower重启选举"></a>Follower重启选举</h2><p>follower由于故障崩溃、或者网络分区导致不可连接。<br>选举流程图：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/zookeeper/leader-3.png"></image></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;zk集群有正常启动过程，也会有leader/follower崩溃重启、网络分区问题，这样就导致需要重新选举&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ZooKeeper分布式锁(六)</title>
-    <link href="http://wangwanchao.wang/2019/06/06/zk-lock/"/>
-    <id>http://wangwanchao.wang/2019/06/06/zk-lock/</id>
-    <published>2019-06-06T05:36:37.000Z</published>
-    <updated>2019-06-13T05:57:47.068Z</updated>
-    
-    <content type="html"><![CDATA[<p>zk典型的应用是可以作为分布式锁。</p><a id="more"></a><h2 id="zk分布式锁的特性"><a href="#zk分布式锁的特性" class="headerlink" title="zk分布式锁的特性"></a>zk分布式锁的特性</h2><p>zk作为分布式锁主要利用的还是临时节点、顺序性的特性</p><ol><li>最多只有一个获取锁：最多只有一个进程获取锁</li><li>释放锁：获取锁的进程可以主动释放锁；进程宕机后也可以释放锁</li><li>锁重入：获取锁的进程在释放锁之前可以重新进入</li><li>感知释放锁：等待锁的进程可以感知到锁的释放，并且重新竞争锁</li></ol><h2 id="锁实现"><a href="#锁实现" class="headerlink" title="锁实现"></a>锁实现</h2><h3 id="公平式锁"><a href="#公平式锁" class="headerlink" title="公平式锁"></a>公平式锁</h3><p>基于临时节点 + 顺序性，这样创建相同的节点时，都可以创建成功，但是节点具有顺序性，每个获取锁的进程判断自己是否是最小顺序的节点来获取锁</p><h3 id="非公平式锁"><a href="#非公平式锁" class="headerlink" title="非公平式锁"></a>非公平式锁</h3><p>基于临时节点 + 非顺序性，这样创建相同的节点时，只能有一个创建成功，即获得锁</p><h3 id="排他锁"><a href="#排他锁" class="headerlink" title="排他锁"></a>排他锁</h3><h3 id="共享锁"><a href="#共享锁" class="headerlink" title="共享锁"></a>共享锁</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;zk典型的应用是可以作为分布式锁。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ZooKeeper" scheme="http://wangwanchao.wang/tags/ZooKeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>netty-transport</title>
-    <link href="http://wangwanchao.wang/2019/06/05/netty-transport/"/>
-    <id>http://wangwanchao.wang/2019/06/05/netty-transport/</id>
-    <published>2019-06-05T05:39:33.000Z</published>
-    <updated>2019-06-05T05:39:33.210Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>netty-codec</title>
-    <link href="http://wangwanchao.wang/2019/06/05/netty-codec/"/>
-    <id>http://wangwanchao.wang/2019/06/05/netty-codec/</id>
-    <published>2019-06-05T05:39:20.000Z</published>
-    <updated>2019-06-05T05:39:20.564Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Netty概览(一)</title>
-    <link href="http://wangwanchao.wang/2019/06/05/netty-base/"/>
-    <id>http://wangwanchao.wang/2019/06/05/netty-base/</id>
-    <published>2019-06-05T04:25:13.000Z</published>
-    <updated>2019-06-05T05:37:17.319Z</updated>
-    
-    <content type="html"><![CDATA[<p>基于Netty4.1分支，可以看到代码已经非常复杂</p><a id="more"></a><p>netty结构图<br>基础部分：</p><image width="200" height="300" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base1.png"><p>test组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base2.png"><p>transport组件：</p><image width="250" height="100" src="https://impwang.oss-cn-beijing.aliyuncs.com/netty/netty-base3.png"><h2 id="事件驱动模型"><a href="#事件驱动模型" class="headerlink" title="事件驱动模型"></a>事件驱动模型</h2><h2 id="Reactor模型"><a href="#Reactor模型" class="headerlink" title="Reactor模型"></a>Reactor模型</h2><p>示意图：</p><p>Reactor模型主要有2部分：</p><blockquote><p>Reactor：单独的线程，负责监听、分发事件，<br>Handlers：</p></blockquote><h4 id="1-单Reactor、单线程"><a href="#1-单Reactor、单线程" class="headerlink" title="1. 单Reactor、单线程"></a>1. 单Reactor、单线程</h4><h4 id="2-单Reactor、多线程"><a href="#2-单Reactor、多线程" class="headerlink" title="2. 单Reactor、多线程"></a>2. 单Reactor、多线程</h4><h4 id="3-主从Reactor、多线程"><a href="#3-主从Reactor、多线程" class="headerlink" title="3. 主从Reactor、多线程"></a>3. 主从Reactor、多线程</h4><p>模型：</p><blockquote><p>MainReactor：负责连接请求，把请求转交给SubReactor<br>SubReactor：负责相应Channel的I/O读写请求<br>非I/O请求则直接写入队列，等待worker threads(工作线程)处理</p></blockquote><h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>传输服务，支持 BIO 和 NIO。<br>容器集成，支持 OSGI、JBossMC、Spring、Guice 容器。<br>协议支持，HTTP、Protobuf、二进制、文本、WebSocket、RTSP等，还支持通过实行编码解码逻辑来实现自定义协议。<br>Core 核心，可扩展事件模型、通用通信 API、支持零拷贝的 ByteBuf 缓冲对象。</p><h3 id="线程模型"><a href="#线程模型" class="headerlink" title="线程模型"></a>线程模型</h3><p>Netty基于主从Reactor、多线程模型。</p><blockquote><p>bossGroup：线程池，在绑定某个端口后，从线程池获取一个线程处理Accept事件(相当于MainReactor)，这样每个端口对应一个Boss线程<br>workerGroup：线程池，SubReactor和Worker线程会共用该线程池</p></blockquote><h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><p>Bootstrap/ServerBootstrap<br>Future/ChannelFuture<br>Channel/ChannelHandler/ChannelPipline<br>Selector<br>NioEventLoop/NioEventLoopGroup</p><p>总结：从结构上看，核心功能主要有2个：</p><ol><li>I/O模型</li><li>解析协议(编码/解码)</li></ol></image></image></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;基于Netty4.1分支，可以看到代码已经非常复杂&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="netty" scheme="http://wangwanchao.wang/tags/netty/"/>
     
   </entry>
   

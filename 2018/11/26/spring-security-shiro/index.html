@@ -100,17 +100,17 @@
 
 
 
-  <meta name="description" content="OAuth2.0在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。 第一阶段使用account + secret登录中间层，获得token 第二阶段开始使用token进行权限验证 OpenIDJWTShiroSpring Security">
+  <meta name="description" content="最开始整合shiro实现简单的控制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring-security-shiro">
+<meta property="og:title" content="SpringSecurity--整合Shiro(四)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/11/26/spring-security-shiro/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="OAuth2.0在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。 第一阶段使用account + secret登录中间层，获得token 第二阶段开始使用token进行权限验证 OpenIDJWTShiroSpring Security">
+<meta property="og:description" content="最开始整合shiro实现简单的控制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-26T11:11:14.002Z">
+<meta property="og:updated_time" content="2019-06-21T03:22:57.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring-security-shiro">
-<meta name="twitter:description" content="OAuth2.0在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。 第一阶段使用account + secret登录中间层，获得token 第二阶段开始使用token进行权限验证 OpenIDJWTShiroSpring Security">
+<meta name="twitter:title" content="SpringSecurity--整合Shiro(四)">
+<meta name="twitter:description" content="最开始整合shiro实现简单的控制">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>spring-security-shiro | Wangsir's Blog</title>
+  <title>SpringSecurity--整合Shiro(四) | Wangsir's Blog</title>
   
 
 
@@ -392,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring-security-shiro
+          <h1 class="post-title" itemprop="name headline">SpringSecurity--整合Shiro(四)
 
               
             
@@ -419,12 +419,24 @@
                 
               
 
-              <time title="Created: 2018-11-26 17:42:40 / Modified: 19:11:14" itemprop="dateCreated datePublished" datetime="2018-11-26T17:42:40+08:00">2018-11-26</time>
+              <time title="Created: 2018-11-26 17:42:40" itemprop="dateCreated datePublished" datetime="2018-11-26T17:42:40+08:00">2018-11-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-21 11:22:57" itemprop="dateModified" datetime="2019-06-21T11:22:57+08:00">2019-06-21</time>
               
             
           </span>
@@ -459,7 +471,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">135</span>
+                <span title="Symbols count in article">23</span>
               
 
               
@@ -493,10 +505,9 @@
       
 
       
-        <h3 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h3><p>在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。</p>
-<p>第一阶段使用account + secret登录中间层，获得token</p>
-<p>第二阶段开始使用token进行权限验证</p>
-<h3 id="OpenID"><a href="#OpenID" class="headerlink" title="OpenID"></a>OpenID</h3><h3 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h3><h2 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h2><h2 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security"></a>Spring Security</h2>
+        <p>最开始整合shiro实现简单的控制</p>
+<a id="more"></a>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>
       
     </div>
 
@@ -607,7 +618,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">179</span>
+                    <span class="site-state-item-count">193</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -873,7 +884,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -918,7 +931,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#OAuth2-0"><span class="nav-number">1.</span> <span class="nav-text">OAuth2.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenID"><span class="nav-number">2.</span> <span class="nav-text">OpenID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT"><span class="nav-number">3.</span> <span class="nav-text">JWT</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro"><span class="nav-number"></span> <span class="nav-text">Shiro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Security"><span class="nav-number"></span> <span class="nav-text">Spring Security</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li></ol></div>
             
 
           </div>
@@ -953,7 +966,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">194k</span>
+    <span title="Symbols count total">198k</span>
   
 
   
@@ -964,7 +977,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">2:57</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 
