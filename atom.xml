@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-08-08T01:55:26.010Z</updated>
+  <updated>2019-08-14T06:26:57.152Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot配置文件加载bug</title>
+    <link href="http://wangwanchao.wang/2019/08/14/spring-boot-bootstrap/"/>
+    <id>http://wangwanchao.wang/2019/08/14/spring-boot-bootstrap/</id>
+    <published>2019-08-14T06:16:34.000Z</published>
+    <updated>2019-08-14T06:26:57.152Z</updated>
+    
+    <content type="html"><![CDATA[<p>IDEA环境以前曾经遇到过，通过添加依赖包可以解决，而且，创建的maven模块有时候正常，有时候出现该问题，问题的根本还是不太懂</p><a id="more"></a><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><h3 id="未加载前"><a href="#未加载前" class="headerlink" title="未加载前"></a>未加载前</h3><p>bootstrap文件为yml格式，但是并未识别为配置文件</p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/spring/springboot-bootstrap.png" alt></p><p>查看模块设置<code>Open Module Settings</code> - Module，发现并未自动检测，没有找到任何手动添加设置<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/spring/springboot-bootstrap2.png" alt></p><h3 id="加载后"><a href="#加载后" class="headerlink" title="加载后"></a>加载后</h3><p>添加spring-cloud-context，bootstrap文件可以被正常检测<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/spring/springboot-bootstrap3.png" alt></p><p>迷<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/spring/springboot-bootstrap4.png" alt></p><h2 id="加载原理"><a href="#加载原理" class="headerlink" title="加载原理"></a>加载原理</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;IDEA环境以前曾经遇到过，通过添加依赖包可以解决，而且，创建的maven模块有时候正常，有时候出现该问题，问题的根本还是不太懂&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mac-multi-mysql</title>
@@ -341,24 +359,6 @@
     
     
       <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解析JavaScript ECMAScript TypeScript COffeScript</title>
-    <link href="http://wangwanchao.wang/2019/06/14/es6-ts/"/>
-    <id>http://wangwanchao.wang/2019/06/14/es6-ts/</id>
-    <published>2019-06-14T07:46:52.000Z</published>
-    <updated>2019-07-15T16:14:01.464Z</updated>
-    
-    <content type="html"><![CDATA[<p>JS框架层出不穷，</p><a id="more"></a><h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote><p>ECMAScript6的目标是使得JavaScript语言可以用来编写大型的复杂的应用程序，于是增添了许多特性，例如：模块和类，Maps、Sets、Promises、生成器（Generators）等。<br>尽管ECMAScript6做了大量的更新，但标准化委员会仍然决定要兼容以前的版本，但随之而来的问题是，目前主流的宿主环境（无论是浏览器环境还是服务器环境）不能完全支持ES6，导致了开发者真正要使用ECMAScript6时，需要将ECMAScript6代码进行转译。</p></blockquote><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote><p>TypeScript 是一种微软开源的编程语言。<br>由于JavaScript是弱类型的，TypeScript为JavaScript扩展类和模块的概念。正是由于TypeScript最大的特点是类型化，因此才叫做TypeScript。<br>TypeScript支持ECMAScript6标准（实际上相当于是对ECMAScript6的提前实现），并且能将代码根据需求转换为 ES3/5/6。这意味着开发者可以通过TypeScript使用最新的ECMAScript特性，无需再考虑兼容性的问题。</p></blockquote><h3 id="TypeScript分类"><a href="#TypeScript分类" class="headerlink" title="TypeScript分类"></a>TypeScript分类</h3><ol><li>一个是类似 Babel 的阵营，坚持JavaScript 的语法风格编写，为开发者提供最新的 ECMAScript 特性；</li><li>另一个则是Coffeescript、Clojure、Dart等的阵营，它们的语法与 JavaScript 迥然不同，但最终会编译为JavaScript；</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JS框架层出不穷，&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
