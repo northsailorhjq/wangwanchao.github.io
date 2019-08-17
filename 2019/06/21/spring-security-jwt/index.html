@@ -100,17 +100,24 @@
 
 
 
-  <meta name="description" content="jwt模式">
+  <meta name="description" content="jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringSecurity--整合jwt(六)">
 <meta property="og:url" content="http://wangwanchao.wang/2019/06/21/spring-security-jwt/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="jwt模式">
+<meta property="og:description" content="jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-21T03:24:25.810Z">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png">
+<meta property="og:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png">
+<meta property="og:updated_time" content="2019-08-17T06:53:15.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringSecurity--整合jwt(六)">
-<meta name="twitter:description" content="jwt模式">
+<meta name="twitter:description" content="jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。">
+<meta name="twitter:image" content="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png">
 
 
 
@@ -419,12 +426,24 @@
                 
               
 
-              <time title="Created: 2019-06-21 11:11:21 / Modified: 11:24:25" itemprop="dateCreated datePublished" datetime="2019-06-21T11:11:21+08:00">2019-06-21</time>
+              <time title="Created: 2019-06-21 11:11:21" itemprop="dateCreated datePublished" datetime="2019-06-21T11:11:21+08:00">2019-06-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-17 14:53:15" itemprop="dateModified" datetime="2019-08-17T14:53:15+08:00">2019-08-17</time>
               
             
           </span>
@@ -459,7 +478,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">11</span>
+                <span title="Symbols count in article">435</span>
               
 
               
@@ -493,9 +512,17 @@
       
 
       
-        <p>jwt模式</p>
+        <p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p>
 <a id="more"></a>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p>
+<h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：</p>
+<p>完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p>
+<p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p>
+<p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p>
+<p>session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p>
+<p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p>
+<p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p>
+
       
     </div>
 
@@ -606,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">198</span>
+                    <span class="site-state-item-count">200</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -921,7 +948,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#宏观上来看执行流程："><span class="nav-number">2.1.</span> <span class="nav-text">宏观上来看执行流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码分析"><span class="nav-number">2.1.1.</span> <span class="nav-text">源码分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -956,7 +983,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">199k</span>
+    <span title="Symbols count total">200k</span>
   
 
   
@@ -967,7 +994,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:01</span>
+    <span title="Reading time total">3:02</span>
   
 </div>
 

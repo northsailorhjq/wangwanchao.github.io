@@ -100,14 +100,17 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="consul-base">
+  <meta name="description" content="原来一直用Eureka Server，现在尝试用Consul.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Consul环境">
 <meta property="og:url" content="http://wangwanchao.wang/2019/07/03/consul-base/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
+<meta property="og:description" content="原来一直用Eureka Server，现在尝试用Consul.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-03T01:33:02.493Z">
+<meta property="og:updated_time" content="2019-08-14T08:45:14.155Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="consul-base">
+<meta name="twitter:title" content="Consul环境">
+<meta name="twitter:description" content="原来一直用Eureka Server，现在尝试用Consul.">
 
 
 
@@ -127,7 +130,7 @@
   };
 </script>
 
-  <title>consul-base | Wangsir's Blog</title>
+  <title>Consul环境 | Wangsir's Blog</title>
   
 
 
@@ -389,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">consul-base
+          <h1 class="post-title" itemprop="name headline">Consul环境
 
               
             
@@ -419,6 +422,22 @@
               <time title="Created: 2019-07-03 09:33:02" itemprop="dateCreated datePublished" datetime="2019-07-03T09:33:02+08:00">2019-07-03</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-14 16:45:14" itemprop="dateModified" datetime="2019-08-14T16:45:14+08:00">2019-08-14</time>
+              
             
           </span>
 
@@ -452,7 +471,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">136</span>
               
 
               
@@ -486,7 +505,12 @@
       
 
       
-        
+        <p>原来一直用Eureka Server，现在尝试用Consul.</p>
+<a id="more"></a>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>brew install consul
+</code></pre><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code>consul agent -dev
+</code></pre><h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>管理页面地址 <a href="http://127.0.0.1:8500/ui/dc1/services" target="_blank" rel="noopener">http://127.0.0.1:8500/ui/dc1/services</a></p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2>
       
     </div>
 
@@ -572,8 +596,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,7 +621,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">198</span>
+                    <span class="site-state-item-count">200</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -893,6 +926,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac"><span class="nav-number">2.</span> <span class="nav-text">Mac</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">2.2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问"><span class="nav-number">2.3.</span> <span class="nav-text">访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">3.</span> <span class="nav-text">Docker</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -921,7 +971,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">199k</span>
+    <span title="Symbols count total">200k</span>
   
 
   
@@ -932,7 +982,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:01</span>
+    <span title="Reading time total">3:02</span>
   
 </div>
 

@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>Serverless是什么</title>
+      <link href="/2019/08/16/serverless-base/"/>
+      <url>/2019/08/16/serverless-base/</url>
+      
+        <content type="html"><![CDATA[<p>Serverless是什么？很多地方看到serverless的文章，官方文档说：首先是一个框架。包含多个微服务的应用；事件响应，自动扩容；仅仅在运行时收费，更高于云服务平台。</p><a id="more"></a><p>从IaaS， 到SaaS，再到Paas。重新提出一种新的架构FaaS</p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>阿里云也有在做，以下以AWS为例。</p><h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>中间需要用到AWS账号，没有账号的需要申请。</p><h3 id="创建AWS账号"><a href="#创建AWS账号" class="headerlink" title="创建AWS账号"></a>创建AWS账号</h3>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringCloud微服务--网关</title>
+      <link href="/2019/08/15/spring-cloud-zuul/"/>
+      <url>/2019/08/15/spring-cloud-zuul/</url>
+      
+        <content type="html"><![CDATA[<p>nginx、zuul、gateway、kong都是网管组件。</p><a id="more"></a><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>nginx使用漏桶算法</p><p><code>limit_req_zone</code><br><code>limit_req_conn</code></p><h2 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h2><p>kong可以说是nginx的升级版，基于OpenResty。</p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ol><li>upstream</li><li>target</li><li>service</li><li>route</li></ol><h3 id="限流-1"><a href="#限流-1" class="headerlink" title="限流"></a>限流</h3><h2 id="Zuul1-Zuul2"><a href="#Zuul1-Zuul2" class="headerlink" title="Zuul1 / Zuul2"></a>Zuul1 / Zuul2</h2><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><p>按照生命周期大约有4种过滤器：</p><ol><li><p>pre </p></li><li><p>routing</p></li><li><p>post </p></li><li><p>error</p></li></ol><h3 id="限流-2"><a href="#限流-2" class="headerlink" title="限流"></a>限流</h3><p>主流的有4种限流方式：</p><ol><li>根据认证用户</li><li>根据原始请求</li><li>根据URL</li><li>根据ServiceId</li></ol><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>zuul-ratelimit</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot配置文件加载bug</title>
       <link href="/2019/08/14/spring-boot-bootstrap/"/>
       <url>/2019/08/14/spring-boot-bootstrap/</url>
@@ -81,11 +107,11 @@
     
     
     <entry>
-      <title>consul-base</title>
+      <title>Consul环境</title>
       <link href="/2019/07/03/consul-base/"/>
       <url>/2019/07/03/consul-base/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>原来一直用Eureka Server，现在尝试用Consul.</p><a id="more"></a><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>brew install consul</code></pre><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code>consul agent -dev</code></pre><h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>管理页面地址 <a href="http://127.0.0.1:8500/ui/dc1/services" target="_blank" rel="noopener">http://127.0.0.1:8500/ui/dc1/services</a></p><h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2>]]></content>
       
       
       
@@ -176,7 +202,7 @@
       <link href="/2019/06/21/spring-security-jwt/"/>
       <url>/2019/06/21/spring-security-jwt/</url>
       
-        <content type="html"><![CDATA[<p>jwt模式</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>]]></content>
+        <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：</p><p>完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p>]]></content>
       
       
       
@@ -2233,23 +2259,48 @@
     
     
     <entry>
-      <title>快排</title>
-      <link href="/2018/09/28/algorithms-quicksort/"/>
-      <url>/2018/09/28/algorithms-quicksort/</url>
+      <title>MySQL索引</title>
+      <link href="/2018/09/28/mysql-index/"/>
+      <url>/2018/09/28/mysql-index/</url>
       
-        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
       
       
       <categories>
           
-          <category> Algorithms </category>
+          <category> MySQL </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Algorithms </tag>
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2308,31 +2359,6 @@
     
     
     <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>深入理解计算机系统--存储</title>
       <link href="/2018/09/28/csapp-cache/"/>
       <url>/2018/09/28/csapp-cache/</url>
@@ -2358,56 +2384,6 @@
     
     
     <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
-      
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>MySQL索引</title>
-      <link href="/2018/09/28/mysql-index/"/>
-      <url>/2018/09/28/mysql-index/</url>
-      
-        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> MySQL </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java虚拟机(一)</title>
       <link href="/2018/09/28/java-jvm/"/>
       <url>/2018/09/28/java-jvm/</url>
@@ -2425,6 +2401,56 @@
         <tags>
             
             <tag> java, jvm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>快排</title>
+      <link href="/2018/09/28/algorithms-quicksort/"/>
+      <url>/2018/09/28/algorithms-quicksort/</url>
+      
+        <content type="html"><![CDATA[<h2 id="java语言实现"><a href="#java语言实现" class="headerlink" title="java语言实现"></a>java语言实现</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span>&#123;</span><br><span class="line">       <span class="comment">// main live template</span></span><br><span class="line">       <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">       quickSort(arr, <span class="number">0</span>, arr.length<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">       Arrays.stream(arr).forEach( <span class="keyword">value</span> -&gt; &#123;</span><br><span class="line">           System.<span class="keyword">out</span>.println(<span class="keyword">value</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span>(<span class="params"><span class="keyword">int</span>[] a, <span class="keyword">int</span> low, <span class="keyword">int</span> high</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">int</span> i = low;</span><br><span class="line">       <span class="keyword">int</span> j = high;</span><br><span class="line">       <span class="keyword">int</span> <span class="keyword">base</span> = a[low];</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">while</span>(a[j] &gt; <span class="keyword">base</span> &amp;&amp; i &lt; j)&#123;</span><br><span class="line">               j--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> ( i &lt; j ) &#123;</span><br><span class="line">               <span class="keyword">int</span> temp = a[j];</span><br><span class="line">               a[j] = a[i];</span><br><span class="line">               a[i] = temp;</span><br><span class="line">               i++;</span><br><span class="line"></span><br><span class="line">               <span class="keyword">while</span>(a[i] &lt; <span class="keyword">base</span> &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                   i++;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>( i &lt; j ) &#123;</span><br><span class="line">                   <span class="keyword">int</span> temp2 = a[i];</span><br><span class="line">                   a[i] = a[j];</span><br><span class="line">                   a[j] = temp2;</span><br><span class="line">                   j--;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       a[i] = <span class="keyword">base</span>;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (low &lt; i<span class="number">-1</span>) &#123;</span><br><span class="line">           quickSort(a, low, i<span class="number">-1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (j+<span class="number">1</span> &lt; high) &#123;</span><br><span class="line">           quickSort(a, j+<span class="number">1</span>, high);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="go语言实现"><a href="#go语言实现" class="headerlink" title="go语言实现"></a>go语言实现</h2><figure class="highlight plain"><figcaption><span>main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">// fmt.Println(&quot;Hello Mac go&quot;)</span><br><span class="line"></span><br><span class="line">arr := []int&#123;3, 7, 5, 1, 8, 6&#125;</span><br><span class="line"></span><br><span class="line">quick_sort(arr, 0, len(arr)-1)</span><br><span class="line"></span><br><span class="line">for v := range arr &#123;</span><br><span class="line">fmt.Println(arr[v])</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func quick_sort(a []int, low int, high int) &#123;</span><br><span class="line">i := low</span><br><span class="line">j := high</span><br><span class="line">base := a[low]</span><br><span class="line"></span><br><span class="line">for ; i &lt; j; &#123;</span><br><span class="line"></span><br><span class="line">for ; a[j] &gt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp := a[j]</span><br><span class="line">a[j] = a[i]</span><br><span class="line">a[i] = temp</span><br><span class="line">i++</span><br><span class="line"></span><br><span class="line">for ; a[i] &lt; base &amp;&amp; i &lt; j; &#123;</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br><span class="line">if i &lt; j &#123;</span><br><span class="line">temp2 := a[i]</span><br><span class="line">a[i] = a[j]</span><br><span class="line">a[j] = temp2</span><br><span class="line">j--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[i] = base</span><br><span class="line"></span><br><span class="line">if low &lt; i-1 &#123;</span><br><span class="line">quick_sort(a, low, i-1)</span><br><span class="line">&#125;</span><br><span class="line">if j+1 &lt; high &#123;</span><br><span class="line">quick_sort(a, j+1, high)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithms </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithms </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
+      
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
             
         </tags>
       
