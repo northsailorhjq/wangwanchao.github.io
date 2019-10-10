@@ -100,17 +100,18 @@
 
 
 
-  <meta name="description" content="EurekaNacosConsule">
+  <meta name="description" content="著名的CAP理论，Eureka满足AP理论，ZK、Consul满足CP理论">
+<meta name="keywords" content="SpringCloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务--注册中心(二)">
 <meta property="og:url" content="http://wangwanchao.wang/2019/01/23/spring-cloud-eureka/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="EurekaNacosConsule">
+<meta property="og:description" content="著名的CAP理论，Eureka满足AP理论，ZK、Consul满足CP理论">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-11T16:32:35.590Z">
+<meta property="og:updated_time" content="2019-10-10T06:03:30.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务--注册中心(二)">
-<meta name="twitter:description" content="EurekaNacosConsule">
+<meta name="twitter:description" content="著名的CAP理论，Eureka满足AP理论，ZK、Consul满足CP理论">
 
 
 
@@ -436,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-12 00:32:35" itemprop="dateModified" datetime="2019-06-12T00:32:35+08:00">2019-06-12</time>
+                <time title="Modified: 2019-10-10 14:03:30" itemprop="dateModified" datetime="2019-10-10T14:03:30+08:00">2019-10-10</time>
               
             
           </span>
@@ -471,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">18</span>
+                <span title="Symbols count in article">225</span>
               
 
               
@@ -505,7 +506,19 @@
       
 
       
-        <h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h2><h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><h2 id="Consule"><a href="#Consule" class="headerlink" title="Consule"></a>Consule</h2>
+        <p>著名的CAP理论，Eureka满足AP理论，ZK、Consul满足CP理论</p>
+<a id="more"></a>
+<p>最早接触的是zk，当时没怎么分析，水货</p>
+<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>服务注册快，不需要将注册信息同步到其他节点</li>
+<li>不同的节点注册信息可以不一致，保证了高可用A</li>
+</ol>
+<h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p>为了满足强一致性C，导致以下缺点</p>
+<ol>
+<li>服务注册慢，必须满足半数的节点写入成功才认为注册成功</li>
+<li>Leader宕机，为了强一致性，整个集群不可用，牺牲了高可用</li>
+</ol>
+<h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2>
       
     </div>
 
@@ -525,6 +538,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringCloud/" rel="tag"><i class="fa fa-tag"></i> SpringCloud</a>
+          
+        </div>
       
 
       
@@ -616,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">200</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -931,7 +950,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eureka"><span class="nav-number">1.</span> <span class="nav-text">Eureka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos"><span class="nav-number">2.</span> <span class="nav-text">Nacos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consule"><span class="nav-number">3.</span> <span class="nav-text">Consule</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper"><span class="nav-number">1.</span> <span class="nav-text">Zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Eureka"><span class="nav-number">2.</span> <span class="nav-text">Eureka</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">2.2.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consul"><span class="nav-number">3.</span> <span class="nav-text">Consul</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-2"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-2"><span class="nav-number">3.2.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Etcd"><span class="nav-number">4.</span> <span class="nav-text">Etcd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos"><span class="nav-number">5.</span> <span class="nav-text">Nacos</span></a></li></ol></div>
             
 
           </div>
@@ -966,7 +985,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">200k</span>
+    <span title="Symbols count total">206k</span>
   
 
   
@@ -977,7 +996,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:02</span>
+    <span title="Reading time total">3:07</span>
   
 </div>
 

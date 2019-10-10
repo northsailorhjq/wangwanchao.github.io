@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="linux中的零拷贝技术">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T02:23:02.181Z">
+<meta property="og:updated_time" content="2019-08-29T06:07:25.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux--零拷贝">
 <meta name="twitter:description" content="linux中的零拷贝技术">
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-06-17 10:13:56 / Modified: 10:23:02" itemprop="dateCreated datePublished" datetime="2019-06-17T10:13:56+08:00">2019-06-17</time>
+              <time title="Created: 2019-06-17 10:13:56" itemprop="dateCreated datePublished" datetime="2019-06-17T10:13:56+08:00">2019-06-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-29 14:07:25" itemprop="dateModified" datetime="2019-08-29T14:07:25+08:00">2019-08-29</time>
               
             
           </span>
@@ -460,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">56</span>
+                <span title="Symbols count in article">271</span>
               
 
               
@@ -496,7 +508,18 @@
       
         <p>linux中的零拷贝技术</p>
 <a id="more"></a>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p>
+<h2 id="I-O原理"><a href="#I-O原理" class="headerlink" title="I/O原理"></a>I/O原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p>
+<ol>
+<li>硬件和系统之间的零拷贝</li>
+<li>软件和系统之间的零拷贝</li>
+</ol>
+<h2 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h2><h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><h4 id="SIGBUS中断"><a href="#SIGBUS中断" class="headerlink" title="SIGBUS中断"></a>SIGBUS中断</h4><p>其他进程同时对文件的操作导致write系统调用中断</p>
+<p>解决方法：</p>
+<p>方案1. 增加SIGBUS错误信号处理<br>方案2. 对文件加锁，当有其它的进程对文件进行操作时，触发SIGBUS中断</p>
+<h2 id="sendfile"><a href="#sendfile" class="headerlink" title="sendfile"></a>sendfile</h2><h3 id="局限性-1"><a href="#局限性-1" class="headerlink" title="局限性"></a>局限性</h3><h4 id="数据污染"><a href="#数据污染" class="headerlink" title="数据污染"></a>数据污染</h4><p>叶缓存可能被污染</p>
+<h2 id="改进版sendfile"><a href="#改进版sendfile" class="headerlink" title="改进版sendfile"></a>改进版sendfile</h2><p>文件描述符拷贝</p>
+<h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>FileChannel类</p>
+<p>MappedByteBuffer类</p>
 
       
     </div>
@@ -614,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">200</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -929,7 +952,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O原理"><span class="nav-number">1.</span> <span class="nav-text">I/O原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mmap"><span class="nav-number">2.</span> <span class="nav-text">mmap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局限性"><span class="nav-number">2.1.</span> <span class="nav-text">局限性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SIGBUS中断"><span class="nav-number">2.1.1.</span> <span class="nav-text">SIGBUS中断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sendfile"><span class="nav-number">3.</span> <span class="nav-text">sendfile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局限性-1"><span class="nav-number">3.1.</span> <span class="nav-text">局限性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据污染"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据污染</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进版sendfile"><span class="nav-number">4.</span> <span class="nav-text">改进版sendfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splice"><span class="nav-number">5.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">6.</span> <span class="nav-text">应用</span></a></li></ol></div>
             
 
           </div>
@@ -964,7 +987,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">200k</span>
+    <span title="Symbols count total">206k</span>
   
 
   
@@ -975,7 +998,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:02</span>
+    <span title="Reading time total">3:07</span>
   
 </div>
 

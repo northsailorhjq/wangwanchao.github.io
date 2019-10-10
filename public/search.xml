@@ -4,6 +4,96 @@
   
     
     <entry>
+      <title>瓶颈期</title>
+      <link href="/2019/10/09/thinking-in-bottleneck/"/>
+      <url>/2019/10/09/thinking-in-bottleneck/</url>
+      
+        <content type="html"><![CDATA[<p>这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，困在其中，却无法突破。也许这就是所谓的瓶颈期。</p><a id="more"></a><p>从去年开始，我一直待在教育这个行业。在大的方向上，我喜欢过两个行业–教育、文化，每一个都是那种真挚而热烈的喜欢。可让我困惑的是，竟然始终未找到自己真心热爱去创造的东西。我承认自己多多少少有点理想主义，但我真心希望能够做出让人惊艳的产品。<br>在这短短的时间里，我竟然一直换了好几份工作，辞职后的这段时间里，我在想为什么？</p><ol><li><p>某联科技<br>：你为什么离职？<br>：产品规划了一年，还是没有落地，而且方向越来越不明确</p></li><li><p>某德教育<br>：你为什么离职？<br>：你经历过女领导给你穿小鞋吗？公司新起的项目，前期一直没有一个统筹的领导，中间突然来了一个女产品，任产品总监，为了争夺权力，开始勾心斗角</p></li><li><p>某来教育<br>：你为什么离职？<br>我开始思考经历的一切，让我得出一下结论<br>：1、部门对接问题，你很难理解，在这样的公司，对接竟然一直存在问题，尤其是前期，两个系统并行开发， 就导致很多开发的内容需要不断的调整，更为恶心的是产品不画原型！我是从来没有经历过这种事情的，激情慢慢的消褪；2、同事的问题，中间内部对接的有一位同事是某理毕业，虽然我并非名校，但是一些经验上，明明是对的，她竟然为自己辩护，原来接受过高等教育的人也会这么不辨是非；3、领导的问题，一次述职，我觉得自己表达的虽然没有那么完美，但是过程中领导那种傲慢的姿态，还因为一个http状态码的问题问我看过RFC文档吗？实际上跟RFC没有任何关系</p></li><li><p>某浦教育<br>：你为什么离职？<br>：三个月内，同事换了好几波，公司文化氛围实在让人不理解</p></li></ol><p>有时候，我在想，是不是互联网产品注定了快速试水、快速迭代、最后快速消失？而当初那些怀着梦想–’代码改变世界’的人注定消失在人海？期间我甚至想过去当一个图书管理员，Linux毫无疑问是最伟大的软件，可如何用软件改变人们的生活？让我一直在问：make the world better or worse?</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Life </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务--链路监控()</title>
+      <link href="/2019/09/11/spring-cloud-slueth/"/>
+      <url>/2019/09/11/spring-cloud-slueth/</url>
+      
+        <content type="html"><![CDATA[<p>链路监控主要用来监控</p><a id="more"></a><h2 id="Sleuth"><a href="#Sleuth" class="headerlink" title="Sleuth"></a>Sleuth</h2><h2 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>apue-base-1</title>
+      <link href="/2019/09/07/apue-base-1/"/>
+      <url>/2019/09/07/apue-base-1/</url>
+      
+        <content type="html"><![CDATA[<p>编译apue源码</p><a id="more"></a><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p>使用CLion快捷生成，<strong>注意：有些依赖库MacOS不支持</strong></p><h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><p>内核环境：</p><pre><code>uname -aLinux localhost.localdomain 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre><p>make编译报错：</p><p>1、错误一 </p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gcc -ansi -I../<span class="keyword">include</span> -Wall -DLINUX -D_GNU_SOURCE  barrier.c -o barrier  -L../<span class="class"><span class="keyword">lib</span> -<span class="title">lapue</span> -<span class="title">pthread</span> -<span class="title">lrt</span> -<span class="title">lbsd</span></span></span><br><span class="line">/tmp/ccGw8KOc.o：在函数‘thr_fn’中：</span><br><span class="line">barrier.<span class="symbol">c:</span>(.text+<span class="number">0x80</span>)：对‘heapsort’未定义的引用</span><br><span class="line"><span class="symbol">collect2:</span> 错误：ld 返回 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [barrier] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: 离开目录“/usr/local/apue.<span class="number">3e</span>/threads”</span><br><span class="line"><span class="symbol">make:</span> *** [all] 错误 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>解决：安装libbsd、libbsd-devel依赖</p><p>2、cmake-make编译整个项目报错 添加CMakeLists.txt编译报错</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘fmemopen’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">2</span>: 警告：隐式声明函数‘funopen’ [-Wimplicit-function-declaration]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">  ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">5</span>: 警告：赋值时将整数赋给指针，未作类型转换 [默认启用]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">     ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘mstream_seek’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">214</span>:<span class="number">7</span>: 错误：将‘fpos_t’赋值给‘<span class="keyword">int</span>’时类型不兼容</span><br><span class="line">   off = pos;</span><br><span class="line">       ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">217</span>:<span class="number">19</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;vsize + pos;</span><br><span class="line">                   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">220</span>:<span class="number">20</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;curpos + pos;</span><br><span class="line">                    ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">225</span>:<span class="number">3</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">   <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">228</span>:<span class="number">2</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">  <span class="keyword">return</span>(off);</span><br><span class="line">  ^</span><br><span class="line">make[<span class="number">2</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>exercises/fmemopen.c.o] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>all] 错误 <span class="number">2</span></span><br><span class="line"><span class="string">make:</span> *** [all] 错误 <span class="number">2</span></span><br></pre></td></tr></table></figure><p>3、单独编译源文件文件报错</p><p>1）make正常编译，个别文件编译出错<br>2）使用gcc timeout.c单独编译报错</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gcc <span class="keyword">timeout</span>.c</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘<span class="keyword">timeout</span>’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x168</span>)：对‘makethread’未定义的引用</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘main’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1c0</span>)：对‘pthread_mutexattr_init’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1dd</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1ec</span>)：对‘pthread_mutexattr_settype’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x209</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x235</span>)：对‘err_exit’未定义的引用</span><br><span class="line">collect2: 错误：ld 返回 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>缺少依赖文件，手动添加<code>#include &quot;./detach.c&quot;</code>。增加</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>apue-4</title>
+      <link href="/2019/09/07/apue-4/"/>
+      <url>/2019/09/07/apue-4/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kong网关--</title>
+      <link href="/2019/08/29/kong-base/"/>
+      <url>/2019/08/29/kong-base/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><pre><code>yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</code></pre><p>如果配置了yum源，可以直接yum安装</p><h4 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h4><pre><code>sudo yum update -ysudo yum install -y wgetwget https://bintray.com/kong/kong-rpm/rpm -O bintray-kong-kong-rpm.repoexport major_version=`grep -oE &apos;[0-9]+\.[0-9]+&apos; /etc/redhat-release | cut -d &quot;.&quot; -f1`sed -i -e &apos;s/baseurl.*/&amp;\/centos\/&apos;$major_version&apos;&apos;/ bintray-kong-kong-rpm.reposudo mv bintray-kong-kong-rpm.repo /etc/yum.repos.d/sudo yum update -ysudo yum install -y kong</code></pre><h4 id="有数据库模式"><a href="#有数据库模式" class="headerlink" title="有数据库模式"></a>有数据库模式</h4><p>依赖于PostgreSQL</p><p>创建kong.conf</p><pre><code>cp /etc/kong/kong.conf.default /etc/kong/kong.conf</code></pre><p>报错：</p><ol><li><p>Error: [PostgreSQL error] failed to check legacy schema state: ERROR: function to_regclass(unknown) does not exist (12)</p><p>Run with –v (verbose) or –vv (debug) for more details<br>解决方案：postgresql版本不兼容问题，升级psql</p></li></ol><h4 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><h3 id="kong监控UI"><a href="#kong监控UI" class="headerlink" title="kong监控UI"></a>kong监控UI</h3><p>kong-dashboard</p><p>1、<br>2、重新启动报错：<br>kong-dashboard start –kong-url <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Connecting to Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a> …<br>Could not reach Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Error details:<br>{ Error: getaddrinfo ENOTFOUND kong kong:8001<br>    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)<br>  errno: ‘ENOTFOUND’,<br>  code: ‘ENOTFOUND’,<br>  syscall: ‘getaddrinfo’,<br>  hostname: ‘kong’,<br>  host: ‘kong’,<br>  port: ‘8001’ }</p><h3 id="konga"><a href="#konga" class="headerlink" title="konga"></a>konga</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> SpringCloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>es6-assign</title>
+      <link href="/2019/08/20/es6-assign/"/>
+      <url>/2019/08/20/es6-assign/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Serverless是什么</title>
       <link href="/2019/08/16/serverless-base/"/>
       <url>/2019/08/16/serverless-base/</url>
@@ -21,7 +111,7 @@
       <link href="/2019/08/15/spring-cloud-zuul/"/>
       <url>/2019/08/15/spring-cloud-zuul/</url>
       
-        <content type="html"><![CDATA[<p>nginx、zuul、gateway、kong都是网管组件。</p><a id="more"></a><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>nginx使用漏桶算法</p><p><code>limit_req_zone</code><br><code>limit_req_conn</code></p><h2 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h2><p>kong可以说是nginx的升级版，基于OpenResty。</p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ol><li>upstream</li><li>target</li><li>service</li><li>route</li></ol><h3 id="限流-1"><a href="#限流-1" class="headerlink" title="限流"></a>限流</h3><h2 id="Zuul1-Zuul2"><a href="#Zuul1-Zuul2" class="headerlink" title="Zuul1 / Zuul2"></a>Zuul1 / Zuul2</h2><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><p>按照生命周期大约有4种过滤器：</p><ol><li><p>pre </p></li><li><p>routing</p></li><li><p>post </p></li><li><p>error</p></li></ol><h3 id="限流-2"><a href="#限流-2" class="headerlink" title="限流"></a>限流</h3><p>主流的有4种限流方式：</p><ol><li>根据认证用户</li><li>根据原始请求</li><li>根据URL</li><li>根据ServiceId</li></ol><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>zuul-ratelimit</p>]]></content>
+        <content type="html"><![CDATA[<p>nginx、zuul、gateway、kong都是网管组件。</p><a id="more"></a><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>nginx使用漏桶算法</p><p><code>limit_req_zone</code><br><code>limit_req_conn</code></p><h3 id="限流-1"><a href="#限流-1" class="headerlink" title="限流"></a>限流</h3><h2 id="Zuul1-Zuul2"><a href="#Zuul1-Zuul2" class="headerlink" title="Zuul1 / Zuul2"></a>Zuul1 / Zuul2</h2><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><p>按照生命周期大约有4种过滤器：</p><ol><li><p>pre </p></li><li><p>routing</p></li><li><p>post </p></li><li><p>error</p></li></ol><h3 id="限流-2"><a href="#限流-2" class="headerlink" title="限流"></a>限流</h3><p>主流的有4种限流方式：</p><ol><li>根据认证用户</li><li>根据原始请求</li><li>根据URL</li><li>根据ServiceId</li></ol><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>zuul-ratelimit</p><h2 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h2><p>kong可以说是nginx的升级版，基于OpenResty。</p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ol><li>upstream</li><li>target</li><li>service</li><li>route</li></ol>]]></content>
       
       
       
@@ -67,25 +157,6 @@
         <tags>
             
             <tag> NetWork </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>瓶颈期</title>
-      <link href="/2019/07/30/thinking-in-bottleneck/"/>
-      <url>/2019/07/30/thinking-in-bottleneck/</url>
-      
-        <content type="html"><![CDATA[<p>这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，呆在其中，却无法突破。也许这就是所谓的瓶颈期。</p><a id="more"></a>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Life </tag>
             
         </tags>
       
@@ -202,7 +273,7 @@
       <link href="/2019/06/21/spring-security-jwt/"/>
       <url>/2019/06/21/spring-security-jwt/</url>
       
-        <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：</p><p>完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p>]]></content>
+        <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：<br>(1) 完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>(2) session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。这样如果请求request中携带JSESSIONID就会存储相应的用户信息<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p><p>而且，注意tomcat本身也有session，如果请求中带有session会话，也会导致tomcat存储信息</p>]]></content>
       
       
       
@@ -241,7 +312,7 @@
       <link href="/2019/06/17/linux-zerocopy/"/>
       <url>/2019/06/17/linux-zerocopy/</url>
       
-        <content type="html"><![CDATA[<p>linux中的零拷贝技术</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p>]]></content>
+        <content type="html"><![CDATA[<p>linux中的零拷贝技术</p><a id="more"></a><h2 id="I-O原理"><a href="#I-O原理" class="headerlink" title="I/O原理"></a>I/O原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p><ol><li>硬件和系统之间的零拷贝</li><li>软件和系统之间的零拷贝</li></ol><h2 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h2><h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><h4 id="SIGBUS中断"><a href="#SIGBUS中断" class="headerlink" title="SIGBUS中断"></a>SIGBUS中断</h4><p>其他进程同时对文件的操作导致write系统调用中断</p><p>解决方法：</p><p>方案1. 增加SIGBUS错误信号处理<br>方案2. 对文件加锁，当有其它的进程对文件进行操作时，触发SIGBUS中断</p><h2 id="sendfile"><a href="#sendfile" class="headerlink" title="sendfile"></a>sendfile</h2><h3 id="局限性-1"><a href="#局限性-1" class="headerlink" title="局限性"></a>局限性</h3><h4 id="数据污染"><a href="#数据污染" class="headerlink" title="数据污染"></a>数据污染</h4><p>叶缓存可能被污染</p><h2 id="改进版sendfile"><a href="#改进版sendfile" class="headerlink" title="改进版sendfile"></a>改进版sendfile</h2><p>文件描述符拷贝</p><h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>FileChannel类</p><p>MappedByteBuffer类</p>]]></content>
       
       
       
@@ -388,7 +459,7 @@
       <link href="/2019/06/12/spring-cloud-ribbon/"/>
       <url>/2019/06/12/spring-cloud-ribbon/</url>
       
-        <content type="html"><![CDATA[<h2 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h2><h2 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h2><h2 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h2>]]></content>
+        <content type="html"><![CDATA[<p>在wei服务中刚开始使用dubbo通信，后来改为ribbon/feign，feign实际上是在ribbon上又封装了一层</p><a id="more"></a><h2 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h2><h2 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h2><h2 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h2>]]></content>
       
       
       
@@ -1177,9 +1248,15 @@
       <link href="/2019/01/23/spring-cloud-eureka/"/>
       <url>/2019/01/23/spring-cloud-eureka/</url>
       
-        <content type="html"><![CDATA[<h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h2><h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><h2 id="Consule"><a href="#Consule" class="headerlink" title="Consule"></a>Consule</h2>]]></content>
+        <content type="html"><![CDATA[<p>著名的CAP理论，Eureka满足AP理论，ZK、Consul满足CP理论</p><a id="more"></a><p>最早接触的是zk，当时没怎么分析，水货</p><h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol><li>服务注册快，不需要将注册信息同步到其他节点</li><li>不同的节点注册信息可以不一致，保证了高可用A</li></ol><h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p>为了满足强一致性C，导致以下缺点</p><ol><li>服务注册慢，必须满足半数的节点写入成功才认为注册成功</li><li>Leader宕机，为了强一致性，整个集群不可用，牺牲了高可用</li></ol><h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> SpringCloud </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2259,73 +2336,23 @@
     
     
     <entry>
-      <title>MySQL索引</title>
-      <link href="/2018/09/28/mysql-index/"/>
-      <url>/2018/09/28/mysql-index/</url>
+      <title>Java虚拟机(一)</title>
+      <link href="/2018/09/28/java-jvm/"/>
+      <url>/2018/09/28/java-jvm/</url>
       
-        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+        <content type="html"><![CDATA[<p>JVM运行时栈帧模型</p><a id="more"></a> <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、<br>操作数栈、<br>动态链接、<br>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，用于存储本地方法的执行栈</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：<br>常量<br>静态变量<br>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h4 id="PernGen和Metaspace"><a href="#PernGen和Metaspace" class="headerlink" title="PernGen和Metaspace"></a>PernGen和Metaspace</h4><p>PermGen：<br>永久代只是方法区在HotSpot虚拟机中的一种实现。其它类型的虚拟机没有永久代的概念。</p><p>jdk1.7:<br>原来存储在永久代的部分数据，现在分配到Java Heap/Native Heap。</p><p>jdk1.8:</p><blockquote><p>符号引用转移到native heap<br>字面量转移到Java heap<br>类的静态变量转移到Java heap<br>参数<code>-XX:PermSize -XX:MaxPermSize</code>已经失效<br>MetaSpac不在jvm中，而是使用本地内存，默认情况下，仅受本地内存限制，<br>参数<code>-XX:MetaspaceSize -XX:MaxMetaspaceSize</code>，用于限制元数据区空间，<strong>默认</strong>大小为20MB<br>参数<code>-XX:MinMetaspaceFreeRation -XX:MaxMetaspaceFreeRation</code>，用于控制GC后剩余空间容纳的百分比<br>参数<code>-XX:MinMetaspaceExpansion -XX:MaxMetaspaceExpansion</code>，用于控制元空间增长幅度<br>参数<code>-XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code>会在Metaspace空间分配空间，导致默认20MB失效</p></blockquote><p>Metaspace的优点：</p><blockquote><p>jar包和应用的class文件存放在永久代，如果jar包很多，可能导致永久代溢出<br>每个应用都有自己的永久代，改用Metaspace后，应用可以共享同样的class内存空间，例如：两个项目都引用rt.jar，在元空间只保留一份</p></blockquote><p>Metaspace对GC性能的提升：</p><blockquote><p>Full GC中，指向元数据的指针不需要扫描，减少了GC开销；减少了GC Roots对象的扫描<br>元空间只有少量的指针指向Java heap，<br>避免了元数据压缩的开销</p></blockquote><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
       
       
       <categories>
           
-          <category> MySQL </category>
+          <category> JVM </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java加载器</title>
-      <link href="/2018/09/28/java-classloader/"/>
-      <url>/2018/09/28/java-classloader/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java多线程</title>
-      <link href="/2018/09/28/java-multithread/"/>
-      <url>/2018/09/28/java-multithread/</url>
-      
-        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
+            <tag> java, jvm </tag>
             
         </tags>
       
@@ -2359,6 +2386,56 @@
     
     
     <entry>
+      <title>Java多线程</title>
+      <link href="/2018/09/28/java-multithread/"/>
+      <url>/2018/09/28/java-multithread/</url>
+      
+        <content type="html"><![CDATA[<h2 id="物理内存模型"><a href="#物理内存模型" class="headerlink" title="物理内存模型"></a>物理内存模型</h2><p>缓存一致性：</p><p>处理器访问缓存(cache)时遵守的一些协议：MSI、MESI、MOSI、Synapse、Firefly、Dragon Protocol</p><p>指令重排序：</p><h2 id="JVM的内存模型："><a href="#JVM的内存模型：" class="headerlink" title="JVM的内存模型："></a>JVM的内存模型：</h2><p>主内存：所有的变量都存储在主内存，类似于物理机的主内存。对应于Java堆中对象实例数据部分。</p><p>工作内存：每条线程都有自己的工作内存，该区域保存了该线程使用到的变量的副本拷贝，类似于物理机的高速缓存。对应于虚拟机栈中的部分区域。</p><h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile的2种特性：</p><p>1、保证此变量对所有线程的可见性</p><p>2、禁止指令重排序优化。</p><p>volatile在单例模式中的应用：</p><h3 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h3><ol><li><p>原子性：</p></li><li><p>可见性：</p><p> volatile：</p><p> synchronized：对一个变量执行unlock操作之前，必须先把此变量同步回主内存。</p><p> final：被final修饰的字段在构造器中一旦初始化完成，并且构造器没有把this的引用传递出去，那在其他线程中就能看见final字段的值。</p></li><li><p>有序性</p></li></ol><a id="more"></a> <h3 id="先行发生原则"><a href="#先行发生原则" class="headerlink" title="先行发生原则"></a>先行发生原则</h3><p>用于判断数据是否存在竞争、线程是否安全</p><p>原则：</p><blockquote><p>程序次序原则</p><p>管程锁定原则</p><p>volatile变量原则</p><p>线程启动原则</p><p>线程终止原则</p><p>线程中断原则</p><p>对象终结原则</p><p>传递性</p></blockquote><p>如果两个操作之间的关系不存在此列，并且无法由此规则推导出来，它们之间就没有顺序性保障，虚拟机可以对它们进行重排序。</p><h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h2><p>并发不一定要依赖多线程，PHP中很常见的多进程并发。</p><p>实现线程有3种方式：</p><ol><li>使用内核线程实现</li><li>使用用户线程实现</li><li>使用用户线程 + 轻量级进程混合实现</li></ol><p>Java线程的实现：</p><p>jdk1.2之前，基于用户线程实现</p><p>jdk1.2中，基于操作系统原生线程模型实现</p><h3 id="Java线程调度"><a href="#Java线程调度" class="headerlink" title="Java线程调度"></a>Java线程调度</h3><p>线程调度的2种方式：</p><ol><li>协同式调度：线程的执行时间是由线程本身控制的</li><li>抢占式调度：每个线程由系统来分配执行时间。Java使用的就是抢占式调度</li></ol><h3 id="Java线程的状态"><a href="#Java线程的状态" class="headerlink" title="Java线程的状态"></a>Java线程的状态</h3><ol><li>新建</li><li>运行：处于此状态的线程可能正在执行，也可能正在等待CPU为它分配执行时间</li><li>无限期等待：此状态的线程不会被分配CPU执行时间，需要等待其它线程显式唤醒</li><li>限期等待：此状态的线程也不会被分配CPU执行时间，不过无需等待被其它线程显式唤醒，在一定时间后由系统自动唤醒。</li><li>阻塞：线程被阻塞，等待其它排他锁</li><li>结束：</li></ol><h2 id="Java线程安全的实现："><a href="#Java线程安全的实现：" class="headerlink" title="Java线程安全的实现："></a>Java线程安全的实现：</h2><ol><li>互斥同步(阻塞同步)：synchronized、ReentrantLock</li><li><p>非阻塞同步：基于冲突检测的乐观并发策略，</p><p> CAS：比较并交换。CAS存在ABA问题</p></li></ol><ol start="3"><li><p>无同步方案</p><p> 可重入代码(纯代码)：</p><p> 线程本地存储：</p></li></ol><h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><ol><li>自旋锁、自适应自旋锁</li><li>锁消除：</li><li>锁粗化：</li><li>轻量级锁：在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量带来的性能消耗</li><li>偏向锁：消除数据在无竞争的情况下的同步原语，进一步提高程序的运行性能。偏向锁可以提高带有同步但无竞争的程序性能。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL索引</title>
+      <link href="/2018/09/28/mysql-index/"/>
+      <url>/2018/09/28/mysql-index/</url>
+      
+        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深入理解计算机系统--存储</title>
       <link href="/2018/09/28/csapp-cache/"/>
       <url>/2018/09/28/csapp-cache/</url>
@@ -2384,23 +2461,23 @@
     
     
     <entry>
-      <title>Java虚拟机(一)</title>
-      <link href="/2018/09/28/java-jvm/"/>
-      <url>/2018/09/28/java-jvm/</url>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
       
-        <content type="html"><![CDATA[<p>JVM运行时栈帧模型</p><a id="more"></a> <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、<br>操作数栈、<br>动态链接、<br>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，用于存储本地方法的执行栈</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：<br>常量<br>静态变量<br>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h4 id="PernGen和Metaspace"><a href="#PernGen和Metaspace" class="headerlink" title="PernGen和Metaspace"></a>PernGen和Metaspace</h4><p>PermGen：<br>永久代只是方法区在HotSpot虚拟机中的一种实现。其它类型的虚拟机没有永久代的概念。</p><p>jdk1.7:<br>原来存储在永久代的部分数据，现在分配到Java Heap/Native Heap。</p><p>jdk1.8:</p><blockquote><p>符号引用转移到native heap<br>字面量转移到Java heap<br>类的静态变量转移到Java heap<br>参数<code>-XX:PermSize -XX:MaxPermSize</code>已经失效<br>MetaSpac不在jvm中，而是使用本地内存，默认情况下，仅受本地内存限制，<br>参数<code>-XX:MetaspaceSize -XX:MaxMetaspaceSize</code>，用于限制元数据区空间，<strong>默认</strong>大小为20MB<br>参数<code>-XX:MinMetaspaceFreeRation -XX:MaxMetaspaceFreeRation</code>，用于控制GC后剩余空间容纳的百分比<br>参数<code>-XX:MinMetaspaceExpansion -XX:MaxMetaspaceExpansion</code>，用于控制元空间增长幅度<br>参数<code>-XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code>会在Metaspace空间分配空间，导致默认20MB失效</p></blockquote><p>Metaspace的优点：</p><blockquote><p>jar包和应用的class文件存放在永久代，如果jar包很多，可能导致永久代溢出<br>每个应用都有自己的永久代，改用Metaspace后，应用可以共享同样的class内存空间，例如：两个项目都引用rt.jar，在元空间只保留一份</p></blockquote><p>Metaspace对GC性能的提升：</p><blockquote><p>Full GC中，指向元数据的指针不需要扫描，减少了GC开销；减少了GC Roots对象的扫描<br>元空间只有少量的指针指向Java heap，<br>避免了元数据压缩的开销</p></blockquote><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> CSAPP </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java, jvm </tag>
+            <tag> CSAPP </tag>
             
         </tags>
       
@@ -2434,23 +2511,23 @@
     
     
     <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
+      <title>Java加载器</title>
+      <link href="/2018/09/28/java-classloader/"/>
+      <url>/2018/09/28/java-classloader/</url>
       
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
           
-          <category> CSAPP </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> CSAPP </tag>
+            <tag> Java </tag>
             
         </tags>
       
@@ -2934,7 +3011,7 @@
       <link href="/2018/09/04/mongodb-base/"/>
       <url>/2018/09/04/mongodb-base/</url>
       
-        <content type="html"><![CDATA[<p>可以说2015年开始接触mongodb，记得那时候看node.js比较多，那时候node.js还是0.x版本…如今早已物是人非。</p><a id="more"></a><h2 id="tar-gz安装"><a href="#tar-gz安装" class="headerlink" title="tar.gz安装"></a>tar.gz安装</h2><p>安装</p><pre><code>tar -xzvf mongodb-linux-x86_64-rhel70-4.0.2.tgzmv mongodb-linux-x86_64-rhel70-4.0.2 mongodbmkdir -p /data/db</code></pre><p>后台启动服务</p><pre><code>cd mongodb/bin./mongod &amp;</code></pre><p>进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell</p><pre><code>cd mongodb/bin./mongo</code></pre><blockquote><p>show dbs</p><p>use local</p><p>db</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>可以说2015年开始接触mongodb，记得那时候看node.js比较多，那时候node.js还是0.x版本…如今早已物是人非。</p><a id="more"></a><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>mongodb属于NoSQL数据库，NoSQL分为4种：</p><ol><li>键值存储。Memcached/Redis</li><li>文档存储。MongoDB/CouchDB</li><li>列存储。 Cassandra/Hbase</li><li>图形数据库。Neo4j</li></ol><p><strong>注意</strong> MongoDB4.0增加了事务</p><h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><h3 id="tar编译安装"><a href="#tar编译安装" class="headerlink" title="tar编译安装"></a>tar编译安装</h3><pre><code>tar -xzvf mongodb-linux-x86_64-rhel70-4.0.2.tgzmv mongodb-linux-x86_64-rhel70-4.0.2 mongodbmkdir -p /data/db</code></pre><h4 id="后台启动服务"><a href="#后台启动服务" class="headerlink" title="后台启动服务"></a>后台启动服务</h4><pre><code>cd mongodb/bin./mongod &amp;</code></pre><h4 id="进入REPL-Read-Eval-Print-Loop-，-即交互式命令行shell"><a href="#进入REPL-Read-Eval-Print-Loop-，-即交互式命令行shell" class="headerlink" title="进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell"></a>进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell</h4><pre><code>cd mongodb/bin./mongo</code></pre><blockquote><p>show dbs</p><p>use local</p><p>db</p></blockquote><h2 id="Mac安装"><a href="#Mac安装" class="headerlink" title="Mac安装"></a>Mac安装</h2><pre><code>// 普通安装brew install monngodb// 添加ssl模块安装brew install mongodb --with-openssl// 最新开发版本安装brew install mongodb --devel</code></pre><h4 id="启动REPL客户端"><a href="#启动REPL客户端" class="headerlink" title="启动REPL客户端"></a>启动REPL客户端</h4><p>mac默认安装在<code>/usr/local/Cellar</code>目录，</p><pre><code>/usr/local/Cellar/mongodb/4.0.3_1/bin/mongo</code></pre>]]></content>
       
       
       <categories>
@@ -2959,7 +3036,7 @@
       <link href="/2018/09/04/postgresql-base/"/>
       <url>/2018/09/04/postgresql-base/</url>
       
-        <content type="html"><![CDATA[<p>写这一篇博客的意义就是让自己保持经常写作的习惯，否则超过三天不写，就会一直拖延、逃避，不想当架构师的码农不是好程序员。</p><a id="more"></a><h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><h3 id="yum安装"><a href="#yum安装" class="headerlink" title="yum安装"></a>yum安装</h3><pre><code>yum install postgresql-server</code></pre><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code>postgresql-setup initdb</code></pre><h3 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h3><pre><code>systemctl enable postgresql.servicesystemctl start postgresql.service</code></pre><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><pre><code>CREATE USER postgres WITH PASSWORD &apos;&apos;;DROP DATABASE postgres;CREATE DATABASE postgres OWNER postgres;GRANT ALL PRIVILEGES ON DATABASE postgres to postgres;ALTER ROLE postgres CREATEDB;</code></pre><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>切换用户</p><pre><code>su - postgres</code></pre><p>登录</p><pre><code>psql -U [user] -d [database] -h [host] -p [password]</code></pre><ol><li><p>默认登陆</p><pre><code>psql</code></pre></li><li><p>用户名密码登录</p><p>  psql -U postgres -d postgres</p></li></ol><p>常用REPL命令</p><pre><code>退出 Ctrl + D;\password：设置当前登录用户的密码\h：查看SQL命令的解释，比如\h select。\?：查看psql命令列表。\l：列出所有数据库。\c [database_name]：连接其他数据库。\d：列出当前数据库的所有表格。\d [table_name]：列出某一张表格的结构。\du：列出所有用户。\e：打开文本编辑器。\conninfo：列出当前数据库和连接的信息。\password [user]: 修改用户密码\q：退出</code></pre><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>创建数据库、创建表、数据操作都符合SQL语法</p><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>默认安装目录在<code>/usr/local/Cellar</code></p><pre><code>brew install postgresql</code></pre><p>查看安装版本</p><pre><code>psql --version pg_ctl -V// 进入数据库psql -d postgres</code></pre><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><p>初始化会在<code>/usr/local/var</code>生成postgres目录</p><pre><code>initdb /usr/local/var/postgres -E utf8</code></pre><h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><p>在目录<code>~/Library/LaunchAgents</code>设置代理</p><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code>// 后台启动postgresqlbrew services start postgresql// 前台启动postgres -D /usr/local/var/postgres// 停止postgresqlbrew services stop postgresql// 重启postgresqlbrew services restart postgresql</code></pre><h3 id="查看启动成功"><a href="#查看启动成功" class="headerlink" title="查看启动成功"></a>查看启动成功</h3><pre><code>ps -ef |grep postgres</code></pre><h3 id="命令行操作数据库"><a href="#命令行操作数据库" class="headerlink" title="命令行操作数据库"></a>命令行操作数据库</h3><pre><code>psqlpsql -h localhost// 使用超级用户登录psql -d postgres</code></pre><h3 id="开机自启动-1"><a href="#开机自启动-1" class="headerlink" title="开机自启动"></a>开机自启动</h3><p>设置开机自启动</p><pre><code>// 建立软连接ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents // 加载launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</code></pre><p>取消开机自启动</p><pre><code>// 卸载launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist// 移除rm -rf ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</code></pre><h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><pre><code>brew uninstall postgres</code></pre><h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><h3 id="mac下命令行连接错误"><a href="#mac下命令行连接错误" class="headerlink" title="mac下命令行连接错误"></a>mac下命令行连接错误</h3><pre><code>psql: could not connect to server: No such file or directoryIs the server running locally and acceptingconnections on Unix domain socket &quot;/tmp/.s.PGSQL.5432&quot;?</code></pre><h3 id="Navicat客户端连接错误"><a href="#Navicat客户端连接错误" class="headerlink" title="Navicat客户端连接错误"></a>Navicat客户端连接错误</h3><pre><code>FATAL:  role &quot;postgres&quot; does not exist</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>写这一篇博客的意义就是让自己保持经常写作的习惯，否则超过三天不写，就会一直拖延、逃避，不想当架构师的码农不是好程序员。</p><a id="more"></a><h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><h3 id="yum默认安装-可能导致安装版本过低"><a href="#yum默认安装-可能导致安装版本过低" class="headerlink" title="yum默认安装(可能导致安装版本过低)"></a>yum默认安装(可能导致安装版本过低)</h3><pre><code>yum install postgresql-server postgresql</code></pre><p>(推荐官网安装)</p><p><a href="https://www.postgresql.org/download/linux/redhat/" target="_blank" rel="noopener">官网</a></p><p>官方安装报错：</p><p>yum install <a href="https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm" target="_blank" rel="noopener">https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm</a><br>已加载插件：fastestmirror<br>无法打开 <a href="https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm" target="_blank" rel="noopener">https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm</a> ，跳过。<br>错误：无须任何处理</p><p>更新yum仓库：</p><pre><code>rpm -Uvh https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpmyum install -y postgresql10-server postgresql10</code></pre><p>也可以手动下载安装：<br><a href="https://yum.postgresql.org/rpmchart.php" target="_blank" rel="noopener">下载地址</a></p><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><pre><code>postgresql-setup initdb</code></pre><h3 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h3><pre><code>systemctl enable postgresql.servicesystemctl start postgresql.service</code></pre><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><pre><code>CREATE USER postgres WITH PASSWORD &apos;&apos;;DROP DATABASE postgres;CREATE DATABASE postgres OWNER postgres;GRANT ALL PRIVILEGES ON DATABASE postgres to postgres;ALTER ROLE postgres CREATEDB;</code></pre><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>切换用户</p><pre><code>su - postgres</code></pre><p>登录</p><pre><code>psql -U [user] -d [database] -h [host] -p [password]</code></pre><ol><li><p>默认登陆</p><pre><code>psql</code></pre></li><li><p>用户名密码登录</p><p>  psql -U postgres -d postgres</p></li></ol><p>常用REPL命令</p><pre><code>退出 Ctrl + D;\password：设置当前登录用户的密码\h：查看SQL命令的解释，比如\h select。\?：查看psql命令列表。\l：列出所有数据库。\c [database_name]：连接其他数据库。\d：列出当前数据库的所有表格。\d [table_name]：列出某一张表格的结构。\du：列出所有用户。\e：打开文本编辑器。\conninfo：列出当前数据库和连接的信息。\password [user]: 修改用户密码\q：退出</code></pre><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>创建数据库、创建表、数据操作都符合SQL语法</p><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>默认安装目录在<code>/usr/local/Cellar</code></p><pre><code>brew install postgresql</code></pre><p>查看安装版本</p><pre><code>psql --version pg_ctl -V// 进入数据库psql -d postgres</code></pre><h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><p>初始化会在<code>/usr/local/var</code>生成postgres目录</p><pre><code>initdb /usr/local/var/postgres -E utf8</code></pre><h3 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h3><p>在目录<code>~/Library/LaunchAgents</code>设置代理</p><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code>// 后台启动postgresqlbrew services start postgresql// 前台启动postgres -D /usr/local/var/postgres// 停止postgresqlbrew services stop postgresql// 重启postgresqlbrew services restart postgresql</code></pre><h3 id="查看启动成功"><a href="#查看启动成功" class="headerlink" title="查看启动成功"></a>查看启动成功</h3><pre><code>ps -ef |grep postgres</code></pre><h3 id="命令行操作数据库"><a href="#命令行操作数据库" class="headerlink" title="命令行操作数据库"></a>命令行操作数据库</h3><pre><code>psqlpsql -h localhost// 使用超级用户登录psql -d postgres</code></pre><h3 id="开机自启动-1"><a href="#开机自启动-1" class="headerlink" title="开机自启动"></a>开机自启动</h3><p>设置开机自启动</p><pre><code>// 建立软连接ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents // 加载launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</code></pre><p>取消开机自启动</p><pre><code>// 卸载launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist// 移除rm -rf ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</code></pre><h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><pre><code>brew uninstall postgres</code></pre><h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><h3 id="mac下命令行连接错误"><a href="#mac下命令行连接错误" class="headerlink" title="mac下命令行连接错误"></a>mac下命令行连接错误</h3><pre><code>psql: could not connect to server: No such file or directoryIs the server running locally and acceptingconnections on Unix domain socket &quot;/tmp/.s.PGSQL.5432&quot;?</code></pre><h3 id="Navicat客户端连接错误"><a href="#Navicat客户端连接错误" class="headerlink" title="Navicat客户端连接错误"></a>Navicat客户端连接错误</h3><pre><code>FATAL:  role &quot;postgres&quot; does not exist</code></pre><h3 id="命令行连接错误"><a href="#命令行连接错误" class="headerlink" title="命令行连接错误"></a>命令行连接错误</h3><ol><li><p>psql: FATAL:  Peer authentication failed for user “kong”</p></li><li><p>psql: FATAL:  Ident authentication failed for user “kong”<br>解决： 修改配置文件</p></li></ol><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /var/<span class="class"><span class="keyword">lib</span>/<span class="title">pgsql</span>/<span class="title">data</span>/<span class="title">pg_hba</span>.<span class="title">conf</span> </span></span><br><span class="line">systemctl reload postgresql</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>

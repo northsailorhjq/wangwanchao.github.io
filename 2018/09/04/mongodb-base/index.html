@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
 <meta property="og:description" content="可以说2015年开始接触mongodb，记得那时候看node.js比较多，那时候node.js还是0.x版本…如今早已物是人非。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-07T06:10:31.411Z">
+<meta property="og:updated_time" content="2019-08-27T08:27:15.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB基础环境搭建">
 <meta name="twitter:description" content="可以说2015年开始接触mongodb，记得那时候看node.js比较多，那时候node.js还是0.x版本…如今早已物是人非。">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-07 14:10:31" itemprop="dateModified" datetime="2018-12-07T14:10:31+08:00">2018-12-07</time>
+                <time title="Modified: 2019-08-27 16:27:15" itemprop="dateModified" datetime="2019-08-27T16:27:15+08:00">2019-08-27</time>
               
             
           </span>
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">319</span>
+                <span title="Symbols count in article">658</span>
               
 
               
@@ -526,18 +526,23 @@
       
         <p>可以说2015年开始接触mongodb，记得那时候看node.js比较多，那时候node.js还是0.x版本…如今早已物是人非。</p>
 <a id="more"></a>
-<h2 id="tar-gz安装"><a href="#tar-gz安装" class="headerlink" title="tar.gz安装"></a>tar.gz安装</h2><p>安装</p>
-<pre><code>tar -xzvf mongodb-linux-x86_64-rhel70-4.0.2.tgz
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>mongodb属于NoSQL数据库，NoSQL分为4种：</p>
+<ol>
+<li>键值存储。Memcached/Redis</li>
+<li>文档存储。MongoDB/CouchDB</li>
+<li>列存储。 Cassandra/Hbase</li>
+<li>图形数据库。Neo4j</li>
+</ol>
+<p><strong>注意</strong> MongoDB4.0增加了事务</p>
+<h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><h3 id="tar编译安装"><a href="#tar编译安装" class="headerlink" title="tar编译安装"></a>tar编译安装</h3><pre><code>tar -xzvf mongodb-linux-x86_64-rhel70-4.0.2.tgz
 
 mv mongodb-linux-x86_64-rhel70-4.0.2 mongodb
 
 mkdir -p /data/db
-</code></pre><p>后台启动服务</p>
-<pre><code>cd mongodb/bin
+</code></pre><h4 id="后台启动服务"><a href="#后台启动服务" class="headerlink" title="后台启动服务"></a>后台启动服务</h4><pre><code>cd mongodb/bin
 
 ./mongod &amp;
-</code></pre><p>进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell</p>
-<pre><code>cd mongodb/bin
+</code></pre><h4 id="进入REPL-Read-Eval-Print-Loop-，-即交互式命令行shell"><a href="#进入REPL-Read-Eval-Print-Loop-，-即交互式命令行shell" class="headerlink" title="进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell"></a>进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell</h4><pre><code>cd mongodb/bin
 
 ./mongo
 </code></pre><blockquote>
@@ -545,7 +550,15 @@ mkdir -p /data/db
 <p>use local</p>
 <p>db</p>
 </blockquote>
-
+<h2 id="Mac安装"><a href="#Mac安装" class="headerlink" title="Mac安装"></a>Mac安装</h2><pre><code>// 普通安装
+brew install monngodb
+// 添加ssl模块安装
+brew install mongodb --with-openssl
+// 最新开发版本安装
+brew install mongodb --devel
+</code></pre><h4 id="启动REPL客户端"><a href="#启动REPL客户端" class="headerlink" title="启动REPL客户端"></a>启动REPL客户端</h4><p>mac默认安装在<code>/usr/local/Cellar</code>目录，</p>
+<pre><code>/usr/local/Cellar/mongodb/4.0.3_1/bin/mongo
+</code></pre>
       
     </div>
 
@@ -662,7 +675,7 @@ mkdir -p /data/db
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">200</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -977,7 +990,7 @@ mkdir -p /data/db
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-gz安装"><span class="nav-number">1.</span> <span class="nav-text">tar.gz安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos7安装"><span class="nav-number">2.</span> <span class="nav-text">Centos7安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar编译安装"><span class="nav-number">2.1.</span> <span class="nav-text">tar编译安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后台启动服务"><span class="nav-number">2.1.1.</span> <span class="nav-text">后台启动服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进入REPL-Read-Eval-Print-Loop-，-即交互式命令行shell"><span class="nav-number">2.1.2.</span> <span class="nav-text">进入REPL(Read-Eval-Print Loop)， 即交互式命令行shell</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac安装"><span class="nav-number">3.</span> <span class="nav-text">Mac安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动REPL客户端"><span class="nav-number">3.0.1.</span> <span class="nav-text">启动REPL客户端</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1012,7 +1025,7 @@ mkdir -p /data/db
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">200k</span>
+    <span title="Symbols count total">206k</span>
   
 
   
@@ -1023,7 +1036,7 @@ mkdir -p /data/db
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:02</span>
+    <span title="Reading time total">3:07</span>
   
 </div>
 

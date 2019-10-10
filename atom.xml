@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-08-16T03:29:52.528Z</updated>
+  <updated>2019-10-10T07:18:31.037Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>瓶颈期</title>
+    <link href="http://wangwanchao.wang/2019/10/09/thinking-in-bottleneck/"/>
+    <id>http://wangwanchao.wang/2019/10/09/thinking-in-bottleneck/</id>
+    <published>2019-10-09T02:46:07.000Z</published>
+    <updated>2019-10-10T07:18:31.037Z</updated>
+    
+    <content type="html"><![CDATA[<p>这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，困在其中，却无法突破。也许这就是所谓的瓶颈期。</p><a id="more"></a><p>从去年开始，我一直待在教育这个行业。在大的方向上，我喜欢过两个行业–教育、文化，每一个都是那种真挚而热烈的喜欢。可让我困惑的是，竟然始终未找到自己真心热爱去创造的东西。我承认自己多多少少有点理想主义，但我真心希望能够做出让人惊艳的产品。<br>在这短短的时间里，我竟然一直换了好几份工作，辞职后的这段时间里，我在想为什么？</p><ol><li><p>某联科技<br>：你为什么离职？<br>：产品规划了一年，还是没有落地，而且方向越来越不明确</p></li><li><p>某德教育<br>：你为什么离职？<br>：你经历过女领导给你穿小鞋吗？公司新起的项目，前期一直没有一个统筹的领导，中间突然来了一个女产品，任产品总监，为了争夺权力，开始勾心斗角</p></li><li><p>某来教育<br>：你为什么离职？<br>我开始思考经历的一切，让我得出一下结论<br>：1、部门对接问题，你很难理解，在这样的公司，对接竟然一直存在问题，尤其是前期，两个系统并行开发， 就导致很多开发的内容需要不断的调整，更为恶心的是产品不画原型！我是从来没有经历过这种事情的，激情慢慢的消褪；2、同事的问题，中间内部对接的有一位同事是某理毕业，虽然我并非名校，但是一些经验上，明明是对的，她竟然为自己辩护，原来接受过高等教育的人也会这么不辨是非；3、领导的问题，一次述职，我觉得自己表达的虽然没有那么完美，但是过程中领导那种傲慢的姿态，还因为一个http状态码的问题问我看过RFC文档吗？实际上跟RFC没有任何关系</p></li><li><p>某浦教育<br>：你为什么离职？<br>：三个月内，同事换了好几波，公司文化氛围实在让人不理解</p></li></ol><p>有时候，我在想，是不是互联网产品注定了快速试水、快速迭代、最后快速消失？而当初那些怀着梦想–’代码改变世界’的人注定消失在人海？期间我甚至想过去当一个图书管理员，Linux毫无疑问是最伟大的软件，可如何用软件改变人们的生活？让我一直在问：make the world better or worse?</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，困在其中，却无法突破。也许这就是所谓的瓶颈期。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Life" scheme="http://wangwanchao.wang/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务--链路监控()</title>
+    <link href="http://wangwanchao.wang/2019/09/11/spring-cloud-slueth/"/>
+    <id>http://wangwanchao.wang/2019/09/11/spring-cloud-slueth/</id>
+    <published>2019-09-11T13:53:40.000Z</published>
+    <updated>2019-10-10T06:27:17.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>链路监控主要用来监控</p><a id="more"></a><h2 id="Sleuth"><a href="#Sleuth" class="headerlink" title="Sleuth"></a>Sleuth</h2><h2 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;链路监控主要用来监控&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>apue-base-1</title>
+    <link href="http://wangwanchao.wang/2019/09/07/apue-base-1/"/>
+    <id>http://wangwanchao.wang/2019/09/07/apue-base-1/</id>
+    <published>2019-09-07T05:53:10.000Z</published>
+    <updated>2019-09-20T06:01:54.210Z</updated>
+    
+    <content type="html"><![CDATA[<p>编译apue源码</p><a id="more"></a><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p>使用CLion快捷生成，<strong>注意：有些依赖库MacOS不支持</strong></p><h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><p>内核环境：</p><pre><code>uname -aLinux localhost.localdomain 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre><p>make编译报错：</p><p>1、错误一 </p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gcc -ansi -I../<span class="keyword">include</span> -Wall -DLINUX -D_GNU_SOURCE  barrier.c -o barrier  -L../<span class="class"><span class="keyword">lib</span> -<span class="title">lapue</span> -<span class="title">pthread</span> -<span class="title">lrt</span> -<span class="title">lbsd</span></span></span><br><span class="line">/tmp/ccGw8KOc.o：在函数‘thr_fn’中：</span><br><span class="line">barrier.<span class="symbol">c:</span>(.text+<span class="number">0x80</span>)：对‘heapsort’未定义的引用</span><br><span class="line"><span class="symbol">collect2:</span> 错误：ld 返回 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [barrier] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: 离开目录“/usr/local/apue.<span class="number">3e</span>/threads”</span><br><span class="line"><span class="symbol">make:</span> *** [all] 错误 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>解决：安装libbsd、libbsd-devel依赖</p><p>2、cmake-make编译整个项目报错 添加CMakeLists.txt编译报错</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘fmemopen’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">2</span>: 警告：隐式声明函数‘funopen’ [-Wimplicit-function-declaration]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">  ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">5</span>: 警告：赋值时将整数赋给指针，未作类型转换 [默认启用]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">     ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘mstream_seek’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">214</span>:<span class="number">7</span>: 错误：将‘fpos_t’赋值给‘<span class="keyword">int</span>’时类型不兼容</span><br><span class="line">   off = pos;</span><br><span class="line">       ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">217</span>:<span class="number">19</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;vsize + pos;</span><br><span class="line">                   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">220</span>:<span class="number">20</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;curpos + pos;</span><br><span class="line">                    ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">225</span>:<span class="number">3</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">   <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">228</span>:<span class="number">2</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">  <span class="keyword">return</span>(off);</span><br><span class="line">  ^</span><br><span class="line">make[<span class="number">2</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>exercises/fmemopen.c.o] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>all] 错误 <span class="number">2</span></span><br><span class="line"><span class="string">make:</span> *** [all] 错误 <span class="number">2</span></span><br></pre></td></tr></table></figure><p>3、单独编译源文件文件报错</p><p>1）make正常编译，个别文件编译出错<br>2）使用gcc timeout.c单独编译报错</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gcc <span class="keyword">timeout</span>.c</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘<span class="keyword">timeout</span>’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x168</span>)：对‘makethread’未定义的引用</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘main’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1c0</span>)：对‘pthread_mutexattr_init’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1dd</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1ec</span>)：对‘pthread_mutexattr_settype’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x209</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x235</span>)：对‘err_exit’未定义的引用</span><br><span class="line">collect2: 错误：ld 返回 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>缺少依赖文件，手动添加<code>#include &quot;./detach.c&quot;</code>。增加</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;编译apue源码&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>apue-4</title>
+    <link href="http://wangwanchao.wang/2019/09/07/apue-4/"/>
+    <id>http://wangwanchao.wang/2019/09/07/apue-4/</id>
+    <published>2019-09-07T05:47:15.000Z</published>
+    <updated>2019-09-07T05:47:15.236Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kong网关--</title>
+    <link href="http://wangwanchao.wang/2019/08/29/kong-base/"/>
+    <id>http://wangwanchao.wang/2019/08/29/kong-base/</id>
+    <published>2019-08-29T06:29:21.000Z</published>
+    <updated>2019-08-30T03:19:52.965Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><pre><code>yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</code></pre><p>如果配置了yum源，可以直接yum安装</p><h4 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h4><pre><code>sudo yum update -ysudo yum install -y wgetwget https://bintray.com/kong/kong-rpm/rpm -O bintray-kong-kong-rpm.repoexport major_version=`grep -oE &apos;[0-9]+\.[0-9]+&apos; /etc/redhat-release | cut -d &quot;.&quot; -f1`sed -i -e &apos;s/baseurl.*/&amp;\/centos\/&apos;$major_version&apos;&apos;/ bintray-kong-kong-rpm.reposudo mv bintray-kong-kong-rpm.repo /etc/yum.repos.d/sudo yum update -ysudo yum install -y kong</code></pre><h4 id="有数据库模式"><a href="#有数据库模式" class="headerlink" title="有数据库模式"></a>有数据库模式</h4><p>依赖于PostgreSQL</p><p>创建kong.conf</p><pre><code>cp /etc/kong/kong.conf.default /etc/kong/kong.conf</code></pre><p>报错：</p><ol><li><p>Error: [PostgreSQL error] failed to check legacy schema state: ERROR: function to_regclass(unknown) does not exist (12)</p><p>Run with –v (verbose) or –vv (debug) for more details<br>解决方案：postgresql版本不兼容问题，升级psql</p></li></ol><h4 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><h3 id="kong监控UI"><a href="#kong监控UI" class="headerlink" title="kong监控UI"></a>kong监控UI</h3><p>kong-dashboard</p><p>1、<br>2、重新启动报错：<br>kong-dashboard start –kong-url <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Connecting to Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a> …<br>Could not reach Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Error details:<br>{ Error: getaddrinfo ENOTFOUND kong kong:8001<br>    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)<br>  errno: ‘ENOTFOUND’,<br>  code: ‘ENOTFOUND’,<br>  syscall: ‘getaddrinfo’,<br>  hostname: ‘kong’,<br>  host: ‘kong’,<br>  port: ‘8001’ }</p><h3 id="konga"><a href="#konga" class="headerlink" title="konga"></a>konga</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;Centos7安装&quot;&gt;&lt;a href=&quot;#Centos7安装&quot; class=&quot;headerlink&quot; title=&quot;Centos7安装&quot;&gt;&lt;/a&gt;Centos7安装&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;yum install -y g
+      
+    
+    </summary>
+    
+    
+      <category term="SpringCloud" scheme="http://wangwanchao.wang/tags/SpringCloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>es6-assign</title>
+    <link href="http://wangwanchao.wang/2019/08/20/es6-assign/"/>
+    <id>http://wangwanchao.wang/2019/08/20/es6-assign/</id>
+    <published>2019-08-20T02:57:04.000Z</published>
+    <updated>2019-08-20T02:57:04.082Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Serverless是什么</title>
@@ -39,9 +147,9 @@
     <link href="http://wangwanchao.wang/2019/08/15/spring-cloud-zuul/"/>
     <id>http://wangwanchao.wang/2019/08/15/spring-cloud-zuul/</id>
     <published>2019-08-15T08:28:03.000Z</published>
-    <updated>2019-08-16T07:20:38.434Z</updated>
+    <updated>2019-09-09T02:22:07.793Z</updated>
     
-    <content type="html"><![CDATA[<p>nginx、zuul、gateway、kong都是网管组件。</p><a id="more"></a><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>nginx使用漏桶算法</p><p><code>limit_req_zone</code><br><code>limit_req_conn</code></p><h2 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h2><p>kong可以说是nginx的升级版，基于OpenResty。</p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ol><li>upstream</li><li>target</li><li>service</li><li>route</li></ol><h3 id="限流-1"><a href="#限流-1" class="headerlink" title="限流"></a>限流</h3><h2 id="Zuul1-Zuul2"><a href="#Zuul1-Zuul2" class="headerlink" title="Zuul1 / Zuul2"></a>Zuul1 / Zuul2</h2><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><p>按照生命周期大约有4种过滤器：</p><ol><li><p>pre </p></li><li><p>routing</p></li><li><p>post </p></li><li><p>error</p></li></ol><h3 id="限流-2"><a href="#限流-2" class="headerlink" title="限流"></a>限流</h3><p>主流的有4种限流方式：</p><ol><li>根据认证用户</li><li>根据原始请求</li><li>根据URL</li><li>根据ServiceId</li></ol><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>zuul-ratelimit</p>]]></content>
+    <content type="html"><![CDATA[<p>nginx、zuul、gateway、kong都是网管组件。</p><a id="more"></a><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>nginx使用漏桶算法</p><p><code>limit_req_zone</code><br><code>limit_req_conn</code></p><h3 id="限流-1"><a href="#限流-1" class="headerlink" title="限流"></a>限流</h3><h2 id="Zuul1-Zuul2"><a href="#Zuul1-Zuul2" class="headerlink" title="Zuul1 / Zuul2"></a>Zuul1 / Zuul2</h2><h3 id="过滤器Filter"><a href="#过滤器Filter" class="headerlink" title="过滤器Filter"></a>过滤器Filter</h3><p>按照生命周期大约有4种过滤器：</p><ol><li><p>pre </p></li><li><p>routing</p></li><li><p>post </p></li><li><p>error</p></li></ol><h3 id="限流-2"><a href="#限流-2" class="headerlink" title="限流"></a>限流</h3><p>主流的有4种限流方式：</p><ol><li>根据认证用户</li><li>根据原始请求</li><li>根据URL</li><li>根据ServiceId</li></ol><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>zuul-ratelimit</p><h2 id="Kong"><a href="#Kong" class="headerlink" title="Kong"></a>Kong</h2><p>kong可以说是nginx的升级版，基于OpenResty。</p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><ol><li>upstream</li><li>target</li><li>service</li><li>route</li></ol>]]></content>
     
     <summary type="html">
     
@@ -97,26 +205,6 @@
     
     
       <category term="NetWork" scheme="http://wangwanchao.wang/tags/NetWork/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>瓶颈期</title>
-    <link href="http://wangwanchao.wang/2019/07/30/thinking-in-bottleneck/"/>
-    <id>http://wangwanchao.wang/2019/07/30/thinking-in-bottleneck/</id>
-    <published>2019-07-30T02:46:07.000Z</published>
-    <updated>2019-08-03T03:23:00.500Z</updated>
-    
-    <content type="html"><![CDATA[<p>这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，呆在其中，却无法突破。也许这就是所谓的瓶颈期。</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这一段时间，我一直在思考的一个问题就是：我和别人到底差在哪里？我迷茫、困惑，陷入一个万劫不复的僵局，呆在其中，却无法突破。也许这就是所谓的瓶颈期。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Life" scheme="http://wangwanchao.wang/tags/Life/"/>
     
   </entry>
   
@@ -261,103 +349,13 @@
     <link href="http://wangwanchao.wang/2019/06/21/spring-security-jwt/"/>
     <id>http://wangwanchao.wang/2019/06/21/spring-security-jwt/</id>
     <published>2019-06-21T03:11:21.000Z</published>
-    <updated>2019-08-17T06:53:15.932Z</updated>
+    <updated>2019-08-19T01:05:12.763Z</updated>
     
-    <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：</p><p>完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p>]]></content>
+    <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：<br>(1) 完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>(2) session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。这样如果请求request中携带JSESSIONID就会存储相应的用户信息<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p><p>而且，注意tomcat本身也有session，如果请求中带有session会话，也会导致tomcat存储信息</p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--整合oauth2(五)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-oauth2/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-oauth2/</id>
-    <published>2019-06-21T03:11:03.000Z</published>
-    <updated>2019-06-21T03:20:28.898Z</updated>
-    
-    <content type="html"><![CDATA[<p>oauth2.0有4种认证模型</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在客户端和服务端中间，设置了一个授权层，客户端不能登陆服务端，只能登录中间授权层。</p><p>第一阶段使用account + secret登录中间层，获得token</p><p>第二阶段开始使用token进行权限验证</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;oauth2.0有4种认证模型&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--概览(一)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-base/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-base/</id>
-    <published>2019-06-21T03:07:55.000Z</published>
-    <updated>2019-06-24T02:05:51.456Z</updated>
-    
-    <content type="html"><![CDATA[<p>权限模型</p><a id="more"></a><h2 id="权限控制模型"><a href="#权限控制模型" class="headerlink" title="权限控制模型"></a>权限控制模型</h2><h3 id="自主访问控制-DAC"><a href="#自主访问控制-DAC" class="headerlink" title="自主访问控制 DAC"></a>自主访问控制 DAC</h3><h3 id="强制访问控制-MAC"><a href="#强制访问控制-MAC" class="headerlink" title="强制访问控制 MAC"></a>强制访问控制 MAC</h3><p>通过硬件实现</p><p>场景：安全要求较高的军事系统</p><h3 id="基于角色的访问控制-RBAC"><a href="#基于角色的访问控制-RBAC" class="headerlink" title="基于角色的访问控制 RBAC"></a>基于角色的访问控制 RBAC</h3><h4 id="RBAC0-基本模型"><a href="#RBAC0-基本模型" class="headerlink" title="RBAC0 基本模型"></a>RBAC0 基本模型</h4><p>U 用户<br>R 角色<br>P 权限</p><h4 id="RBAC1-角色分级模型"><a href="#RBAC1-角色分级模型" class="headerlink" title="RBAC1 角色分级模型"></a>RBAC1 角色分级模型</h4><ol><li>一般继承关系：允许角色之间多继承关系</li><li>受限继承关系：角色继承是一个树形的单继承关系</li></ol><p>优点：<br>缺点：<br>适用场景：</p><h4 id="RBAC2-角色限制模型"><a href="#RBAC2-角色限制模型" class="headerlink" title="RBAC2 角色限制模型"></a>RBAC2 角色限制模型</h4><ol><li>静态分离：互斥的角色不能赋给同一个用户</li><li>动态分离：用户不能使用两个互斥的角色登录</li></ol><h4 id="RBAC3-统一模型"><a href="#RBAC3-统一模型" class="headerlink" title="RBAC3 统一模型"></a>RBAC3 统一模型</h4><p>用户管理角色<br>角色关联权限</p><h3 id="基于属性的访问控制-ABAC"><a href="#基于属性的访问控制-ABAC" class="headerlink" title="基于属性的访问控制 ABAC"></a>基于属性的访问控制 ABAC</h3><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ol><li>用户属性 用户年龄</li><li>环境属性 当前时间</li><li>操作属性 读/写</li><li>资源属性 文章/图片</li></ol><h2 id="权限对象模型"><a href="#权限对象模型" class="headerlink" title="权限对象模型"></a>权限对象模型</h2><h3 id="按-分类："><a href="#按-分类：" class="headerlink" title="按  分类："></a>按  分类：</h3><p>页面权限 用户可以看到那些页面；<br>操作权限 用户可以在页面内进行那些操作，增删改查等；<br>数据权限 用户可以看到那些数据或内容；</p><h3 id="按-分类：-1"><a href="#按-分类：-1" class="headerlink" title="按  分类："></a>按  分类：</h3><p>功能权限<br>数据权限</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;权限模型&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Linux--零拷贝</title>
-    <link href="http://wangwanchao.wang/2019/06/17/linux-zerocopy/"/>
-    <id>http://wangwanchao.wang/2019/06/17/linux-zerocopy/</id>
-    <published>2019-06-17T02:13:56.000Z</published>
-    <updated>2019-06-17T02:23:02.181Z</updated>
-    
-    <content type="html"><![CDATA[<p>linux中的零拷贝技术</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>普通I/O：应用程序或者运行在用户模式下的库函数访问硬件设备时，I/O操作需要</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;linux中的零拷贝技术&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://wangwanchao.wang/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat--类加载模型(五)</title>
-    <link href="http://wangwanchao.wang/2019/06/16/tomcat-classloader/"/>
-    <id>http://wangwanchao.wang/2019/06/16/tomcat-classloader/</id>
-    <published>2019-06-16T04:15:30.000Z</published>
-    <updated>2019-06-16T04:47:48.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>tomcat类加载器破坏了jvm的双亲委派机制</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.catalina.startup;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Daemon reference.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">Object</span> catalinaDaemon = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">ClassLoader commonLoader = <span class="keyword">null</span>;</span><br><span class="line">ClassLoader catalinaLoader = <span class="keyword">null</span>;</span><br><span class="line">ClassLoader sharedLoader = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> initClassLoaders() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        commonLoader = createClassLoader(<span class="string">"common"</span>, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span> (commonLoader == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// no config file, default to this loader - we might be in a 'single' env.</span></span><br><span class="line">            commonLoader = <span class="keyword">this</span>.getClass().getClassLoader();</span><br><span class="line">        &#125;</span><br><span class="line">        catalinaLoader = createClassLoader(<span class="string">"server"</span>, commonLoader);</span><br><span class="line">        sharedLoader = createClassLoader(<span class="string">"shared"</span>, commonLoader);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">        handleThrowable(t);</span><br><span class="line">        <span class="built_in">log</span>.error(<span class="string">"Class loader creation threw exception"</span>, t);</span><br><span class="line">        System.<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><table><thead><tr><th>类加载器</th><th style="text-align:center">tomcat可见性</th><th style="text-align:center">webapp可见性</th></tr></thead><tbody><tr><td>commonLoader</td><td style="text-align:center">可见</td><td style="text-align:center">可见</td></tr><tr><td>catalinaLoader</td><td style="text-align:center">可见</td><td style="text-align:center">不可见</td></tr><tr><td>sharedLoader</td><td style="text-align:center">不可见</td><td style="text-align:center">可见</td></tr><tr><td>WebappClassLoader</td><td style="text-align:center">不可见</td><td style="text-align:center">只对当前web可见</td></tr></tbody></table><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ol><li>jar类库隔离：tomcat可以部署多个应用，如果引用多个不同版本的jar，类实现不同，所以需要加载不同的jar包</li><li>jar类库共享：如果jar版本相同，则只加载一份</li><li>安全隔离：tomcat自身的类加载器和web应用的类加载器隔离</li><li>热加载：jsp修改后不需要重启也可以刷新，这样就需要动态加载jsp文件</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;tomcat类加载器破坏了jvm的双亲委派机制&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="tomcat" scheme="http://wangwanchao.wang/tags/tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java-jmx</title>
-    <link href="http://wangwanchao.wang/2019/06/16/java-jmx/"/>
-    <id>http://wangwanchao.wang/2019/06/16/java-jmx/</id>
-    <published>2019-06-16T04:04:45.000Z</published>
-    <updated>2019-06-16T04:04:45.112Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
