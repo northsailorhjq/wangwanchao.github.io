@@ -2336,56 +2336,6 @@
     
     
     <entry>
-      <title>Java虚拟机(一)</title>
-      <link href="/2018/09/28/java-jvm/"/>
-      <url>/2018/09/28/java-jvm/</url>
-      
-        <content type="html"><![CDATA[<p>JVM运行时栈帧模型</p><a id="more"></a> <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、<br>操作数栈、<br>动态链接、<br>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，用于存储本地方法的执行栈</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：<br>常量<br>静态变量<br>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h4 id="PernGen和Metaspace"><a href="#PernGen和Metaspace" class="headerlink" title="PernGen和Metaspace"></a>PernGen和Metaspace</h4><p>PermGen：<br>永久代只是方法区在HotSpot虚拟机中的一种实现。其它类型的虚拟机没有永久代的概念。</p><p>jdk1.7:<br>原来存储在永久代的部分数据，现在分配到Java Heap/Native Heap。</p><p>jdk1.8:</p><blockquote><p>符号引用转移到native heap<br>字面量转移到Java heap<br>类的静态变量转移到Java heap<br>参数<code>-XX:PermSize -XX:MaxPermSize</code>已经失效<br>MetaSpac不在jvm中，而是使用本地内存，默认情况下，仅受本地内存限制，<br>参数<code>-XX:MetaspaceSize -XX:MaxMetaspaceSize</code>，用于限制元数据区空间，<strong>默认</strong>大小为20MB<br>参数<code>-XX:MinMetaspaceFreeRation -XX:MaxMetaspaceFreeRation</code>，用于控制GC后剩余空间容纳的百分比<br>参数<code>-XX:MinMetaspaceExpansion -XX:MaxMetaspaceExpansion</code>，用于控制元空间增长幅度<br>参数<code>-XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code>会在Metaspace空间分配空间，导致默认20MB失效</p></blockquote><p>Metaspace的优点：</p><blockquote><p>jar包和应用的class文件存放在永久代，如果jar包很多，可能导致永久代溢出<br>每个应用都有自己的永久代，改用Metaspace后，应用可以共享同样的class内存空间，例如：两个项目都引用rt.jar，在元空间只保留一份</p></blockquote><p>Metaspace对GC性能的提升：</p><blockquote><p>Full GC中，指向元数据的指针不需要扫描，减少了GC开销；减少了GC Roots对象的扫描<br>元空间只有少量的指针指向Java heap，<br>避免了元数据压缩的开销</p></blockquote><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JVM </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> java, jvm </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>架构基础</title>
-      <link href="/2018/09/28/architecture-base/"/>
-      <url>/2018/09/28/architecture-base/</url>
-      
-        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Architect </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Architect </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java多线程</title>
       <link href="/2018/09/28/java-multithread/"/>
       <url>/2018/09/28/java-multithread/</url>
@@ -2411,23 +2361,23 @@
     
     
     <entry>
-      <title>MySQL索引</title>
-      <link href="/2018/09/28/mysql-index/"/>
-      <url>/2018/09/28/mysql-index/</url>
+      <title>Java虚拟机(一)</title>
+      <link href="/2018/09/28/java-jvm/"/>
+      <url>/2018/09/28/java-jvm/</url>
       
-        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+        <content type="html"><![CDATA[<p>JVM运行时栈帧模型</p><a id="more"></a> <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>可以看作当前线程所执行的字节码的行号执行器。通过改变这个计数器的值来选取下一条要执行的字节码指令。</p><p>每个线程有自己独立的程序计数器，各线程之间计数器互不影响，独立存储。</p><h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>线程私有，生命周期和线程相同。<br>描述的Java方法执行的内存模型，每个方法在执行时都会创建一个栈帧：</p><blockquote><p>存储局部变量表、<br>操作数栈、<br>动态链接、<br>方法出口。</p></blockquote><h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>和Java虚拟机栈类似，用于存储本地方法的执行栈</p><h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>被所有线程共享的一块区域，在虚拟机启动时创建。该内存区的唯一目的就是存放对象实例。</p><p>逃逸分析技术：</p><p>栈上分配</p><p>标量替换</p><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>所有线程共享的内存区。用于存储：</p><blockquote><p>被虚拟机加载的类信息：<br>常量<br>静态变量<br>即时编译器编译后的代码</p></blockquote><h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>属于方法区的一部分。Class文件中的常量池在类加载后也会进入方法区的运行时常量池。还有常量池：编译期生成的各种字面量、符号引用、直接引用()。</p><p>例如String.intern()方法。</p><h4 id="PernGen和Metaspace"><a href="#PernGen和Metaspace" class="headerlink" title="PernGen和Metaspace"></a>PernGen和Metaspace</h4><p>PermGen：<br>永久代只是方法区在HotSpot虚拟机中的一种实现。其它类型的虚拟机没有永久代的概念。</p><p>jdk1.7:<br>原来存储在永久代的部分数据，现在分配到Java Heap/Native Heap。</p><p>jdk1.8:</p><blockquote><p>符号引用转移到native heap<br>字面量转移到Java heap<br>类的静态变量转移到Java heap<br>参数<code>-XX:PermSize -XX:MaxPermSize</code>已经失效<br>MetaSpac不在jvm中，而是使用本地内存，默认情况下，仅受本地内存限制，<br>参数<code>-XX:MetaspaceSize -XX:MaxMetaspaceSize</code>，用于限制元数据区空间，<strong>默认</strong>大小为20MB<br>参数<code>-XX:MinMetaspaceFreeRation -XX:MaxMetaspaceFreeRation</code>，用于控制GC后剩余空间容纳的百分比<br>参数<code>-XX:MinMetaspaceExpansion -XX:MaxMetaspaceExpansion</code>，用于控制元空间增长幅度<br>参数<code>-XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code>会在Metaspace空间分配空间，导致默认20MB失效</p></blockquote><p>Metaspace的优点：</p><blockquote><p>jar包和应用的class文件存放在永久代，如果jar包很多，可能导致永久代溢出<br>每个应用都有自己的永久代，改用Metaspace后，应用可以共享同样的class内存空间，例如：两个项目都引用rt.jar，在元空间只保留一份</p></blockquote><p>Metaspace对GC性能的提升：</p><blockquote><p>Full GC中，指向元数据的指针不需要扫描，减少了GC开销；减少了GC Roots对象的扫描<br>元空间只有少量的指针指向Java heap，<br>避免了元数据压缩的开销</p></blockquote><h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><h2 id="虚拟机对象"><a href="#虚拟机对象" class="headerlink" title="虚拟机对象"></a>虚拟机对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p><strong>注意:</strong> 仅限于普通Java对象，不包括数组、Class对象。</p><ol><li><p>当虚拟机遇到new指令时，首先去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析、初始化过。如果没有，则执行相应的类加载过程。</p></li><li><p>为新生对象分配内存</p><blockquote><p>指针碰撞分配</p><p>空闲列表分配</p><p>内存分配的并发问题：</p><p>CAS + 失败重试</p><p>本地线程分配缓冲(TLAB)</p></blockquote></li><li><p>对象进行必要的设置</p></li><li>执行<init>方法</init></li></ol><h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中存储包括3块区域:</p><blockquote><p>对象头：<br>     1、存储对象自身的运行时数据：哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳<br>        2、类型指针：该对象指向它的类元数据的指针</p><p>实例数据：真正存储的有效信息，也就是在程序代码中定义的各种类型的字段内容。</p><p>对齐填充：非必须，起占位符的作用</p></blockquote><h3 id="对象的定位访问"><a href="#对象的定位访问" class="headerlink" title="对象的定位访问"></a>对象的定位访问</h3><p>1、句柄访问</p><p>优点：</p><p>在对象被移动时，只会改变句柄中的实例数据指针</p><p>2、直接指针访问</p><p>优点：</p><p>访问速度快，节省了一次指针定位的时间开销</p>]]></content>
       
       
       <categories>
           
-          <category> MySQL </category>
+          <category> JVM </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> java, jvm </tag>
             
         </tags>
       
@@ -2441,31 +2391,6 @@
       <url>/2018/09/28/csapp-cache/</url>
       
         <content type="html"><![CDATA[<p>高级缓存</p><a id="more"></a><h2 id="随机访问存储"><a href="#随机访问存储" class="headerlink" title="随机访问存储"></a>随机访问存储</h2><h4 id="1-静态RAM"><a href="#1-静态RAM" class="headerlink" title="1. 静态RAM"></a>1. 静态RAM</h4><p>每个位存储在一个双稳态的存储单元，每个位都处于一个稳态。<br>每个单元是用一个六晶体管电路组成。</p><h4 id="2-动态RAM-DRAM"><a href="#2-动态RAM-DRAM" class="headerlink" title="2. 动态RAM DRAM"></a>2. 动态RAM DRAM</h4><p>每个位存储在一个电容内，<br>每个单元是用一个电容和一个访问晶体管组成，存储单元对干扰敏感，光线会导致电容电压改变。</p><p>区别：<br>只要有电，SRAM就会保持不变，与DRAM不同，SRAM不需要刷新<br>SRAM的存取比DRAM快<br>SRAM对光电等的干扰不敏感，但是比DRAM要贵</p><h4 id="3-传统的DRAM"><a href="#3-传统的DRAM" class="headerlink" title="3. 传统的DRAM"></a>3. 传统的DRAM</h4><p>传统DRAM芯片被分成d个超单元，每个超单元由w个DRAM单元组成<br>超单元集合被组成逻辑的r行c列，d=r*c，data引脚 + addr引脚<br>数据通过引脚连接超单元，传输信息</p><h4 id="4-内存模块"><a href="#4-内存模块" class="headerlink" title="4. 内存模块"></a>4. 内存模块</h4><p>DRAM芯片封装在内存模块中，插在主板扩展槽内</p><p>m个内存模块组成主存，每个内存模块由n个DRAM芯片组成。假如接收到地址A，先找到包含A的模块k，再将A转为(i, j)形式的地址，将模块内所有的芯片内 </p><h4 id="5-增强的DRAM"><a href="#5-增强的DRAM" class="headerlink" title="5. 增强的DRAM"></a>5. 增强的DRAM</h4><p>快页模式DRAM</p><p>扩展数据输出DRAM</p><p>同步DRAM</p><p>双倍数据速率同步DRAM</p><p>视频RAM</p><h4 id="6-非易失性存储器"><a href="#6-非易失性存储器" class="headerlink" title="6. 非易失性存储器"></a>6. 非易失性存储器</h4><p>DRAM和SRAM断电，会丢失信息，属于易失性存储器。非易失性存储器即使断电后，依然可以保存信息。</p><p>ROM：<br>PROM：只能被编程一次<br>可擦写可编程ROM：EPROM，<br>    电子可擦除PROM：EEPROM<br>闪存：基于EEPROM，<br>    固态硬盘：闪存芯片 + 闪存翻译层</p><p>固件：存储在ROM设备中的程序通常称为固件。例如：PC的BIOS例程</p><h4 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h4><p>总线：用于CPU和主存之间的数据传输，能够携带地址、数据、控制信号。</p><p>系统总线：连接CPU和I/O桥接器<br>内存总线：连接I/O桥接器和主存</p><p>补充：不同的硬件厂商使用不同的总线设计<br>Intel： 北桥 南桥<br>AMD：超传输互联<br>Intel Core i7：快速通道互联</p><h2 id="磁盘存储"><a href="#磁盘存储" class="headerlink" title="磁盘存储"></a>磁盘存储</h2><p>逻辑磁盘块：</p><h4 id="连接I-O设备"><a href="#连接I-O设备" class="headerlink" title="连接I/O设备"></a>连接I/O设备</h4><p>I/O总线：连接CPU/主存到图形卡、监视器、鼠标、磁盘</p><p>主机总线适配器：将一个或多个磁盘连接到I/O总线，使用一个特别的主机总线接口定义的通信协议。<br>磁盘接口：<br>    SCSI：可以支持多个磁盘驱动器<br>    SATA：只能支持一个驱动器</p><p>补：I/O总线进展<br>PCI模型中，所有设备共享总线，一个时刻只能有一台设备访问这些线路。<br>现代系统：共享的PCI总线被PCIe总线取代，PCIe是一组高速串行、通过开关连接的点到点链路</p><h4 id="访问磁盘"><a href="#访问磁盘" class="headerlink" title="访问磁盘"></a>访问磁盘</h4><p>内存映射I/O：作为CPU向I/O设备发射命令的技术<br>I/O端口：为与I/O设备通信保留的地址空间</p><h2 id="局部性"><a href="#局部性" class="headerlink" title="局部性"></a>局部性</h2><p>时间局部性<br>空间局部性</p><h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>L1高速缓存<br>L2高速缓存<br>L3高级缓存</p><p>系统：<br>每个存储器地址m位，形成$M=2^m$个不同的地址<br>高速缓存被组织成$S=2^s$个高速缓存组<br>每个高速缓存组包含E个高速缓存行<br>每个行由一个$B=2^b$字节的数据块组成<br>这样的高速缓存可以用结构$(S, E, B, m)$表示。</p><h3 id="直接映射高速缓存"><a href="#直接映射高速缓存" class="headerlink" title="直接映射高速缓存"></a>直接映射高速缓存</h3><h3 id="组相联高速缓存"><a href="#组相联高速缓存" class="headerlink" title="组相联高速缓存"></a>组相联高速缓存</h3><h3 id="读-写问题"><a href="#读-写问题" class="headerlink" title="读/写问题"></a>读/写问题</h3><p>读：</p><p>写：</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSAPP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSAPP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>深入理解计算机系统--内存</title>
-      <link href="/2018/09/28/csapp-vm/"/>
-      <url>/2018/09/28/csapp-vm/</url>
-      
-        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
       
       
       <categories>
@@ -2511,6 +2436,31 @@
     
     
     <entry>
+      <title>深入理解计算机系统--内存</title>
+      <link href="/2018/09/28/csapp-vm/"/>
+      <url>/2018/09/28/csapp-vm/</url>
+      
+        <content type="html"><![CDATA[<p>内存管理</p><a id="more"></a><p>虚拟内存：</p><p>物理地址</p><p>虚拟地址</p><p>地址翻译</p><p>内存管理单元</p><p>线性地址空间</p><p>物理地址空间</p><p>虚拟地址空间</p><p>虚拟页</p><p>物理页</p><p>SRAM</p><p>DRAM</p><p>页命中、缺页、</p><p>局部性</p><p>活动页面</p><p>工作集(常驻集合)</p><p>抖动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSAPP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSAPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java加载器</title>
       <link href="/2018/09/28/java-classloader/"/>
       <url>/2018/09/28/java-classloader/</url>
@@ -2528,6 +2478,56 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>架构基础</title>
+      <link href="/2018/09/28/architecture-base/"/>
+      <url>/2018/09/28/architecture-base/</url>
+      
+        <content type="html"><![CDATA[<p>经历了一些小系统，”麻雀虽小五脏俱全”，结合自己的经历，谈一些自己的看法。在我看来，架构更多的就是结合不同的业务场景，选择不同的组件去构建一个高可用、高并发、可扩展的系统。</p><a id="more"></a><h1 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h1><h2 id="1、网关"><a href="#1、网关" class="headerlink" title="1、网关"></a>1、网关</h2><p>Zuul: 不完全支持异步，需要很好的配合限流熔断，否则容易造成资源耗尽、雪崩效应。</p><p>Zuul2:</p><p>Spring Cloud Gateway:</p><p>Nginx:</p><p>Kong:</p><h2 id="2、服务发现"><a href="#2、服务发现" class="headerlink" title="2、服务发现"></a>2、服务发现</h2><p>Eureka: 支持跨数据中心高可用，AP最终一致性，不是强一致性。可以结合Ribbon/Feign</p><p>Zookeeper:</p><p>Etcd:</p><p>Consul:</p><h2 id="2、配置中心"><a href="#2、配置中心" class="headerlink" title="2、配置中心"></a>2、配置中心</h2><p>Spring Cloud Config-Server: 只能小规模使用，不建议中大规模使用</p><p>携程的Apollo: </p><p>百度的Disconf:</p><p>阿里的Diamond:</p><h2 id="4、认证授权"><a href="#4、认证授权" class="headerlink" title="4、认证授权"></a>4、认证授权</h2><p>Spring Security OAuth2:</p><h1 id="监控组件"><a href="#监控组件" class="headerlink" title="监控组件"></a>监控组件</h1><h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>Kafka</p><h2 id="5、日志监控"><a href="#5、日志监控" class="headerlink" title="5、日志监控"></a>5、日志监控</h2><p>其实日志监控有很多种组合，ELK是比较常用的组合</p><p>ELK</p><h2 id="6、链路监控"><a href="#6、链路监控" class="headerlink" title="6、链路监控"></a>6、链路监控</h2><p>大众点评CAT:</p><p>Zipkin: 不够成熟，不能算一款企业级产品</p><p>Naver Pinpoint:</p><p>Spring Cloud Seleuth:</p><p>Hydra:</p><p>eagleye:</p><p>Jaeger:</p><p>Skywalking:</p><p>OpenTracing:规范</p><h2 id="7、度量监控-Metrics"><a href="#7、度量监控-Metrics" class="headerlink" title="7、度量监控 Metrics"></a>7、度量监控 Metrics</h2><p>依赖于时序数据库</p><p>Prometheus:</p><p>InfluxDB:</p><p>KairosDB: 基于Cassandra，可以结合Grafana实现界面化展示</p><p>OpenTSDB:</p><h2 id="8、健康检查、告警"><a href="#8、健康检查、告警" class="headerlink" title="8、健康检查、告警"></a>8、健康检查、告警</h2><p>Zmon:</p><p>Zabbix:</p><h2 id="9、限流、熔断"><a href="#9、限流、熔断" class="headerlink" title="9、限流、熔断"></a>9、限流、熔断</h2><p>Hystrix: 可以结合Turbine实现监控数据流的聚合</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Architect </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Architect </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL索引</title>
+      <link href="/2018/09/28/mysql-index/"/>
+      <url>/2018/09/28/mysql-index/</url>
+      
+        <content type="html"><![CDATA[<h2 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h2><ol><li><p>B-Tree索引 InnoDB引擎使用的是B+Tree</p><p> B-Tree的限制：</p><blockquote><p>如果不是按照索引的最左列开始查找，则无法使用索引</p><p>不能跳过索引中的列</p><p>如果查询中有某个列的范围查询，则其右边所有列都无法使用索引优化查找</p></blockquote></li><li><p>哈希索引</p></li><li>空间数据索引(R-Tree)</li><li>全文索引</li></ol><a id="more"></a><h3 id="MyISAM和InnoDB的不同："><a href="#MyISAM和InnoDB的不同：" class="headerlink" title="MyISAM和InnoDB的不同："></a>MyISAM和InnoDB的不同：</h3><p>MyISAM使用前缀压缩使索引更小，而InnoDB按照原数据格式进行存储。</p><p>MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键饮用被索引的行。</p><h2 id="高性能索引策略"><a href="#高性能索引策略" class="headerlink" title="高性能索引策略"></a>高性能索引策略</h2><p>聚簇索引</p><p>非聚簇索引</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>基于语句的复制</p><p>基于行的复制</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
@@ -3321,15 +3321,15 @@
     
     <entry>
       <title>shell常用命令之awk</title>
-      <link href="/2018/08/27/shell-awk/"/>
-      <url>/2018/08/27/shell-awk/</url>
+      <link href="/2018/08/27/linux-shell-awk/"/>
+      <url>/2018/08/27/linux-shell-awk/</url>
       
-        <content type="html"><![CDATA[<p>awk同样作为高级命令，需要不断地完善</p><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>用法：</p><pre><code>awk [POSIX or GNU style options] -f progfile [--] file ...awk [POSIX or GNU style options] [--] &apos;program&apos; file ...</code></pre><p>选项：</p><a id="more"></a><p>POSIX options:        GNU long options: (standard)</p><pre><code>-f progfile        --file=progfile-F fs            --field-separator=fs-v var=val        --assign=var=val</code></pre><p>Short options:        GNU long options: (extensions)</p><pre><code>-b            --characters-as-bytes-c            --traditional-C            --copyright-d[file]        --dump-variables[=file]-e &apos;program-text&apos;    --source=&apos;program-text&apos;-E file            --exec=file-g            --gen-pot-h            --help-L [fatal]        --lint[=fatal]-n            --non-decimal-data-N            --use-lc-numeric-O            --optimize-p[file]        --profile[=file]-P            --posix-r            --re-interval-S            --sandbox-t            --lint-old-V            --version</code></pre><p>案例：</p><pre><code>eg: 找出文件2到5行内容awk &apos;{if(NR&gt;=2 &amp;&amp; NR &lt;=4) print $5}&apos; nginx.log</code></pre><h4 id="BEGIN、END模块"><a href="#BEGIN、END模块" class="headerlink" title="BEGIN、END模块"></a>BEGIN、END模块</h4><pre><code>eg: 统计用户数量awk &apos;{count++;print $0;} END{print &quot;user count is: &quot;, count}&apos; /etc/passwd</code></pre><p>命名符：<br>FS: 定义字段，如：’FS=\n’表示每个字段占据一行<br>RS: 分隔符变量，如：’RS=””‘表示记录分隔符为空白行</p><pre><code>awk &apos;BEGIN{FS=&quot;\n&quot;; RS=&quot;&quot;}{print $1&quot;,&quot;$2&quot;,&quot;$3}&apos; awk-hello-3.txt </code></pre><p>NF: 字段数量 (即列数)<br>NR: 记录数量（即行数）<br>OFS: 输出字段分隔符(即$1和$2之间填充OFS)</p><pre><code>awk &apos;BEGIN{FS=&quot;:&quot;;OFS=&quot;#&quot;}{print $1,$2,$3}&apos; awk-hello.txt</code></pre><p>ORS: 输出记录分隔符(即每次print后打印’\n\n’)</p><pre><code>awk &apos;BEGIN{FS=&quot;\n&quot;; RS=&quot;&quot;; ORS=&quot;\n\n&quot;}{print $1&quot;,&quot;$2&quot;,&quot;$3}&apos; awk-hello-2.txt</code></pre><h2 id="gawk、nawk和awk"><a href="#gawk、nawk和awk" class="headerlink" title="gawk、nawk和awk"></a>gawk、nawk和awk</h2><p>gawk是awk的GPL版</p><p>nawk(new awk)是awk的增强版，增加了很多函数</p>]]></content>
+        <content type="html"><![CDATA[<p>awk同样作为高级命令，需要不断地完善</p><a id="more"></a><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>用法：</p><pre><code>awk [POSIX or GNU style options] -f progfile [--] file ...awk [POSIX or GNU style options] [--] &apos;program&apos; file ...</code></pre><p>选项：</p><p>POSIX options:        GNU long options: (standard)</p><pre><code>-f progfile        --file=progfile-F fs            --field-separator=fs-v var=val        --assign=var=val</code></pre><p>Short options:        GNU long options: (extensions)</p><pre><code>-b            --characters-as-bytes-c            --traditional-C            --copyright-d[file]        --dump-variables[=file]-e &apos;program-text&apos;    --source=&apos;program-text&apos;-E file            --exec=file-g            --gen-pot-h            --help-L [fatal]        --lint[=fatal]-n            --non-decimal-data-N            --use-lc-numeric-O            --optimize-p[file]        --profile[=file]-P            --posix-r            --re-interval-S            --sandbox-t            --lint-old-V            --version</code></pre><p>案例：</p><pre><code>eg: 找出文件2到5行内容awk &apos;{if(NR&gt;=2 &amp;&amp; NR &lt;=4) print $5}&apos; nginx.log</code></pre><h4 id="BEGIN、END模块"><a href="#BEGIN、END模块" class="headerlink" title="BEGIN、END模块"></a>BEGIN、END模块</h4><pre><code>eg: 统计用户数量awk &apos;{count++;print $0;} END{print &quot;user count is: &quot;, count}&apos; /etc/passwd</code></pre><p>命名符：<br>FS: 定义字段，如：’FS=\n’表示每个字段占据一行<br>RS: 分隔符变量，如：’RS=””‘表示记录分隔符为空白行</p><pre><code>awk &apos;BEGIN{FS=&quot;\n&quot;; RS=&quot;&quot;}{print $1&quot;,&quot;$2&quot;,&quot;$3}&apos; awk-hello-3.txt </code></pre><p>NF: 字段数量 (即列数)<br>NR: 记录数量（即行数）<br>OFS: 输出字段分隔符(即$1和$2之间填充OFS)</p><pre><code>awk &apos;BEGIN{FS=&quot;:&quot;;OFS=&quot;#&quot;}{print $1,$2,$3}&apos; awk-hello.txt</code></pre><p>ORS: 输出记录分隔符(即每次print后打印’\n\n’)</p><pre><code>awk &apos;BEGIN{FS=&quot;\n&quot;; RS=&quot;&quot;; ORS=&quot;\n\n&quot;}{print $1&quot;,&quot;$2&quot;,&quot;$3}&apos; awk-hello-2.txt</code></pre><h2 id="gawk、nawk和awk"><a href="#gawk、nawk和awk" class="headerlink" title="gawk、nawk和awk"></a>gawk、nawk和awk</h2><p>gawk是awk的GPL版</p><p>nawk(new awk)是awk的增强版，增加了很多函数</p>]]></content>
       
       
       <categories>
           
-          <category> linux </category>
+          <category> Linux </category>
           
       </categories>
       
@@ -3346,15 +3346,15 @@
     
     <entry>
       <title>shell常用命令之sed</title>
-      <link href="/2018/08/27/shell-sed/"/>
-      <url>/2018/08/27/shell-sed/</url>
+      <link href="/2018/08/27/linux-shell-sed/"/>
+      <url>/2018/08/27/linux-shell-sed/</url>
       
-        <content type="html"><![CDATA[<p>sed是一个比较高级的命令，回头再细细整理</p><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>用法: sed [选项]… {脚本(如果没有其他脚本)} [输入文件]…</p><p>选项：</p><a id="more"></a><pre><code>-n, --quiet, --silent             取消自动打印模式空间-e 脚本, --expression=脚本             添加“脚本”到程序的运行列表-f 脚本文件, --file=脚本文件             添加“脚本文件”到程序的运行列表--follow-symlinks             直接修改文件时跟随软链接-i[SUFFIX], --in-place[=SUFFIX]             edit files in place (makes backup if SUFFIX supplied)-c, --copy             use copy instead of rename when shuffling files in -i mode-b, --binary             does nothing; for compatibility with WIN32/CYGWIN/MSDOS/EMX (             open files in binary mode (CR+LFs are not treated specially))-l N, --line-length=N             指定“l”命令的换行期望长度--posix             关闭所有 GNU 扩展-r, --regexp-extended             在脚本中使用扩展正则表达式-s, --separate             将输入文件视为各个独立的文件而不是一个长的连续输入-u, --unbuffered             从输入文件读取最少的数据，更频繁的刷新输出-z, --null-data             separate lines by NUL characters--help             display this help and exit--version             output version information and exit</code></pre><p>命令：</p><pre><code>a    新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～c    取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！d    删除，因为是删除啊，所以 d 后面通常不接任何咚咚；i    插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；p    列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～s    取代，通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g n    读取下一个输入行, 用下一个命令处理新的行</code></pre><p>替换标记：</p><pre><code> g    表示行内全面替换p    表示打印行w    表示把行写入一个文件x    表示互换模快板中的文本和缓冲区中的文本y    表示把一个字符翻译为另外的字符(不用于正则表达式)</code></pre><p>常用案例：</p><h2 id="sed中n、N的区别"><a href="#sed中n、N的区别" class="headerlink" title="sed中n、N的区别"></a>sed中n、N的区别</h2><p><a href="https://www.cnblogs.com/fhefh/archive/2011/11/14/2248942.html" target="_blank" rel="noopener">sed模式空间</a></p><h2 id="sed中N-D-P的使用"><a href="#sed中N-D-P的使用" class="headerlink" title="sed中N,D,P的使用"></a>sed中N,D,P的使用</h2><p><a href="http://blog.chinaunix.net/uid-22556372-id-1773472.html" target="_blank" rel="noopener">sed中N,D,P组合</a></p><p>N: 将当前读入行的下一行读取到当前的模式空间</p><p>P: 打印当前模式空间中的第一行</p><p>D: 删除当前模式空间中的第一行，重新开始下一次循环</p><pre><code>sed &apos;N;$!D&apos; numsed &apos;N;P&apos; numsed &apos;N;p&apos; numsed &apos;N;D&apos; numsed &apos;N;d&apos; numsed &apos;N;p;D&apos; num</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>sed是一个比较高级的命令，回头再细细整理</p><a id="more"></a><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>用法: sed [选项]… {脚本(如果没有其他脚本)} [输入文件]…</p><p>选项：</p><pre><code>-n, --quiet, --silent             取消自动打印模式空间-e 脚本, --expression=脚本             添加“脚本”到程序的运行列表-f 脚本文件, --file=脚本文件             添加“脚本文件”到程序的运行列表--follow-symlinks             直接修改文件时跟随软链接-i[SUFFIX], --in-place[=SUFFIX]             edit files in place (makes backup if SUFFIX supplied)-c, --copy             use copy instead of rename when shuffling files in -i mode-b, --binary             does nothing; for compatibility with WIN32/CYGWIN/MSDOS/EMX (             open files in binary mode (CR+LFs are not treated specially))-l N, --line-length=N             指定“l”命令的换行期望长度--posix             关闭所有 GNU 扩展-r, --regexp-extended             在脚本中使用扩展正则表达式-s, --separate             将输入文件视为各个独立的文件而不是一个长的连续输入-u, --unbuffered             从输入文件读取最少的数据，更频繁的刷新输出-z, --null-data             separate lines by NUL characters--help             display this help and exit--version             output version information and exit</code></pre><p>命令：</p><pre><code>a    新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～c    取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！d    删除，因为是删除啊，所以 d 后面通常不接任何咚咚；i    插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；p    列印，亦即将某个选择的资料印出。通常 p 会与参数 sed -n 一起运作～s    取代，通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g n    读取下一个输入行, 用下一个命令处理新的行</code></pre><p>替换标记：</p><pre><code> g    表示行内全面替换p    表示打印行w    表示把行写入一个文件x    表示互换模快板中的文本和缓冲区中的文本y    表示把一个字符翻译为另外的字符(不用于正则表达式)</code></pre><p>常用案例：</p><h2 id="sed中n、N的区别"><a href="#sed中n、N的区别" class="headerlink" title="sed中n、N的区别"></a>sed中n、N的区别</h2><p><a href="https://www.cnblogs.com/fhefh/archive/2011/11/14/2248942.html" target="_blank" rel="noopener">sed模式空间</a></p><h2 id="sed中N-D-P的使用"><a href="#sed中N-D-P的使用" class="headerlink" title="sed中N,D,P的使用"></a>sed中N,D,P的使用</h2><p><a href="http://blog.chinaunix.net/uid-22556372-id-1773472.html" target="_blank" rel="noopener">sed中N,D,P组合</a></p><p>N: 将当前读入行的下一行读取到当前的模式空间</p><p>P: 打印当前模式空间中的第一行</p><p>D: 删除当前模式空间中的第一行，重新开始下一次循环</p><pre><code>sed &apos;N;$!D&apos; numsed &apos;N;P&apos; numsed &apos;N;p&apos; numsed &apos;N;D&apos; numsed &apos;N;d&apos; numsed &apos;N;p;D&apos; num</code></pre>]]></content>
       
       
       <categories>
           
-          <category> linux </category>
+          <category> Linux </category>
           
       </categories>
       
@@ -3371,15 +3371,15 @@
     
     <entry>
       <title>shell常用命令之grep</title>
-      <link href="/2018/08/27/shell-grep/"/>
-      <url>/2018/08/27/shell-grep/</url>
+      <link href="/2018/08/27/linux-shell-grep/"/>
+      <url>/2018/08/27/linux-shell-grep/</url>
       
-        <content type="html"><![CDATA[<p>一些常用的shell命令、参数还是需要整理一下，以防每次都要去查询</p><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="基本的正则表达式："><a href="#基本的正则表达式：" class="headerlink" title="基本的正则表达式："></a>基本的正则表达式：</h3><ol><li>元字符： </li></ol><a id="more"></a><pre><code>&apos;.&apos;:匹配任意单个字符     eg：查找包含student且student后面带一个字符的行     grep ‘student.’ /etc/passwd （模式可以用单引号和双引号，如果模式中要做变量替换时则必须用双引）      &apos;[]&apos;:匹配指定范围内的任意单个字符,[abc],[a-z],[0-9],[a-zA-Z]     eg：查找带有数字的行     grep ‘[0-9]’ /etc/passwd &apos;[^]&apos;:匹配指定范围外的任意单个字符     eg：查找没有小写字母的行。     grep ‘[^a-z]’ /etc/inittab [:space:]:表示空白字符 [:punct:]:表示所有标点符号的集合 [:lower:]:表示所有的小写字母 [:upper:]:表示所有的大写字母 [:alpha:]:表示大小写字母 [:digit:]:表示数子 [:alnum:]:表示数字和大小写字母-----使用格式[[:alnum:]]等 </code></pre><ol start="2"><li><p>次数匹配： </p><p> ‘*’:匹配其前面的字符任意次 </p><pre><code>eg：查找root出现0次或0次以上的行 grep ‘root*’ /etc/passwd </code></pre><p> ‘.*’:任意字符  </p><pre><code>eg：查找包含root的行 grep &apos;root.*&apos; /etc/passwd </code></pre><p> ‘\?’：匹配其前面的字符1次或0次 </p><p> ‘{m,n}‘:匹配其前字符最少m，最多n次） </p></li><li><p>字符锚定： </p><p> ‘^’:锚定行首，此字符后面的任意内容必须出现在行首 </p><pre><code>eg：查找行首以#开头的行 grep &apos;^#&apos; /etc/inittab </code></pre><p> ‘$’:锚定行尾，此字符前面的任意内容必须出现在行尾 </p><pre><code>eg：查找行首以root结尾的行 grep &apos;root$&apos; /etc/inittab   </code></pre><p> ‘^$’:锚定空白行，可以统计空白行 </p><p> ‘\&lt;或者\b’:锚定词首，其后面的任意字符必须做为单词首部出现 </p><pre><code>eg:查找root且root前面不包含任何字符的行 grep &apos;\&lt;root&apos; /etc/man.config </code></pre><p> ‘>或者\b’:锚定词尾，其前面的任意字符必须做为单词尾部出现                         </p><pre><code>eg：\&lt;root\&gt; 查找root单词  grep &quot;\&lt;root\&gt;&quot; =grep &quot;\broot\b&quot; </code></pre></li></ol><h3 id="扩展的正则表达式"><a href="#扩展的正则表达式" class="headerlink" title="扩展的正则表达式:"></a>扩展的正则表达式:</h3><p>扩展的正则表达只是在基本的正则表达上作出了小小的一点修改，其修改如下： </p><p>在扩展的正则表达中把’ ‘写成’()’; ‘{ }‘写成’{ }’，</p><p>另外加入了:</p><p>+：次数匹配，匹配其前面的字符至少出现一次，无上限、</p><p>|: 或者(二取一）</p><p>其余的都一样， 基本正则表达式，使用’(‘、 ‘)’ ‘{‘ ‘}’ ‘.’ ‘?’ ‘|’都需要转义,在扩展正则表达中不需要加. </p><ol><li><p>字符匹配的命令和用法与基本正则表达式的用法相同，这里不再重复阐述。 </p></li><li><p>次数匹配： </p><p> ‘*’:匹配其前面字符的任意次 </p><p> ‘?’:匹配其前面字符的0此或着1此 </p><p> ‘+’:匹配其前面字符至少1此 </p><p> fg：至少一个空白符： ‘[[:space:]]+’ </p><p> {m,n} :匹配其前面字符m到n次 </p></li><li><p>字符锚定的用法和基本正则表达式的用法相同，在此不再阐述。 </p></li><li><p>特殊字符： </p><p>‘|’: 代表或者的意思。 </p><p>‘fg’：grep -E ‘c|cat’ file：表示在文件file内查找包含c或者cat </p><p>‘.‘:\表示转义字符，此表示符号.</p></li></ol><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>只能使用基本的正则表达式来搜索文本。</p><p>grep [option] ‘字符串’ filename</p><h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><p>正则表达式选择与解释:</p><pre><code>-E, --extended-regexp     PATTERN 是一个可扩展的正则表达式(缩写为 ERE)-F, --fixed-strings       PATTERN 是一组由断行符分隔的定长字符串。-G, --basic-regexp        PATTERN 是一个基本正则表达式(缩写为 BRE)-P, --perl-regexp         PATTERN 是一个 Perl 正则表达式-e, --regexp=PATTERN      用 PATTERN 来进行匹配操作-f, --file=FILE           从 FILE 中取得 PATTERN-i, --ignore-case         忽略大小写-w, --word-regexp         强制 PATTERN 仅完全匹配字词-x, --line-regexp         强制 PATTERN 仅完全匹配一行-z, --null-data           一个 0 字节的数据行，但不是空行</code></pre><p>Miscellaneous:</p><pre><code>-s, --no-messages         suppress error messages-v, --invert-match        select non-matching lines-V, --version             display version information and exit    --help                display this help text and exit</code></pre><p>输出控制:</p><pre><code>-m, --max-count=NUM       NUM 次匹配后停止-b, --byte-offset         输出的同时打印字节偏移-n, --line-number         输出的同时打印行号  --line-buffered       每行输出清空-H, --with-filename       为每一匹配项打印文件名-h, --no-filename         输出时不显示文件名前缀  --label=LABEL         将LABEL 作为标准输入文件名前缀-o, --only-matching       show only the part of a line matching PATTERN-q, --quiet, --silent     suppress all normal output  --binary-files=TYPE   assume that binary files are TYPE;                        TYPE is &apos;binary&apos;, &apos;text&apos;, or &apos;without-match&apos;-a, --text                equivalent to --binary-files=text-I                        equivalent to --binary-files=without-match-d, --directories=ACTION  how to handle directories;                        ACTION is &apos;read&apos;, &apos;recurse&apos;, or &apos;skip&apos;-D, --devices=ACTION      how to handle devices, FIFOs and sockets;                        ACTION is &apos;read&apos; or &apos;skip&apos;-r, --recursive           like --directories=recurse-R, --dereference-recursive                        likewise, but follow all symlinks  --include=FILE_PATTERN                        search only files that match FILE_PATTERN  --exclude=FILE_PATTERN                        skip files and directories matching FILE_PATTERN  --exclude-from=FILE   skip files matching any file pattern from FILE  --exclude-dir=PATTERN directories that match PATTERN will be skipped.-L, --files-without-match print only names of FILEs containing no match-l, --files-with-matches  print only names of FILEs containing matches-c, --count               print only a count of matching lines per FILE-T, --initial-tab         make tabs line up (if needed)-Z, --null                print 0 byte after FILE name</code></pre><p>文件控制:</p><pre><code>-B, --before-context=NUM  打印以文本起始的NUM 行-A, --after-context=NUM   打印以文本结尾的NUM 行-C, --context=NUM         打印输出文本前后各NUM行-NUM                      same as --context=NUM  --group-separator=SEP use SEP as a group separator  --no-group-separator  use empty string as a group separator  --color[=WHEN],  --colour[=WHEN]       use markers to highlight the matching strings;                        WHEN is &apos;always&apos;, &apos;never&apos;, or &apos;auto&apos;-U, --binary              do not strip CR characters at EOL (MSDOS/Windows)-u, --unix-byte-offsets   report offsets as if CRs were not there                        (MSDOS/Windows)</code></pre><h3 id="用例："><a href="#用例：" class="headerlink" title="用例："></a>用例：</h3><pre><code>显示匹配行和它后面的10行grep -A 10 pattern file.txt</code></pre><h2 id="egrep"><a href="#egrep" class="headerlink" title="egrep"></a>egrep</h2><p>可以使用扩展的正则表达式来搜索文本，grep不能使用扩展正则表达式的语法</p><p>egrep = grep -E</p><pre><code>eg: 查找至少包含一个大写字母的行grep &apos;[A-Z]+&apos; nginx.log   #没有任何返回值，也不报错egrep &apos;[A-Z]+&apos; nginx.log  #返回匹配行</code></pre><h2 id="fgrep"><a href="#fgrep" class="headerlink" title="fgrep"></a>fgrep</h2><p>利用固定的字符串来搜索文本，不支持正则表达式的引用。类似于精确匹配</p><p>fgrep = grep -F</p><pre><code>eg:查找包含&apos;Apr&apos;字符串的行fgrep &apos;Apr*&apos; nginx.log    #没有返回值，不报错fgrep &apos;Apr&apos; nginx.log    #返回包含Apr字符串的行</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>一些常用的shell命令、参数还是需要整理一下，以防每次都要去查询</p><a id="more"></a><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="基本的正则表达式："><a href="#基本的正则表达式：" class="headerlink" title="基本的正则表达式："></a>基本的正则表达式：</h3><ol><li><p>元字符： </p><p> ‘.’:匹配任意单个字符 </p><pre><code>eg：查找包含student且student后面带一个字符的行 grep ‘student.’ /etc/passwd （模式可以用单引号和双引号，如果模式中要做变量替换时则必须用双引）      </code></pre><p> ‘[]’:匹配指定范围内的任意单个字符,[abc],[a-z],[0-9],[a-zA-Z] </p><pre><code>eg：查找带有数字的行 grep ‘[0-9]’ /etc/passwd </code></pre><p> ‘[^]’:匹配指定范围外的任意单个字符 </p><pre><code>eg：查找没有小写字母的行。 grep ‘[^a-z]’ /etc/inittab </code></pre><p> [:space:]:表示空白字符 </p><p> [:punct:]:表示所有标点符号的集合 </p><p> [:lower:]:表示所有的小写字母 </p><p> [:upper:]:表示所有的大写字母 </p><p> [:alpha:]:表示大小写字母 </p><p> [:digit:]:表示数子 </p><p> [:alnum:]:表示数字和大小写字母—–使用格式[[:alnum:]]等 </p></li><li><p>次数匹配： </p><p> ‘*’:匹配其前面的字符任意次 </p><pre><code>eg：查找root出现0次或0次以上的行 grep ‘root*’ /etc/passwd </code></pre><p> ‘.*’:任意字符  </p><pre><code>eg：查找包含root的行 grep &apos;root.*&apos; /etc/passwd </code></pre><p> ‘\?’：匹配其前面的字符1次或0次 </p><p> ‘{m,n}‘:匹配其前字符最少m，最多n次） </p></li><li><p>字符锚定： </p><p> ‘^’:锚定行首，此字符后面的任意内容必须出现在行首 </p><pre><code>eg：查找行首以#开头的行 grep &apos;^#&apos; /etc/inittab </code></pre><p> ‘$’:锚定行尾，此字符前面的任意内容必须出现在行尾 </p><pre><code>eg：查找行首以root结尾的行 grep &apos;root$&apos; /etc/inittab   </code></pre><p> ‘^$’:锚定空白行，可以统计空白行 </p><p> ‘\&lt;或者\b’:锚定词首，其后面的任意字符必须做为单词首部出现 </p><pre><code>eg:查找root且root前面不包含任何字符的行 grep &apos;\&lt;root&apos; /etc/man.config </code></pre><p> ‘>或者\b’:锚定词尾，其前面的任意字符必须做为单词尾部出现                         </p><pre><code>eg：\&lt;root\&gt; 查找root单词  grep &quot;\&lt;root\&gt;&quot; =grep &quot;\broot\b&quot; </code></pre></li></ol><h3 id="扩展的正则表达式"><a href="#扩展的正则表达式" class="headerlink" title="扩展的正则表达式:"></a>扩展的正则表达式:</h3><p>扩展的正则表达只是在基本的正则表达上作出了小小的一点修改，其修改如下： </p><p>在扩展的正则表达中把’ ‘写成’()’; ‘{ }‘写成’{ }’，</p><p>另外加入了:</p><p>+：次数匹配，匹配其前面的字符至少出现一次，无上限、</p><p>|: 或者(二取一）</p><p>其余的都一样， 基本正则表达式，使用’(‘、 ‘)’ ‘{‘ ‘}’ ‘.’ ‘?’ ‘|’都需要转义,在扩展正则表达中不需要加. </p><ol><li><p>字符匹配的命令和用法与基本正则表达式的用法相同，这里不再重复阐述。 </p></li><li><p>次数匹配： </p><p> ‘*’:匹配其前面字符的任意次 </p><p> ‘?’:匹配其前面字符的0此或着1此 </p><p> ‘+’:匹配其前面字符至少1此 </p><p> fg：至少一个空白符： ‘[[:space:]]+’ </p><p> {m,n} :匹配其前面字符m到n次 </p></li><li><p>字符锚定的用法和基本正则表达式的用法相同，在此不再阐述。 </p></li><li><p>特殊字符： </p><p>‘|’: 代表或者的意思。 </p><p>‘fg’：grep -E ‘c|cat’ file：表示在文件file内查找包含c或者cat </p><p>‘.‘:\表示转义字符，此表示符号.</p></li></ol><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>只能使用基本的正则表达式来搜索文本。</p><p>grep [option] ‘字符串’ filename</p><h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><p>正则表达式选择与解释:</p><pre><code>-E, --extended-regexp     PATTERN 是一个可扩展的正则表达式(缩写为 ERE)-F, --fixed-strings       PATTERN 是一组由断行符分隔的定长字符串。-G, --basic-regexp        PATTERN 是一个基本正则表达式(缩写为 BRE)-P, --perl-regexp         PATTERN 是一个 Perl 正则表达式-e, --regexp=PATTERN      用 PATTERN 来进行匹配操作-f, --file=FILE           从 FILE 中取得 PATTERN-i, --ignore-case         忽略大小写-w, --word-regexp         强制 PATTERN 仅完全匹配字词-x, --line-regexp         强制 PATTERN 仅完全匹配一行-z, --null-data           一个 0 字节的数据行，但不是空行</code></pre><p>Miscellaneous:</p><pre><code>-s, --no-messages         suppress error messages-v, --invert-match        select non-matching lines-V, --version             display version information and exit    --help                display this help text and exit</code></pre><p>输出控制:</p><pre><code>-m, --max-count=NUM       NUM 次匹配后停止-b, --byte-offset         输出的同时打印字节偏移-n, --line-number         输出的同时打印行号  --line-buffered       每行输出清空-H, --with-filename       为每一匹配项打印文件名-h, --no-filename         输出时不显示文件名前缀  --label=LABEL         将LABEL 作为标准输入文件名前缀-o, --only-matching       show only the part of a line matching PATTERN-q, --quiet, --silent     suppress all normal output  --binary-files=TYPE   assume that binary files are TYPE;                        TYPE is &apos;binary&apos;, &apos;text&apos;, or &apos;without-match&apos;-a, --text                equivalent to --binary-files=text-I                        equivalent to --binary-files=without-match-d, --directories=ACTION  how to handle directories;                        ACTION is &apos;read&apos;, &apos;recurse&apos;, or &apos;skip&apos;-D, --devices=ACTION      how to handle devices, FIFOs and sockets;                        ACTION is &apos;read&apos; or &apos;skip&apos;-r, --recursive           like --directories=recurse-R, --dereference-recursive                        likewise, but follow all symlinks  --include=FILE_PATTERN                        search only files that match FILE_PATTERN  --exclude=FILE_PATTERN                        skip files and directories matching FILE_PATTERN  --exclude-from=FILE   skip files matching any file pattern from FILE  --exclude-dir=PATTERN directories that match PATTERN will be skipped.-L, --files-without-match print only names of FILEs containing no match-l, --files-with-matches  print only names of FILEs containing matches-c, --count               print only a count of matching lines per FILE-T, --initial-tab         make tabs line up (if needed)-Z, --null                print 0 byte after FILE name</code></pre><p>文件控制:</p><pre><code>-B, --before-context=NUM  打印以文本起始的NUM 行-A, --after-context=NUM   打印以文本结尾的NUM 行-C, --context=NUM         打印输出文本前后各NUM行-NUM                      same as --context=NUM  --group-separator=SEP use SEP as a group separator  --no-group-separator  use empty string as a group separator  --color[=WHEN],  --colour[=WHEN]       use markers to highlight the matching strings;                        WHEN is &apos;always&apos;, &apos;never&apos;, or &apos;auto&apos;-U, --binary              do not strip CR characters at EOL (MSDOS/Windows)-u, --unix-byte-offsets   report offsets as if CRs were not there                        (MSDOS/Windows)</code></pre><h3 id="用例："><a href="#用例：" class="headerlink" title="用例："></a>用例：</h3><pre><code>显示匹配行和它后面的10行grep -A 10 pattern file.txt</code></pre><h2 id="egrep"><a href="#egrep" class="headerlink" title="egrep"></a>egrep</h2><p>可以使用扩展的正则表达式来搜索文本，grep不能使用扩展正则表达式的语法</p><p>egrep = grep -E</p><pre><code>eg: 查找至少包含一个大写字母的行grep &apos;[A-Z]+&apos; nginx.log   #没有任何返回值，也不报错egrep &apos;[A-Z]+&apos; nginx.log  #返回匹配行</code></pre><h2 id="fgrep"><a href="#fgrep" class="headerlink" title="fgrep"></a>fgrep</h2><p>利用固定的字符串来搜索文本，不支持正则表达式的引用。类似于精确匹配</p><p>fgrep = grep -F</p><pre><code>eg:查找包含&apos;Apr&apos;字符串的行fgrep &apos;Apr*&apos; nginx.log    #没有返回值，不报错fgrep &apos;Apr&apos; nginx.log    #返回包含Apr字符串的行</code></pre>]]></content>
       
       
       <categories>
           
-          <category> linux </category>
+          <category> Linux </category>
           
       </categories>
       
@@ -4008,11 +4008,11 @@
     
     
     <entry>
-      <title>Spring boot注解自动装配原理分析</title>
-      <link href="/2018/07/12/spring-boot-loader/"/>
-      <url>/2018/07/12/spring-boot-loader/</url>
+      <title>SpringBoo--容器启动过程(二)</title>
+      <link href="/2018/07/12/spring-boot-tomcat/"/>
+      <url>/2018/07/12/spring-boot-tomcat/</url>
       
-        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
       
       
       <categories>
@@ -4033,11 +4033,11 @@
     
     
     <entry>
-      <title>SpringBoo--容器启动过程(二)</title>
-      <link href="/2018/07/12/spring-boot-tomcat/"/>
-      <url>/2018/07/12/spring-boot-tomcat/</url>
+      <title>Spring boot注解自动装配原理分析</title>
+      <link href="/2018/07/12/spring-boot-loader/"/>
+      <url>/2018/07/12/spring-boot-loader/</url>
       
-        <content type="html"><![CDATA[<p>SpringBoot内嵌web容器tomcat，</p><a id="more"></a><h2 id="启动过程分析"><a href="#启动过程分析" class="headerlink" title="启动过程分析"></a>启动过程分析</h2>]]></content>
+        <content type="html"><![CDATA[<p>熟悉Spring Boot项目搭建的同学都知道基本的配置。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先看Application main类需要基本的注解@SpringBootApplication：</p><pre><code>@RestController@SpringBootApplicationpublic class AutoconfigDemoTestApplication {    public static void main(String[] args) {        SpringApplication.run(AutoconfigDemoTestApplication.class, args);    }}</code></pre><p>进入@SpringBootApplication可以看到：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@SpringBootConfiguration@EnableAutoConfiguration@ComponentScan(excludeFilters = {        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })public @interface SpringBootApplication {}</code></pre><p>除去基本的元注解，进入@SpringBootConfiguration，可以看到是一些基本的注解：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Configurationpublic @interface SpringBootConfiguration {}</code></pre><p>进入注解@EnableAutoConfiguration，可以看到除了注解@AutoConfigurationPackage，还有一个@Import(AutoConfigurationImportSelector.class)：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@AutoConfigurationPackage@Import(AutoConfigurationImportSelector.class)public @interface EnableAutoConfiguration {    String ENABLED_OVERRIDE_PROPERTY = &quot;spring.boot.enableautoconfiguration&quot;;    //    Class&lt;?&gt;[] exclude() default {};    //    String[] excludeName() default {};}</code></pre><p>@AutoConfigurationPackage是一些：</p><pre><code>@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Inherited@Import(AutoConfigurationPackages.Registrar.class)public @interface AutoConfigurationPackage {}</code></pre><p>进入AutoConfigurationImportSelector类，可以看到方法selectImports来确定要导入的类：</p><pre><code>@Overridepublic String[] selectImports(AnnotationMetadata annotationMetadata) {    if (!isEnabled(annotationMetadata)) {        return NO_IMPORTS;    }    // 加载&quot;META-INF/spring-autoconfigure-metadata.properties&quot;    AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader            .loadMetadata(this.beanClassLoader);    //    AnnotationAttributes attributes = getAttributes(annotationMetadata);    List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,            attributes);    configurations = removeDuplicates(configurations);    Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);    checkExcludedClasses(configurations, exclusions);    configurations.removeAll(exclusions);    configurations = filter(configurations, autoConfigurationMetadata);    fireAutoConfigurationImportEvents(configurations, exclusions);    return StringUtils.toStringArray(configurations);}</code></pre><p>先看方法getCandidateConfigurations，回头有时间再慢慢分析其它方法：</p><pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,        AnnotationAttributes attributes) {    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(            getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());    Assert.notEmpty(configurations,            &quot;No auto configuration classes found in META-INF/spring.factories. If you &quot;                    + &quot;are using a custom packaging, make sure that file is correct.&quot;);    return configurations;}</code></pre><p>再看SpringFactoriesLoader.loadFactoryNames，可以知道最终读取的是所有jar包META-INF目录下的spring.factories文件：<br>    public static final String FACTORIES_RESOURCE_LOCATION = “META-INF/spring.factories”;</p><pre><code>public static List&lt;String&gt; loadFactoryNames(Class&lt;?&gt; factoryClass, @Nullable ClassLoader classLoader) {    String factoryClassName = factoryClass.getName();    return loadSpringFactories(classLoader).getOrDefault(factoryClassName, Collections.emptyList());}private static Map&lt;String, List&lt;String&gt;&gt; loadSpringFactories(@Nullable ClassLoader classLoader) {    MultiValueMap&lt;String, String&gt; result = cache.get(classLoader);    if (result != null) {        return result;    }    try {        Enumeration&lt;URL&gt; urls = (classLoader != null ?                classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :                ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));        result = new LinkedMultiValueMap&lt;&gt;();        while (urls.hasMoreElements()) {            URL url = urls.nextElement();            UrlResource resource = new UrlResource(url);            Properties properties = PropertiesLoaderUtils.loadProperties(resource);            for (Map.Entry&lt;?, ?&gt; entry : properties.entrySet()) {                List&lt;String&gt; factoryClassNames = Arrays.asList(                        StringUtils.commaDelimitedListToStringArray((String) entry.getValue()));                result.addAll((String) entry.getKey(), factoryClassNames);            }        }        cache.put(classLoader, result);        return result;    }    catch (IOException ex) {        throw new IllegalArgumentException(&quot;Unable to load factories from location [&quot; +                FACTORIES_RESOURCE_LOCATION + &quot;]&quot;, ex);    }}</code></pre><h2 id="Fat-jar"><a href="#Fat-jar" class="headerlink" title="Fat jar"></a>Fat jar</h2><h3 id="PropertiesLauncher加载规则："><a href="#PropertiesLauncher加载规则：" class="headerlink" title="PropertiesLauncher加载规则："></a>PropertiesLauncher加载规则：</h3><blockquote><p>loader.properties属性，先在loader.home中查找； 再去classpath根路径查找； 最后到<code>classpath:/BOOT-INF/classes</code>中查找;第一次找到的即使用</p><p>如果loader.config.location没有配置，loader.home下的属性文件会覆盖默认的属性文件<br>loader.path可以包括目录、文件路径、jar包中的目录<code>dependencies.jar!/lib</code>、正则匹配；文件路径可以是loader.home指定的路径或者文件系统中以<code>jar:file:</code>前缀开头的路径</p><p>loader.path如果为空，默认放在<code>BOOT-INF/lib</code>下，同时loader.path不能用来配置loader.properties的存放路径</p><p>变量的搜索路径顺序：环境变量、系统变量、loader.properties、外部的manifest文件、内部的manifest文件</p></blockquote><h3 id="打包限制规则："><a href="#打包限制规则：" class="headerlink" title="打包限制规则："></a>打包限制规则：</h3><ol><li>zip压缩，必须使用ZipEntry.STORED方法压缩</li><li>SystemClassLoader，加载class文件使用Thread.getContextClassLoader()，使用ClassLoader.getSystemClassLoader()加载会导致失败，由于java.util.Logging类使用SystemClassLoader加载，所以需要重写Logging的继承类</li></ol><h3 id="可执行jar的其他构建方法"><a href="#可执行jar的其他构建方法" class="headerlink" title="可执行jar的其他构建方法"></a>可执行jar的其他构建方法</h3><ol><li>Maven Shade Plugin</li><li>JarClassLoader</li><li>OneJar</li><li>Gradle Shadow Plugin</li></ol>]]></content>
       
       
       <categories>
