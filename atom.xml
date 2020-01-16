@@ -87,20 +87,6 @@
   </entry>
   
   <entry>
-    <title>mqtt-base</title>
-    <link href="http://wangwanchao.wang/2019/10/30/mqtt-base/"/>
-    <id>http://wangwanchao.wang/2019/10/30/mqtt-base/</id>
-    <published>2019-10-30T10:26:43.000Z</published>
-    <updated>2019-11-14T05:43:44.658Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>DevOps软件架构师行动指南</title>
     <link href="http://wangwanchao.wang/2019/10/12/read-devops/"/>
     <id>http://wangwanchao.wang/2019/10/12/read-devops/</id>
@@ -135,58 +121,22 @@
   </entry>
   
   <entry>
-    <title>微服务--链路监控()</title>
-    <link href="http://wangwanchao.wang/2019/09/11/spring-cloud-slueth/"/>
-    <id>http://wangwanchao.wang/2019/09/11/spring-cloud-slueth/</id>
-    <published>2019-09-11T13:53:40.000Z</published>
-    <updated>2019-10-10T06:27:17.389Z</updated>
-    
-    <content type="html"><![CDATA[<p>链路监控主要用来监控</p><a id="more"></a><h2 id="Sleuth"><a href="#Sleuth" class="headerlink" title="Sleuth"></a>Sleuth</h2><h2 id="CAT"><a href="#CAT" class="headerlink" title="CAT"></a>CAT</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;链路监控主要用来监控&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Kong网关--</title>
+    <title>Kong网关</title>
     <link href="http://wangwanchao.wang/2019/08/29/kong-base/"/>
     <id>http://wangwanchao.wang/2019/08/29/kong-base/</id>
     <published>2019-08-29T06:29:21.000Z</published>
-    <updated>2019-08-30T03:19:52.965Z</updated>
+    <updated>2020-01-16T07:09:58.641Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><pre><code>yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</code></pre><p>如果配置了yum源，可以直接yum安装</p><h4 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h4><pre><code>sudo yum update -ysudo yum install -y wgetwget https://bintray.com/kong/kong-rpm/rpm -O bintray-kong-kong-rpm.repoexport major_version=`grep -oE &apos;[0-9]+\.[0-9]+&apos; /etc/redhat-release | cut -d &quot;.&quot; -f1`sed -i -e &apos;s/baseurl.*/&amp;\/centos\/&apos;$major_version&apos;&apos;/ bintray-kong-kong-rpm.reposudo mv bintray-kong-kong-rpm.repo /etc/yum.repos.d/sudo yum update -ysudo yum install -y kong</code></pre><h4 id="有数据库模式"><a href="#有数据库模式" class="headerlink" title="有数据库模式"></a>有数据库模式</h4><p>依赖于PostgreSQL</p><p>创建kong.conf</p><pre><code>cp /etc/kong/kong.conf.default /etc/kong/kong.conf</code></pre><p>报错：</p><ol><li><p>Error: [PostgreSQL error] failed to check legacy schema state: ERROR: function to_regclass(unknown) does not exist (12)</p><p>Run with –v (verbose) or –vv (debug) for more details<br>解决方案：postgresql版本不兼容问题，升级psql</p></li></ol><h4 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><h3 id="kong监控UI"><a href="#kong监控UI" class="headerlink" title="kong监控UI"></a>kong监控UI</h3><p>kong-dashboard</p><p>1、<br>2、重新启动报错：<br>kong-dashboard start –kong-url <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Connecting to Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a> …<br>Could not reach Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Error details:<br>{ Error: getaddrinfo ENOTFOUND kong kong:8001<br>    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)<br>  errno: ‘ENOTFOUND’,<br>  code: ‘ENOTFOUND’,<br>  syscall: ‘getaddrinfo’,<br>  hostname: ‘kong’,<br>  host: ‘kong’,<br>  port: ‘8001’ }</p><h3 id="konga"><a href="#konga" class="headerlink" title="konga"></a>konga</h3>]]></content>
+    <content type="html"><![CDATA[<p>网关</p><a id="more"></a><h2 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h2><pre><code>yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</code></pre><p>如果配置了yum源，可以直接yum安装</p><h4 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h4><pre><code>sudo yum update -ysudo yum install -y wgetwget https://bintray.com/kong/kong-rpm/rpm -O bintray-kong-kong-rpm.repoexport major_version=`grep -oE &apos;[0-9]+\.[0-9]+&apos; /etc/redhat-release | cut -d &quot;.&quot; -f1`sed -i -e &apos;s/baseurl.*/&amp;\/centos\/&apos;$major_version&apos;&apos;/ bintray-kong-kong-rpm.reposudo mv bintray-kong-kong-rpm.repo /etc/yum.repos.d/sudo yum update -ysudo yum install -y kong</code></pre><h4 id="有数据库模式"><a href="#有数据库模式" class="headerlink" title="有数据库模式"></a>有数据库模式</h4><p>依赖于PostgreSQL</p><p>创建kong.conf</p><pre><code>cp /etc/kong/kong.conf.default /etc/kong/kong.conf</code></pre><p>报错：</p><ol><li><p>Error: [PostgreSQL error] failed to check legacy schema state: ERROR: function to_regclass(unknown) does not exist (12)</p><p>Run with –v (verbose) or –vv (debug) for more details<br>解决方案：postgresql版本不兼容问题，升级psql</p></li></ol><h4 id="无数据库模式"><a href="#无数据库模式" class="headerlink" title="无数据库模式"></a>无数据库模式</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><h3 id="kong监控UI"><a href="#kong监控UI" class="headerlink" title="kong监控UI"></a>kong监控UI</h3><p>kong-dashboard</p><p>1、<br>2、重新启动报错：<br>kong-dashboard start –kong-url <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Connecting to Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a> …<br>Could not reach Kong on <a href="http://kong:8001" target="_blank" rel="noopener">http://kong:8001</a><br>Error details:<br>{ Error: getaddrinfo ENOTFOUND kong kong:8001<br>    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)<br>  errno: ‘ENOTFOUND’,<br>  code: ‘ENOTFOUND’,<br>  syscall: ‘getaddrinfo’,<br>  hostname: ‘kong’,<br>  host: ‘kong’,<br>  port: ‘8001’ }</p><h3 id="konga"><a href="#konga" class="headerlink" title="konga"></a>konga</h3>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Centos7安装&quot;&gt;&lt;a href=&quot;#Centos7安装&quot; class=&quot;headerlink&quot; title=&quot;Centos7安装&quot;&gt;&lt;/a&gt;Centos7安装&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;yum install -y g
-      
+      &lt;p&gt;网关&lt;/p&gt;
     
     </summary>
     
     
       <category term="SpringCloud" scheme="http://wangwanchao.wang/tags/SpringCloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>es6-assign</title>
-    <link href="http://wangwanchao.wang/2019/08/20/es6-assign/"/>
-    <id>http://wangwanchao.wang/2019/08/20/es6-assign/</id>
-    <published>2019-08-20T02:57:04.000Z</published>
-    <updated>2019-08-20T02:57:04.082Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
@@ -297,52 +247,6 @@
   </entry>
   
   <entry>
-    <title>java-jmx</title>
-    <link href="http://wangwanchao.wang/2019/06/16/java-jmx/"/>
-    <id>http://wangwanchao.wang/2019/06/16/java-jmx/</id>
-    <published>2019-06-16T04:04:45.000Z</published>
-    <updated>2019-06-16T04:04:45.112Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>解析JavaScript ECMAScript TypeScript COffeScript</title>
-    <link href="http://wangwanchao.wang/2019/06/14/es6-ts/"/>
-    <id>http://wangwanchao.wang/2019/06/14/es6-ts/</id>
-    <published>2019-06-14T07:46:52.000Z</published>
-    <updated>2019-07-15T16:14:01.464Z</updated>
-    
-    <content type="html"><![CDATA[<p>JS框架层出不穷，</p><a id="more"></a><h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote><p>ECMAScript6的目标是使得JavaScript语言可以用来编写大型的复杂的应用程序，于是增添了许多特性，例如：模块和类，Maps、Sets、Promises、生成器（Generators）等。<br>尽管ECMAScript6做了大量的更新，但标准化委员会仍然决定要兼容以前的版本，但随之而来的问题是，目前主流的宿主环境（无论是浏览器环境还是服务器环境）不能完全支持ES6，导致了开发者真正要使用ECMAScript6时，需要将ECMAScript6代码进行转译。</p></blockquote><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote><p>TypeScript 是一种微软开源的编程语言。<br>由于JavaScript是弱类型的，TypeScript为JavaScript扩展类和模块的概念。正是由于TypeScript最大的特点是类型化，因此才叫做TypeScript。<br>TypeScript支持ECMAScript6标准（实际上相当于是对ECMAScript6的提前实现），并且能将代码根据需求转换为 ES3/5/6。这意味着开发者可以通过TypeScript使用最新的ECMAScript特性，无需再考虑兼容性的问题。</p></blockquote><h3 id="TypeScript分类"><a href="#TypeScript分类" class="headerlink" title="TypeScript分类"></a>TypeScript分类</h3><ol><li>一个是类似 Babel 的阵营，坚持JavaScript 的语法风格编写，为开发者提供最新的 ECMAScript 特性；</li><li>另一个则是Coffeescript、Clojure、Dart等的阵营，它们的语法与 JavaScript 迥然不同，但最终会编译为JavaScript；</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JS框架层出不穷，&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>dubbo-base</title>
-    <link href="http://wangwanchao.wang/2019/06/13/dubbo-base/"/>
-    <id>http://wangwanchao.wang/2019/06/13/dubbo-base/</id>
-    <published>2019-06-13T05:27:17.000Z</published>
-    <updated>2019-06-13T05:27:17.805Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>微服务--路由器(五)</title>
     <link href="http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/"/>
     <id>http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/</id>
@@ -354,6 +258,116 @@
     <summary type="html">
     
       &lt;p&gt;在wei服务中刚开始使用dubbo通信，后来改为ribbon/feign，feign实际上是在ribbon上又封装了一层&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java中特殊类Object</title>
+    <link href="http://wangwanchao.wang/2019/06/10/java-object/"/>
+    <id>http://wangwanchao.wang/2019/06/10/java-object/</id>
+    <published>2019-06-10T15:21:14.000Z</published>
+    <updated>2019-06-11T11:21:38.481Z</updated>
+    
+    <content type="html"><![CDATA[<p>Object是所有类的父类。</p><a id="more"></a><p>Object类方法结构：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/java/object.png"><h2 id="equals、hashCode"><a href="#equals、hashCode" class="headerlink" title="equals、hashCode"></a>equals、hashCode</h2><h2 id="wait、notify、notifyAll"><a href="#wait、notify、notifyAll" class="headerlink" title="wait、notify、notifyAll"></a>wait、notify、notifyAll</h2><p>原理：<br>obj.wait(), obj.notify()必须在synchronized(obj)语句块内，wait释放对象锁，线程休眠。notify唤醒线程，但不会马上释放对象锁。synchronized执行结束，自动释放锁后，jvm层在持有wait对象锁的线程中随机选取一线程，赋予对象锁，唤醒线程。</p><p>虚假唤醒：</p><p><strong>注意：lost wake up问题</strong> </p><blockquote></blockquote><ol><li>wait/notify/notify必须在锁对象的synchronized同步块内。 因为这三个方法都是释放锁的，如果没有synchronized先获取锁就调用释放锁会引起异常.</li><li>java.util.concurrent.locks.Condition类中的await/signal也必须在同步块内</li></ol><p>案例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="wait-notify的缺点："><a href="#wait-notify的缺点：" class="headerlink" title="wait/notify的缺点："></a>wait/notify的缺点：</h3><ol><li>线程B通知线程A时，线程A必须在wait调用上等待，否则线程A永远不会被唤醒</li><li>notify只能唤醒一个线程，而notifyAll则唤醒全部线程</li></ol><h3 id="改进方案LockSupport"><a href="#改进方案LockSupport" class="headerlink" title="改进方案LockSupport:"></a>改进方案LockSupport:</h3><image src="https://impwang.oss-cn-beijing.aliyuncs.com/java/LockSupport.png"><p>原理：<br>LockSupport使用：<br>park：等待许可，类似于wait<br>unpark：提供许可，类似于notify<br>park和unpark之间没有时序问题，最底层通过Posix的mutex、condition实现。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p>相同点：</p><ol><li>wait/park都会阻塞线程，释放锁</li><li>上层表现机制不一样，系统层面都是通过<strong>中断</strong>实现</li></ol><p>不同点：</p><ol><li>wait/notify/notifyAll针对的是对象，而且notify不能唤醒某个具体线程；LockSupport可以具体到某一个线程</li><li>实现原理不同，wait/notify基于；LockSupport底层基于Unsafe.park实现</li><li>wait完成同步，需要依赖监视器锁；LockSupport可以使用getBlocker监视锁的持有情况</li></ol></image></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Object是所有类的父类。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://wangwanchao.wang/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络中的NAT、P2P</title>
+    <link href="http://wangwanchao.wang/2019/06/07/net-nat/"/>
+    <id>http://wangwanchao.wang/2019/06/07/net-nat/</id>
+    <published>2019-06-07T03:56:03.000Z</published>
+    <updated>2019-06-11T15:50:45.242Z</updated>
+    
+    <content type="html"><![CDATA[<p>网络其实相当有意思，接触NAT主要是在VMware中用到过，一种是懵懵懂懂。</p><a id="more"></a><h2 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h2><p>桥接模式，</p><blockquote><p>每个新建的虚拟机系统都是局域网内和宿主机对等的独立主机，<br>需要手动分配一个和宿主机同IP段的IP地址<br>可以访问公网</p></blockquote><h2 id="Host-only"><a href="#Host-only" class="headerlink" title="Host-only"></a>Host-only</h2><p>主机模式，</p><blockquote><p>虚拟环境和宿主真实环境隔离，<br>虚拟机无法访问公网</p></blockquote><h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换器，</p><blockquote><p>可以通过宿主机访问公网<br>虚拟机和宿主机可以互相访问，但是和宿主机之外的局域网主机无法互通</p></blockquote><h3 id="Basic-NAT"><a href="#Basic-NAT" class="headerlink" title="Basic NAT"></a>Basic NAT</h3><h3 id="NAPT"><a href="#NAPT" class="headerlink" title="NAPT"></a>NAPT</h3><p>网络地址-端口转换器</p><h3 id="Cone-NAT"><a href="#Cone-NAT" class="headerlink" title="Cone NAT"></a>Cone NAT</h3><p>锥形NAT</p><h4 id="Full-Cone-NAT"><a href="#Full-Cone-NAT" class="headerlink" title="Full Cone NAT"></a>Full Cone NAT</h4><p>全锥形NAT</p><h4 id="Restricted-Cone-NAT"><a href="#Restricted-Cone-NAT" class="headerlink" title="Restricted Cone NAT"></a>Restricted Cone NAT</h4><p>受限锥形NAT</p><h4 id="Port-Restricted-Cone-NAT"><a href="#Port-Restricted-Cone-NAT" class="headerlink" title="Port-Restricted Cone NAT"></a>Port-Restricted Cone NAT</h4><p>端口受限型NAT</p><h3 id="对称NAT"><a href="#对称NAT" class="headerlink" title="对称NAT"></a>对称NAT</h3><h2 id="P2P通信"><a href="#P2P通信" class="headerlink" title="P2P通信"></a>P2P通信</h2><h3 id="Relaying"><a href="#Relaying" class="headerlink" title="Relaying"></a>Relaying</h3><p>中继</p><h3 id="Connection-reversal"><a href="#Connection-reversal" class="headerlink" title="Connection reversal"></a>Connection reversal</h3><p>逆向连接</p><h3 id="UDP-hole-punching"><a href="#UDP-hole-punching" class="headerlink" title="UDP hole punching"></a>UDP hole punching</h3><p>UDP打洞</p><h4 id="端点在不同的NAT之下"><a href="#端点在不同的NAT之下" class="headerlink" title="端点在不同的NAT之下"></a>端点在不同的NAT之下</h4><h4 id="端点在相同的NAT之下"><a href="#端点在相同的NAT之下" class="headerlink" title="端点在相同的NAT之下"></a>端点在相同的NAT之下</h4><h4 id="固定端口绑定"><a href="#固定端口绑定" class="headerlink" title="固定端口绑定"></a>固定端口绑定</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网络其实相当有意思，接触NAT主要是在VMware中用到过，一种是懵懵懂懂。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="NetWork" scheme="http://wangwanchao.wang/tags/NetWork/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis概览(一)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-base/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-base/</id>
+    <published>2019-06-06T16:25:54.000Z</published>
+    <updated>2019-10-12T03:16:07.417Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis作为NoSQL数据库，第一次接触就感觉简直让人惊艳</p><a id="more"></a><h2 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h2><h2 id="单机模式"><a href="#单机模式" class="headerlink" title="单机模式"></a>单机模式</h2><h2 id="集群模式"><a href="#集群模式" class="headerlink" title="集群模式"></a>集群模式</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Redis作为NoSQL数据库，第一次接触就感觉简直让人惊艳&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis中的跳表(二)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-skiplist/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-skiplist/</id>
+    <published>2019-06-06T16:25:35.000Z</published>
+    <updated>2019-06-06T16:27:14.851Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis哨兵机制(七)</title>
+    <link href="http://wangwanchao.wang/2019/06/07/redis-election/"/>
+    <id>http://wangwanchao.wang/2019/06/07/redis-election/</id>
+    <published>2019-06-06T16:18:30.000Z</published>
+    <updated>2019-06-06T17:58:45.458Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis引入了哨兵机制</p><a id="more"></a><h2 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a>哨兵机制</h2><h3 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h3><p>启动哨兵机制，可以对主从数据库进行监控</p><h3 id="一主多从"><a href="#一主多从" class="headerlink" title="一主多从"></a>一主多从</h3><p>启动多个哨兵(建议3个，并且使用奇数个哨兵)，可以对主从数据库进行监控，哨兵之间也可以互相通信。<br>哨兵主要功能：</p><ol><li>监控：监控master和slave是否运行正常</li><li>提醒：某个redis出现故障，可以发起通知</li><li>自动故障转移：当一个master不能正常工作时，将master下其中一个slave转为master</li></ol><p>补充：为什么哨兵至少3个？</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>每个哨兵会向其它哨兵、master、slave定时发送消息，保持心跳。如果指定时间未回应，则认为对方<strong>主观下线</strong>；若多数哨兵都认为某一服务没响应，则认为<strong>客观下线</strong></p><h2 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h2><p>用于接收master是否下线的消息</p><h2 id="选举master协议"><a href="#选举master协议" class="headerlink" title="选举master协议"></a>选举master协议</h2><p>用来决定是否执行故障转移，以及slave中的选主<br>选主会有两个过程：</p><h3 id="Sentinel哨兵选出leader"><a href="#Sentinel哨兵选出leader" class="headerlink" title="Sentinel哨兵选出leader"></a>Sentinel哨兵选出leader</h3><p>当某个哨兵节点确认master主管下线后，发出广播请求其它哨兵选举自己为leader，<br>被请求的哨兵如果没有选举过其它哨兵的请求，则同意该请求，否则不同意<br>当哨兵节点票数达到Max(quorum, num(sentinel)/2 + 1)，则升级为leader</p><h3 id="Sentinel-Leader选举主节点master"><a href="#Sentinel-Leader选举主节点master" class="headerlink" title="Sentinel Leader选举主节点master"></a>Sentinel Leader选举主节点master</h3><p>master选举：</p><image src="https://impwang.oss-cn-beijing.aliyuncs.com/redis/redis-leader.png"><p>slave-priority在conf中配置</p></image>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;redis引入了哨兵机制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://wangwanchao.wang/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>etcd-raft</title>
+    <link href="http://wangwanchao.wang/2019/06/06/etcd-raft/"/>
+    <id>http://wangwanchao.wang/2019/06/06/etcd-raft/</id>
+    <published>2019-06-06T15:05:56.000Z</published>
+    <updated>2019-06-06T15:05:56.093Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
