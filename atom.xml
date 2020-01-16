@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-10-10T07:18:31.037Z</updated>
+  <updated>2019-12-06T01:31:28.411Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,108 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>oracle-login</title>
+    <link href="http://wangwanchao.wang/2019/12/06/oracle-login/"/>
+    <id>http://wangwanchao.wang/2019/12/06/oracle-login/</id>
+    <published>2019-12-06T01:31:28.000Z</published>
+    <updated>2019-12-06T01:31:28.411Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js中的编译管理</title>
+    <link href="http://wangwanchao.wang/2019/11/27/js-compile/"/>
+    <id>http://wangwanchao.wang/2019/11/27/js-compile/</id>
+    <published>2019-11-27T09:48:44.000Z</published>
+    <updated>2019-12-02T05:48:50.590Z</updated>
+    
+    <content type="html"><![CDATA[<p>最开始接触过scss文件的编译，BootStrap还是在使用scss编写样式</p><a id="more"></a><h2 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h2><h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><h2 id="grunt"><a href="#grunt" class="headerlink" title="grunt"></a>grunt</h2><h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><h2 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h2><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><h2 id="Browserify"><a href="#Browserify" class="headerlink" title="Browserify"></a>Browserify</h2><p>CommonJS<br>RequireJS<br>SystemJS</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最开始接触过scss文件的编译，BootStrap还是在使用scss编写样式&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>jvm日志分析</title>
+    <link href="http://wangwanchao.wang/2019/11/14/java-jvm-gclog/"/>
+    <id>http://wangwanchao.wang/2019/11/14/java-jvm-gclog/</id>
+    <published>2019-11-14T06:41:46.000Z</published>
+    <updated>2019-11-14T06:51:34.160Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="通用参数"><a href="#通用参数" class="headerlink" title="通用参数"></a>通用参数</h2><h3 id="Xmx"><a href="#Xmx" class="headerlink" title="-Xmx"></a>-Xmx</h3><h3 id="Xms"><a href="#Xms" class="headerlink" title="-Xms"></a>-Xms</h3><h3 id="Xmn"><a href="#Xmn" class="headerlink" title="-Xmn"></a>-Xmn</h3><h3 id="XX-PrintGC-XX-PrintGCDetails"><a href="#XX-PrintGC-XX-PrintGCDetails" class="headerlink" title="-XX:+PrintGC / -XX:+PrintGCDetails"></a>-XX:+PrintGC / -XX:+PrintGCDetails</h3><p>-XX:+PrintHeapAtGC<br>-Xloggc 日志文件存放位置<br>-XX:+PrintGCDateStamps 打印每个年代对象分布情况<br>-XX:+PrintGCDateStamps / -XX:+PrintGCTimeStamps<br>-XX:+PrintGCApplicationStoppedTime<br>-XX:+PrintGCApplicationConcurrentTime 打印除了GC之外引起JVM STW的时间<br>-XX:+PrintSafepointStatistics<br>-XX:PrintSafepointStatisticsCount=1</p><h2 id="收集器特殊参数"><a href="#收集器特殊参数" class="headerlink" title="收集器特殊参数"></a>收集器特殊参数</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;通用参数&quot;&gt;&lt;a href=&quot;#通用参数&quot; class=&quot;headerlink&quot; title=&quot;通用参数&quot;&gt;&lt;/a&gt;通用参数&lt;/h2&gt;&lt;h3 id=&quot;Xmx&quot;&gt;&lt;a href=&quot;#Xmx&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java永久代、元数据区</title>
+    <link href="http://wangwanchao.wang/2019/11/14/java-jvm-permgen/"/>
+    <id>http://wangwanchao.wang/2019/11/14/java-jvm-permgen/</id>
+    <published>2019-11-14T05:53:32.000Z</published>
+    <updated>2019-11-14T06:33:19.891Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在维护一个jsp + tomcat的老项目中，开始使用JRE1.8运行，没有问题，切换到JRE1.7运行就报错:</p><pre><code>java.lang.OutOfMemoryError: PermGen space</code></pre><p>添加运行时参数<code>-XX:MaxPermSize=512m</code>解决问题，这里涉及到jvm运行时内存的变化。</p><a id="more"></a><h2 id="永久代-Perm-Gen"><a href="#永久代-Perm-Gen" class="headerlink" title="永久代 Perm Gen"></a>永久代 Perm Gen</h2><p>PermGen存在于<code>jdk1.7-</code>版本中，主要存储内容：</p><blockquote><p>class类的名称、字段、方法<br>字节码<br>常量池<br>对象数组/类型数组的class<br>JIT编译后的class信息</p></blockquote><h2 id="元数据区-Metaspace"><a href="#元数据区-Metaspace" class="headerlink" title="元数据区 Metaspace"></a>元数据区 Metaspace</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天在维护一个jsp + tomcat的老项目中，开始使用JRE1.8运行，没有问题，切换到JRE1.7运行就报错:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;java.lang.OutOfMemoryError: PermGen space
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;添加运行时参数&lt;code&gt;-XX:MaxPermSize=512m&lt;/code&gt;解决问题，这里涉及到jvm运行时内存的变化。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mqtt-base</title>
+    <link href="http://wangwanchao.wang/2019/10/30/mqtt-base/"/>
+    <id>http://wangwanchao.wang/2019/10/30/mqtt-base/</id>
+    <published>2019-10-30T10:26:43.000Z</published>
+    <updated>2019-11-14T05:43:44.658Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DevOps软件架构师行动指南</title>
+    <link href="http://wangwanchao.wang/2019/10/12/read-devops/"/>
+    <id>http://wangwanchao.wang/2019/10/12/read-devops/</id>
+    <published>2019-10-12T03:13:09.000Z</published>
+    <updated>2019-10-12T03:17:17.403Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>瓶颈期</title>
@@ -48,38 +150,6 @@
     <summary type="html">
     
       &lt;p&gt;链路监控主要用来监控&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>apue-base-1</title>
-    <link href="http://wangwanchao.wang/2019/09/07/apue-base-1/"/>
-    <id>http://wangwanchao.wang/2019/09/07/apue-base-1/</id>
-    <published>2019-09-07T05:53:10.000Z</published>
-    <updated>2019-09-20T06:01:54.210Z</updated>
-    
-    <content type="html"><![CDATA[<p>编译apue源码</p><a id="more"></a><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p>使用CLion快捷生成，<strong>注意：有些依赖库MacOS不支持</strong></p><h2 id="CentOS7"><a href="#CentOS7" class="headerlink" title="CentOS7"></a>CentOS7</h2><p>内核环境：</p><pre><code>uname -aLinux localhost.localdomain 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre><p>make编译报错：</p><p>1、错误一 </p><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gcc -ansi -I../<span class="keyword">include</span> -Wall -DLINUX -D_GNU_SOURCE  barrier.c -o barrier  -L../<span class="class"><span class="keyword">lib</span> -<span class="title">lapue</span> -<span class="title">pthread</span> -<span class="title">lrt</span> -<span class="title">lbsd</span></span></span><br><span class="line">/tmp/ccGw8KOc.o：在函数‘thr_fn’中：</span><br><span class="line">barrier.<span class="symbol">c:</span>(.text+<span class="number">0x80</span>)：对‘heapsort’未定义的引用</span><br><span class="line"><span class="symbol">collect2:</span> 错误：ld 返回 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [barrier] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: 离开目录“/usr/local/apue.<span class="number">3e</span>/threads”</span><br><span class="line"><span class="symbol">make:</span> *** [all] 错误 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>解决：安装libbsd、libbsd-devel依赖</p><p>2、cmake-make编译整个项目报错 添加CMakeLists.txt编译报错</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘fmemopen’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">2</span>: 警告：隐式声明函数‘funopen’ [-Wimplicit-function-declaration]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">  ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">86</span>:<span class="number">5</span>: 警告：赋值时将整数赋给指针，未作类型转换 [默认启用]</span><br><span class="line">  fp = funopen(ms, mstream_read, mstream_write,</span><br><span class="line">     ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span> 在函数‘mstream_seek’中:</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">214</span>:<span class="number">7</span>: 错误：将‘fpos_t’赋值给‘<span class="keyword">int</span>’时类型不兼容</span><br><span class="line">   off = pos;</span><br><span class="line">       ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">217</span>:<span class="number">19</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;vsize + pos;</span><br><span class="line">                   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">220</span>:<span class="number">20</span>: 错误：双目运算符 + 操作数(‘size_t’和‘fpos_t’)无效</span><br><span class="line">   off = ms-&gt;curpos + pos;</span><br><span class="line">                    ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">225</span>:<span class="number">3</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">   <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">   ^</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/apue.3e/</span>exercises/fmemopen.<span class="string">c:</span><span class="number">228</span>:<span class="number">2</span>: 错误：将‘<span class="keyword">int</span>’返回为‘fpos_t’时类型不兼容</span><br><span class="line">  <span class="keyword">return</span>(off);</span><br><span class="line">  ^</span><br><span class="line">make[<span class="number">2</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>exercises/fmemopen.c.o] 错误 <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [CMakeFiles<span class="regexp">/apue_3e.dir/</span>all] 错误 <span class="number">2</span></span><br><span class="line"><span class="string">make:</span> *** [all] 错误 <span class="number">2</span></span><br></pre></td></tr></table></figure><p>3、单独编译源文件文件报错</p><p>1）make正常编译，个别文件编译出错<br>2）使用gcc timeout.c单独编译报错</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gcc <span class="keyword">timeout</span>.c</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘<span class="keyword">timeout</span>’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x168</span>)：对‘makethread’未定义的引用</span><br><span class="line">/tmp/ccGYU7T4.o：在函数‘main’中：</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1c0</span>)：对‘pthread_mutexattr_init’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1dd</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x1ec</span>)：对‘pthread_mutexattr_settype’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x209</span>)：对‘err_exit’未定义的引用</span><br><span class="line"><span class="keyword">timeout</span>.c:(.<span class="built_in">text</span>+<span class="number">0x235</span>)：对‘err_exit’未定义的引用</span><br><span class="line">collect2: 错误：ld 返回 <span class="number">1</span></span><br></pre></td></tr></table></figure><p>缺少依赖文件，手动添加<code>#include &quot;./detach.c&quot;</code>。增加</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;编译apue源码&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>apue-4</title>
-    <link href="http://wangwanchao.wang/2019/09/07/apue-4/"/>
-    <id>http://wangwanchao.wang/2019/09/07/apue-4/</id>
-    <published>2019-09-07T05:47:15.000Z</published>
-    <updated>2019-09-07T05:47:15.236Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
@@ -284,78 +354,6 @@
     <updated>2019-06-24T01:20:26.255Z</updated>
     
     <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--SAAS平台设计思路(七)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-saas/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-saas/</id>
-    <published>2019-06-21T03:49:55.000Z</published>
-    <updated>2019-06-24T02:05:57.205Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID</p><a id="more"></a><p>RBAC模型</p><h3 id="安全原则"><a href="#安全原则" class="headerlink" title="安全原则"></a>安全原则</h3><ol><li>最小权限原则</li><li>责任分离原则</li><li>数据抽象原则</li></ol><p>页面权限<br>功能权限<br>数据权限</p><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>用户</p><p>角色：可以按照部门、岗位、</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--原理与流程(二)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-flow/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-flow/</id>
-    <published>2019-06-21T03:12:47.000Z</published>
-    <updated>2019-06-21T03:18:23.636Z</updated>
-    
-    <content type="html"><![CDATA[<p>从启动，到权限认证过程</p><a id="more"></a><p>流程图：</p><image src></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从启动，到权限认证过程&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--过滤器(三)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-filter/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-filter/</id>
-    <published>2019-06-21T03:12:01.000Z</published>
-    <updated>2019-06-21T03:16:46.049Z</updated>
-    
-    <content type="html"><![CDATA[<p>实现权限的框架，无非都是一些filter过滤</p><a id="more"></a><p>SpringSecurity有十多种filter，</p><p>filter流程时序图：</p><image src></image>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;实现权限的框架，无非都是一些filter过滤&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SpringSecurity--整合jwt(六)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-jwt/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-jwt/</id>
-    <published>2019-06-21T03:11:21.000Z</published>
-    <updated>2019-08-19T01:05:12.763Z</updated>
-    
-    <content type="html"><![CDATA[<p>jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。</p><a id="more"></a><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Securtiy默认是基于session会话的模式，jwt既然基于token的模式，就要关闭session。</p><h3 id="宏观上来看执行流程："><a href="#宏观上来看执行流程：" class="headerlink" title="宏观上来看执行流程："></a>宏观上来看执行流程：</h3><h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>Security对SecurityContext的存储也是分session状态：<br>(1) 完全无session状态，可以看到SecurityContext使用<code>NullSecurityContextRepository</code>存储，每次请求创建新的上下文context。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter00.png" alt="1"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter01.png" alt="2"></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter03.png" alt="3"></p><p>(2) session禁用状态，使用<code>HttpSessionSecurityContextRepository</code>存储，每次请求根据session会话获取上下文context。这样如果请求request中携带JSESSIONID就会存储相应的用户信息<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter04.png" alt></p><p><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter05.png" alt></p><p><code>SecurityContextRepository</code>类从名字也可看出就是一个存储仓库，对比两个不同的实现。<br><img src="https://impwang.oss-cn-beijing.aliyuncs.com/security/SecurityContextPersistenceFilter02.png" alt></p><p>而且，注意tomcat本身也有session，如果请求中带有session会话，也会导致tomcat存储信息</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;jwt模式，web请求模式中分：有状态模无状态模式。一般基于session的就是有状态模式，基于token的是无状态模式。而jwt的token可以存储用户信息，个人认为也算是一种有状态模式。&lt;/p&gt;
     
     </summary>
     

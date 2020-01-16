@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。 1、刚开始常用的是：其实这是最正规的写法 logger.debug(&amp;quot;massage:{}, code:{}&amp;quot;, msg, code) 遇到过：这种写法会先拼接字符串，再判断debug级别 logger.debug(&amp;quot;massage:{}&amp;quot; +">
+  <meta name="description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。">
 <meta name="keywords" content="logback">
 <meta property="og:type" content="article">
 <meta property="og:title" content="logback配置文件">
 <meta property="og:url" content="http://wangwanchao.wang/2018/10/12/logback-base/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。 1、刚开始常用的是：其实这是最正规的写法 logger.debug(&amp;quot;massage:{}, code:{}&amp;quot;, msg, code) 遇到过：这种写法会先拼接字符串，再判断debug级别 logger.debug(&amp;quot;massage:{}&amp;quot; +">
+<meta property="og:description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T10:47:31.672Z">
+<meta property="og:updated_time" content="2019-10-10T07:59:22.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logback配置文件">
-<meta name="twitter:description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。 1、刚开始常用的是：其实这是最正规的写法 logger.debug(&amp;quot;massage:{}, code:{}&amp;quot;, msg, code) 遇到过：这种写法会先拼接字符串，再判断debug级别 logger.debug(&amp;quot;massage:{}&amp;quot; +">
+<meta name="twitter:description" content="以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。">
 
 
 
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2018-10-12 11:03:05 / Modified: 18:47:31" itemprop="dateCreated datePublished" datetime="2018-10-12T11:03:05+08:00">2018-10-12</time>
+              <time title="Created: 2018-10-12 11:03:05" itemprop="dateCreated datePublished" datetime="2018-10-12T11:03:05+08:00">2018-10-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-10-10 15:59:22" itemprop="dateModified" datetime="2019-10-10T15:59:22+08:00">2019-10-10</time>
               
             
           </span>
@@ -442,7 +454,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/logback/" itemprop="url" rel="index"><span itemprop="name">logback</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -513,6 +525,7 @@
 
       
         <p>以前写过关于logging4j的配置，后来用logback，也没仔细分析过，在工作中遇到不同的用法，就来分析一下。</p>
+<a id="more"></a>
 <p>1、刚开始常用的是：其实这是最正规的写法</p>
 <pre><code>logger.debug(&quot;massage:{}, code:{}&quot;, msg, code)
 </code></pre><p>遇到过：这种写法会先拼接字符串，再判断debug级别</p>
@@ -524,7 +537,6 @@
 </code></pre><p>2、开始使用</p>
 <pre><code>private final Logger logger = LoggerFactory.getLogger(xxx.class);
 </code></pre><p>使用Lombok和注解@Slf4j可以省略原始代码</p>
-<a id="more"></a>
 <h2 id="Logback的体系结构"><a href="#Logback的体系结构" class="headerlink" title="Logback的体系结构"></a>Logback的体系结构</h2><h3 id="logback标签"><a href="#logback标签" class="headerlink" title="logback标签"></a>logback标签</h3><ol>
 <li>root 所有logger的祖先</li>
 <li>logger 所有logger之间根据name命名构成父子关系</li>
@@ -535,19 +547,20 @@
 <p> 在配置文件中可以使用多种变量：</p>
 <blockquote>
 <p>property </p>
-<pre><code><figure class="highlight plain"><figcaption><span>scope</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; </span><br><span class="line">&gt; 运行时定义变量 ```&lt;define clas=&quot;&quot;&gt; &lt;/define&gt;</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><figcaption><span>scope</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; </span><br><span class="line">&gt; 运行时定义变量 ``` &lt;define clas=&quot;&quot;&gt; &lt;/define&gt;</span><br></pre></td></tr></table></figure>
 </code></pre></blockquote>
 <blockquote>
 <p>从JNDI获取变量 <figure class="highlight plain"><figcaption><span>env-entry-name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7. include 一个配置文件中可以包含另一个配置文件 ```&lt;include file=&quot;&quot;/&gt; &lt;include resource=&quot;&quot;/&gt; &lt;include url=&quot;&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 </li>
-<li><p>配置全局信息 <figure class="highlight plain"><figcaption><span>debug</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	&gt; debug指定打印正常启动日志信息</span><br><span class="line">	&gt; </span><br><span class="line">	&gt; scan、scanPeriod指定配置文件自动热加载</span><br><span class="line">	&gt; </span><br><span class="line">	&gt; packagingData指定打印异常堆栈时打印jar包信息</span><br><span class="line">	单位milliseconds、seconds、minutes、</span><br><span class="line"></span><br><span class="line">### logback配置文件生命周期</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Logback的应用</span><br><span class="line"></span><br><span class="line">Logback整合Spring boot，有两种配置方式：</span><br><span class="line"></span><br><span class="line">### xml配置</span><br></pre></td></tr></table></figure></p>
+<li><p>配置全局信息 </p>
 </li>
 </ol>
+<figure class="highlight plain"><figcaption><span>debug</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; debug指定打印正常启动日志信息</span><br><span class="line">&gt; </span><br><span class="line">&gt; scan、scanPeriod指定配置文件自动热加载</span><br><span class="line">&gt; </span><br><span class="line">&gt; packagingData指定打印异常堆栈时打印jar包信息</span><br><span class="line">	单位milliseconds、seconds、minutes、</span><br><span class="line"></span><br><span class="line">### logback配置文件生命周期</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Logback的应用</span><br><span class="line"></span><br><span class="line">Logback整合Spring boot，有两种配置方式：</span><br><span class="line"></span><br><span class="line">### xml配置</span><br></pre></td></tr></table></figure>
 <p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
 <configuration><br><br>    <!-- 属性 --><br>    <property name="PROJECT_NAME" value="lb-client"><br>    <property name="LOG_HOME" value="${PROJECT_NAME}"><br>    <property name="CONSOLE_LOG_PATTERN" value="%highlight(%d{HH:mm:ss.SSS} %-5level %X{traceId} -%X{requestStr} %msg%n)"><br><br>    <!-- appender组件：指定日志打印级别、格式、编码、目录、策略 --><br>    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender"><br>        <layout class="ch.qos.logback.classic.PatternLayout"><br>            <pattern><br>                ${CONSOLE_LOG_PATTERN}<br>            </pattern><br>        </layout><br>    </appender><br><br>    <!-- 指定所有输出级别 --><br>    <root level="info"><br>        <appender-ref ref="consoleLog"><br>        <appender-ref ref="fileInfoLog"><br>        <appender-ref ref="fileErrorLog"><br>    </appender-ref></appender-ref></appender-ref></root><br><br>    <!-- 单独指定包日志打印级别 --><br>    <logger name="com.liyan" level="DEBUG"><br>        <appender-ref ref="demolog"><br>    </appender-ref></logger><br><br></property></property></property></configuration>
 
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">### yml配置</span></span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line"><span class="symbol">logging:</span></span><br><span class="line"><span class="symbol">    file:</span>   <span class="meta"># 日志文件,绝对路径或相对路径</span></span><br><span class="line">    <span class="meta">#path:   # 保存日志文件目录路径 file和path两者二选一</span></span><br><span class="line"><span class="symbol">    config:</span> <span class="meta"># 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml、logback-spring.xml</span></span><br><span class="line"><span class="symbol">    level:</span>  <span class="meta"># 日志级别</span></span><br><span class="line"><span class="symbol">        root:</span> info</span><br><span class="line">        org.springframework.web: DEBUG <span class="meta"># 配置spring web日志级别，类似于logger标签</span></span><br><span class="line">        com.xxx.mapper: DEBUG</span><br><span class="line"><span class="symbol">    pattern:</span></span><br><span class="line"><span class="symbol">        console:</span> %d&#123;yyyy/MM/dd-HH:mm:ss&#125; [%thread] %<span class="number">-5</span>level %logger- %msg%n</span><br><span class="line"><span class="symbol">        file:</span> %d&#123;yyyy/MM/dd-HH:mm&#125; [%thread] %<span class="number">-5</span>level %logger- %msg%n</span><br></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">### yml配置</span></span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line"><span class="symbol">logging:</span></span><br><span class="line"><span class="symbol">    file:</span>   <span class="meta"># 日志文件,绝对路径或相对路径</span></span><br><span class="line">    <span class="meta">#path:   # 保存日志文件目录路径 file和path两者二选一</span></span><br><span class="line"><span class="symbol">    config:</span> <span class="meta"># 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml、logback-spring.xml</span></span><br><span class="line"><span class="symbol">    level:</span>  <span class="meta"># 日志级别</span></span><br><span class="line"><span class="symbol">        root:</span> info</span><br><span class="line">        org.springframework.web: DEBUG <span class="meta"># 配置spring web日志级别，类似于logger标签</span></span><br><span class="line">        com.xxx.mapper: DEBUG</span><br><span class="line"><span class="symbol">    pattern:</span></span><br><span class="line"><span class="symbol">        console:</span> %d&#123;yyyy/MM/dd-HH:mm:ss&#125; [%thread] %<span class="number">-5</span>level %logger- %msg%n</span><br><span class="line"><span class="symbol">        file:</span> %d&#123;yyyy/MM/dd-HH:mm&#125; [%thread] %<span class="number">-5</span>level %logger- %msg%n</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -665,7 +678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">205</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -762,11 +775,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -933,7 +942,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -999,7 +1008,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1013,7 +1022,7 @@
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">206k</span>
+    <span title="Symbols count total">200k</span>
   
 
   
@@ -1024,7 +1033,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:07</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 

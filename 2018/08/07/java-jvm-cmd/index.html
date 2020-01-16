@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下 jvm的默认参数安装完jdk后，先来看一看一些默认参数，以下统一以jdk1.8为例。 java -XX:+PrintFlagsFinal -version | grep : “=”:表示jvm参数的默认值， “:=”:表示被用户或者jvm赋值的参数">
+  <meta name="description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下">
 <meta name="keywords" content="java, jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM虚拟机命令详解(三)">
 <meta property="og:url" content="http://wangwanchao.wang/2018/08/07/java-jvm-cmd/index.html">
 <meta property="og:site_name" content="Wangsir&#39;s Blog">
-<meta property="og:description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下 jvm的默认参数安装完jdk后，先来看一看一些默认参数，以下统一以jdk1.8为例。 java -XX:+PrintFlagsFinal -version | grep : “=”:表示jvm参数的默认值， “:=”:表示被用户或者jvm赋值的参数">
+<meta property="og:description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T04:32:47.525Z">
+<meta property="og:updated_time" content="2019-11-14T06:40:48.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM虚拟机命令详解(三)">
-<meta name="twitter:description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下 jvm的默认参数安装完jdk后，先来看一看一些默认参数，以下统一以jdk1.8为例。 java -XX:+PrintFlagsFinal -version | grep : “=”:表示jvm参数的默认值， “:=”:表示被用户或者jvm赋值的参数">
+<meta name="twitter:description" content="其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下">
 
 
 
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-07 12:32:47" itemprop="dateModified" datetime="2019-06-07T12:32:47+08:00">2019-06-07</time>
+                <time title="Modified: 2019-11-14 14:40:48" itemprop="dateModified" datetime="2019-11-14T14:40:48+08:00">2019-11-14</time>
               
             
           </span>
@@ -525,11 +525,11 @@
 
       
         <p>其实去年就一直在做这些东西，只是没有整理出来，这一段时间面试还是遇到很多问jvm的东西，特别整理以下</p>
+<a id="more"></a>
 <h2 id="jvm的默认参数"><a href="#jvm的默认参数" class="headerlink" title="jvm的默认参数"></a>jvm的默认参数</h2><p>安装完jdk后，先来看一看一些默认参数，以下统一以jdk1.8为例。</p>
 <pre><code>java -XX:+PrintFlagsFinal -version | grep :
 </code></pre><p>“=”:表示jvm参数的默认值，</p>
 <p>“:=”:表示被用户或者jvm赋值的参数</p>
-<a id="more"></a>
 <pre><code> intx CICompilerCount                          := 2                                   {product}
 uintx InitialHeapSize                          := 48234496                            {product}
 uintx MaxHeapSize                              := 742391808                           {product}
@@ -810,7 +810,7 @@ pmap -d -q 5454
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">205</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -907,11 +907,7 @@ pmap -d -q 5454
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1078,7 +1074,7 @@ pmap -d -q 5454
                     
                       
                     
-                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1144,7 +1140,7 @@ pmap -d -q 5454
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1158,7 +1154,7 @@ pmap -d -q 5454
     
       <span class="post-meta-item-text">Symbols count total: </span>
     
-    <span title="Symbols count total">206k</span>
+    <span title="Symbols count total">200k</span>
   
 
   
@@ -1169,7 +1165,7 @@ pmap -d -q 5454
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3:07</span>
+    <span title="Reading time total">3:01</span>
   
 </div>
 
