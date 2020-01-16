@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangwanchao.wang/"/>
-  <updated>2019-12-06T01:31:28.411Z</updated>
+  <updated>2020-01-16T06:43:37.556Z</updated>
   <id>http://wangwanchao.wang/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>thinking-in-2020</title>
+    <link href="http://wangwanchao.wang/2020/01/16/thinking-in-2020/"/>
+    <id>http://wangwanchao.wang/2020/01/16/thinking-in-2020/</id>
+    <published>2020-01-16T06:43:37.000Z</published>
+    <updated>2020-01-16T06:43:37.556Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>oracle-login</title>
@@ -315,38 +329,6 @@
   </entry>
   
   <entry>
-    <title>vue-lifecycle</title>
-    <link href="http://wangwanchao.wang/2019/06/28/vue-lifecycle/"/>
-    <id>http://wangwanchao.wang/2019/06/28/vue-lifecycle/</id>
-    <published>2019-06-28T02:18:58.000Z</published>
-    <updated>2019-06-28T02:18:58.823Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Vue--数据传递</title>
-    <link href="http://wangwanchao.wang/2019/06/28/vue-data/"/>
-    <id>http://wangwanchao.wang/2019/06/28/vue-data/</id>
-    <published>2019-06-28T02:03:57.000Z</published>
-    <updated>2019-06-28T02:07:25.102Z</updated>
-    
-    <content type="html"><![CDATA[<p>组件之间的数据传递</p><a id="more"></a><h2 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h2><h2 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h2><h2 id="Event-Bus"><a href="#Event-Bus" class="headerlink" title="Event Bus"></a>Event Bus</h2><p>可以平级传数</p><h2 id="Vuex传递"><a href="#Vuex传递" class="headerlink" title="Vuex传递"></a>Vuex传递</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;组件之间的数据传递&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>js-icon</title>
     <link href="http://wangwanchao.wang/2019/06/24/js-icon/"/>
     <id>http://wangwanchao.wang/2019/06/24/js-icon/</id>
@@ -354,6 +336,24 @@
     <updated>2019-06-24T01:20:26.255Z</updated>
     
     <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringSecurity--SAAS平台设计思路(七)</title>
+    <link href="http://wangwanchao.wang/2019/06/21/spring-security-saas/"/>
+    <id>http://wangwanchao.wang/2019/06/21/spring-security-saas/</id>
+    <published>2019-06-21T03:49:55.000Z</published>
+    <updated>2019-06-24T02:05:57.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID</p><a id="more"></a><p>RBAC模型</p><h3 id="安全原则"><a href="#安全原则" class="headerlink" title="安全原则"></a>安全原则</h3><ol><li>最小权限原则</li><li>责任分离原则</li><li>数据抽象原则</li></ol><p>页面权限<br>功能权限<br>数据权限</p><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>用户</p><p>角色：可以按照部门、岗位、</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID&lt;/p&gt;
     
     </summary>
     
