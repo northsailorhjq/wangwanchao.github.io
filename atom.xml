@@ -45,24 +45,6 @@
   </entry>
   
   <entry>
-    <title>js中的编译管理</title>
-    <link href="http://wangwanchao.wang/2019/11/27/js-compile/"/>
-    <id>http://wangwanchao.wang/2019/11/27/js-compile/</id>
-    <published>2019-11-27T09:48:44.000Z</published>
-    <updated>2019-12-02T05:48:50.590Z</updated>
-    
-    <content type="html"><![CDATA[<p>最开始接触过scss文件的编译，BootStrap还是在使用scss编写样式</p><a id="more"></a><h2 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h2><h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><h2 id="grunt"><a href="#grunt" class="headerlink" title="grunt"></a>grunt</h2><h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><h2 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h2><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><h2 id="Browserify"><a href="#Browserify" class="headerlink" title="Browserify"></a>Browserify</h2><p>CommonJS<br>RequireJS<br>SystemJS</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最开始接触过scss文件的编译，BootStrap还是在使用scss编写样式&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>jvm日志分析</title>
     <link href="http://wangwanchao.wang/2019/11/14/java-jvm-gclog/"/>
     <id>http://wangwanchao.wang/2019/11/14/java-jvm-gclog/</id>
@@ -263,20 +245,6 @@
   </entry>
   
   <entry>
-    <title>mac-multi-mysql</title>
-    <link href="http://wangwanchao.wang/2019/08/08/mac-multi-mysql/"/>
-    <id>http://wangwanchao.wang/2019/08/08/mac-multi-mysql/</id>
-    <published>2019-08-08T01:55:25.000Z</published>
-    <updated>2019-08-08T01:55:26.010Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>计算机网络--概览</title>
     <link href="http://wangwanchao.wang/2019/08/03/net-overview/"/>
     <id>http://wangwanchao.wang/2019/08/03/net-overview/</id>
@@ -329,11 +297,11 @@
   </entry>
   
   <entry>
-    <title>js-icon</title>
-    <link href="http://wangwanchao.wang/2019/06/24/js-icon/"/>
-    <id>http://wangwanchao.wang/2019/06/24/js-icon/</id>
-    <published>2019-06-24T01:20:26.000Z</published>
-    <updated>2019-06-24T01:20:26.255Z</updated>
+    <title>java-jmx</title>
+    <link href="http://wangwanchao.wang/2019/06/16/java-jmx/"/>
+    <id>http://wangwanchao.wang/2019/06/16/java-jmx/</id>
+    <published>2019-06-16T04:04:45.000Z</published>
+    <updated>2019-06-16T04:04:45.112Z</updated>
     
     <summary type="html">
     
@@ -343,17 +311,49 @@
   </entry>
   
   <entry>
-    <title>SpringSecurity--SAAS平台设计思路(七)</title>
-    <link href="http://wangwanchao.wang/2019/06/21/spring-security-saas/"/>
-    <id>http://wangwanchao.wang/2019/06/21/spring-security-saas/</id>
-    <published>2019-06-21T03:49:55.000Z</published>
-    <updated>2019-06-24T02:05:57.205Z</updated>
+    <title>解析JavaScript ECMAScript TypeScript COffeScript</title>
+    <link href="http://wangwanchao.wang/2019/06/14/es6-ts/"/>
+    <id>http://wangwanchao.wang/2019/06/14/es6-ts/</id>
+    <published>2019-06-14T07:46:52.000Z</published>
+    <updated>2019-07-15T16:14:01.464Z</updated>
     
-    <content type="html"><![CDATA[<p>最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID</p><a id="more"></a><p>RBAC模型</p><h3 id="安全原则"><a href="#安全原则" class="headerlink" title="安全原则"></a>安全原则</h3><ol><li>最小权限原则</li><li>责任分离原则</li><li>数据抽象原则</li></ol><p>页面权限<br>功能权限<br>数据权限</p><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>用户</p><p>角色：可以按照部门、岗位、</p>]]></content>
+    <content type="html"><![CDATA[<p>JS框架层出不穷，</p><a id="more"></a><h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote><p>ECMAScript6的目标是使得JavaScript语言可以用来编写大型的复杂的应用程序，于是增添了许多特性，例如：模块和类，Maps、Sets、Promises、生成器（Generators）等。<br>尽管ECMAScript6做了大量的更新，但标准化委员会仍然决定要兼容以前的版本，但随之而来的问题是，目前主流的宿主环境（无论是浏览器环境还是服务器环境）不能完全支持ES6，导致了开发者真正要使用ECMAScript6时，需要将ECMAScript6代码进行转译。</p></blockquote><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote><p>TypeScript 是一种微软开源的编程语言。<br>由于JavaScript是弱类型的，TypeScript为JavaScript扩展类和模块的概念。正是由于TypeScript最大的特点是类型化，因此才叫做TypeScript。<br>TypeScript支持ECMAScript6标准（实际上相当于是对ECMAScript6的提前实现），并且能将代码根据需求转换为 ES3/5/6。这意味着开发者可以通过TypeScript使用最新的ECMAScript特性，无需再考虑兼容性的问题。</p></blockquote><h3 id="TypeScript分类"><a href="#TypeScript分类" class="headerlink" title="TypeScript分类"></a>TypeScript分类</h3><ol><li>一个是类似 Babel 的阵营，坚持JavaScript 的语法风格编写，为开发者提供最新的 ECMAScript 特性；</li><li>另一个则是Coffeescript、Clojure、Dart等的阵营，它们的语法与 JavaScript 迥然不同，但最终会编译为JavaScript；</li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近要做一个saas平台，20171年的时候选用的是Shiro实现，考虑到SpringSecurity可以完美的整合Oauth2.0/OpenID&lt;/p&gt;
+      &lt;p&gt;JS框架层出不穷，&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>dubbo-base</title>
+    <link href="http://wangwanchao.wang/2019/06/13/dubbo-base/"/>
+    <id>http://wangwanchao.wang/2019/06/13/dubbo-base/</id>
+    <published>2019-06-13T05:27:17.000Z</published>
+    <updated>2019-06-13T05:27:17.805Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>微服务--路由器(五)</title>
+    <link href="http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/"/>
+    <id>http://wangwanchao.wang/2019/06/12/spring-cloud-ribbon/</id>
+    <published>2019-06-11T16:53:57.000Z</published>
+    <updated>2019-10-10T04:07:46.567Z</updated>
+    
+    <content type="html"><![CDATA[<p>在wei服务中刚开始使用dubbo通信，后来改为ribbon/feign，feign实际上是在ribbon上又封装了一层</p><a id="more"></a><h2 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h2><h2 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h2><h2 id="OpenFeign"><a href="#OpenFeign" class="headerlink" title="OpenFeign"></a>OpenFeign</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在wei服务中刚开始使用dubbo通信，后来改为ribbon/feign，feign实际上是在ribbon上又封装了一层&lt;/p&gt;
     
     </summary>
     
